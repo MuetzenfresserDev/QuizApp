@@ -1,0 +1,31 @@
+<section fxFlexFill fxLayout="row" fxLayoutAlign="none center" *ngIf="playerCount.length > 0">
+
+  <section  fxFlex="{{fxFlex}}" fxLayoutAlign="center" *ngFor="let player of playerCount">
+    <section>
+      <app-player></app-player>
+    </section>
+  </section>
+
+</section>
+
+<section fxFlexFill fxLayout="row" fxLayoutAlign="none center" *ngIf="playerCount.length === 0">
+
+  <section fxFlex="100" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign=" center">
+      <h1>Spieleranzahl:</h1>
+      <mat-form-field appearance="outline">
+        <mat-label>2 - 4 Spieler</mat-label>
+        <input type="number" #input matInput autofocus (keyup.enter)="setPlayerCount(input.value)">
+
+          <button
+            matSuffix
+            mat-icon-button
+            (click)="setPlayerCount(input.value)">
+            <mat-icon class="material-icons-outlined">save</mat-icon>
+          </button>
+
+      </mat-form-field>
+    </div>   
+  </section>
+
+</section>

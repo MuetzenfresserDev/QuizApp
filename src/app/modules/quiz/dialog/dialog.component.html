@@ -1,0 +1,20 @@
+<section fxLayout="column" fxFill >
+  <div fxLayout="row" fxLayoutAlign="end none">
+    <button mat-flat-button color="accent" mat-dialog-close>
+      Schließen
+    </button>
+  </div>
+
+  <div fxLayout="row" fxFlex>
+    <section fxFlex *ngIf="dialogData.kind === 'Multiple-Choice-Fragen'">
+      <app-multipleChoice 
+        [data]="dialogData"
+        [playerCount]="playerCount"
+        [setWidth]="setWidth"
+        
+      ></app-multipleChoice>
+    </section>
+  </div>
+
+  <div fxFlex="25" mat-diaglog-actions style="background-color: red;"></div>
+</section>

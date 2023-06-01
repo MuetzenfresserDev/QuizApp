@@ -1,0 +1,52 @@
+<section fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="1vw">
+  <section fxLayout="column" fxLayoutAlign="none center">
+
+    <button (click)="increasePoints(100)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button (click)="decreasePoints(100)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+      <mat-icon>remove</mat-icon>
+    </button>
+
+    <button (click)="resetPlayer()" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+      <mat-icon>restart_alt</mat-icon>
+    </button>
+
+  </section>
+
+  <section fxLayout="column" fxLayoutAlign="none center">
+    
+
+    <section style="height: 7vh;" *ngIf="player.name === ''">
+
+      <mat-form-field style="transform: scale(0.6); padding: 0; margin: 0;" appearance="outline">
+        <mat-label style="font-size: 20px;">Spielername</mat-label>          
+            <input type="text" #input matInput autofocus (keyup.enter)="setPlayerName(input.value)">
+
+          <button
+            matSuffix
+            mat-icon-button
+            (click)="setPlayerName(input.value)">
+            <mat-icon class="material-icons-outlined">save</mat-icon>
+          </button>
+
+      </mat-form-field>
+
+    </section>
+
+    <section *ngIf="player.name !== ''">
+      <h3>{{ player.name }}</h3>
+    </section>
+
+    <div>
+      <mat-card>
+        <mat-card-content style="width: 16vw; height: 18vh"> </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Rahmen für Kamera -->
+
+    <h3>Punkte: {{ player.points }}</h3>
+  </section>
+</section>

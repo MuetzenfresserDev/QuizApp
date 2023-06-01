@@ -1,0 +1,11 @@
+<section fxLayout="row" fxLayoutGap="4vw">
+  <!-- Multiple choice questions -->
+  <section fxLayout="column" fxLayoutAlign=" center" fxLayoutGap="2vh" *ngFor="let item of concatQuestions, index as i">
+    <!-- Hier Imagoe Gothic Charakter einbinden -->
+    <div>{{images[i]}}</div> 
+    <section *ngFor="let question of item, index as j">
+      <button (click)="onClickOpenDialog(question)" mat-flat-button style="height: 8vh; width: 15vh">{{points[j]}}</button>
+    </section>
+  </section>
+
+</section>

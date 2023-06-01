@@ -1,0 +1,45 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxFill>
+    <section fxLayout="row">
+      {{ data.kind }}
+    </section>
+  
+    <section fxLayout="row">
+      {{ data.question }}
+    </section>
+  
+    <section fxLayout="row" fxLayoutGap="10vw">
+      <section fxLayout="column">
+        <section fxLayout="row">A: {{ data.options.option1 }}</section>
+        <section fxLayout="row">B: {{ data.options.option2 }}</section>
+      </section>
+  
+      <section fxLayout="column">
+        <section fxLayout="row">C: {{ data.options.option3 }}</section>
+        <section fxLayout="row">D: {{ data.options.option4 }}</section>
+      </section>
+    </section>
+  
+    <section fxLayout="row">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showAnswer === false"
+        (click)="clickShowAnswer()"
+      >
+        Lösung
+      </button>
+      <section *ngIf="showAnswer === true">data.correctAnswer</section>
+    </section>
+  
+
+
+    <section fxLayout="row" fxLayoutGap="2vw">
+        <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount">
+            <mat-card class="card-color">
+                <mat-card-content style="width: 16vw; height: 18vh"></mat-card-content>
+              </mat-card>
+        </section>
+    </section>
+
+</section>
+
