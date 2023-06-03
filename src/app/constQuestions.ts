@@ -2,6 +2,13 @@ import { MultiplechoiceQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
+    static readonly whiteboardUrls: string[] = [
+        'https://www.whiteboard.team/app/board/aViirb3789u1QsNrKgRNjGjyO',  //Spieler 1 Url
+        'https://www.whiteboard.team/app/board/JWsnlPZ5ogasZB0KeElTnjCAY',  //Spieler 2 Url
+        'https://www.whiteboard.team/app/board/txZGAIMXIWtLTWtI9CmN~ZT4d',  //Spieler 3 Url
+        'https://www.whiteboard.team/app/board/eb~TBAt5D5ray2LBIqTH.yV5k'   //Spieler 4 Url
+      ];
+
     static readonly multiplechoice1:  MultiplechoiceQuestion = {
         question: "test Frage",
         options: {

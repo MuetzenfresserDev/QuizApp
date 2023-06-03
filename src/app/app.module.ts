@@ -8,6 +8,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { DialogService } from './services/dialog/dialog.service';
 import { SnackbarService } from './services/snackbar/snackbar.service';
+import { RequestDataService } from './services/request/requestData.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { SnackbarService } from './services/snackbar/snackbar.service';
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
-    QuizModule
+    QuizModule,
+    HttpClientModule
   ],
   providers: [
     DialogService,
-    SnackbarService
+    SnackbarService,
+    RequestDataService
   ],
   bootstrap: [AppComponent]
 })

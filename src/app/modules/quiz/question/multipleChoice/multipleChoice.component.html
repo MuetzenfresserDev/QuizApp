@@ -31,13 +31,30 @@
       <section *ngIf="showAnswer === true">data.correctAnswer</section>
     </section>
   
-
+    <section fxLayout="row">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showAnswer === false"
+        (click)="clickShowBoards()"
+      >
+        Whiteboards aufdecken
+      </button>
+    </section>
 
     <section fxLayout="row" fxLayoutGap="2vw">
-        <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount">
-            <mat-card class="card-color">
-                <mat-card-content style="width: 16vw; height: 18vh"></mat-card-content>
-              </mat-card>
+      <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount, index as i">
+        <mat-card>
+          <mat-card-content [style]="cardStyle" [style.display]="visibleWaiting.display" class="card-color"> 
+            Player gibt seine Lösung ein...
+          </mat-card-content>
+        </mat-card>
+      </section>
+    </section>
+
+    <section fxLayout="row" fxLayoutGap="2vw">
+        <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount, index as i">
+            <app-whiteboard [style.display]="visibleBoard.display" [url]="whiteboardUrls[i]"></app-whiteboard>
         </section>
     </section>
 

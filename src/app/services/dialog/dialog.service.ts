@@ -13,8 +13,8 @@ public openDialog<T>(data: DialogData<T>): MatDialogRef<any>{
 
   console.log(data)
 
-  let width: string = '90vw';
-  let height: string = '90vh';
+  let width: string = '100vw';
+  let height: string = '100vh';
 
   if(data.parseWidth != undefined){
     width = data.parseWidth;
