@@ -27,6 +27,7 @@ export class MultipleChoiceComponent implements OnInit {
   whiteboardUrls: string[] = ConstQuestions.whiteboardUrls;
 
   showAnswer: boolean = false;
+  showButtons: boolean = false;
 
   cardStyle = {
     width: '100%',
@@ -54,6 +55,9 @@ export class MultipleChoiceComponent implements OnInit {
   }
 
   public clickShowBoards(){
+
+    this.showButtons = true;
+
     this.visibleBoard.display = 'block';
     this.visibleWaiting.display = 'none';
 

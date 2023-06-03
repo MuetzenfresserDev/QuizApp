@@ -12,13 +12,13 @@ export class ConstQuestions {
     static readonly multiplechoice1:  MultiplechoiceQuestion = {
         question: "test Frage",
         options: {
-            option1: "1111",
-            option2: "2222",
-            option3: "3333",
-            option4: "4444",
+            option1: "A: 1111",
+            option2: "B: 2222",
+            option3: "C: 3333",
+            option4: "D: 4444",
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: '4444'
+        correctAnswer: 'D: 4444'
     }
     static readonly multiplechoice2:  MultiplechoiceQuestion = {
         question: "",

@@ -1,24 +1,26 @@
 <section fxLayout="column" fxLayoutAlign="center center" fxFill>
-    <section fxLayout="row">
-      {{ data.kind }}
-    </section>
-  
-    <section fxLayout="row">
+    <section fxLayout="row" style="font-size: large; font-weight: bold;">
       {{ data.question }}
     </section>
   
+    <br>
+
     <section fxLayout="row" fxLayoutGap="10vw">
       <section fxLayout="column">
-        <section fxLayout="row">A: {{ data.options.option1 }}</section>
-        <section fxLayout="row">B: {{ data.options.option2 }}</section>
+        <section fxLayout="row" style="font-size: large;">{{ data.options.option1 }}</section>
+        <br>
+        <section fxLayout="row" style="font-size: large;">{{ data.options.option2 }}</section>
       </section>
   
       <section fxLayout="column">
-        <section fxLayout="row">C: {{ data.options.option3 }}</section>
-        <section fxLayout="row">D: {{ data.options.option4 }}</section>
+        <section fxLayout="row" style="font-size: large;">{{ data.options.option3 }}</section>
+        <br>
+        <section fxLayout="row" style="font-size: large;">{{ data.options.option4 }}</section>
       </section>
     </section>
   
+    <br>
+
     <section fxLayout="row">
       <button
         mat-flat-button
@@ -28,25 +30,16 @@
       >
         Lösung
       </button>
-      <section *ngIf="showAnswer === true">data.correctAnswer</section>
+      <section *ngIf="showAnswer === true" style="font-size: larger;">Die richtige Antwortet lautet: {{data.correctAnswer}}</section>
     </section>
-  
-    <section fxLayout="row">
-      <button
-        mat-flat-button
-        color="accent"
-        *ngIf="showAnswer === false"
-        (click)="clickShowBoards()"
-      >
-        Whiteboards aufdecken
-      </button>
-    </section>
+
+    <br>
 
     <section fxLayout="row" fxLayoutGap="2vw">
       <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount, index as i">
         <mat-card>
           <mat-card-content [style]="cardStyle" [style.display]="visibleWaiting.display" class="card-color"> 
-            Player gibt seine Lösung ein...
+            Die Spieler bearbeiten die Aufgaben...
           </mat-card-content>
         </mat-card>
       </section>
@@ -56,6 +49,19 @@
         <section  fxFlex="{{setWidth}}" fxLayoutAlign="center" *ngFor="let p of playerCount, index as i">
             <app-whiteboard [style.display]="visibleBoard.display" [url]="whiteboardUrls[i]"></app-whiteboard>
         </section>
+    </section>
+
+    <br>
+
+    <section fxLayout="row">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showButtons === false"
+        (click)="clickShowBoards()"
+      >
+        Whiteboards aufdecken
+      </button>
     </section>
 
 </section>
