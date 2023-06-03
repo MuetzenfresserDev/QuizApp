@@ -3,10 +3,10 @@ import { MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question
 export class ConstQuestions {
 
     static readonly whiteboardUrls: string[] = [
-        'https://www.whiteboard.team/app/board/aViirb3789u1QsNrKgRNjGjyO',  //Spieler 1 Url
-        'https://www.whiteboard.team/app/board/JWsnlPZ5ogasZB0KeElTnjCAY',  //Spieler 2 Url
-        'https://www.whiteboard.team/app/board/txZGAIMXIWtLTWtI9CmN~ZT4d',  //Spieler 3 Url
-        'https://www.whiteboard.team/app/board/eb~TBAt5D5ray2LBIqTH.yV5k'   //Spieler 4 Url
+        '99090540-6ea4-4014-ae2a-db97e028dba8',  //Spieler 1 Url
+        'd825987e-cff0-45ef-9d1a-b34dbcf3d6c5',  //Spieler 2 Url
+        '1b942aac-2e88-424d-96ed-3576e90dbfc9',  //Spieler 3 Url
+        'c36ed847-361f-4d53-88c7-69aef20ca5d8'   //Spieler 4 Url
       ];
 
     static readonly multiplechoice1:  MultiplechoiceQuestion = {

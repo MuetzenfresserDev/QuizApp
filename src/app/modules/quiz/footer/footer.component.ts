@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
 
     let value = parseInt(input);
 
-    if(value == 2 || value == 3 || value == 4){
+    if(value == 1 || value == 2 || value == 3 || value == 4){
 
       if(value == 2){
         this.fxFlex = '50';

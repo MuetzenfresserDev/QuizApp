@@ -1,1 +1,8 @@
-<iframe [src]="iFrameUrl" [style]="iframeStyle"></iframe>
+<!-- <iframe id="myIframe"  [src]="iFrameUrl" [style]="iframeStyle"></iframe> -->
+
+<script src="https://www.whiteboard.team/dist/api.js"></script>
+
+<div [style]="iframeStyle" id="wt-container1" *ngIf="containerString === 'wt-container1'"></div>
+<div [style]="iframeStyle" id="wt-container2" *ngIf="containerString === 'wt-container2'"></div>
+<div [style]="iframeStyle" id="wt-container3" *ngIf="containerString === 'wt-container3'"></div>
+<div [style]="iframeStyle" id="wt-container4" *ngIf="containerString === 'wt-container4'"></div>
