@@ -25,6 +25,8 @@ export class BoardComponent implements OnInit {
   concatQuestions: any[] = [];
   images: any[] = [];
 
+  disabledStates: boolean[][] = [];
+
   constructor(private dialogService: DialogService) {}
 
   ngOnInit() {
@@ -70,9 +72,17 @@ export class BoardComponent implements OnInit {
 
     this.images = ['Kat1','Kat2','Kat3','Kat4','Kat5']
 
+    for (let i = 0; i < this.concatQuestions.length; i++) {
+      const row = [];
+      for (let j = 0; j < this.concatQuestions[i].length; j++) {
+        row.push(false);
+      }
+      this.disabledStates.push(row);
+    }
+
   }
 
-  public onClickOpenDialog(item: any) {
+  public onClickOpenDialog(item: any, i: number, j: number) {
 
     let dialogData: DialogData<DialogComponent> = {
       component: DialogComponent,
@@ -81,6 +91,11 @@ export class BoardComponent implements OnInit {
       },
     }
 
-    this.dialogService.openDialog(dialogData);
+    let ref = this.dialogService.openDialog(dialogData);
+
+    ref.afterClosed().subscribe(()=>{
+      this.disabledStates[i][j] = true;
+    })
+
   }
 }
