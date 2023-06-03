@@ -11,6 +11,7 @@ import { PlayerComponent } from './player/player.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MultipleChoiceComponent } from './question/multipleChoice/multipleChoice.component';
 import { WhiteboardComponent } from './whiteboard/whiteboard.component';
+import { VoicelineComponent } from './question/voiceline/voiceline.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { WhiteboardComponent } from './whiteboard/whiteboard.component';
     PlayerComponent,
     DialogComponent,
     WhiteboardComponent,
-    MultipleChoiceComponent
+    MultipleChoiceComponent,
+    VoicelineComponent
   ],
   exports: [QuizComponent]
 })

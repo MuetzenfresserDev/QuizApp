@@ -16,5 +16,14 @@
     </section>
   </div>
 
+  <div fxLayout="row" fxFlex>
+    <section fxFlex *ngIf="dialogData.kind === 'Voiceline-Fragen'">
+      <app-voiceline
+        [data]="dialogData"
+        [playerCount]="playerCount"
+        [setWidth]="setWidth"></app-voiceline>
+    </section>
+  </div>
+
   <div fxFlex="25" mat-diaglog-actions style="background-color: red;"></div>
 </section>

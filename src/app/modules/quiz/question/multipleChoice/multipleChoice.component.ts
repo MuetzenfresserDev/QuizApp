@@ -46,6 +46,10 @@ export class MultipleChoiceComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.data);
+    console.log(this.playerCount);
+    console.log(this.setWidth);
+
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
   }

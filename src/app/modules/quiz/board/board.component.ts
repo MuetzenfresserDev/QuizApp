@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
-import { MultiplechoiceQuestion } from 'src/app/interfaces/question';
+import { MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogData } from 'src/app/interfaces/dialogData';
@@ -21,6 +21,7 @@ export class BoardComponent implements OnInit {
   //Von allen fragen 5 Fragen oder so Punkte: 100/200/300/400/500
 
   multiplechoiceQuestions: MultiplechoiceQuestion[] = [];
+  voicelineQuestions: VoicelineQuestion[] = [];
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: any[] = [];
@@ -53,7 +54,9 @@ export class BoardComponent implements OnInit {
 
   private setupErrorSeraches() {}
 
-  private setupVoiceLines() {}
+  private setupVoiceLines() {
+    this.voicelineQuestions = ConstQuestions.voicelineQuestions;
+  }
 
   private setupMarvinQuestions() {}
 
@@ -64,7 +67,7 @@ export class BoardComponent implements OnInit {
   private setupConcatQuestions() {
     this.concatQuestions = [
       this.multiplechoiceQuestions,
-      this.multiplechoiceQuestions,
+      this.voicelineQuestions,
       this.multiplechoiceQuestions,
       this.multiplechoiceQuestions,
       this.multiplechoiceQuestions,

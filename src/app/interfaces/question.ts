@@ -5,6 +5,13 @@ export interface MultiplechoiceQuestion {
     correctAnswer: string;
 }
 
+export interface VoicelineQuestion {
+    question: string;
+    voiceLine: string;
+    kind: string;
+    correctAnswer: string;
+}
+
 export interface Answer{
     option1: string;
     option2: string;
