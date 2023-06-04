@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhiteboardComponent implements OnInit, AfterViewInit {
   @Input() url: string = '';
+  @Input() blockName:string = '';
+  @Input() imgurLink = '';
 
   id: string = 'id';
 
@@ -40,13 +42,16 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
       let script = this._renderer2.createElement('script');
 
     console.log(this.url);
-
+    console.log(this.blockName);
+    console.log(this.imgurLink);
     
 
     script.type = `text/javascript`;
-    script.text = `
+
+    if(this.imgurLink != ''){
+      script.text = `
               {
-                  var wt = new api.WhiteboardTeam('#${this.containerString}', {
+                  var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
                     clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
                     boardCode: '${this.url}',
                     participant: {
@@ -56,11 +61,55 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
                     tool: 'pan'
                 }
                 });
+                ${this.blockName}.waitUntilReady()
+                .then((ctx) => {
+
+
+                  setTimeout(() => {
+                  ${this.blockName}.board.clear();
+                  
+
+                  }, 1000);
+
+
+                  setTimeout(() => {
+                  ${this.blockName}.drawImage('${this.imgurLink}',65,65);
+
+                  }, 2000);
+
+                })
+                .catch((error) => console.log(error));
               }
           `;
+    } else{
+      script.text = `
+              {
+                  var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
+                    clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
+                    boardCode: '${this.url}',
+                    participant: {
+                      role : 'editor'
+                  },
+                  board: {
+                    tool: 'pan'
+                }
+                });
+                ${this.blockName}.waitUntilReady()
+                .then((ctx) => {
+
+                  setTimeout(() => {
+                  ${this.blockName}.board.clear();
+                  console.log('clearing')
+                  }, 2000);
+
+                })
+                .catch((error) => console.log(error));
+              }
+          `;
+    }
 
     this._renderer2.appendChild(this._document.body, script);
-    }, 1000);
+    }, 500);
 
     this.setDimension(
       JSON.parse(sessionStorage.getItem('playerCount') || '[]').fxFlex

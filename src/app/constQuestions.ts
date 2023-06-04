@@ -101,31 +101,36 @@ export class ConstQuestions {
         question: "Was stimmt auf diesem Bild nicht?",
         errorPicture: "/assets/errors/errorPictures/error1.jpg",
         kind: "Fehlersuche-Frage",
-        correctedPicture: "/assets/errors/correctedPictures/corrected1.jpg"
+        correctedPicture: "/assets/errors/correctedPictures/corrected1.jpg",
+        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg"
     }
     static readonly errors2: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
-        correctedPicture: ""
+        correctedPicture: "",
+        imgurLink: ""
     }
     static readonly errors3: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
-        correctedPicture: ""
+        correctedPicture: "",
+        imgurLink: ""
     }
     static readonly errors4: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
-        correctedPicture: ""
+        correctedPicture: "",
+        imgurLink: ""
     }
     static readonly errors5: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
-        correctedPicture: ""
+        correctedPicture: "",
+        imgurLink: ""
     }
 
     static readonly multiplechoiceQuestions: MultiplechoiceQuestion[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]

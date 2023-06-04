@@ -75,6 +75,7 @@
       <app-whiteboard
         [style.display]="visibleBoard.display"
         [url]="whiteboardUrls[i]"
+        [blockName]="blockNames[i]"
       ></app-whiteboard>
     </section>
   </section>
@@ -143,6 +144,8 @@
       <app-whiteboard
         [style.display]="visibleBoard.display"
         [url]="whiteboardUrls[i]"
+        [blockName]="blockNames[i]"
+        [imgurLink]="data.imgurLink"
       ></app-whiteboard>
     </section>
   </section>

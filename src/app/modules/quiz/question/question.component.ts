@@ -33,6 +33,8 @@ export class QuestionComponent implements OnInit {
 
   whiteboardUrls: string[] = ConstQuestions.whiteboardUrls;
 
+  blockNames: string[] = ['picA','picB','picC','picD',]
+
   constructor() { }
 
   ngOnInit() {
@@ -59,8 +61,8 @@ export class QuestionComponent implements OnInit {
   }
 
   public clickSwitchPictures(){
-    this.showAnswer = true;
     this.errorPicture?.switchToCorrected();
+    this.showAnswer = true;   
   }
 
   public hideAnswer(){

@@ -24,4 +24,5 @@ export interface ErrorQuestion {
     errorPicture: string;
     kind: string;
     correctedPicture: string;
+    imgurLink: string;
 }

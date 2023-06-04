@@ -12,7 +12,8 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
     question: '',
     errorPicture: '',
     kind: '',
-    correctedPicture: ''
+    correctedPicture: '',
+    imgurLink: ''
   };
 
   showCorrected: boolean = false;
@@ -29,6 +30,7 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
 
   public switchToCorrected(){
     this.showCorrected = true;
+    this.hideAll = false;
   }
 
   public hideAllButWhiteboard(){
