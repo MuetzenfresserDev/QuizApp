@@ -4,7 +4,6 @@ import { QuizComponent } from './quiz.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AnswerComponent } from './answer/answer.component';
 import { MaterialModule } from 'src/app/material';
 import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
@@ -27,7 +26,6 @@ import { GeogeussrComponent } from './question/geogeussr/geogeussr.component';
     QuizComponent,
     HeaderComponent,
     FooterComponent,
-    AnswerComponent,
     BoardComponent,
     PlayerComponent,
     DialogComponent,
