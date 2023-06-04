@@ -5,8 +5,8 @@
     </button>
   </div>
 
-  <div fxLayout="row" fxFlex>
-    <section fxFlex *ngIf="dialogData.kind === 'Multiple-Choice-Fragen'">
+  <div fxLayout="row" fxFlex *ngIf="dialogData.kind === 'Multiple-Choice-Fragen'">
+    <section fxFlex>
       <app-multipleChoice 
         [data]="dialogData"
         [playerCount]="playerCount"
@@ -16,8 +16,8 @@
     </section>
   </div>
 
-  <div fxLayout="row" fxFlex>
-    <section fxFlex *ngIf="dialogData.kind === 'Voiceline-Fragen'">
+  <div fxLayout="row" fxFlex *ngIf="dialogData.kind === 'Voiceline-Fragen'">
+    <section fxFlex>
       <app-voiceline
         [data]="dialogData"
         [playerCount]="playerCount"

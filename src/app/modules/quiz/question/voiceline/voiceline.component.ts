@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { ConstQuestions } from 'src/app/constQuestions';
 import { VoicelineQuestion } from 'src/app/interfaces/question';
 
 @Component({
@@ -30,12 +31,32 @@ export class VoicelineComponent implements OnInit, AfterViewInit {
   bufferLength: number | undefined;
   dataArray: any | undefined;
 
+  whiteboardUrls: string[] = ConstQuestions.whiteboardUrls;
+
+  showAnswer: boolean = false;
+  showButtons: boolean = false;
+
+  cardStyle = {
+    width: '100%',
+    height: '100%'
+  }
+
+  visibleBoard = {
+    display: 'none'
+  }
+
+  visibleWaiting = {
+    display: 'block'
+  }
+
   constructor() {}
 
   ngOnInit() {
     console.log(this.data);
     console.log(this.playerCount);
     console.log(this.setWidth);
+
+    this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
   }
 
   ngAfterViewInit() {
@@ -99,5 +120,35 @@ export class VoicelineComponent implements OnInit, AfterViewInit {
     console.log('sound');
     
     this.audioPlayer!.nativeElement.play();
+  }
+
+  public clickShowAnswer(){
+    this.showAnswer = true;
+  }
+
+  public clickShowBoards(){
+
+    this.showButtons = true;
+
+    this.visibleBoard.display = 'block';
+    this.visibleWaiting.display = 'none';
+
+    console.log(this.visibleBoard)
+
+  }
+
+  private setDimension(n: number){
+
+    if(n == 25){
+      this.cardStyle.width = "22vw";
+      this.cardStyle.height = "33vh";
+    } else if(n == 33){
+      this.cardStyle.width = "30vw";
+      this.cardStyle.height = "33vh";
+    } else {
+      this.cardStyle.width = "30vw";
+      this.cardStyle.height = "33vh";
+    }
+
   }
 }
