@@ -51,7 +51,10 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
                     boardCode: '${this.url}',
                     participant: {
                       role : 'editor'
-                  }
+                  },
+                  board: {
+                    tool: 'pan'
+                }
                 });
               }
           `;

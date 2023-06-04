@@ -1,4 +1,11 @@
-<section fxLayout="column" fxLayoutAlign="center center" fxFill>
+<section
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxFill
+  *ngIf="
+    data.kind === 'Multiple-Choice-Fragen' || data.kind === 'Voiceline-Fragen'
+  "
+>
   <section fxLayout="row" style="font-size: large; font-weight: bold">
     {{ data.question }}
   </section>
@@ -10,15 +17,13 @@
   <section>
     <div fxLayout="row" fxFlex *ngIf="data.kind === 'Multiple-Choice-Fragen'">
       <section fxFlex>
-        <app-multipleChoice
-          [data]="data"
-        ></app-multipleChoice>
+        <app-multipleChoice [data]="data"></app-multipleChoice>
       </section>
     </div>
 
     <div fxLayout="row" fxFlex *ngIf="data.kind === 'Voiceline-Fragen'">
       <section fxFlex>
-        <app-voiceline></app-voiceline>
+        <app-voiceline [data]="data"></app-voiceline>
       </section>
     </div>
   </section>
@@ -82,6 +87,72 @@
       color="accent"
       *ngIf="showButtons === false"
       (click)="clickShowBoards()"
+    >
+      Whiteboards aufdecken
+    </button>
+  </section>
+</section>
+
+<!-- ____________________________________________________________________________________________ -->
+
+<section
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxFill
+  *ngIf="data.kind === 'Fehlersuche-Frage'"
+>
+  <section fxLayout="row" style="font-size: large; font-weight: bold">
+    {{ data.question }}
+  </section>
+
+  <br />
+  <br />
+  <br />
+
+  <!-- //////////////////////////////////////////////// -->
+
+  <app-errorPicture [data]="data"></app-errorPicture>
+
+  <!-- //////////////////////////////////////////////// -->
+
+  <br />
+
+  <section fxLayout="row">
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="showAnswer === false"
+      (click)="clickSwitchPictures()"
+    >
+      Lösung
+    </button>
+  </section>
+
+  <br />
+
+  <app-timer *ngIf="showAnswer === false"></app-timer>
+
+  <br />
+
+  <section fxLayout="row" fxLayoutGap="2vw">
+    <section
+      fxFlex="{{ setWidth }}"
+      fxLayoutAlign="center"
+      *ngFor="let p of playerCount; index as i"
+    >
+      <app-whiteboard
+        [style.display]="visibleBoard.display"
+        [url]="whiteboardUrls[i]"
+      ></app-whiteboard>
+    </section>
+  </section>
+
+  <section fxLayout="row">
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="showButtons === false"
+      (click)="clickShowBoards(); hideAnswer()"
     >
       Whiteboards aufdecken
     </button>

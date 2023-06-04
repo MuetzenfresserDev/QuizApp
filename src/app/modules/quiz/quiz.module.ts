@@ -13,6 +13,8 @@ import { MultipleChoiceComponent } from './question/multipleChoice/multipleChoic
 import { WhiteboardComponent } from './whiteboard/whiteboard.component';
 import { VoicelineComponent } from './question/voiceline/voiceline.component';
 import { QuestionComponent } from './question/question.component';
+import { ErrorPictureComponent } from './question/errorPicture/errorPicture.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { QuestionComponent } from './question/question.component';
     WhiteboardComponent,
     MultipleChoiceComponent,
     VoicelineComponent,
-    QuestionComponent
+    ErrorPictureComponent,
+    QuestionComponent,
+    TimerComponent
   ],
   exports: [QuizComponent]
 })

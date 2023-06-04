@@ -18,3 +18,10 @@ export interface Answer{
     option3: string;
     option4: string;
 }
+
+export interface ErrorQuestion {
+    question: string;
+    errorPicture: string;
+    kind: string;
+    correctedPicture: string;
+}

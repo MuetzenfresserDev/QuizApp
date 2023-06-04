@@ -1,4 +1,4 @@
-import { MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
+import { ErrorQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
@@ -97,7 +97,38 @@ export class ConstQuestions {
         correctAnswer: ""
     }
 
+    static readonly errors1: ErrorQuestion = {
+        question: "Was stimmt auf diesem Bild nicht?",
+        errorPicture: "/assets/errors/errorPictures/error1.jpg",
+        kind: "Fehlersuche-Frage",
+        correctedPicture: "/assets/errors/correctedPictures/corrected1.jpg"
+    }
+    static readonly errors2: ErrorQuestion = {
+        question: "",
+        errorPicture: "",
+        kind: "",
+        correctedPicture: ""
+    }
+    static readonly errors3: ErrorQuestion = {
+        question: "",
+        errorPicture: "",
+        kind: "",
+        correctedPicture: ""
+    }
+    static readonly errors4: ErrorQuestion = {
+        question: "",
+        errorPicture: "",
+        kind: "",
+        correctedPicture: ""
+    }
+    static readonly errors5: ErrorQuestion = {
+        question: "",
+        errorPicture: "",
+        kind: "",
+        correctedPicture: ""
+    }
+
     static readonly multiplechoiceQuestions: MultiplechoiceQuestion[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
     static readonly voicelineQuestions: VoicelineQuestion[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5 ]
-
+    static readonly errorQuestions: ErrorQuestion[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
 }

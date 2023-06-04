@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
+import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
 
 @Component({
   selector: 'app-question',
@@ -11,6 +12,8 @@ export class QuestionComponent implements OnInit {
   @Input() data: any;
   @Input() playerCount: any = [];
   @Input() setWidth: string = '';
+
+  @ViewChild(ErrorPictureComponent) errorPicture: ErrorPictureComponent | undefined;
 
   showAnswer: boolean = false;
   showButtons: boolean = false;
@@ -53,6 +56,15 @@ export class QuestionComponent implements OnInit {
 
   public clickShowAnswer(){
     this.showAnswer = true;
+  }
+
+  public clickSwitchPictures(){
+    this.showAnswer = true;
+    this.errorPicture?.switchToCorrected();
+  }
+
+  public hideAnswer(){
+    this.errorPicture?.hideAllButWhiteboard();
   }
 
   public clickShowBoards(){

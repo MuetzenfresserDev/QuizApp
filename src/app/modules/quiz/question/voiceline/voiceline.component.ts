@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -14,16 +15,30 @@ import { VoicelineQuestion } from 'src/app/interfaces/question';
   templateUrl: './voiceline.component.html',
   styleUrls: ['./voiceline.component.scss'],
 })
-export class VoicelineComponent implements OnInit, AfterViewInit {
+export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  @Input() data: VoicelineQuestion = {
+    question: '',
+    voiceLine: '',
+    kind: '',
+    correctAnswer: ''
+  };
+
   @ViewChild('audioPlayer') audioPlayer: ElementRef | undefined;
   audioContext: AudioContext | undefined;
   analyserNode: AnalyserNode | undefined;
   bufferLength: number | undefined;
   dataArray: any | undefined;
 
+  animationId: any;
+
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnDestroy(): void {
+    cancelAnimationFrame(this.animationId);
+  }
 
   ngAfterViewInit() {
     this.audioContext = new AudioContext();
@@ -42,7 +57,8 @@ export class VoicelineComponent implements OnInit, AfterViewInit {
   }
 
   drawVisualizer() {
-    requestAnimationFrame(() => this.drawVisualizer());
+
+    this.animationId = requestAnimationFrame(() => this.drawVisualizer());
 
     this.analyserNode!.getByteTimeDomainData(this.dataArray);
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
-import { MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
+import { ErrorQuestion, MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogData } from 'src/app/interfaces/dialogData';
@@ -22,6 +22,7 @@ export class BoardComponent implements OnInit {
 
   multiplechoiceQuestions: MultiplechoiceQuestion[] = [];
   voicelineQuestions: VoicelineQuestion[] = [];
+  errorQuestions: ErrorQuestion[] = [];
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: any[] = [];
@@ -37,7 +38,7 @@ export class BoardComponent implements OnInit {
   private setupBoard() {
     this.setupMulitpleChoiceQuestions();
     this.setupBuzzerQuestions();
-    this.setupErrorSeraches();
+    this.setupErrorSearches();
     this.setupVoiceLines();
     this.setupMarvinQuestions();
     this.setupLoreQuestions();
@@ -47,12 +48,13 @@ export class BoardComponent implements OnInit {
 
   private setupMulitpleChoiceQuestions() {
     this.multiplechoiceQuestions = ConstQuestions.multiplechoiceQuestions;
-    console.log(this.multiplechoiceQuestions);
   }
 
   private setupBuzzerQuestions() {}
 
-  private setupErrorSeraches() {}
+  private setupErrorSearches() {
+    this.errorQuestions = ConstQuestions.errorQuestions;
+  }
 
   private setupVoiceLines() {
     this.voicelineQuestions = ConstQuestions.voicelineQuestions;
@@ -68,7 +70,7 @@ export class BoardComponent implements OnInit {
     this.concatQuestions = [
       this.multiplechoiceQuestions,
       this.voicelineQuestions,
-      this.multiplechoiceQuestions,
+      this.errorQuestions,
       this.multiplechoiceQuestions,
       this.multiplechoiceQuestions,
     ];

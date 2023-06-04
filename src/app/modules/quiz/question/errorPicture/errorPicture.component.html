@@ -1,0 +1,4 @@
+<section *ngIf="hideAll === false">
+    <img [src]="data.errorPicture" *ngIf="showCorrected === false">
+    <img [src]="data.correctedPicture" *ngIf="showCorrected === true">
+</section>
