@@ -26,7 +26,7 @@ export class BoardComponent implements OnInit {
   concatQuestions: any[] = [];
   images: any[] = [];
 
-  disabledStates: boolean[][] = [];
+  usedQuestionColors: string[][] = [];
 
   constructor(private dialogService: DialogService) {}
 
@@ -78,9 +78,9 @@ export class BoardComponent implements OnInit {
     for (let i = 0; i < this.concatQuestions.length; i++) {
       const row = [];
       for (let j = 0; j < this.concatQuestions[i].length; j++) {
-        row.push(false);
+        row.push("primary");
       }
-      this.disabledStates.push(row);
+      this.usedQuestionColors.push(row);
     }
 
   }
@@ -97,7 +97,7 @@ export class BoardComponent implements OnInit {
     let ref = this.dialogService.openDialog(dialogData);
 
     ref.afterClosed().subscribe(()=>{
-      this.disabledStates[i][j] = true;
+      this.usedQuestionColors[i][j] = "grey";
     })
 
   }
