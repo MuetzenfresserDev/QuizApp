@@ -100,7 +100,7 @@
   fxLayout="column"
   fxLayoutAlign="center center"
   fxFill
-  *ngIf="data.kind === 'Fehlersuche-Frage'"
+  *ngIf="data.kind === 'Fehlersuche-Frage' || data.kind === 'Geo-Frage'"
 >
   <section fxLayout="row" style="font-size: large; font-weight: bold">
     {{ data.question }}
@@ -112,7 +112,13 @@
 
   <!-- //////////////////////////////////////////////// -->
 
-  <app-errorPicture [data]="data"></app-errorPicture>
+  <section *ngIf="data.kind === 'Fehlersuche-Frage'">
+    <app-errorPicture [data]="data"></app-errorPicture>
+  </section>
+
+  <section *ngIf="data.kind === 'Geo-Frage'">
+    <app-geogeussr [data]="data"></app-geogeussr>
+  </section>
 
   <!-- //////////////////////////////////////////////// -->
 

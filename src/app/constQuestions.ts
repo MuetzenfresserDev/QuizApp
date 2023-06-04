@@ -1,4 +1,4 @@
-import { ErrorQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
+import { ErrorQuestion, GeoguessrQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
@@ -102,7 +102,7 @@ export class ConstQuestions {
         errorPicture: "/assets/errors/errorPictures/error1.jpg",
         kind: "Fehlersuche-Frage",
         correctedPicture: "/assets/errors/correctedPictures/corrected1.jpg",
-        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg"
+        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg"   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
     }
     static readonly errors2: ErrorQuestion = {
         question: "",
@@ -133,7 +133,44 @@ export class ConstQuestions {
         imgurLink: ""
     }
 
+    static readonly geo1: GeoguessrQuestion = {
+        question: "Wo befinden wir uns?",
+        searchPicture: "/assets/geoguessr/searchPictures/error1.jpg", //Karte mit markiertem Punkt
+        kind: "Geo-Frage",
+        markedPicture: "/assets/geoguessr/markedPictures/corrected1.jpg", //Karte mit markiertem Punkt
+        imgurLink: "https://i.imgur.com/j4kaS5k.jpeg" //Karte ohne Markierung
+    }
+    static readonly geo2: GeoguessrQuestion = {
+        question: "",
+        searchPicture: "",
+        kind: "",
+        markedPicture: "",
+        imgurLink: ""
+    }
+    static readonly geo3: GeoguessrQuestion = {
+        question: "",
+        searchPicture: "",
+        kind: "",
+        markedPicture: "",
+        imgurLink: ""
+    }
+    static readonly geo4: GeoguessrQuestion = {
+        question: "",
+        searchPicture: "",
+        kind: "",
+        markedPicture: "",
+        imgurLink: ""
+    }
+    static readonly geo5: GeoguessrQuestion = {
+        question: "",
+        searchPicture: "",
+        kind: "",
+        markedPicture: "",
+        imgurLink: ""
+    }
+
     static readonly multiplechoiceQuestions: MultiplechoiceQuestion[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
     static readonly voicelineQuestions: VoicelineQuestion[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5 ]
     static readonly errorQuestions: ErrorQuestion[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
+    static readonly geoQuestions: GeoguessrQuestion[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5 ];
 }

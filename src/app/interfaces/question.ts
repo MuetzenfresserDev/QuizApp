@@ -26,3 +26,11 @@ export interface ErrorQuestion {
     correctedPicture: string;
     imgurLink: string;
 }
+
+export interface GeoguessrQuestion {
+    question: string;
+    searchPicture: string;
+    kind: string;
+    markedPicture: string;
+    imgurLink: string;
+}

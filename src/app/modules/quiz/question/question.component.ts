@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
+import { GeogeussrComponent } from './geogeussr/geogeussr.component';
 
 @Component({
   selector: 'app-question',
@@ -14,6 +15,7 @@ export class QuestionComponent implements OnInit {
   @Input() setWidth: string = '';
 
   @ViewChild(ErrorPictureComponent) errorPicture: ErrorPictureComponent | undefined;
+  @ViewChild(GeogeussrComponent) geoguessr: GeogeussrComponent | undefined;
 
   showAnswer: boolean = false;
   showButtons: boolean = false;
@@ -62,11 +64,13 @@ export class QuestionComponent implements OnInit {
 
   public clickSwitchPictures(){
     this.errorPicture?.switchToCorrected();
+    this.geoguessr?.switchToCorrected();
     this.showAnswer = true;   
   }
 
   public hideAnswer(){
     this.errorPicture?.hideAllButWhiteboard();
+    this.geoguessr?.hideAllButWhiteboard();
   }
 
   public clickShowBoards(){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
-import { ErrorQuestion, MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
+import { ErrorQuestion, GeoguessrQuestion, MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogData } from 'src/app/interfaces/dialogData';
@@ -23,6 +23,7 @@ export class BoardComponent implements OnInit {
   multiplechoiceQuestions: MultiplechoiceQuestion[] = [];
   voicelineQuestions: VoicelineQuestion[] = [];
   errorQuestions: ErrorQuestion[] = [];
+  geoQuestions: GeoguessrQuestion[] = [];
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: any[] = [];
@@ -64,14 +65,16 @@ export class BoardComponent implements OnInit {
 
   private setupLoreQuestions() {}
 
-  private setupGeoguesserQuestions() {}
+  private setupGeoguesserQuestions() {
+    this.geoQuestions = ConstQuestions.geoQuestions;
+  }
 
   private setupConcatQuestions() {
     this.concatQuestions = [
       this.multiplechoiceQuestions,
       this.voicelineQuestions,
       this.errorQuestions,
-      this.multiplechoiceQuestions,
+      this.geoQuestions,
       this.multiplechoiceQuestions,
     ];
 

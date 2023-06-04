@@ -15,6 +15,7 @@ import { VoicelineComponent } from './question/voiceline/voiceline.component';
 import { QuestionComponent } from './question/question.component';
 import { ErrorPictureComponent } from './question/errorPicture/errorPicture.component';
 import { TimerComponent } from './timer/timer.component';
+import { GeogeussrComponent } from './question/geogeussr/geogeussr.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { TimerComponent } from './timer/timer.component';
     MultipleChoiceComponent,
     VoicelineComponent,
     ErrorPictureComponent,
+    GeogeussrComponent,
     QuestionComponent,
     TimerComponent
   ],
