@@ -21,66 +21,9 @@ export class MultipleChoiceComponent implements OnInit {
     correctAnswer: ''
   };
 
-  @Input() playerCount:any = [];
-  @Input() setWidth: string = '';
-
-  whiteboardUrls: string[] = ConstQuestions.whiteboardUrls;
-
-  showAnswer: boolean = false;
-  showButtons: boolean = false;
-
-  cardStyle = {
-    width: '100%',
-    height: '100%'
-  }
-
-  visibleBoard = {
-    display: 'none'
-  }
-
-  visibleWaiting = {
-    display: 'block'
-  }
-
   constructor() { }
 
   ngOnInit() {
-
-    console.log(this.data);
-    console.log(this.playerCount);
-    console.log(this.setWidth);
-
-    this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
-
-  }
-
-  public clickShowAnswer(){
-    this.showAnswer = true;
-  }
-
-  public clickShowBoards(){
-
-    this.showButtons = true;
-
-    this.visibleBoard.display = 'block';
-    this.visibleWaiting.display = 'none';
-
-    console.log(this.visibleBoard)
-
-  }
-
-  private setDimension(n: number){
-
-    if(n == 25){
-      this.cardStyle.width = "22vw";
-      this.cardStyle.height = "33vh";
-    } else if(n == 33){
-      this.cardStyle.width = "30vw";
-      this.cardStyle.height = "33vh";
-    } else {
-      this.cardStyle.width = "30vw";
-      this.cardStyle.height = "33vh";
-    }
 
   }
 

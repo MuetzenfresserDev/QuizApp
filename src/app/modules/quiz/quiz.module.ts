@@ -12,6 +12,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MultipleChoiceComponent } from './question/multipleChoice/multipleChoice.component';
 import { WhiteboardComponent } from './whiteboard/whiteboard.component';
 import { VoicelineComponent } from './question/voiceline/voiceline.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { VoicelineComponent } from './question/voiceline/voiceline.component';
     DialogComponent,
     WhiteboardComponent,
     MultipleChoiceComponent,
-    VoicelineComponent
+    VoicelineComponent,
+    QuestionComponent
   ],
   exports: [QuizComponent]
 })

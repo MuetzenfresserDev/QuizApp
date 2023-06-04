@@ -1,29 +1,14 @@
-<section fxLayout="column" fxFill >
+<section fxLayout="column" fxFill>
   <div fxLayout="row" fxLayoutAlign="end none">
-    <button mat-flat-button color="accent" mat-dialog-close>
-      Schließen
-    </button>
+    <button mat-flat-button color="accent" mat-dialog-close>Schließen</button>
   </div>
 
-  <div fxLayout="row" fxFlex *ngIf="dialogData.kind === 'Multiple-Choice-Fragen'">
-    <section fxFlex>
-      <app-multipleChoice 
-        [data]="dialogData"
-        [playerCount]="playerCount"
-        [setWidth]="setWidth"
-        
-      ></app-multipleChoice>
-    </section>
-  </div>
+  <app-question
+    fxFlex
+    [data]="dialogData"
+    [playerCount]="playerCount"
+    [setWidth]="setWidth"
+  ></app-question>
 
-  <div fxLayout="row" fxFlex *ngIf="dialogData.kind === 'Voiceline-Fragen'">
-    <section fxFlex>
-      <app-voiceline
-        [data]="dialogData"
-        [playerCount]="playerCount"
-        [setWidth]="setWidth"></app-voiceline>
-    </section>
-  </div>
-
-  <div fxFlex="25" mat-diaglog-actions style="background-color: red;"></div>
+  <div fxFlex="25" mat-diaglog-actions style="background-color: red"></div>
 </section>
