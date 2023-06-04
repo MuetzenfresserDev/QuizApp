@@ -68,7 +68,7 @@ export class ConstQuestions {
     
     static readonly voiceline1: VoicelineQuestion = {
         question: "Von wem stammt die Voiceline?",
-        voiceLine: "quiz-app/assets/voicelines/unbenannt.mp3",
+        voiceLine: "/assets/voicelines/unbenannt.mp3",
         kind: "Voiceline-Fragen",
         correctAnswer: "nameless"
     }
@@ -99,9 +99,9 @@ export class ConstQuestions {
 
     static readonly errors1: ErrorQuestion = {
         question: "Was stimmt auf diesem Bild nicht?",
-        errorPicture: "quiz-app/assets/errors/errorPictures/error1.jpg",
+        errorPicture: "/assets/errors/errorPictures/error1.jpg",
         kind: "Fehlersuche-Frage",
-        correctedPicture: "quiz-app/assets/errors/correctedPictures/corrected1.jpg",
+        correctedPicture: "/assets/errors/correctedPictures/corrected1.jpg",
         imgurLink: "https://i.imgur.com/dQUpoJN.jpeg"   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
     }
     static readonly errors2: ErrorQuestion = {
