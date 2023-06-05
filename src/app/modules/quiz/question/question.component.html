@@ -11,6 +11,8 @@
   </section>
 
   <br />
+  <br />
+
 
   <!-- ////////////////////////////////////////////////////// -->
 
@@ -47,6 +49,7 @@
   </section>
 
   <br />
+  <br />
 
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
@@ -82,7 +85,7 @@
 
   <br />
 
-  <section fxLayout="row">
+  <section fxLayout="row" fxLayoutGap="2vw">
     <button
       mat-flat-button
       color="accent"
@@ -91,6 +94,7 @@
     >
       Whiteboards aufdecken
     </button>
+    <app-timer *ngIf="showButtons === false" [remainingTime]="timer.multivoice"></app-timer>
   </section>
 </section>
 
@@ -104,6 +108,21 @@
 >
   <section fxLayout="row" style="font-size: large; font-weight: bold">
     {{ data.question }}
+  </section>
+
+  <br />
+  <br />
+  <br />
+
+  <section fxLayout="row" fxLayoutGap="1vw">
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="showLButton === true"
+      (click)="clickSwitchPictures(); clickHideBoard()"
+    >
+      Lösung
+    </button>
   </section>
 
   <br />
@@ -148,21 +167,10 @@
     >
       Whiteboards aufdecken
     </button>
-    <app-timer *ngIf="showButtons === false"></app-timer>
+    <app-timer *ngIf="showButtons === false" [remainingTime]="timer.errorgeo"></app-timer>
   </section>
 
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="1vw">
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showLButton === true"
-      (click)="clickSwitchPictures(); clickHideBoard()"
-    >
-      Lösung
-    </button>
-  </section>
+  
 </section>
 
 
@@ -175,15 +183,25 @@
   fxFill
   *ngIf="data.kind === 'Schätz-Frage'"
 >
+
+  <br />
+  <br />
+  
+
   <section fxLayout="row" style="font-size: large; font-weight: bold">
     {{ data.question }}
   </section>
 
+  <br />
+  <br />
+  <br />
+  <br />
+  
 
   <section fxLayout="column" fxLayoutAlign="center center" *ngIf="data.picture === '' && data.video === ''">
     <!-- z.B. Schätzfrage Gold im Diebesversteck (Text als Antwort) -->
-    <br />
     <section fxLayout="row">
+      
       <button
         mat-flat-button
         color="accent"
@@ -221,11 +239,10 @@
 
   </section>
 
-  <br />
-
   <section *ngIf="data.picture !== ''">
     <!--  z.B. Schätzfrage Anzahl Orks (Bild) -->
     <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
+      
       <button
         mat-flat-button
         color="accent"
@@ -234,18 +251,43 @@
       >
         Lösung
       </button>
+
+     </section> 
+
       <section *ngIf="showAnswer === true" style="font-size: larger">
         <section>
           <app-guessing [data]="data"></app-guessing>
         </section>
       </section>
-    </section>
+      
+      <br />
+      <br />
+      
+      
 
+      <section fxLayout="row" fxLayoutGap="2vw" *ngIf="showLButton === false && showAnswer === false">
+        <section
+          fxFlex="{{ setWidth }}"
+          fxLayoutAlign="center"
+          *ngFor="let p of playerCount; index as i"
+        >
+          <mat-card>
+            <mat-card-content
+              [style]="cardStyle"
+              [style.display]="visibleWaiting.display"
+              class="card-color"
+            >
+              Die Spieler bearbeiten die Aufgaben...
+            </mat-card-content>
+          </mat-card>
+        </section>
+      </section>
   </section>
 
   <section *ngIf="data.video !== ''">
     
     <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
+      
       <button
         mat-flat-button
         color="accent"
@@ -256,17 +298,41 @@
       </button>      
     </section>
 
+    <br />
+    <br />
+    
+    
+
     <section *ngIf="showAnswer === true" style="font-size: larger">
       <section>
         <app-guessing [data]="data"></app-guessing>
       </section>
     </section>
     
+    <section fxLayout="row" fxLayoutGap="2vw" *ngIf="showLButton === false && showAnswer === false">
+      <section
+        fxFlex="{{ setWidth }}"
+        fxLayoutAlign="center"
+        *ngFor="let p of playerCount; index as i"
+      >
+        <mat-card>
+          <mat-card-content
+            [style]="cardStyle"
+            [style.display]="visibleWaiting.display"
+            class="card-color"
+          >
+            Die Spieler bearbeiten die Aufgaben...
+          </mat-card-content>
+        </mat-card>
+      </section>
+    </section>
+
   </section>
 
-  <br />
-
   <!-- _________________________________________________________________________________________ -->
+
+
+  <br />
 
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
@@ -296,7 +362,7 @@
     >
       Whiteboards aufdecken
     </button>
-    <app-timer *ngIf="showButtons === false"></app-timer>
+    <app-timer *ngIf="showButtons === false" [remainingTime]="timer.guess"></app-timer>
   </section>
 
 </section>

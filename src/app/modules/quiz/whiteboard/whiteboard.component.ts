@@ -120,6 +120,32 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
     
   }
 
+  public einblenden(){
+
+    if(this.containerString == "wt-container1"){
+      var div = document.getElementById("wt-container1");
+      div!.style.display = "block";
+      var platzhalter = document.getElementById("platzHalter1");
+      platzhalter!.style.display = "none";
+    } else if(this.containerString == "wt-container2"){
+      var div = document.getElementById("wt-container2");
+      div!.style.display = "block";
+      var platzhalter = document.getElementById("platzHalter2");
+      platzhalter!.style.display = "none";
+    } else if(this.containerString == "wt-container3"){
+      var div = document.getElementById("wt-container3");
+      div!.style.display = "block";
+      var platzhalter = document.getElementById("platzHalter3");
+      platzhalter!.style.display = "none";
+    } else {
+      var div = document.getElementById("wt-container4");
+      div!.style.display = "block";
+      var platzhalter = document.getElementById("platzHalter4");
+      platzhalter!.style.display = "none";
+    }
+
+  }
+
   private setDimension(n: number) {
     if (n == 25) {
       this.iframeStyle.width = '22vw';

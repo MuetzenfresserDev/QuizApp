@@ -40,6 +40,8 @@ export class QuestionComponent implements OnInit {
 
   blockNames: string[] = ['picA','picB','picC','picD',]
 
+  timer: { multivoice:number, errorgeo:number, guess:number} = ConstQuestions.timers;
+
   constructor() { }
 
   ngOnInit() {

@@ -1,6 +1,45 @@
 <script src="https://www.whiteboard.team/dist/api.js"></script>
 
-<div [style]="iframeStyle" id="wt-container1" *ngIf="containerString === 'wt-container1'"></div>
-<div [style]="iframeStyle" id="wt-container2" *ngIf="containerString === 'wt-container2'"></div>
-<div [style]="iframeStyle" id="wt-container3" *ngIf="containerString === 'wt-container3'"></div>
-<div [style]="iframeStyle" id="wt-container4" *ngIf="containerString === 'wt-container4'"></div>
+<section fxLayout="column">
+  <section fxLayoutAlign="center center">
+    <!-- Platzhalter -->
+    <div class="eingeblendet" id="platzHalter1" [style]="iframeStyle" *ngIf="containerString === 'wt-container1'"></div>
+    <div class="eingeblendet" id="platzHalter2" [style]="iframeStyle" *ngIf="containerString === 'wt-container2'"></div>
+    <div class="eingeblendet" id="platzHalter3" [style]="iframeStyle" *ngIf="containerString === 'wt-container3'"></div>
+    <div class="eingeblendet" id="platzHalter4" [style]="iframeStyle" *ngIf="containerString === 'wt-container4'"></div>
+
+    <!-- Echte -->
+    <div
+      class="ausgeblendet"
+      [style]="iframeStyle"
+      id="wt-container1"
+      *ngIf="containerString === 'wt-container1'"
+    ></div>
+    <div
+      class="ausgeblendet"
+      [style]="iframeStyle"
+      id="wt-container2"
+      *ngIf="containerString === 'wt-container2'"
+    ></div>
+    <div
+      class="ausgeblendet"
+      [style]="iframeStyle"
+      id="wt-container3"
+      *ngIf="containerString === 'wt-container3'"
+    ></div>
+    <div
+      class="ausgeblendet"
+      [style]="iframeStyle"
+      id="wt-container4"
+      *ngIf="containerString === 'wt-container4'"
+    ></div>
+  </section>
+
+  <br />
+
+  <section fxLayoutAlign="center center">
+    <button (click)="einblenden()" mat-flat-button color="accent">
+      Aufdecken
+    </button>
+  </section>
+</section>

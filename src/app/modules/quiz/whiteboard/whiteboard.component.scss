@@ -5,3 +5,12 @@
     transform: 0.5;
     overflow: auto;
 }
+
+.ausgeblendet {
+    display: none;
+  }
+
+.eingeblendet {
+    display: block;
+    background-color: rgba(128, 128, 128, 0.596);
+}
