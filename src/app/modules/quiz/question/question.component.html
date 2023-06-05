@@ -124,18 +124,6 @@
 
   <br />
 
-  <section fxLayout="row" fxLayoutGap="1vw">
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showAnswer === false"
-      (click)="clickSwitchPictures()"
-    >
-      Lösung
-    </button>
-    <app-timer *ngIf="showAnswer === false"></app-timer>
-  </section>
-
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
       fxFlex="{{ setWidth }}"
@@ -151,17 +139,33 @@
     </section>
   </section>
 
-  <section fxLayout="row" *ngIf="showAnswer === true">
+  <section fxLayout="row" *ngIf="showAnswer === false" fxLayoutGap="2vw">
     <button
       mat-flat-button
       color="accent"
       *ngIf="showButtons === false"
-      (click)="clickShowBoards(); hideAnswer()"
+      (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
     >
       Whiteboards aufdecken
     </button>
+    <app-timer *ngIf="showButtons === false"></app-timer>
+  </section>
+
+  <br />
+
+  <section fxLayout="row" fxLayoutGap="1vw">
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="showLButton === true"
+      (click)="clickSwitchPictures(); clickHideBoard()"
+    >
+      Lösung
+    </button>
   </section>
 </section>
+
+
 
 <!-- ____________________________________________________________________________________________ -->
 

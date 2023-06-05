@@ -21,6 +21,7 @@ export class QuestionComponent implements OnInit {
 
   showAnswer: boolean = false;
   showButtons: boolean = false;
+  showLButton: boolean = false;
 
   cardStyle = {
     width: '100%',
@@ -66,10 +67,16 @@ export class QuestionComponent implements OnInit {
     this.showAnswer = true;
   }
 
+  public clickShowLButton(){
+    this.showLButton = true;
+  }
+
   public clickSwitchPictures(){
+
+    console.log('test')
+
     this.errorPicture?.switchToCorrected();
     this.geoguessr?.switchToCorrected();
-    this.showAnswer = true;   
   }
 
   public hideAnswer(){
@@ -86,6 +93,17 @@ export class QuestionComponent implements OnInit {
     this.visibleWaiting.display = 'none';
 
     console.log(this.visibleBoard)
+
+  }
+
+  public clickHideBoard(){
+
+    this.showButtons = true;
+
+    this.visibleBoard.display = 'none';
+    this.visibleWaiting.display = 'block';
+
+    this.showLButton = false;
 
   }
 
