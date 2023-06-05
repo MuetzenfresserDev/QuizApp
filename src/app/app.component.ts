@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'quizApp';
 
+  muted:boolean = true;
+
   ngOnInit(): void {
     sessionStorage.clear();
   }

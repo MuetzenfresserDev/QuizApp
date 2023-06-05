@@ -9,6 +9,8 @@ export class ConstQuestions {
         'c36ed847-361f-4d53-88c7-69aef20ca5d8'   //Spieler 4 Url
       ];
 
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&autoplay=1&mute=1'; //Wichtig ist, dass alles nach dem ? bei einfügen eines anderen Links erhalten bleibt
+
     static readonly multiplechoice1:  MultiplechoiceQuestion = {
         question: "test Frage",
         options: {

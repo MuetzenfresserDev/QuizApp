@@ -1,43 +1,63 @@
+<mat-sidenav-container style="height: 100vh">
+  <div fxFlexFill fxLayout="column">
+    <div fxFlex fxLayout="row" fxLayoutAlign="none center">
+      <!-- Host Kamera -->
+      <section fxFlex="20" fxLayoutAlign="center">
+        <div style="margin-bottom: 35vh">
+          <section *ngIf="hostname === ''" style="height: 7vh">
+            <mat-form-field
+              style="transform: scale(0.6); padding: 0; margin: 0"
+              appearance="outline"
+            >
+              <mat-label style="font-size: 20px">Spielername</mat-label>
+              <input
+                type="text"
+                #input
+                matInput
+                autofocus
+                (keyup.enter)="setHostname(input.value)"
+              />
 
-  <mat-sidenav-container style="height: 100vh;">
-    <div fxFlexFill fxLayout="column">
-    
-      <div fxFlex fxLayout="row" fxLayoutAlign="none center">
-        <!-- Host Kamera -->
-        <section fxFlex="20" fxLayoutAlign="center">
-          <div style="margin-bottom: 35vh;">
-            <section *ngIf="hostname === ''" style=" height: 7vh;">
-              <mat-form-field style="transform: scale(0.6); padding: 0; margin: 0;" appearance="outline">
-                <mat-label style="font-size: 20px;">Spielername</mat-label>          
-                    <input type="text" #input matInput autofocus (keyup.enter)="setHostname(input.value)">
-        
-                  <button
-                    matSuffix
-                    mat-icon-button
-                    (click)="setHostname(input.value)"
-                    >
-                    <mat-icon class="material-icons-outlined">save</mat-icon>
-                  </button>      
-              </mat-form-field>
-            </section>
-            
-            <section style="text-align: center;" *ngIf="hostname !== ''">
-              <h3>Host: {{hostname}}</h3>
-            </section>
+              <button
+                matSuffix
+                mat-icon-button
+                (click)="setHostname(input.value)"
+              >
+                <mat-icon class="material-icons-outlined">save</mat-icon>
+              </button>
+            </mat-form-field>
+          </section>
 
-            <mat-card>
-              <mat-card-content style="width: 16vw; height: 18vh"> </mat-card-content>
-            </mat-card>
-          </div>
-        </section>
-        <app-board fxFlex fxLayoutAlign="center"></app-board>
-        
-      </div>
-    
-      <!-- Player Kameras -->
+          <section style="text-align: center" *ngIf="hostname !== ''">
+            <h3>Host: {{ hostname }}</h3>
+          </section>
 
-      <div fxFlex="none"style="height:35%">
-          <app-footer></app-footer>
-      </div>
+          <mat-card>
+            <mat-card-content style="width: 16vw; height: 18vh">
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </section>
+      <app-board fxFlex fxLayoutAlign="center"></app-board>
     </div>
-  </mat-sidenav-container>
+
+    <div class="background-video">
+      <iframe
+        width="1920"
+        height="1080"
+        [src]="youtubeLink"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        muted
+      ></iframe>
+    </div>
+
+    <!-- Player Kameras -->
+
+    <div fxFlex="none" style="height: 35%">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</mat-sidenav-container>
