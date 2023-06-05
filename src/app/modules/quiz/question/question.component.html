@@ -187,8 +187,8 @@
       <button
         mat-flat-button
         color="accent"
-        *ngIf="showAnswer === false"
-        (click)="clickShowAnswer()"
+        *ngIf="showLButton === true"
+        (click)="clickShowAnswer(); clickHideBoard()"
       >
         Lösung
       </button>
@@ -201,7 +201,7 @@
     <br />
     <br />
 
-    <section fxLayout="row" fxLayoutGap="2vw">
+    <section fxLayout="row" fxLayoutGap="2vw" *ngIf="showLButton === false && showAnswer === false">
       <section
         fxFlex="{{ setWidth }}"
         fxLayoutAlign="center"
@@ -229,12 +229,11 @@
       <button
         mat-flat-button
         color="accent"
-        *ngIf="showAnswer === false"
-        (click)="clickShowAnswer()"
+        *ngIf="showLButton === true"
+        (click)="clickShowAnswer(); clickHideBoard()"
       >
         Lösung
       </button>
-      <app-timer *ngIf="showAnswer === false"></app-timer>
       <section *ngIf="showAnswer === true" style="font-size: larger">
         <section>
           <app-guessing [data]="data"></app-guessing>
@@ -250,22 +249,24 @@
       <button
         mat-flat-button
         color="accent"
-        *ngIf="showAnswer === false"
-        (click)="clickShowAnswer()"
+        *ngIf="showLButton === true"
+        (click)="clickShowAnswer(); clickHideBoard()"
       >
         Lösung
-      </button>
-      <app-timer *ngIf="showAnswer === false"></app-timer>
-      <section *ngIf="showAnswer === true" style="font-size: larger">
-        <section>
-          <app-guessing [data]="data"></app-guessing>
-        </section>
+      </button>      
+    </section>
+
+    <section *ngIf="showAnswer === true" style="font-size: larger">
+      <section>
+        <app-guessing [data]="data"></app-guessing>
       </section>
     </section>
     
   </section>
 
   <br />
+
+  <!-- _________________________________________________________________________________________ -->
 
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
@@ -284,16 +285,18 @@
   <section
     fxLayout="row"
     fxLayoutAlign="center center"
-    *ngIf="showAnswer === true"
+    fxLayoutGap="2vw"
+    *ngIf="showAnswer === false"
   >
     <button
       mat-flat-button
       color="accent"
       *ngIf="showButtons === false"
-      (click)="clickShowBoards(); hideAnswer()"
+      (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
     >
       Whiteboards aufdecken
     </button>
+    <app-timer *ngIf="showButtons === false"></app-timer>
   </section>
 
 </section>
