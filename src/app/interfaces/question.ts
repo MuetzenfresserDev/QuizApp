@@ -34,3 +34,11 @@ export interface GeoguessrQuestion {
     markedPicture: string;
     imgurLink: string;
 }
+
+export interface GuessingQuestion {
+    question: string;
+    video: string;
+    picture: string;
+    kind: string;
+    correctAnswer: string;
+}

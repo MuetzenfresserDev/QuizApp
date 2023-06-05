@@ -1,4 +1,4 @@
-<section fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="1vw">
+<section fxLayout="row" fxLayoutAlign=" center">
   <section fxLayout="column" fxLayoutAlign="none center">
 
     <button (click)="increasePoints(100)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
@@ -35,18 +35,16 @@
 
     </section>
 
-    <section *ngIf="player.name !== ''">
-      <h3>{{ player.name }}</h3>
+    <section *ngIf="player.name !== ''" fxLayout="row" fxLayoutGap="3vw">
+      <h3>{{ player.name }}</h3> <h3>Punkte: {{ player.points }}</h3>
     </section>
+
 
     <div>
       <mat-card>
-        <mat-card-content style="width: 16vw; height: 18vh"> </mat-card-content>
+        <mat-card-content style="width: 20vw; height: 22vh"> </mat-card-content>
       </mat-card>
     </div>
 
-    <!-- Rahmen für Kamera -->
-
-    <h3>Punkte: {{ player.points }}</h3>
   </section>
 </section>

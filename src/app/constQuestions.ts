@@ -1,4 +1,4 @@
-import { ErrorQuestion, GeoguessrQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
+import { ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
@@ -10,6 +10,8 @@ export class ConstQuestions {
       ];
 
     static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&autoplay=1&mute=1'; //Wichtig ist, dass alles nach dem ? bei einfügen eines anderen Links erhalten bleibt
+
+    static readonly videoSize = {width: '850', height: '478'};
 
     static readonly multiplechoice1:  MultiplechoiceQuestion = {
         question: "test Frage",
@@ -171,8 +173,45 @@ export class ConstQuestions {
         imgurLink: ""
     }
 
+    static readonly guess1:GuessingQuestion = {
+        question: "Wie lange braucht der Held von x nach y?",
+        video: "https://www.youtube.com/embed/TVz1WKXTqO8?controls=1&autoplay=1&mute=1",
+        kind: "Schätz-Frage",
+        correctAnswer: "Der Held braucht x Minuten und x Sekunden",
+        picture: '',
+    }
+    static readonly guess2:GuessingQuestion = {
+        question: "Wie viele Orks stehen vor der Bibliothek in Jahrkendar?",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "ka 12 oder so?",
+        picture: "assets/guessing/pictures/orks.jpg"
+    }
+    static readonly guess3:GuessingQuestion = {
+        question: "Wie viel Gold liegt in der Diebeshöhle versteckt? (inkl. verkaufter Waren)",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "1111 Gold",
+        picture: ""
+    }
+    static readonly guess4:GuessingQuestion = {
+        question: "",
+        video: "",
+        kind: "",
+        correctAnswer: "",
+        picture: ""
+    }
+    static readonly guess5:GuessingQuestion = {
+        question: "",
+        video: "",
+        kind: "",
+        correctAnswer: "",
+        picture: ""
+    }
+
     static readonly multiplechoiceQuestions: MultiplechoiceQuestion[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
     static readonly voicelineQuestions: VoicelineQuestion[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5 ]
     static readonly errorQuestions: ErrorQuestion[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
-    static readonly geoQuestions: GeoguessrQuestion[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5 ];
+    static readonly geoQuestions: GeoguessrQuestion[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5 ]
+    static readonly guessingQuestions: GuessingQuestion[] = [this.guess1, this.guess2, this.guess3, this.guess4, this.guess5]
 }

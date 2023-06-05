@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
 import { GeogeussrComponent } from './geogeussr/geogeussr.component';
+import { GuessingComponent } from './guessing/guessing.component';
 
 @Component({
   selector: 'app-question',
@@ -16,6 +17,7 @@ export class QuestionComponent implements OnInit {
 
   @ViewChild(ErrorPictureComponent) errorPicture: ErrorPictureComponent | undefined;
   @ViewChild(GeogeussrComponent) geoguessr: GeogeussrComponent | undefined;
+  @ViewChild(GuessingComponent) guessing: GuessingComponent | undefined;
 
   showAnswer: boolean = false;
   showButtons: boolean = false;
@@ -41,6 +43,8 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
+
+    console.log(this.data)
   }
 
   private setDimension(n: number){
@@ -71,6 +75,7 @@ export class QuestionComponent implements OnInit {
   public hideAnswer(){
     this.errorPicture?.hideAllButWhiteboard();
     this.geoguessr?.hideAllButWhiteboard();
+    this.guessing?.hideAllButWhiteboard();
   }
 
   public clickShowBoards(){
@@ -83,5 +88,6 @@ export class QuestionComponent implements OnInit {
     console.log(this.visibleBoard)
 
   }
+
 
 }

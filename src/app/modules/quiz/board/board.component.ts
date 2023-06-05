@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
-import { ErrorQuestion, GeoguessrQuestion, MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
+import { ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuestion, VoicelineQuestion } from 'src/app/interfaces/question';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogData } from 'src/app/interfaces/dialogData';
@@ -24,6 +24,7 @@ export class BoardComponent implements OnInit {
   voicelineQuestions: VoicelineQuestion[] = [];
   errorQuestions: ErrorQuestion[] = [];
   geoQuestions: GeoguessrQuestion[] = [];
+  guessingQuestions: GuessingQuestion[] = [];
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: any[] = [];
@@ -38,12 +39,10 @@ export class BoardComponent implements OnInit {
 
   private setupBoard() {
     this.setupMulitpleChoiceQuestions();
-    this.setupBuzzerQuestions();
     this.setupErrorSearches();
     this.setupVoiceLines();
-    this.setupMarvinQuestions();
-    this.setupLoreQuestions();
     this.setupGeoguesserQuestions();
+    this.setupGuessingQuestions();
     this.setupConcatQuestions();
   }
 
@@ -51,7 +50,9 @@ export class BoardComponent implements OnInit {
     this.multiplechoiceQuestions = ConstQuestions.multiplechoiceQuestions;
   }
 
-  private setupBuzzerQuestions() {}
+  private setupGuessingQuestions(){
+    this.guessingQuestions = ConstQuestions.guessingQuestions;
+  }
 
   private setupErrorSearches() {
     this.errorQuestions = ConstQuestions.errorQuestions;
@@ -60,10 +61,6 @@ export class BoardComponent implements OnInit {
   private setupVoiceLines() {
     this.voicelineQuestions = ConstQuestions.voicelineQuestions;
   }
-
-  private setupMarvinQuestions() {}
-
-  private setupLoreQuestions() {}
 
   private setupGeoguesserQuestions() {
     this.geoQuestions = ConstQuestions.geoQuestions;
@@ -75,10 +72,10 @@ export class BoardComponent implements OnInit {
       this.voicelineQuestions,
       this.errorQuestions,
       this.geoQuestions,
-      this.multiplechoiceQuestions,
+      this.guessingQuestions
     ];
 
-    this.images = ['Kat1','Kat2','Kat3','Kat4','Kat5']
+    this.images = ['filter_4','graphic_eq','error_outline','push_pin','help_outline']
 
     for (let i = 0; i < this.concatQuestions.length; i++) {
       const row = [];

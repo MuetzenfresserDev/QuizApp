@@ -124,7 +124,7 @@
 
   <br />
 
-  <section fxLayout="row">
+  <section fxLayout="row" fxLayoutGap="1vw">
     <button
       mat-flat-button
       color="accent"
@@ -133,13 +133,8 @@
     >
       Lösung
     </button>
+    <app-timer *ngIf="showAnswer === false"></app-timer>
   </section>
-
-  <br />
-
-  <app-timer *ngIf="showAnswer === false"></app-timer>
-
-  <br />
 
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
@@ -156,7 +151,7 @@
     </section>
   </section>
 
-  <section fxLayout="row">
+  <section fxLayout="row" *ngIf="showAnswer === true">
     <button
       mat-flat-button
       color="accent"
@@ -166,4 +161,135 @@
       Whiteboards aufdecken
     </button>
   </section>
+</section>
+
+<!-- ____________________________________________________________________________________________ -->
+
+<section
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxFill
+  *ngIf="data.kind === 'Schätz-Frage'"
+>
+  <section fxLayout="row" style="font-size: large; font-weight: bold">
+    {{ data.question }}
+  </section>
+
+
+  <section fxLayout="column" fxLayoutAlign="center center" *ngIf="data.picture === '' && data.video === ''">
+    <!-- z.B. Schätzfrage Gold im Diebesversteck (Text als Antwort) -->
+    <br />
+    <section fxLayout="row">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showAnswer === false"
+        (click)="clickShowAnswer()"
+      >
+        Lösung
+      </button>
+      
+      <section *ngIf="showAnswer === true" style="font-size: larger">
+        Die richtige Antwortet lautet: {{ data.correctAnswer }}
+      </section>
+    </section>
+
+    <br />
+    <br />
+
+    <section fxLayout="row" fxLayoutGap="2vw">
+      <section
+        fxFlex="{{ setWidth }}"
+        fxLayoutAlign="center"
+        *ngFor="let p of playerCount; index as i"
+      >
+        <mat-card>
+          <mat-card-content
+            [style]="cardStyle"
+            [style.display]="visibleWaiting.display"
+            class="card-color"
+          >
+            Die Spieler bearbeiten die Aufgaben...
+          </mat-card-content>
+        </mat-card>
+      </section>
+    </section>
+
+  </section>
+
+  <br />
+
+  <section *ngIf="data.picture !== ''">
+    <!--  z.B. Schätzfrage Anzahl Orks (Bild) -->
+    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showAnswer === false"
+        (click)="clickShowAnswer()"
+      >
+        Lösung
+      </button>
+      <app-timer *ngIf="showAnswer === false"></app-timer>
+      <section *ngIf="showAnswer === true" style="font-size: larger">
+        <section>
+          <app-guessing [data]="data"></app-guessing>
+        </section>
+      </section>
+    </section>
+
+  </section>
+
+  <section *ngIf="data.video !== ''">
+    
+    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
+      <button
+        mat-flat-button
+        color="accent"
+        *ngIf="showAnswer === false"
+        (click)="clickShowAnswer()"
+      >
+        Lösung
+      </button>
+      <app-timer *ngIf="showAnswer === false"></app-timer>
+      <section *ngIf="showAnswer === true" style="font-size: larger">
+        <section>
+          <app-guessing [data]="data"></app-guessing>
+        </section>
+      </section>
+    </section>
+    
+  </section>
+
+  <br />
+
+  <section fxLayout="row" fxLayoutGap="2vw">
+    <section
+      fxFlex="{{ setWidth }}"
+      fxLayoutAlign="center"
+      *ngFor="let p of playerCount; index as i"
+    >
+      <app-whiteboard
+        [style.display]="visibleBoard.display"
+        [url]="whiteboardUrls[i]"
+        [blockName]="blockNames[i]"
+      ></app-whiteboard>
+    </section>
+  </section>
+
+  <section
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    *ngIf="showAnswer === true"
+  >
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="showButtons === false"
+      (click)="clickShowBoards(); hideAnswer()"
+    >
+      Whiteboards aufdecken
+    </button>
+  </section>
+
 </section>

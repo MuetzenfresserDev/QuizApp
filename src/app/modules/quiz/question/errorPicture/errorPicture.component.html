@@ -1,4 +1,4 @@
-<section *ngIf="hideAll === false">
-    <img [src]="data.errorPicture" *ngIf="showCorrected === false">
-    <img [src]="data.correctedPicture" *ngIf="showCorrected === true">
+<section fxLayoutAlign="center center" *ngIf="hideAll === false">
+    <img [src]="data.errorPicture" width="30%" height="30%" *ngIf="showCorrected === false">
+    <img [src]="data.correctedPicture" width="30%" height="30%" *ngIf="showCorrected === true">
 </section>

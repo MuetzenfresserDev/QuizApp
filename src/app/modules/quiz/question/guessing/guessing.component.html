@@ -1,0 +1,17 @@
+<section *ngIf="hideAll === false">
+  <section fxLayoutAlign="center center" *ngIf="data.picture !== ''">
+    <img [src]="data.picture" width="30%" height="30%" />
+  </section>
+  <section fxLayoutAlign="center center" *ngIf="data.video !== ''">
+    <iframe
+      [width]="videoSize.width"
+      [height]="videoSize.height"
+      [src]="youtubeLink"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      muted
+    ></iframe>
+  </section>
+</section>
