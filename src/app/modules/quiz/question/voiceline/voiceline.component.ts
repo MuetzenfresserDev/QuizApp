@@ -21,7 +21,8 @@ export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
     question: '',
     voiceLine: '',
     kind: '',
-    correctAnswer: ''
+    correctAnswer: '',
+    bonus: false
   };
 
   @ViewChild('audioPlayer') audioPlayer: ElementRef | undefined;

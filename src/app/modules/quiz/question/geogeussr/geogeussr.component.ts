@@ -13,7 +13,8 @@ export class GeogeussrComponent implements OnInit {
     searchPicture: '',
     kind: '',
     markedPicture: '',
-    imgurLink: ''
+    imgurLink: '',
+    bonus: false
   };
 
   showCorrected: boolean = false;

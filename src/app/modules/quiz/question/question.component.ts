@@ -42,12 +42,26 @@ export class QuestionComponent implements OnInit {
 
   timer: { multivoice:number, errorgeo:number, guess:number} = ConstQuestions.timers;
 
-  constructor() { }
+  audio: HTMLAudioElement | undefined;
+
+  constructor() {
+    this.audio = new Audio();
+   }
 
   ngOnInit() {
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
     console.log(this.data)
+
+    if(this.data.bonus == true){
+      this.audio!.src = 'assets/bonus/bonus.mp3';
+
+      setTimeout(() => {
+        this.audio?.play();
+      }, 100);
+ 
+    }
+
   }
 
   private setDimension(n: number){

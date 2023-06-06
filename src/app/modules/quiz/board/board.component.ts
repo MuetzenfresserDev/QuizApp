@@ -58,7 +58,6 @@ export class BoardComponent implements OnInit {
     for (let i = 0; i < this.concatQuestions.length; i++) {
       const row = [];
       for (let j = 0; j < this.concatQuestions[i].length; j++) {
-        let randIndex = Math.floor(Math.random()* this.buttonColors.length);
         row.push(this.buttonColors[j]);
         console.log(row)
       }
@@ -68,6 +67,8 @@ export class BoardComponent implements OnInit {
   }
 
   public onClickOpenDialog(item: any, i: number, j: number) {
+
+    console.log(item);
 
     let dialogData: DialogData<DialogComponent> = {
       component: DialogComponent,
@@ -79,7 +80,13 @@ export class BoardComponent implements OnInit {
     let ref = this.dialogService.openDialog(dialogData);
 
     ref.afterClosed().subscribe(()=>{
-      this.usedQuestionColors[i][j] = "grey";
+
+      if(item.bonus === true){
+        this.usedQuestionColors[i][j] = "bonus";
+      }else{
+        this.usedQuestionColors[i][j] = "";
+      }
+      
     })
 
   }

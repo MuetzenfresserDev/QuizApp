@@ -18,7 +18,8 @@ export class MultipleChoiceComponent implements OnInit {
       option4: ''
     },
     kind: '',
-    correctAnswer: ''
+    correctAnswer: '',
+    bonus: false
   };
 
   constructor() { }

@@ -15,7 +15,8 @@ export class GuessingComponent implements OnInit {
     video: '',
     picture: '',
     kind: '',
-    correctAnswer: ''
+    correctAnswer: '',
+    bonus: false
   }
 
   hideAll: boolean = false;

@@ -6,8 +6,9 @@
     data.kind === 'Multiple-Choice-Fragen' || data.kind === 'Voiceline-Fragen'
   "
 >
-  <section fxLayout="row" style="font-size: large; font-weight: bold">
-    {{ data.question }}
+  <section fxLayout="row" style="font-size: large; font-weight: bold" fxLayoutGap="3vw">
+      <section *ngIf="data.bonus === true" style="font-size: larger; border-bottom: 2px solid white;">Bonusfrage</section>
+      <section *ngIf="data.bonus === false">{{ data.question }}</section>  
   </section>
 
   <br />

@@ -3,6 +3,7 @@ export interface MultiplechoiceQuestion {
     options: Answer;
     kind: string;
     correctAnswer: string;
+    bonus: boolean;
 }
 
 export interface VoicelineQuestion {
@@ -10,6 +11,7 @@ export interface VoicelineQuestion {
     voiceLine: string;
     kind: string;
     correctAnswer: string;
+    bonus: boolean;
 }
 
 export interface Answer{
@@ -25,6 +27,7 @@ export interface ErrorQuestion {
     kind: string;
     correctedPicture: string;
     imgurLink: string;
+    bonus: boolean;
 }
 
 export interface GeoguessrQuestion {
@@ -33,6 +36,7 @@ export interface GeoguessrQuestion {
     kind: string;
     markedPicture: string;
     imgurLink: string;
+    bonus: boolean;
 }
 
 export interface GuessingQuestion {
@@ -41,4 +45,5 @@ export interface GuessingQuestion {
     picture: string;
     kind: string;
     correctAnswer: string;
+    bonus: boolean;
 }

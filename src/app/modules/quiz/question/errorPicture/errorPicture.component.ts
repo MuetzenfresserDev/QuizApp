@@ -13,7 +13,8 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
     errorPicture: '',
     kind: '',
     correctedPicture: '',
-    imgurLink: ''
+    imgurLink: '',
+    bonus: false
   };
 
   showCorrected: boolean = false;

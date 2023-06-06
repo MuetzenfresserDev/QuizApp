@@ -28,7 +28,8 @@ export class ConstQuestions {
             option4: "D: 4444",
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: 'D: 4444'
+        correctAnswer: 'D: 4444',
+        bonus: true
     }
     static readonly multiplechoice2:  MultiplechoiceQuestion = {
         question: "",
@@ -39,7 +40,8 @@ export class ConstQuestions {
             option4: ""
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: ''
+        correctAnswer: '',
+        bonus: false
     }
     static readonly multiplechoice3:  MultiplechoiceQuestion = {
         question: "",
@@ -50,7 +52,8 @@ export class ConstQuestions {
             option4: ""
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: ''
+        correctAnswer: '',
+        bonus: false
     }
     static readonly multiplechoice4:  MultiplechoiceQuestion = {
         question: "",
@@ -61,7 +64,8 @@ export class ConstQuestions {
             option4: ""
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: ''
+        correctAnswer: '',
+        bonus: false
     }
     static readonly multiplechoice5:  MultiplechoiceQuestion = {
         question: "",
@@ -72,7 +76,8 @@ export class ConstQuestions {
             option4: ""
         },
         kind: 'Multiple-Choice-Fragen',
-        correctAnswer: ''
+        correctAnswer: '',
+        bonus: false
     }
 
     
@@ -80,31 +85,36 @@ export class ConstQuestions {
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/unbenannt.mp3",
         kind: "Voiceline-Fragen",
-        correctAnswer: "nameless"
+        correctAnswer: "nameless",
+        bonus: false
     }
     static readonly voiceline2: VoicelineQuestion = {
         question: "",
         voiceLine: "",
         kind: "Voiceline-Fragen",
-        correctAnswer: ""
+        correctAnswer: "",
+        bonus: false
     }
     static readonly voiceline3: VoicelineQuestion = {
         question: "",
         voiceLine: "",
         kind: "Voiceline-Fragen",
-        correctAnswer: ""
+        correctAnswer: "",
+        bonus: false
     }
     static readonly voiceline4: VoicelineQuestion = {
         question: "",
         voiceLine: "",
         kind: "Voiceline-Fragen",
-        correctAnswer: ""
+        correctAnswer: "",
+        bonus: false
     }
     static readonly voiceline5: VoicelineQuestion = {
         question: "",
         voiceLine: "",
         kind: "Voiceline-Fragen",
-        correctAnswer: ""
+        correctAnswer: "",
+        bonus: false
     }
 
     static readonly errors1: ErrorQuestion = {
@@ -112,35 +122,40 @@ export class ConstQuestions {
         errorPicture: "assets/errors/errorPictures/error1.jpg",
         kind: "Fehlersuche-Frage",
         correctedPicture: "assets/errors/correctedPictures/corrected1.jpg",
-        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg"   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
+        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
+        bonus: false
     }
     static readonly errors2: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
         correctedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly errors3: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
         correctedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly errors4: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
         correctedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly errors5: ErrorQuestion = {
         question: "",
         errorPicture: "",
         kind: "",
         correctedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
 
     static readonly geo1: GeoguessrQuestion = {
@@ -148,35 +163,40 @@ export class ConstQuestions {
         searchPicture: "assets/geoguessr/searchPictures/error1.jpg", //Karte mit markiertem Punkt
         kind: "Geo-Frage",
         markedPicture: "assets/geoguessr/markedPictures/corrected1.jpg", //Karte mit markiertem Punkt
-        imgurLink: "https://i.imgur.com/j4kaS5k.jpeg" //Karte ohne Markierung
+        imgurLink: "https://i.imgur.com/j4kaS5k.jpeg", //Karte ohne Markierung
+        bonus: false
     }
     static readonly geo2: GeoguessrQuestion = {
         question: "",
         searchPicture: "",
         kind: "",
         markedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly geo3: GeoguessrQuestion = {
         question: "",
         searchPicture: "",
         kind: "",
         markedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly geo4: GeoguessrQuestion = {
         question: "",
         searchPicture: "",
         kind: "",
         markedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
     static readonly geo5: GeoguessrQuestion = {
         question: "",
         searchPicture: "",
         kind: "",
         markedPicture: "",
-        imgurLink: ""
+        imgurLink: "",
+        bonus: false
     }
 
     static readonly guess1:GuessingQuestion = {
@@ -185,34 +205,39 @@ export class ConstQuestions {
         kind: "Schätz-Frage",
         correctAnswer: "Der Held braucht x Minuten und x Sekunden",
         picture: '',
+        bonus: false
     }
     static readonly guess2:GuessingQuestion = {
         question: "Wie viele Orks stehen vor der Bibliothek in Jahrkendar?",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "ka 12 oder so?",
-        picture: "assets/guessing/pictures/orks.jpg"
+        picture: "assets/guessing/pictures/orks.jpg",
+        bonus: false
     }
     static readonly guess3:GuessingQuestion = {
         question: "Wie viel Gold liegt in der Diebeshöhle versteckt? (inkl. verkaufter Waren)",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "1111 Gold",
-        picture: ""
+        picture: "",
+        bonus: false
     }
     static readonly guess4:GuessingQuestion = {
         question: "",
         video: "",
         kind: "",
         correctAnswer: "",
-        picture: ""
+        picture: "",
+        bonus: false
     }
     static readonly guess5:GuessingQuestion = {
         question: "",
         video: "",
         kind: "",
         correctAnswer: "",
-        picture: ""
+        picture: "",
+        bonus: false
     }
 
     static readonly questions1: any[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
