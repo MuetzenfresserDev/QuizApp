@@ -9,7 +9,7 @@ export class ConstQuestions {
         'c36ed847-361f-4d53-88c7-69aef20ca5d8'   //Spieler 4 Url
       ];
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&autoplay=1&mute=1'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&vq=hd1080&autoplay=1&mute=1'; //Hintergrund Video
 
     static readonly videoSize = {width: '850', height: '478'};
 
@@ -181,7 +181,7 @@ export class ConstQuestions {
 
     static readonly guess1:GuessingQuestion = {
         question: "Wie lange braucht der Held von x nach y?",
-        video: "https://www.youtube.com/embed/TVz1WKXTqO8?controls=1&autoplay=1&mute=1",
+        video: "https://www.youtube.com/embed/TVz1WKXTqO8?controls=1&vq=hd1080&autoplay=1&mute=1",
         kind: "Schätz-Frage",
         correctAnswer: "Der Held braucht x Minuten und x Sekunden",
         picture: '',
@@ -215,9 +215,17 @@ export class ConstQuestions {
         picture: ""
     }
 
-    static readonly multiplechoiceQuestions: MultiplechoiceQuestion[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
-    static readonly voicelineQuestions: VoicelineQuestion[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5 ]
-    static readonly errorQuestions: ErrorQuestion[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
-    static readonly geoQuestions: GeoguessrQuestion[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5 ]
-    static readonly guessingQuestions: GuessingQuestion[] = [this.guess1, this.guess2, this.guess3, this.guess4, this.guess5]
+    static readonly questions1: any[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
+    static readonly questions2: any[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5]
+    static readonly questions3: any[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
+    static readonly questions4: any[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5]
+    static readonly questions5: any[] = [this.guess1, this.guess2, this.guess3, this.guess4,this.guess5]
+
+    static readonly questions = {
+        questions1: this.questions1,
+        questions2: this.questions2,
+        questions3: this.questions3,
+        questions4: this.questions4,
+        questions5: this.questions5
+    }
 }

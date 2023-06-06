@@ -4,7 +4,7 @@
     <!-- Hier Imagoe Gothic Charakter einbinden -->
     <div><mat-icon>{{images[i]}}</mat-icon></div> 
     <section *ngFor="let question of item, index as j">
-      <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
+      <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
     </section>
   </section>
 
