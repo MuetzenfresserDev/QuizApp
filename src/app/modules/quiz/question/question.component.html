@@ -40,7 +40,7 @@
       mat-flat-button
       color="accent"
       *ngIf="showAnswer === false"
-      (click)="clickShowAnswer()"
+      (click)="clickShowAnswer();"
     >
       Lösung
     </button>
@@ -159,11 +159,11 @@
     </section>
   </section>
 
-  <section fxLayout="row" *ngIf="showAnswer === false" fxLayoutGap="2vw">
+  <section fxLayout="row" *ngIf="showAnswer === false || showLButton === false" fxLayoutGap="2vw">
     <button
       mat-flat-button
       color="accent"
-      *ngIf="showButtons === false"
+      *ngIf="showButtons === false || showLButton === false"
       (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
     >
       Whiteboards aufdecken
@@ -255,7 +255,7 @@
 
      </section> 
 
-      <section *ngIf="showAnswer === true" style="font-size: larger">
+      <section *ngIf="showAnswer === true && showLButton === false" style="font-size: larger">
         <section>
           <app-guessing [data]="data"></app-guessing>
         </section>
@@ -304,7 +304,7 @@
     
     
 
-    <section *ngIf="showAnswer === true" style="font-size: larger">
+    <section *ngIf="showAnswer === true && showLButton === false" style="font-size: larger">
       <section>
         <app-guessing [data]="data"></app-guessing>
       </section>
@@ -353,12 +353,12 @@
     fxLayout="row"
     fxLayoutAlign="center center"
     fxLayoutGap="2vw"
-    *ngIf="showAnswer === false"
+    *ngIf="showAnswer === false || showLButton === false"
   >
     <button
       mat-flat-button
       color="accent"
-      *ngIf="showButtons === false"
+      *ngIf="showButtons === false || showLButton === false"
       (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
     >
       Whiteboards aufdecken

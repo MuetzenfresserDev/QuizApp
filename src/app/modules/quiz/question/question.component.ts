@@ -112,6 +112,15 @@ export class QuestionComponent implements OnInit {
 
   }
 
+  public reverseShowBoards(){
+    this.showButtons = false;
+
+    this.visibleBoard.display = 'none';
+    this.visibleWaiting.display = 'block';
+
+    console.log(this.visibleBoard)
+  }
+
   public clickHideBoard(){
 
     this.showButtons = true;
