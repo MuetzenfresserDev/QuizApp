@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Inject, Input, Renderer2 } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
 @Component({
   selector: 'app-whiteboard',
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhiteboardComponent implements OnInit, AfterViewInit {
   @Input() url: string = '';
-  @Input() blockName:string = '';
+  @Input() blockName: string = '';
+  @Input() index: number = 0;
   @Input() imgurLink = '';
 
   id: string = 'id';
@@ -21,12 +23,16 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
 
   containerString: string = '';
 
+  playerName: string = '';
+
   constructor(
     private _renderer2: Renderer2,
-    @Inject(DOCUMENT) private _document: Document
+    @Inject(DOCUMENT) private _document: Document,
+    private playerNameService: PlayerNameService
   ) {}
 
   ngOnInit() {
+    this.playerName = this.playerNameService.playerNames[this.index];
 
     if (this.url == '99090540-6ea4-4014-ae2a-db97e028dba8') {
       this.containerString = 'wt-container1';
@@ -41,15 +47,14 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       let script = this._renderer2.createElement('script');
 
-    console.log(this.url);
-    console.log(this.blockName);
-    console.log(this.imgurLink);
-    
+      console.log(this.url);
+      console.log(this.blockName);
+      console.log(this.imgurLink);
 
-    script.type = `text/javascript`;
+      script.type = `text/javascript`;
 
-    if(this.imgurLink != ''){
-      script.text = `
+      if (this.imgurLink != '') {
+        script.text = `
               {
                   var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
                     clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
@@ -81,8 +86,8 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
                 .catch((error) => console.log(error));
               }
           `;
-    } else{
-      script.text = `
+      } else {
+        script.text = `
               {
                   var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
                     clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
@@ -106,9 +111,9 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
                 .catch((error) => console.log(error));
               }
           `;
-    }
+      }
 
-    this._renderer2.appendChild(this._document.body, script);
+      this._renderer2.appendChild(this._document.body, script);
     }, 500);
 
     this.setDimension(
@@ -116,34 +121,30 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngAfterViewInit(): void {
-    
-  }
+  ngAfterViewInit(): void {}
 
-  public einblenden(){
-
-    if(this.containerString == "wt-container1"){
-      var div = document.getElementById("wt-container1");
-      div!.style.display = "block";
-      var platzhalter = document.getElementById("platzHalter1");
-      platzhalter!.style.display = "none";
-    } else if(this.containerString == "wt-container2"){
-      var div = document.getElementById("wt-container2");
-      div!.style.display = "block";
-      var platzhalter = document.getElementById("platzHalter2");
-      platzhalter!.style.display = "none";
-    } else if(this.containerString == "wt-container3"){
-      var div = document.getElementById("wt-container3");
-      div!.style.display = "block";
-      var platzhalter = document.getElementById("platzHalter3");
-      platzhalter!.style.display = "none";
+  public einblenden() {
+    if (this.containerString == 'wt-container1') {
+      var div = document.getElementById('wt-container1');
+      div!.style.display = 'block';
+      var platzhalter = document.getElementById('platzHalter1');
+      platzhalter!.style.display = 'none';
+    } else if (this.containerString == 'wt-container2') {
+      var div = document.getElementById('wt-container2');
+      div!.style.display = 'block';
+      var platzhalter = document.getElementById('platzHalter2');
+      platzhalter!.style.display = 'none';
+    } else if (this.containerString == 'wt-container3') {
+      var div = document.getElementById('wt-container3');
+      div!.style.display = 'block';
+      var platzhalter = document.getElementById('platzHalter3');
+      platzhalter!.style.display = 'none';
     } else {
-      var div = document.getElementById("wt-container4");
-      div!.style.display = "block";
-      var platzhalter = document.getElementById("platzHalter4");
-      platzhalter!.style.display = "none";
+      var div = document.getElementById('wt-container4');
+      div!.style.display = 'block';
+      var platzhalter = document.getElementById('platzHalter4');
+      platzhalter!.style.display = 'none';
     }
-
   }
 
   private setDimension(n: number) {

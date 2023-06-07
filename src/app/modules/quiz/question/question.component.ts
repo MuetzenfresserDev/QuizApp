@@ -3,6 +3,7 @@ import { ConstQuestions } from 'src/app/constQuestions';
 import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
 import { GeogeussrComponent } from './geogeussr/geogeussr.component';
 import { GuessingComponent } from './guessing/guessing.component';
+import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
 @Component({
   selector: 'app-question',
@@ -44,7 +45,9 @@ export class QuestionComponent implements OnInit {
 
   audio: HTMLAudioElement | undefined;
 
-  constructor() {
+  playerNames: string[] = [];
+
+  constructor(private playerNamesService: PlayerNameService) {
     this.audio = new Audio();
    }
 
@@ -52,6 +55,8 @@ export class QuestionComponent implements OnInit {
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
     console.log(this.data)
+
+    this.playerNames = this.playerNamesService.playerNames;
 
     if(this.data.bonus == true){
       this.audio!.src = 'assets/bonus/bonus.mp3';

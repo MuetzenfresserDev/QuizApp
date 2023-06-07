@@ -10,6 +10,7 @@ import { DialogService } from './services/dialog/dialog.service';
 import { SnackbarService } from './services/snackbar/snackbar.service';
 import { RequestDataService } from './services/request/requestData.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayerNameService } from './services/playerName/playerName.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     DialogService,
     SnackbarService,
-    RequestDataService
+    RequestDataService,
+    PlayerNameService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Player } from 'src/app/interfaces/player';
+import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
 @Component({
   selector: 'app-player',
@@ -8,12 +9,15 @@ import { Player } from 'src/app/interfaces/player';
 })
 export class PlayerComponent {
 
+  @Input() index: number = 0;
+
   player: Player = {name:'',points:0}
 
-  constructor() { }
+  constructor(private playerNameService: PlayerNameService) { }
 
   public setPlayerName(name: string){
     this.player.name = name;
+    this.playerNameService.setNameAtIndex(this.index, name);
   }
 
   public increasePoints(ammount: number){

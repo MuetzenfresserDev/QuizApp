@@ -1,8 +1,8 @@
 <section fxFlexFill fxLayout="row" fxLayoutAlign="none center" *ngIf="playerCount.length > 0">
 
-  <section  fxFlex="{{fxFlex}}" fxLayoutAlign="center" *ngFor="let player of playerCount">
+  <section  fxFlex="{{fxFlex}}" fxLayoutAlign="center" *ngFor="let player of playerCount, index as i">
     <section>
-      <app-player></app-player>
+      <app-player [index]="i"></app-player>
     </section>
   </section>
 

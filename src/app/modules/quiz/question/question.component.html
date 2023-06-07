@@ -55,16 +55,16 @@
   <section fxLayout="row" fxLayoutGap="2vw">
     <section
       fxFlex="{{ setWidth }}"
-      fxLayoutAlign="center"
       *ngFor="let p of playerCount; index as i"
     >
       <mat-card>
-        <mat-card-content
+        <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1vh"
           [style]="cardStyle"
           [style.display]="visibleWaiting.display"
           class="card-color"
         >
-          Die Spieler bearbeiten die Aufgaben...
+          <div style="font-size: xx-large; font-weight: bold;">{{playerNames[i]}}</div>
+          <div style="font-size: xx-large; font-weight: bold;">bearbeitet die Aufgabe</div>
         </mat-card-content>
       </mat-card>
     </section>
@@ -80,6 +80,7 @@
         [style.display]="visibleBoard.display"
         [url]="whiteboardUrls[i]"
         [blockName]="blockNames[i]"
+        [index]="i"
       ></app-whiteboard>
     </section>
   </section>
@@ -178,6 +179,7 @@
         [style.display]="visibleBoard.display"
         [url]="whiteboardUrls[i]"
         [blockName]="blockNames[i]"
+        [index]="i"
         [imgurLink]="data.imgurLink"
       ></app-whiteboard>
     </section>
@@ -269,12 +271,13 @@
         *ngFor="let p of playerCount; index as i"
       >
         <mat-card>
-          <mat-card-content
+          <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1vh"
             [style]="cardStyle"
             [style.display]="visibleWaiting.display"
             class="card-color"
           >
-            Die Spieler bearbeiten die Aufgaben...
+          <div style="font-size: xx-large; font-weight: bold;">bearbeitet die Aufgabe</div>
+
           </mat-card-content>
         </mat-card>
       </section>
@@ -315,12 +318,13 @@
           *ngFor="let p of playerCount; index as i"
         >
           <mat-card>
-            <mat-card-content
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1vh"
               [style]="cardStyle"
               [style.display]="visibleWaiting.display"
               class="card-color"
             >
-              Die Spieler bearbeiten die Aufgaben...
+            <div style="font-size: xx-large; font-weight: bold;">{{playerNames[i]}}</div>
+            <div style="font-size: xx-large; font-weight: bold;">bearbeitet die Aufgabe</div>
             </mat-card-content>
           </mat-card>
         </section>
@@ -359,17 +363,17 @@
         *ngFor="let p of playerCount; index as i"
       >
         <mat-card>
-          <mat-card-content
+          <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1vh"
             [style]="cardStyle"
             [style.display]="visibleWaiting.display"
             class="card-color"
           >
-            Die Spieler bearbeiten die Aufgaben...
+          <div style="font-size: xx-large; font-weight: bold;">{{playerNames[i]}}</div>
+          <div style="font-size: xx-large; font-weight: bold;">bearbeitet die Aufgabe</div>
           </mat-card-content>
         </mat-card>
       </section>
     </section>
-
   </section>
 
   <!-- _________________________________________________________________________________________ -->
@@ -400,6 +404,7 @@
       <app-whiteboard
         [style.display]="visibleBoard.display"
         [url]="whiteboardUrls[i]"
+        [index]="i"
         [blockName]="blockNames[i]"
       ></app-whiteboard>
     </section>
