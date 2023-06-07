@@ -248,11 +248,11 @@ export class ConstQuestions {
         bonus: false
     }
 
-    static readonly questions1: any[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
-    static readonly questions2: any[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5]
-    static readonly questions3: any[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
-    static readonly questions4: any[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5]
-    static readonly questions5: any[] = [this.guess1, this.guess2, this.guess3, this.guess4,this.guess5]
+    /* nameless */ static readonly questions1: any[]  = [this.multiplechoice1,this.multiplechoice2,this.multiplechoice3,this.multiplechoice4,this.multiplechoice5]
+    /* diego */ static readonly questions2: any[] = [this.voiceline1, this.voiceline2, this.voiceline3, this.voiceline4, this.voiceline5]
+    /* lester */ static readonly questions3: any[] = [this.errors1, this.errors2, this.errors3, this.errors4, this.errors5]
+    /* milten */ static readonly questions4: any[] = [this.geo1, this.geo2, this.geo3, this.geo4, this.geo5]
+    /* gorn */ static readonly questions5: any[] = [this.guess1, this.guess2, this.guess3, this.guess4,this.guess5]
 
     static readonly questions = {
         questions1: this.questions1,
