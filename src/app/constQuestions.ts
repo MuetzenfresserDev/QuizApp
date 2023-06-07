@@ -19,6 +19,14 @@ export class ConstQuestions {
         guess: 30
     };
 
+    static readonly katPictures: string[] = [
+        "assets/katPictures/namelessBorder.png",
+        "assets/katPictures/diegoBorder.png",
+        "assets/katPictures/lesterBorder.png",
+        "assets/katPictures/miltenBorder.png",
+        "assets/katPictures/gornBorder.png",
+    ];
+
     static readonly multiplechoice1:  MultiplechoiceQuestion = {
         question: "test Frage",
         options: {

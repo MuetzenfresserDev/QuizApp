@@ -26,7 +26,7 @@ export class BoardComponent implements OnInit {
   questions: any = ConstQuestions.questions;
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
-  images: any[] = [];
+  images: string [] = ConstQuestions.katPictures;
 
   buttonColors: string[] = ["teal1", "teal2", "teal3",  "teal4", "teal5"]
 
@@ -52,8 +52,6 @@ export class BoardComponent implements OnInit {
       this.questions.questions4,
       this.questions.questions5
     ];
-
-    this.images = ['filter_4','graphic_eq','error_outline','push_pin','help_outline']
 
     for (let i = 0; i < this.concatQuestions.length; i++) {
       const row = [];

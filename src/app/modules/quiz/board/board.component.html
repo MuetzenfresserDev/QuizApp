@@ -2,7 +2,7 @@
   <!-- Multiple choice questions -->
   <section fxLayout="column" fxLayoutAlign=" center" fxLayoutGap="2vh" *ngFor="let item of concatQuestions, index as i">
     <!-- Hier Imagoe Gothic Charakter einbinden -->
-    <div><mat-icon>{{images[i]}}</mat-icon></div> 
+    <div><img [src]="images[i]" width="84" height="100"></div> 
     <section *ngFor="let question of item, index as j">
       <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
     </section>
