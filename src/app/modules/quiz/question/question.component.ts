@@ -47,6 +47,8 @@ export class QuestionComponent implements OnInit {
 
   playerNames: string[] = [];
 
+  hideQuestion: boolean = false;
+
   constructor(private playerNamesService: PlayerNameService) {
     this.audio = new Audio();
    }
@@ -86,6 +88,7 @@ export class QuestionComponent implements OnInit {
 
   public clickShowAnswer(){
     this.showAnswer = true;
+    this.hideQuestion = false;
   }
 
   public clickShowLButton(){
@@ -104,6 +107,7 @@ export class QuestionComponent implements OnInit {
     this.errorPicture?.hideAllButWhiteboard();
     this.geoguessr?.hideAllButWhiteboard();
     this.guessing?.hideAllButWhiteboard();
+    this.hideQuestion = true;
   }
 
   public clickShowBoards(){

@@ -245,8 +245,12 @@
 
   <section fxLayout="column" fxLayoutAlign="center center" *ngIf="data.picture === '' && data.video === ''">
     <!-- z.B. Schätzfrage Gold im Diebesversteck (Text als Antwort) -->
-    <section fxLayout="row">
+    <section fxLayout="column">
       
+      <section *ngIf="showAnswer === true && hideQuestion == false" style="font-size: larger">
+        Die richtige Antwortet lautet: {{ data.correctAnswer }}
+      </section>
+
       <button
         mat-flat-button
         color="accent"
@@ -256,9 +260,7 @@
         Lösung
       </button>
       
-      <section *ngIf="showAnswer === true" style="font-size: larger">
-        Die richtige Antwortet lautet: {{ data.correctAnswer }}
-      </section>
+      
     </section>
 
     <br />
@@ -276,6 +278,7 @@
             [style.display]="visibleWaiting.display"
             class="card-color"
           >
+          <div style="font-size: xx-large; font-weight: bold;">{{playerNames[i]}}</div>
           <div style="font-size: xx-large; font-weight: bold;">bearbeitet die Aufgabe</div>
 
           </mat-card-content>
