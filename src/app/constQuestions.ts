@@ -11,7 +11,7 @@ export class ConstQuestions {
 
     static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&vq=hd1080&autoplay=1&mute=1'; //Hintergrund Video
 
-    static readonly videoSize = {width: '600', height: '337'};
+    static readonly videoSize = {width: '900', height: '506'};
 
     static readonly pictureSize = {width: '900', height: '506'};
 
@@ -85,10 +85,9 @@ export class ConstQuestions {
         correctAnswer: "Tom, der Bandit in der Höhle",
         bonus: false
     }
-    //Hier fehlt noch das Video und die Zeitangabe
     static readonly held2:GuessingQuestion = { //Jahrkendar Portal zu Saturas -> Held 200
         question: "Unser Held ist durch das Portal nach Jharkendar geschritten. Keine Spur von den \n Wassermagiern! Er läuft auf direktem Wege aus dem „Tempel“ raus und lässt sich  \n nicht ablenken, bis er auf Saturas trifft. Wie lange läuft er?",
-        video: "",
+        video: "https://www.youtube.com/embed/3XJzJ9yFQLs?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -98,19 +97,18 @@ export class ConstQuestions {
     }
     //Hier fehlen noch die Videos
     static readonly held3:GuessingQuestion = { //Bonusfrage5 -> 2 Videos -> Held 300
-        question: "Videofrage von Cedricun",
-        video: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "GOT YA",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
-    //Hier fehlt noch das Video
     static readonly held4:GuessingQuestion = { //Lehmar und seine Zinsen -> Held 400
         question: "Lehmer, der Geldverleiher, schmeißt den Leuten sein Geld hinterher. Nach seiner Meinung \n st das allerdings nicht so. Er berechnet nämlich einen gewissen Prozentsatz. \n Wie hoch ist dieser bei pünktlicher und bei verspäteter Abgabe des Goldes?",
-        video: "",
+        video: "https://www.youtube.com/embed/dua_pDcpVFs?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "Er verlangt 30% Zinsen bei verspäteter und 20% bei rechtzeitiger Rückzahlung.",
         picture: "",
@@ -118,10 +116,9 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Hier fehlt noch das Video
     static readonly held5:GuessingQuestion = { //Zeit seit Schläfertempel -> Held 500
         question: "Ein einzelner Gefangener… hatte das Schicksal von hunderten geändert. \n So beginnt das Intro von Gothic 2. Wie viel Zeit ist nach dem \n Einsturz des Schläfertempels und dem Beginn des Spiels laut Intro vergangen?",
-        video: "",
+        video: "https://www.youtube.com/embed/bOjyTKY_GcQ?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -132,21 +129,19 @@ export class ConstQuestions {
 
 
     /* Diego */
-    //Hier müssen noch die Bilder eingebunden werden
     static readonly diego1: GuessingQuestion = { // Warenlager -> Diego 100
         question: "Welchen unterschied gibt es im Warenlager zwischen DNDR und Classic?",
         video: "",
         videoQuestion: "",
-        picture: "",
-        pictureQuestion: "",
-        kind: "",
+        picture: "assets/guessing/pictures/Diego 100 - Antwort.jpg",
+        pictureQuestion: "assets/guessing/pictures/Diego 100 - Frage.jpg",
+        kind: "Schätz-Frage",
         correctAnswer: "",
         bonus: false
     }
-    //Hier fehlt noch das Lösungsbild
     static readonly diego2:GuessingQuestion = { //König Rhobar -> Diego 200
         question: "Im Intro zu Gothic 1 sehen wir König Rhobar. \n Welche aus Gothic 1 „bekannte“ Rüstung trägt er?",
-        video: "",
+        video: "https://www.youtube.com/embed/f_xIDcAXm6w?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "König Rhobar trägt im Intro Gomez Rüstung.",
         picture: "",
@@ -164,7 +159,6 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Hier fehlt noch die Voiceline
     static readonly diego4: VoicelineQuestion = { //Voiceline Gomez -> Diego 400
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/dummheit.mp3",
@@ -174,9 +168,9 @@ export class ConstQuestions {
     }
     static readonly diego5: GeoguessrQuestion = { //GEO HOSCHPAKHÖHLE -> Diego 500
         question: "Wo befindet sich der Namenlose?",
-        searchPicture: "assets/geoguessr/searchPictures/error3.bmp",
+        searchPicture: "assets/geoguessr/searchPictures/Diego 500 - Frage.jpg",
         kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/corrected3.png",
+        markedPicture: "assets/geoguessr/markedPictures/Diego 500 - Antwort.jpg",
         imgurLink: "https://i.imgur.com/yEO2dTJ.jpg",
         bonus: false
     }
@@ -184,27 +178,26 @@ export class ConstQuestions {
     /* Lester */
     //Hier fehlen noch die Videos
     static readonly lester1:GuessingQuestion = { //Bonusfrage4 -> 2 Videos -> Lester 100
-        question: "Videofrage von Cedricun",
-        video: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "GOT YA",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly lester2: GeoguessrQuestion = { //GEO STEINKREIS -> Lester 200 
         question: "Wo befindet sich der Namenlose?",
-        searchPicture: "assets/geoguessr/searchPictures/error1.bmp", //Karte mit markiertem Punkt
+        searchPicture: "assets/geoguessr/searchPictures/Lester 200 - Frage.jpg", //Karte mit markiertem Punkt
         kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/corrected1.png", //Karte mit markiertem Punkt
+        markedPicture: "assets/geoguessr/markedPictures/Lester 200 - Antwort.jpg", //Karte mit markiertem Punkt
         imgurLink: "https://i.imgur.com/S2HSbb1.jpg", //Karte von Khorinis
         bonus: false
     }
-    //Hier fehlt noch Video
     static readonly lester3:GuessingQuestion = { //Wie alt Bruderschaft -> Lester 300
         question: "Wie lange gibt es die Bruderschaft des Schläfers zu Beginn von Gothic 1?",
-        video: "",
+        video: "https://www.youtube.com/embed/2iAO9JbJfTQ?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "Die Bruderschaft Existiert bei der ankunft des Namenlosen seit 5 Jahren.",
         picture: "",
@@ -214,14 +207,14 @@ export class ConstQuestions {
     }
     //Hier fehlen noch die Videos
     static readonly lester4:GuessingQuestion = { //Bonusfrage3 -> 2 Videos -> Lester 400
-        question: "Videofrage von Cedricun",
-        video: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "GOT YA",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     //Eigentlich ErrorQuestion! Bilder fehlen noch.
     static readonly lester5: GuessingQuestion = { // Neo Bilderrätsel2 -> Lester 500
@@ -236,33 +229,32 @@ export class ConstQuestions {
     }
 
     /* Milten */
-    //Bild fehlt
     static readonly milten1:GuessingQuestion = { //Steintafeln -> Milten 100
         question: "Die Wassermagier in Jharkendar suchen Steintafeln. \n Dabei sind die Steintafeln aus den Herrenhäusern ganz besonders wichtig. \n Welche Farben haben diese fünf Steintafeln?",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "Rot, Grün, Gelb, Violet, Blau",
-        picture: '',
+        picture: 'assets/guessing/pictures/Milten 100 - Antwort.jpg',
         pictureQuestion: '',
         bonus: false,
         videoQuestion: ""
     }
     //Videos fehlen
     static readonly milten2:GuessingQuestion = { //Bonusfrage2 -> 2 Videos -> Milten 200
-        question: "Videofrage von Cedricun",
-        video: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "GOT YA",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly milten3: GeoguessrQuestion = { //GEO KIRCHENSPITZE -> Milten 300
         question: "Wo befindet sich der Namenlose?",
-        searchPicture: "assets/geoguessr/searchPictures/error2.bmp",
+        searchPicture: "assets/geoguessr/searchPictures/Milten 300 - Frage.jpg",
         kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/corrected2.png",
+        markedPicture: "assets/geoguessr/markedPictures/Milten 300 - Antwort.jpg",
         imgurLink: "https://i.imgur.com/S2HSbb1.jpg",
         bonus: false
     }
@@ -276,23 +268,21 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Bilder fehlen
     static readonly milten5: GuessingQuestion = { // Ring füllen -> Milten 500
-        question: "Welchen unterschied gibt es im Warenlager zwischen DNDR und Classic?",
+        question: "Was ist das für ein Ring, welche Werte hat dieser und wie hoch ist sein Wert?",
         video: "",
         videoQuestion: "",
-        picture: "",
-        pictureQuestion: "",
-        kind: "",
+        picture: "assets/guessing/pictures/Milten 500 - Antwort.jpg",
+        pictureQuestion: "assets/guessing/pictures/Milten 500 - Frage.jpg",
+        kind: "Schätz-Frage",
         correctAnswer: "",
         bonus: false
     }
 
     /* Gorn */
-    //Video fehlt
     static readonly gorn1:GuessingQuestion = { //Laufen bis zu Sentenza -> Gorn 100
-        question: "Wie lange braucht der Namenlose um vom Stadtor bis zu Sentenza zu laufen?Der Weg von dem Osttor zum Hof \n des Großbauern ist nicht ungefährlich. Aber unser Held hat Glück! Ihm begegnen keine wilden Monster. Er lässt \n sich nicht ablenken und läuft über die Wege bis er schlussendlich von Sentenza aufgehalten wird. Wie lange läuft er?",
-        video: "",
+        question: "Der Weg von dem Osttor zum Hof des Großbauern ist nicht ungefährlich. Aber unser Held hat Glück! \n Ihm begegnen keine wilden Monster. Er lässt sich nicht ablenken und läuft über die Wege bis er \n schlussendlich von Sentenza aufgehalten wird. Wie lange läuft er?",
+        video: "https://www.youtube.com/embed/dapU2l3miG0?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -302,14 +292,14 @@ export class ConstQuestions {
     }
     //Videos fehlen
     static readonly gorn2:GuessingQuestion = { //Bonusfrage1 -> 2 Videos -> Gorn 200
-        question: "Videofrage von Cedricun",
-        video: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "GOT YA",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GjMJU8ymAPQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly gorn3:GuessingQuestion = { //Stärke sortieren -> Gorn 300
         question: "Sortiere die folgenden Waffen absteigend nach der benötigten Stärke (höchster Wert zuerst). \n Schwere Erz-Schlachtklinge, Rubinklinge, Brutale Orkaxt, \n Edles Schwert, Leichte Orkaxt",
@@ -321,10 +311,9 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Video fehlt
     static readonly gorn4:GuessingQuestion = { //Auge Innos -> Gorn 400
         question: "Du spielst das Spiel Gothic 2 Die Nacht des Raben und hast vor kurzem das Auge Innos gerettet. \n Nun weigert sich Xardas zum Umkehrritual aufzubrechen um das Auge seine alte Macht zu verleihen. Warum?",
-        video: "",
+        video: "https://www.youtube.com/embed/grqbYImxQdU?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "Der Namelose gehört noch nicht der höheren Gilde an. (Paladin oder Drachenjäger)",
         picture: "",
@@ -332,7 +321,7 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Bilder fehlen
+    //Bilder fehlen -> Error Frage
     static readonly gorn5: GuessingQuestion = { // Neo Bilderrätsel1 -> Gorn 500
         question: "",
         video: "",

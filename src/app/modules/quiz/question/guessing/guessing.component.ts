@@ -23,7 +23,8 @@ export class GuessingComponent implements OnInit {
 
   hideAll: boolean = false;
   youtubeLink: SafeResourceUrl | undefined;
-  videoSize: {width: string, height: string} = ConstQuestions.videoSize; 
+  videoSize: {width: string, height: string} = ConstQuestions.videoSize;
+  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize; 
 
   constructor(private sanitizer: DomSanitizer) { }
 

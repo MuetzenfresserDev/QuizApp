@@ -306,7 +306,7 @@
     </section>
 
     <section *ngIf="data.pictureQuestion !== '' && showQuestionPicture === true">
-      <img [src]="data.picture" [width]="pictureSize.width" [height]="pictureSize.height" />
+      <img [src]="data.pictureQuestion" [width]="pictureSize.width" [height]="pictureSize.height" />
     </section>
 
     <section
@@ -324,7 +324,7 @@
     <section
       fxLayout="row"
       fxLayoutGap="2vw"
-      *ngIf="showLButton === false && showAnswer === false"
+      *ngIf="showLButton === false && showAnswer === false && showQuestionPicture === false"
     >
       <section
         fxFlex="{{ setWidth }}"

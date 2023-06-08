@@ -1,6 +1,6 @@
 <section *ngIf="hideAll === false">
   <section fxLayoutAlign="center center" *ngIf="data.picture !== ''">
-    <img [src]="data.picture" width="30%" height="30%" />
+    <img [src]="data.picture" [width]="pictureSize.width" [height]="pictureSize.height" />
   </section>
 
   <section fxLayoutAlign="center center" *ngIf="data.video !== ''">
