@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ConstQuestions } from 'src/app/constQuestions';
 import { GeoguessrQuestion } from 'src/app/interfaces/question';
 
 @Component({
@@ -19,6 +20,8 @@ export class GeogeussrComponent implements OnInit {
 
   showCorrected: boolean = false;
   hideAll: boolean = false;
+
+  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
 
   constructor() { }
 

@@ -16,7 +16,9 @@ export class GuessingComponent implements OnInit {
     picture: '',
     kind: '',
     correctAnswer: '',
-    bonus: false
+    bonus: false,
+    videoQuestion: '',
+    pictureQuestion: ''
   }
 
   hideAll: boolean = false;
@@ -30,6 +32,7 @@ export class GuessingComponent implements OnInit {
     if(this.data.video != ''){
       this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.video);
     }
+    
 
   }
 

@@ -4,6 +4,7 @@ import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
 import { GeogeussrComponent } from './geogeussr/geogeussr.component';
 import { GuessingComponent } from './guessing/guessing.component';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-question',
@@ -49,7 +50,13 @@ export class QuestionComponent implements OnInit {
 
   hideQuestion: boolean = false;
 
-  constructor(private playerNamesService: PlayerNameService) {
+  youtubeQuestion: SafeResourceUrl | undefined;
+  videoSize: {width: string, height: string} = ConstQuestions.videoSize; 
+  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
+  showQuestionVideo: boolean = true;
+  showQuestionPicture: boolean = true;
+
+  constructor(private playerNamesService: PlayerNameService, private sanitizer: DomSanitizer) {
     this.audio = new Audio();
    }
 
@@ -57,6 +64,10 @@ export class QuestionComponent implements OnInit {
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
     console.log(this.data)
+
+    if(this.data.videoQuestion != ''){
+      this.youtubeQuestion = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.videoQuestion);
+    }
 
     this.playerNames = this.playerNamesService.playerNames;
 
@@ -89,6 +100,8 @@ export class QuestionComponent implements OnInit {
   public clickShowAnswer(){
     this.showAnswer = true;
     this.hideQuestion = false;
+    this.showQuestionVideo = false;
+    this.showQuestionPicture = false;
   }
 
   public clickShowLButton(){
@@ -112,6 +125,8 @@ export class QuestionComponent implements OnInit {
 
   public clickShowBoards(){
 
+    this.showQuestionPicture = false;
+    this.showQuestionVideo = false;
     this.showButtons = true;
 
     this.visibleBoard.display = 'block';

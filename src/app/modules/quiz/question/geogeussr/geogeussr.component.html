@@ -1,4 +1,4 @@
 <section *ngIf="hideAll === false">
-  <img [src]="data.searchPicture" *ngIf="showCorrected === false">
-  <img [src]="data.markedPicture" *ngIf="showCorrected === true">
+  <img [src]="data.searchPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === false">
+  <img [src]="data.markedPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === true">
 </section>

@@ -42,7 +42,9 @@ export interface GeoguessrQuestion {
 export interface GuessingQuestion {
     question: string;
     video: string;
+    videoQuestion: string,
     picture: string;
+    pictureQuestion: string;
     kind: string;
     correctAnswer: string;
     bonus: boolean;
