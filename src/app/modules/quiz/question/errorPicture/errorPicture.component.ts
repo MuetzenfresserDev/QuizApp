@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ConstQuestions } from 'src/app/constQuestions';
 import { ErrorQuestion } from 'src/app/interfaces/question';
 
 @Component({
@@ -19,6 +20,8 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
 
   showCorrected: boolean = false;
   hideAll: boolean = false;
+
+  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
 
   constructor() { }
 

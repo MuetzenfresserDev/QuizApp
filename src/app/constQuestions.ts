@@ -49,14 +49,6 @@ export class ConstQuestions {
         correctAnswer: "",
         bonus: false
     }
-    static readonly errorsExample: ErrorQuestion = {
-        question: "Was stimmt auf diesem Bild nicht?",
-        errorPicture: "assets/errors/errorPictures/error1.jpg",
-        kind: "Fehlersuche-Frage",
-        correctedPicture: "assets/errors/correctedPictures/corrected1.jpg",
-        imgurLink: "https://i.imgur.com/dQUpoJN.jpeg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
-        bonus: false
-    }
     static readonly geoExample: GeoguessrQuestion = {
         question: "",
         searchPicture: "",
@@ -215,15 +207,12 @@ export class ConstQuestions {
         bonus: true,
         videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
-    //Eigentlich ErrorQuestion! Bilder fehlen noch.
-    static readonly lester5: GuessingQuestion = { // Neo Bilderrätsel2 -> Lester 500
-        question: "",
-        video: "",
-        videoQuestion: "",
-        picture: "",
-        pictureQuestion: "",
-        kind: "",
-        correctAnswer: "",
+    static readonly lester5: ErrorQuestion = { // Neo Bilderrätsel2 -> Lester 500
+        question: "Was stimmt auf diesem Bild nicht?",
+        errorPicture: "assets/errors/errorPictures/Lester 500 - Frage.jpg",
+        kind: "Fehlersuche-Frage",
+        correctedPicture: "assets/errors/correctedPictures/Lester 500 - Antwort.jpg",
+        imgurLink: "https://i.imgur.com/k09JacM.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
         bonus: false
     }
 
@@ -320,15 +309,12 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Bilder fehlen -> Error Frage
-    static readonly gorn5: GuessingQuestion = { // Neo Bilderrätsel1 -> Gorn 500
-        question: "",
-        video: "",
-        videoQuestion: "",
-        picture: "",
-        pictureQuestion: "",
-        kind: "",
-        correctAnswer: "",
+    static readonly gorn5: ErrorQuestion = { // Neo Bilderrätsel1 -> Gorn 500
+        question: "Was stimmt auf diesem Bild nicht?",
+        errorPicture: "assets/errors/errorPictures/Gorn 500 - Frage.jpg",
+        kind: "Fehlersuche-Frage",
+        correctedPicture: "assets/errors/correctedPictures/Gorn 500 - Antwort.jpg",
+        imgurLink: "https://i.imgur.com/YovUT7T.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
         bonus: false
     }
 
