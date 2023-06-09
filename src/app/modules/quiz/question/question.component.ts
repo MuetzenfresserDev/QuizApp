@@ -5,6 +5,7 @@ import { GeogeussrComponent } from './geogeussr/geogeussr.component';
 import { GuessingComponent } from './guessing/guessing.component';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { VoicelineComponent } from './voiceline/voiceline.component';
 
 @Component({
   selector: 'app-question',
@@ -56,11 +57,18 @@ export class QuestionComponent implements OnInit {
   showQuestionVideo: boolean = true;
   showQuestionPicture: boolean = true;
 
+  voiceVideo: SafeResourceUrl | undefined;
+
   constructor(private playerNamesService: PlayerNameService, private sanitizer: DomSanitizer) {
     this.audio = new Audio();
    }
 
   ngOnInit() {
+
+    if(this.data.kind == "Voiceline-Fragen"){
+      this.voiceVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.correctAnswer);
+    }
+
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
     console.log(this.data)

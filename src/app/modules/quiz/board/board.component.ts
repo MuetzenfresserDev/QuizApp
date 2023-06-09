@@ -34,7 +34,13 @@ export class BoardComponent implements OnInit {
   doublePointsAfter15Questions: number[] = [200,400,600,800,1000];
   doubleThreshold: number = 0;
 
-  constructor(private dialogService: DialogService) {}
+  boold: boolean = false;
+
+  audio: HTMLAudioElement | undefined;
+
+  constructor(private dialogService: DialogService) {
+    this.audio = new Audio();
+  }
 
   ngOnInit() {
     this.setupBoard();
@@ -97,8 +103,10 @@ export class BoardComponent implements OnInit {
         })
       }
       
-      if(this.doubleThreshold >= 14){
-       this.doublePointsAfter15Questions = [200,400,600,800,1000];
+      if(this.doubleThreshold == 15){
+        this.audio!.src = 'assets/voicelines/landratten.mp3';
+        this.audio?.play();
+        this.doublePointsAfter15Questions = [200,400,600,800,1000];
       }
 
     })

@@ -74,7 +74,7 @@ export class ConstQuestions {
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/steine.mp3",
         kind: "Voiceline-Fragen",
-        correctAnswer: "Tom, der Bandit in der Höhle",
+        correctAnswer: "https://www.youtube.com/embed/kNRLGNcU9Po?controls=1&vq=hd1080&autoplay=1",
         bonus: false
     }
     static readonly held2:GuessingQuestion = { //Jahrkendar Portal zu Saturas -> Held 200
@@ -99,7 +99,7 @@ export class ConstQuestions {
         videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly held4:GuessingQuestion = { //Lehmar und seine Zinsen -> Held 400
-        question: "Lehmer, der Geldverleiher, schmeißt den Leuten sein Geld hinterher. Nach seiner Meinung \n st das allerdings nicht so. Er berechnet nämlich einen gewissen Prozentsatz. \n Wie hoch ist dieser bei pünktlicher und bei verspäteter Abgabe des Goldes?",
+        question: "Lehmer, der Geldverleiher, schmeißt den Leuten sein Geld hinterher. Nach seiner Meinung \n ist das allerdings nicht so. Er berechnet nämlich einen gewissen Prozentsatz. \n Wie hoch ist dieser bei pünktlicher und bei verspäteter Abgabe des Goldes?",
         video: "https://www.youtube.com/embed/dua_pDcpVFs?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
         correctAnswer: "Er verlangt 30% Zinsen bei verspäteter und 20% bei rechtzeitiger Rückzahlung.",
@@ -155,7 +155,7 @@ export class ConstQuestions {
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/dummheit.mp3",
         kind: "Voiceline-Fragen",
-        correctAnswer: "Gomez, der Boss des alten Lagers",
+        correctAnswer: "https://www.youtube.com/embed/v8QyLWdTdso?controls=1&vq=hd1080&autoplay=1",
         bonus: false
     }
     static readonly diego5: GeoguessrQuestion = { //GEO HOSCHPAKHÖHLE -> Diego 500
@@ -169,7 +169,7 @@ export class ConstQuestions {
 
     /* Lester */
     static readonly lester1:GuessingQuestion = { //Bonusfrage4 -> 2 Videos -> Lester 100
-        question: "Bonusfrage von RPGKurga! -> 500 Gold Frage",
+        question: "Bonusfrage von RPG Kurga! -> 500 Gold Frage",
         video: "https://www.youtube.com/embed/IvfQ7ER07XE?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",

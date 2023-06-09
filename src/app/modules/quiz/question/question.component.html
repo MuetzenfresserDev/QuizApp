@@ -50,23 +50,36 @@
     <button
       mat-flat-button
       color="accent"
-      *ngIf="showAnswer === false"
-      (click)="clickShowAnswer()"
+      *ngIf="showLButton === true"
+      (click)="clickShowAnswer(); clickHideBoard()"
     >
       Lösung
     </button>
     <section
-      *ngIf="showAnswer === true"
+      *ngIf="showAnswer === true && data.kind ==='Multiple-Choice-Fragen'"
       style="font-size: larger; white-space: pre-line; text-align: center"
     >
       {{ data.correctAnswer }}
+    </section>
+
+    <section *ngIf="showAnswer === true && data.kind ==='Voiceline-Fragen'">
+      <iframe
+      [width]="videoSize.width"
+      [height]="videoSize.height"
+      [src]="voiceVideo"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      muted
+    ></iframe>
     </section>
   </section>
 
   <br />
   <br />
 
-  <section fxLayout="row" fxLayoutGap="2vw">
+  <section fxLayout="row" fxLayoutGap="2vw" *ngIf="showLButton === false && showAnswer === false">
     <section fxFlex="{{ setWidth }}" *ngFor="let p of playerCount; index as i">
       <mat-card>
         <mat-card-content
@@ -110,7 +123,7 @@
       mat-flat-button
       color="accent"
       *ngIf="showButtons === false"
-      (click)="clickShowBoards()"
+      (click)="clickShowBoards(); clickShowLButton()"
     >
       Whiteboards aufdecken
     </button>
