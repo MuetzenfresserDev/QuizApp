@@ -176,16 +176,15 @@ export class ConstQuestions {
     }
 
     /* Lester */
-    //Hier fehlen noch die Videos
     static readonly lester1:GuessingQuestion = { //Bonusfrage4 -> 2 Videos -> Lester 100
-        question: "GOT YA",
-        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "Bonusfrage von RPGKurga! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/IvfQ7ER07XE?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/yPKiZXLESxc?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly lester2: GeoguessrQuestion = { //GEO STEINKREIS -> Lester 200 
         question: "Wo befindet sich der Namenlose?",

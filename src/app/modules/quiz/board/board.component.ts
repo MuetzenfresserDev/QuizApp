@@ -31,6 +31,8 @@ export class BoardComponent implements OnInit {
   buttonColors: string[] = ["teal1", "teal2", "teal3",  "teal4", "teal5"]
 
   usedQuestionColors: string[][] = [];
+  doublePointsAfter15Questions: number[] = [200,400,600,800,1000];
+  doubleThreshold: number = 0;
 
   constructor(private dialogService: DialogService) {}
 
@@ -57,7 +59,6 @@ export class BoardComponent implements OnInit {
       const row = [];
       for (let j = 0; j < this.concatQuestions[i].length; j++) {
         row.push(this.buttonColors[j]);
-        console.log(row)
       }
       this.usedQuestionColors.push(row);
     }
@@ -85,6 +86,21 @@ export class BoardComponent implements OnInit {
         this.usedQuestionColors[i][j] = "";
       }
       
+      if(this.doubleThreshold < 15){
+        this.doubleThreshold = 0;
+        this.usedQuestionColors.forEach((col: string[]) =>{
+          col.forEach((entry: string) => {
+            if(entry == "bonus" || entry == ""){
+              this.doubleThreshold += 1;
+            }
+          })
+        })
+      }
+      
+      if(this.doubleThreshold >= 14){
+       this.doublePointsAfter15Questions = [200,400,600,800,1000];
+      }
+
     })
 
   }
