@@ -89,14 +89,14 @@ export class ConstQuestions {
     }
     //Hier fehlen noch die Videos
     static readonly held3:GuessingQuestion = { //Bonusfrage5 -> 2 Videos -> Held 300
-        question: "GOT YA",
-        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "Bonusfrage von Cedricun! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/9iWaSy3Vy84?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/GJhPIyIFpfI?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly held4:GuessingQuestion = { //Lehmar und seine Zinsen -> Held 400
         question: "Lehmer, der Geldverleiher, schmeißt den Leuten sein Geld hinterher. Nach seiner Meinung \n ist das allerdings nicht so. Er berechnet nämlich einen gewissen Prozentsatz. \n Wie hoch ist dieser bei pünktlicher und bei verspäteter Abgabe des Goldes?",
