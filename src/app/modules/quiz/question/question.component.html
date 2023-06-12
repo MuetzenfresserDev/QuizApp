@@ -1,34 +1,10 @@
-<section
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxFill
-  *ngIf="
-    data.kind === 'Multiple-Choice-Fragen' || data.kind === 'Voiceline-Fragen'
-  "
->
-  <section
-    fxLayout="row"
-    style="font-size: larger; font-weight: bold"
-    fxLayoutGap="3vw"
-  >
-    <section
-      *ngIf="data.bonus === true"
-      style="
-        white-space: pre-line;
-        font-size: larger;
-        border-bottom: 2px solid white;
-      "
-    >
-      Bonusfrage: 500 Gold Frage
-    </section>
-    <section *ngIf="data.bonus === false" style="text-align: center">
-      {{ data.question }}
-    </section>
-  </section>
+<!-- ________________________________________________REFACTORE_______________________________________________________________ -->
 
-  <!-- ////////////////////////////////////////////////////// -->
+<section fxLayout="column" fxLayoutAlign="center center" fxFill>
 
+  <!-- Zeigt Fragen und Antworten der inneren Frage Komponenten an -->
   <section>
+
     <div fxLayout="row" fxFlex *ngIf="data.kind === 'Multiple-Choice-Fragen'">
       <section fxFlex>
         <app-multipleChoice [data]="data"></app-multipleChoice>
@@ -40,436 +16,103 @@
         <app-voiceline [data]="data"></app-voiceline>
       </section>
     </div>
+
+    <div fxLayout="row" fxFlex *ngIf="data.kind === 'Fehlersuche-Frage'">
+      <section fxFlex>
+        <app-errorPicture [data]="data"></app-errorPicture>
+      </section>
+    </div>
+
+    <div fxLayout="row" fxFlex *ngIf="data.kind === 'Geo-Frage'">
+      <section fxFlex>
+        <app-geogeussr [data]="data"></app-geogeussr>
+      </section>
+    </div>
+
+    <div  fxLayout="row" fxFlex *ngIf="data.kind === 'Schätz-Frage'">
+      <section fxFlex>
+        <app-guessing [data]="data"></app-guessing>
+      </section>
+    </div>
+
   </section>
 
-  <!-- ///////////////////////////////////////////////////// -->
+  <br>
 
-  <br />
-
-  <section fxLayout="row">
+  <!-- Lösung Button -->
+  <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
     <button
       mat-flat-button
       color="accent"
       *ngIf="showLButton === true"
-      (click)="clickShowAnswer(); clickHideBoard()"
-    >
-      Lösung
-    </button>
-    <section
-      *ngIf="showAnswer === true && data.kind ==='Multiple-Choice-Fragen'"
-      style="font-size: larger; white-space: pre-line; text-align: center"
-    >
-      {{ data.correctAnswer }}
-    </section>
-
-    <section *ngIf="showAnswer === true && data.kind ==='Voiceline-Fragen'">
-      <iframe
-      [width]="videoSize.width"
-      [height]="videoSize.height"
-      [src]="voiceVideo"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      muted
-    ></iframe>
-    </section>
-  </section>
-
-  <br />
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="2vw" *ngIf="showLButton === false && showAnswer === false">
-    <section fxFlex="{{ setWidth }}" *ngFor="let p of playerCount; index as i">
-      <mat-card>
-        <mat-card-content
-          fxLayout="column"
-          fxLayoutAlign="center center"
-          fxLayoutGap="1vh"
-          [style]="cardStyle"
-          [style.display]="visibleWaiting.display"
-          class="card-color"
-        >
-          <div style="font-size: xx-large; font-weight: bold">
-            {{ playerNames[i] }}
-          </div>
-          <div style="font-size: xx-large; font-weight: bold">
-            bearbeitet die Aufgabe
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </section>
-  </section>
-
-  <section fxLayout="row" fxLayoutGap="2vw">
-    <section
-      fxFlex="{{ setWidth }}"
-      fxLayoutAlign="center"
-      *ngFor="let p of playerCount; index as i"
-    >
-      <app-whiteboard
-        [style.display]="visibleBoard.display"
-        [url]="whiteboardUrls[i]"
-        [blockName]="blockNames[i]"
-        [index]="i"
-      ></app-whiteboard>
-    </section>
-  </section>
-
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="2vw">
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showButtons === false"
-      (click)="clickShowBoards(); clickShowLButton()"
-    >
-      Whiteboards aufdecken
-    </button>
-    <app-timer
-      *ngIf="showButtons === false"
-      [remainingTime]="timer.multivoice"
-    ></app-timer>
-  </section>
-</section>
-
-<!-- ____________________________________________________________________________________________ -->
-
-<section
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxFill
-  *ngIf="data.kind === 'Fehlersuche-Frage' || data.kind === 'Geo-Frage'"
->
-  <section
-    fxLayout="row"
-    style="
-      white-space: pre-line;
-      font-size: larger;
-      font-weight: bold;
-      text-align: center;
-    "
-  >
-    {{ data.question }}
-  </section>
-
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="1vw">
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showLButton === true"
-      (click)="clickSwitchPictures(); clickHideBoard()"
+      (click)="clickShowAnswer(); clickHideBoard(); clickSwitchPictures()"
     >
       Lösung
     </button>
   </section>
 
-  <br />
-  <br />
-  <br />
+  <br>
 
-  <!-- //////////////////////////////////////////////// -->
-
-  <section *ngIf="data.kind === 'Fehlersuche-Frage'">
-    <app-errorPicture [data]="data"></app-errorPicture>
-  </section>
-
-  <section *ngIf="data.kind === 'Geo-Frage'">
-    <app-geogeussr [data]="data"></app-geogeussr>
-  </section>
-
-  <!-- //////////////////////////////////////////////// -->
-
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="2vw">
-    <section
-      fxFlex="{{ setWidth }}"
-      fxLayoutAlign="center"
-      *ngFor="let p of playerCount; index as i"
-    >
-      <app-whiteboard
-        [style.display]="visibleBoard.display"
-        [url]="whiteboardUrls[i]"
-        [blockName]="blockNames[i]"
-        [index]="i"
-        [imgurLink]="data.imgurLink"
-      ></app-whiteboard>
-    </section>
-  </section>
-
-  <section
-    fxLayout="row"
-    *ngIf="showAnswer === false || showLButton === false"
-    fxLayoutGap="2vw"
-  >
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showButtons === false || showLButton === false"
-      (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
-    >
-      Whiteboards aufdecken
-    </button>
-    <app-timer
-      *ngIf="showButtons === false"
-      [remainingTime]="timer.errorgeo"
-    ></app-timer>
-  </section>
-</section>
-
-<!-- ____________________________________________________________________________________________ -->
-
-<section
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxFill
-  *ngIf="data.kind === 'Schätz-Frage'"
->
-  <br />
-  <br />
-
-  <section
-    fxLayout="row"
-    style="
-      white-space: pre-line;
-      text-align: center;
-      font-size: larger;
-      font-weight: bold;
-    "
-  >
-    {{ data.question }}
-  </section>
-
-  <br />
-  <br />
-
-  <section
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    *ngIf="data.picture === '' && data.video === ''"
-  >
-    <!-- z.B. Schätzfrage Gold im Diebesversteck (Text als Antwort) -->
-    <section fxLayout="column">
-      <section
-        *ngIf="showAnswer === true && hideQuestion == false"
-        style="font-size: larger; white-space: pre-line; text-align: center"
-      >
-        {{ data.correctAnswer }}
-      </section>
-
-      <button
-        mat-flat-button
-        color="accent"
-        *ngIf="showLButton === true"
-        (click)="clickShowAnswer(); clickHideBoard()"
-      >
-        Lösung
-      </button>
-    </section>
-
-    <br />
-    <br />
-
-    <section
-      fxLayout="row"
-      fxLayoutGap="2vw"
-      *ngIf="showLButton === false && showAnswer === false"
-    >
+  <!-- Zeigt Whiteboard, WhiteboardPlaceholder und Bearbeite Fläche an -->
+  <section>
+    <section fxLayout="row" fxLayoutGap="2vw">
       <section
         fxFlex="{{ setWidth }}"
         fxLayoutAlign="center"
         *ngFor="let p of playerCount; index as i"
       >
-        <mat-card>
-          <mat-card-content
-            fxLayout="column"
-            fxLayoutAlign="center center"
-            fxLayoutGap="1vh"
-            [style]="cardStyle"
-            [style.display]="visibleWaiting.display"
-            class="card-color"
-          >
-            <div style="font-size: xx-large; font-weight: bold">
-              {{ playerNames[i] }}
-            </div>
-            <div style="font-size: xx-large; font-weight: bold">
-              bearbeitet die Aufgabe
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </section>
-    </section>
-  </section>
+        <section>
+          <app-whiteboard
+            [style.display]="visibleBoard.display"
+            [url]="whiteboardUrls[i]"
+            [index]="i"
+            [blockName]="blockNames[i]"
+          ></app-whiteboard>
+        </section>
 
-  <section *ngIf="data.picture !== ''">
-    <!--  z.B. Schätzfrage Anzahl Orks (Bild) -->
-    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
-      <button
-        mat-flat-button
-        color="accent"
-        *ngIf="showLButton === true"
-        (click)="clickShowAnswer(); clickHideBoard()"
-      >
-        Lösung
-      </button>
-    </section>
-
-    <section *ngIf="data.pictureQuestion !== '' && showQuestionPicture === true">
-      <img [src]="data.pictureQuestion" [width]="pictureSize.width" [height]="pictureSize.height" />
-    </section>
-
-    <section
-      *ngIf="showAnswer === true && showLButton === false"
-      style="font-size: larger"
-    >
-      <section>
-        <app-guessing [data]="data"></app-guessing>
+        <section *ngIf="data.kind !== 'Fehlersuche-Frage' && data.kind !== 'Geo-Frage' && data.kind !== 'Schätz-Frage'">
+          <mat-card>
+            <mat-card-content
+              fxLayout="column"
+              fxLayoutAlign="center center"
+              fxLayoutGap="1vh"
+              [style]="cardStyle"
+              [style.display]="visibleWaiting.display"
+              class="card-color"
+            >
+              <div style="font-size: xx-large; font-weight: bold">
+                {{ playerNames[i] }}
+              </div>
+              <div style="font-size: xx-large; font-weight: bold">
+                bearbeitet die Aufgabe
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <br>
+        </section>
       </section>
     </section>
 
-    <br />
-    <br />
+
 
     <section
       fxLayout="row"
+      fxLayoutAlign="center center"
       fxLayoutGap="2vw"
-      *ngIf="showLButton === false && showAnswer === false && showQuestionPicture === false"
+      *ngIf="showAnswer === false || showLButton === false"
     >
-      <section
-        fxFlex="{{ setWidth }}"
-        fxLayoutAlign="center"
-        *ngFor="let p of playerCount; index as i"
-      >
-        <mat-card>
-          <mat-card-content
-            fxLayout="column"
-            fxLayoutAlign="center center"
-            fxLayoutGap="1vh"
-            [style]="cardStyle"
-            [style.display]="visibleWaiting.display"
-            class="card-color"
-          >
-            <div style="font-size: xx-large; font-weight: bold">
-              {{ playerNames[i] }}
-            </div>
-            <div style="font-size: xx-large; font-weight: bold">
-              bearbeitet die Aufgabe
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </section>
-    </section>
-  </section>
-
-  <section *ngIf="data.video !== ''">
-    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
       <button
         mat-flat-button
         color="accent"
-        *ngIf="showLButton === true"
-        (click)="clickShowAnswer(); clickHideBoard()"
+        *ngIf="showButtons === false || showLButton === false"
+        (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
       >
-        Lösung
+        Whiteboards aufdecken
       </button>
+      <app-timer
+        *ngIf="showButtons === false"
+        [remainingTime]="timer.guess"
+      ></app-timer>
     </section>
-
-    <br />
-    <br />
-
-    <!-- Hier einbauen, data.video2 -> Videofrage abspielen -->
-    <section *ngIf="data.videoQuestion !== '' && showQuestionVideo === true">
-      <iframe
-        [width]="videoSize.width"
-        [height]="videoSize.height"
-        [src]="youtubeQuestion"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        muted
-      ></iframe>
-    </section>
-
-    <section
-      *ngIf="showAnswer === true && showLButton === false"
-      style="font-size: larger"
-    >
-      <section>
-        <app-guessing [data]="data"></app-guessing>
-      </section>
-    </section>
-
-    <section
-      fxLayout="row"
-      fxLayoutGap="2vw"
-      *ngIf="showLButton === false && showAnswer === false"
-    >
-      <section
-        fxFlex="{{ setWidth }}"
-        fxLayoutAlign="center"
-        *ngFor="let p of playerCount; index as i"
-      >
-        <mat-card *ngIf="data.videoQuestion === ''">
-          <mat-card-content
-            fxLayout="column"
-            fxLayoutAlign="center center"
-            fxLayoutGap="1vh"
-            [style]="cardStyle"
-            [style.display]="visibleWaiting.display"
-            class="card-color"
-          >
-            <div style="font-size: xx-large; font-weight: bold">
-              {{ playerNames[i] }}
-            </div>
-            <div style="font-size: xx-large; font-weight: bold">
-              bearbeitet die Aufgabe
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </section>
-    </section>
-  </section>
-
-  <!-- _________________________________________________________________________________________ -->
-
-  <br />
-
-  <section fxLayout="row" fxLayoutGap="2vw">
-    <section
-      fxFlex="{{ setWidth }}"
-      fxLayoutAlign="center"
-      *ngFor="let p of playerCount; index as i"
-    >
-      <app-whiteboard
-        [style.display]="visibleBoard.display"
-        [url]="whiteboardUrls[i]"
-        [index]="i"
-        [blockName]="blockNames[i]"
-      ></app-whiteboard>
-    </section>
-  </section>
-
-  <section
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxLayoutGap="2vw"
-    *ngIf="showAnswer === false || showLButton === false"
-  >
-    <button
-      mat-flat-button
-      color="accent"
-      *ngIf="showButtons === false || showLButton === false"
-      (click)="clickShowBoards(); hideAnswer(); clickShowLButton()"
-    >
-      Whiteboards aufdecken
-    </button>
-    <app-timer
-      *ngIf="showButtons === false"
-      [remainingTime]="timer.guess"
-    ></app-timer>
   </section>
 </section>

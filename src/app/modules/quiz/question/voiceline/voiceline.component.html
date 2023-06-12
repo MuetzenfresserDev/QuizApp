@@ -1,7 +1,22 @@
+<section class="wordbreak" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2vw">
+  <h4>{{data.question}}</h4>
+</section>
 <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2vw">
   <button mat-fab (click)="playVoiceline()">
     <mat-icon>play_circle_outline</mat-icon>
   </button>
   <audio #audioPlayer [src]="data.voiceLine"></audio>
   <canvas id="waveformCanvas" width="800" height="100"></canvas>
+</section>
+<section *ngIf="!hideAll">
+  <iframe
+      [width]="videoSize.width"
+      [height]="videoSize.height"
+      [src]="youtubeLink"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      muted
+    ></iframe>
 </section>

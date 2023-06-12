@@ -7,6 +7,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { VoicelineQuestion } from 'src/app/interfaces/question';
 
@@ -33,9 +34,15 @@ export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
 
   animationId: any;
 
-  constructor() {}
+  videoSize : {width: string, height: string} = ConstQuestions.videoSize;
+  hideAll: boolean = true
+  youtubeLink: SafeResourceUrl | undefined;
 
-  ngOnInit() {}
+  constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit() {
+    this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.correctAnswer);
+  }
 
   ngOnDestroy(): void {
     cancelAnimationFrame(this.animationId);
@@ -104,5 +111,13 @@ export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public playVoiceline() {
     this.audioPlayer!.nativeElement.play();
+  }
+
+  public hideAnswer() {
+    this.hideAll = false;
+  }
+
+  public showAnswer(){
+    this.hideAll = true;
   }
 }

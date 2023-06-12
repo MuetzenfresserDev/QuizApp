@@ -1,4 +1,27 @@
+<section class="wordbreak" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2vw">
+  <h4>{{data.question}}</h4>
+</section>
+
 <section *ngIf="hideAll === false">
+  <section fxLayoutAlign="center center" *ngIf="data.pictureQuestion !== ''">
+    <img [src]="data.pictureQuestion" [width]="pictureSize.width" [height]="pictureSize.height" />
+  </section>
+
+  <section fxLayoutAlign="center center" *ngIf="data.videoQuestion !== ''">
+    <iframe
+      [width]="videoSize.width"
+      [height]="videoSize.height"
+      [src]="youtubeQuestionLink"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      muted
+    ></iframe>
+  </section>
+</section>
+
+<section *ngIf="showCorrected == true">
   <section fxLayoutAlign="center center" *ngIf="data.picture !== ''">
     <img [src]="data.picture" [width]="pictureSize.width" [height]="pictureSize.height" />
   </section>
@@ -15,4 +38,8 @@
       muted
     ></iframe>
   </section>
+</section>
+
+<section class="wordbreak" *ngIf="data.picture === '' && data.video === '' && showCorrected == true">
+  {{data.correctAnswer}}
 </section>

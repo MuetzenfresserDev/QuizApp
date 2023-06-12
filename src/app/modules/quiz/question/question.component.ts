@@ -21,6 +21,7 @@ export class QuestionComponent implements OnInit {
   @ViewChild(ErrorPictureComponent) errorPicture: ErrorPictureComponent | undefined;
   @ViewChild(GeogeussrComponent) geoguessr: GeogeussrComponent | undefined;
   @ViewChild(GuessingComponent) guessing: GuessingComponent | undefined;
+  @ViewChild(VoicelineComponent) voiceline: VoicelineComponent | undefined;
 
   showAnswer: boolean = false;
   showButtons: boolean = false;
@@ -52,8 +53,6 @@ export class QuestionComponent implements OnInit {
   hideQuestion: boolean = false;
 
   youtubeQuestion: SafeResourceUrl | undefined;
-  videoSize: {width: string, height: string} = ConstQuestions.videoSize; 
-  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
   showQuestionVideo: boolean = true;
   showQuestionPicture: boolean = true;
 
@@ -117,17 +116,16 @@ export class QuestionComponent implements OnInit {
   }
 
   public clickSwitchPictures(){
-
-    console.log('test')
-
     this.errorPicture?.switchToCorrected();
     this.geoguessr?.switchToCorrected();
+    this.guessing?.switchToCorrected();
   }
 
   public hideAnswer(){
     this.errorPicture?.hideAllButWhiteboard();
     this.geoguessr?.hideAllButWhiteboard();
     this.guessing?.hideAllButWhiteboard();
+    this.voiceline?.showAnswer();
     this.hideQuestion = true;
   }
 
@@ -136,32 +134,16 @@ export class QuestionComponent implements OnInit {
     this.showQuestionPicture = false;
     this.showQuestionVideo = false;
     this.showButtons = true;
-
     this.visibleBoard.display = 'block';
     this.visibleWaiting.display = 'none';
 
-    console.log(this.visibleBoard)
-
-  }
-
-  public reverseShowBoards(){
-    this.showButtons = false;
-
-    this.visibleBoard.display = 'none';
-    this.visibleWaiting.display = 'block';
-
-    console.log(this.visibleBoard)
   }
 
   public clickHideBoard(){
-
     this.showButtons = true;
-
     this.visibleBoard.display = 'none';
-    this.visibleWaiting.display = 'block';
-
     this.showLButton = false;
-
+    this.voiceline?.hideAnswer();
   }
 
 

@@ -1,3 +1,6 @@
+<section class="wordbreak" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2vw">
+    <h4>{{data.question}}</h4>
+</section>
 <section fxLayoutAlign="center center" *ngIf="hideAll === false">
     <img [src]="data.errorPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === false">
     <img [src]="data.correctedPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === true">
