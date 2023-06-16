@@ -89,7 +89,6 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Hier fehlen noch die Videos
     static readonly held3:GuessingQuestion = { //Bonusfrage5 -> 2 Videos -> Held 300
         question: "Bonusfrage von Cedricun! -> 500 Gold Frage",
         video: "https://www.youtube.com/embed/9iWaSy3Vy84?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
@@ -229,7 +228,6 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Videos fehlen
     static readonly milten2:GuessingQuestion = { //Bonusfrage2 -> 2 Videos -> Milten 200
         question: "Bonusfrage von GreyTo! -> 500 Gold Frage",
         video: "https://www.youtube.com/embed/aoeQ8Tfs4Fo?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
@@ -280,16 +278,15 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    //Videos fehlen
     static readonly gorn2:GuessingQuestion = { //Bonusfrage1 -> 2 Videos -> Gorn 200
-        question: "GOT YA",
-        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "Bonusfrage von evilSeven! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/WQ02b0RlcQc?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/WSTiDw3fR6I?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly gorn3:GuessingQuestion = { //Stärke sortieren -> Gorn 300
         question: "Sortiere die folgenden Waffen absteigend nach der benötigten Stärke (höchster Wert zuerst). \n Schwere Erz-Schlachtklinge, Rubinklinge, Brutale Orkaxt, \n Edles Schwert, Leichte Orkaxt",
