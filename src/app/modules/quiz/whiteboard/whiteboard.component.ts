@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Inject, Input, Renderer2 } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ConstQuestions } from 'src/app/constQuestions';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
 @Component({
@@ -24,6 +25,8 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
   containerString: string = '';
 
   playerName: string = '';
+  clientId: string = ConstQuestions.clientId;
+  whiteboardUrls: string[] = ConstQuestions.whiteboardUrls;
 
   constructor(
     private _renderer2: Renderer2,
@@ -34,15 +37,18 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.playerName = this.playerNameService.playerNames[this.index];
 
-    if (this.url == '99090540-6ea4-4014-ae2a-db97e028dba8') {
+    if (this.url == this.whiteboardUrls[0]) {
       this.containerString = 'wt-container1';
-    } else if (this.url == 'd825987e-cff0-45ef-9d1a-b34dbcf3d6c5') {
+    } else if (this.url == this.whiteboardUrls[1]) {
       this.containerString = 'wt-container2';
-    } else if (this.url == '1b942aac-2e88-424d-96ed-3576e90dbfc9') {
+    } else if (this.url == this.whiteboardUrls[2]) {
       this.containerString = 'wt-container3';
     } else {
       this.containerString = 'wt-container4';
     }
+
+    console.log(this.blockName)
+    console.log(this.imgurLink)
 
     setTimeout(() => {
       let script = this._renderer2.createElement('script');
@@ -53,11 +59,11 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
 
       script.type = `text/javascript`;
 
-      if (this.imgurLink != '') {
+      if (this.imgurLink != '' && this.imgurLink != undefined && this.imgurLink != 'undefined') {
         script.text = `
               {
                   var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
-                    clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
+                    clientId: '${this.clientId}',
                     boardCode: '${this.url}',
                     participant: {
                       role : 'editor'
@@ -90,7 +96,7 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
         script.text = `
               {
                   var ${this.blockName} = new api.WhiteboardTeam('#${this.containerString}', {
-                    clientId: '91565afc7a2abdba4e9ad5a45b9d34f7',
+                    clientId: '${this.clientId}',
                     boardCode: '${this.url}',
                     participant: {
                       role : 'editor'

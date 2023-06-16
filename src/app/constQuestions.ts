@@ -2,11 +2,13 @@ import { ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuest
 
 export class ConstQuestions {
 
+    static readonly clientId: string = '38c4dfef2a0e8aba637ea15987ba542f';
+
     static readonly whiteboardUrls: string[] = [
-        '99090540-6ea4-4014-ae2a-db97e028dba8',  //Spieler 1 Url
-        'd825987e-cff0-45ef-9d1a-b34dbcf3d6c5',  //Spieler 2 Url
-        '1b942aac-2e88-424d-96ed-3576e90dbfc9',  //Spieler 3 Url
-        'c36ed847-361f-4d53-88c7-69aef20ca5d8'   //Spieler 4 Url
+        '7f3bd35f-d647-4f10-9acd-56d34f446d82',  //Spieler 1 Url
+        '8a647b8b-27da-4001-8b1a-b06fb978ff76',  //Spieler 2 Url
+        '58bda352-1363-4b4a-8e17-2f9f8755a925',  //Spieler 3 Url
+        'e561cc9f-cb97-4031-b8f8-a1b0ad875676'   //Spieler 4 Url
       ];
 
     static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&vq=hd1080&autoplay=1&mute=1'; //Hintergrund Video
