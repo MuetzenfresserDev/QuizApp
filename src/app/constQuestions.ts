@@ -231,14 +231,14 @@ export class ConstQuestions {
     }
     //Videos fehlen
     static readonly milten2:GuessingQuestion = { //Bonusfrage2 -> 2 Videos -> Milten 200
-        question: "GOT YA",
-        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "Bonusfrage von GreyTo! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/aoeQ8Tfs4Fo?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/n9vhpQeH8dE?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly milten3: GeoguessrQuestion = { //GEO KIRCHENSPITZE -> Milten 300
         question: "Wo befindet sich der Namenlose?",
