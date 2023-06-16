@@ -2,10 +2,6 @@
 
 This Project uses the [WhiteboardTeamAPI](https://www.whiteboard.team/documents/api#quick-start) to create and use the whiteboards in this Quiz.
 
-# Youtube
-
-This Project uses [IFrames](https://www.w3schools.com/tags/tag_iframe.ASP) to display its background Videos.
-
 # QuizApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
