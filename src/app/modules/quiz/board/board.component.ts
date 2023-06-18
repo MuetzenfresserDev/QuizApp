@@ -107,6 +107,7 @@ export class BoardComponent implements OnInit {
         this.audio!.src = 'assets/voicelines/landratten.mp3';
         this.audio?.play();
         this.doublePointsAfter15Questions = [200,400,600,800,1000];
+        this.doubleThreshold += 1;
       }
 
     })
