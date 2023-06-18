@@ -199,14 +199,14 @@ export class ConstQuestions {
     }
     //Hier fehlen noch die Videos
     static readonly lester4:GuessingQuestion = { //Bonusfrage3 -> 2 Videos -> Lester 400
-        question: "GOT YA",
-        video: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        question: "JOKER: 1x Abschreiben \n \n \n Mit diesen Joker hat der Spieler einmalig die Möglichkeit, \n eine Lösung eines anderen Spielers zu übernehmen.",
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
-        pictureQuestion: '',
+        pictureQuestion: 'assets/bonus/joker.png',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "" //Fragevideo
     }
     static readonly lester5: ErrorQuestion = { // Neo Bilderrätsel2 -> Lester 500
         question: "Was stimmt auf diesem Bild nicht?",
