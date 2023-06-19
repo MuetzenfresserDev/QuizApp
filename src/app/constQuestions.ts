@@ -280,7 +280,7 @@ export class ConstQuestions {
     }
     static readonly gorn2:GuessingQuestion = { //Bonusfrage1 -> 2 Videos -> Gorn 200
         question: "Bonusfrage von evilSeven! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/WQ02b0RlcQc?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        video: "https://www.youtube.com/embed/d8JYDcGtwLI?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
