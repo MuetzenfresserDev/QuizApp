@@ -16,6 +16,7 @@ export class ConstQuestions {
     static readonly videoSize = {width: '900', height: '506'};
 
     static readonly pictureSize = {width: '900', height: '506'};
+    static readonly errorPictureSize = {width: '1800', height: '506'};
 
 
     static readonly timers = {
@@ -209,8 +210,8 @@ export class ConstQuestions {
         videoQuestion: "" //Fragevideo
     }
     static readonly lester5: ErrorQuestion = { // Neo Bilderrätsel2 -> Lester 500
-        question: "Was stimmt auf diesem Bild nicht?",
-        errorPicture: "assets/errors/errorPictures/Lester 500 - Frage.jpg",
+        question: "Was stimmt auf dem rechten Bild nicht?",
+        errorPicture: "assets/errors/errorPictures/Lester500Beides.jpg",
         kind: "Fehlersuche-Frage",
         correctedPicture: "assets/errors/correctedPictures/Lester 500 - Antwort.jpg",
         imgurLink: "https://i.imgur.com/k09JacM.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
@@ -309,8 +310,8 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly gorn5: ErrorQuestion = { // Neo Bilderrätsel1 -> Gorn 500
-        question: "Was stimmt auf diesem Bild nicht?",
-        errorPicture: "assets/errors/errorPictures/Gorn 500 - Frage.jpg",
+        question: "Was stimmt auf dem rechten Bild nicht?",
+        errorPicture: "assets/errors/errorPictures/Gorn500Beide.jpg",
         kind: "Fehlersuche-Frage",
         correctedPicture: "assets/errors/correctedPictures/Gorn 500 - Antwort.jpg",
         imgurLink: "https://i.imgur.com/YovUT7T.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.

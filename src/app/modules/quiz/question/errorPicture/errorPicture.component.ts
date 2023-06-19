@@ -21,7 +21,8 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
   showCorrected: boolean = false;
   hideAll: boolean = false;
 
-  pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
+  pictureSize: {width: string, height: string} =  ConstQuestions.pictureSize;
+  errorPictureSize: {width: string, height: string} =  ConstQuestions.errorPictureSize;
 
   constructor() { }
 
