@@ -142,15 +142,15 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    static readonly diego3:GuessingQuestion = { //Fernkampfwaffen sortieren -> Diego 300
-        question: "Sortiere folgende Fernkampfwaffen absteigend nach ihrem Einkaufswert (höchster Wert zuerst). \n Kurzbogen, Eichenbogen, Armbrust (Schaden 90), \n Jagdarmbrust, Jagdbogen, Kriegsarmbrust",
-        video: "",
+    static readonly diego3:GuessingQuestion = { //Valentino geld -> Diego 300
+        question: "Wahr oder Falsch?",
+        video: "https://www.youtube.com/embed/oxzXJbQI0xc?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
-        correctAnswer: "Kriegsarmbrust (Wert: 1500, Schaden: 120 \n Eichenbogen (Wert: 1400; Schaden: 140 ) \n Armbrust (Wert: 1200; Schaden: 90) \n Jagdarmbrust (Wert: 500; Schaden: 30) \n Jagdbogen (Wert: 400; Schaden: 35) \n Kurzbogen (Wert: 100; Schaden: 15)",
+        correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/ZjBMpJu4kDk?controls=1&vq=hd1080&autoplay=1"
     }
     static readonly diego4: VoicelineQuestion = { //Voiceline Gomez -> Diego 400
         question: "Von wem stammt die Voiceline?",
@@ -160,7 +160,7 @@ export class ConstQuestions {
         bonus: false
     }
     static readonly diego5: GeoguessrQuestion = { //GEO HOSCHPAKHÖHLE -> Diego 500
-        question: "Wo befindet sich der Namenlose?",
+        question: "Wo befindet sich Diego?",
         searchPicture: "assets/geoguessr/searchPictures/Diego 500 - Frage.jpg",
         kind: "Geo-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Diego 500 - Antwort.jpg",
@@ -180,7 +180,7 @@ export class ConstQuestions {
         videoQuestion: "https://www.youtube.com/embed/asVOoMeByeA?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly lester2: GeoguessrQuestion = { //GEO STEINKREIS -> Lester 200 
-        question: "Wo befindet sich der Namenlose?",
+        question: "Wo befindet sich Lester?",
         searchPicture: "assets/geoguessr/searchPictures/Lester 200 - Frage.jpg", //Karte mit markiertem Punkt
         kind: "Geo-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Lester 200 - Antwort.jpg", //Karte mit markiertem Punkt
@@ -239,7 +239,7 @@ export class ConstQuestions {
         videoQuestion: "https://www.youtube.com/embed/n9vhpQeH8dE?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly milten3: GeoguessrQuestion = { //GEO KIRCHENSPITZE -> Milten 300
-        question: "Wo befindet sich der Namenlose?",
+        question: "Wo befindet sich Milten?",
         searchPicture: "assets/geoguessr/searchPictures/Milten 300 - Frage.jpg",
         kind: "Geo-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Milten 300 - Antwort.jpg",
@@ -289,14 +289,14 @@ export class ConstQuestions {
         videoQuestion: "https://www.youtube.com/embed/wLA5b6bk0wA?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly gorn3:GuessingQuestion = { //Stärke sortieren -> Gorn 300
-        question: "Sortiere die folgenden Waffen absteigend nach der benötigten Stärke (höchster Wert zuerst). \n Schwere Erz-Schlachtklinge, Rubinklinge, Brutale Orkaxt, \n Edles Schwert, Leichte Orkaxt",
-        video: "",
+        question: "Wahr oder Falsch?",
+        video: "https://www.youtube.com/embed/ogV4-e2881E?controls=1&vq=hd1080&autoplay=1",
         kind: "Schätz-Frage",
-        correctAnswer: "Schwere Erz-Schlachtklinge (Benötigt 140; Schaden: 160) \n Brutale Orkaxt (Benötigt 100; Schaden: 80) \n Rubinklinge  (Benötigt 90; Schaden: 100) \n Leichte Orkaxt (Benötigt 70; Schaden: 50) \n Edles Schwert (Benötigt 50; Schaden: 60)",
+        correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/7tS84k49ZGI?controls=1&vq=hd1080&autoplay=1"
     }
     static readonly gorn4:GuessingQuestion = { //Auge Innos -> Gorn 400
         question: "Du spielst das Spiel Gothic 2 Die Nacht des Raben und hast vor kurzem das Auge Innos gerettet. \n Nun weigert sich Xardas zum Umkehrritual aufzubrechen um das Auge seine alte Macht zu verleihen. Warum?",
