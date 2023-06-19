@@ -91,13 +91,13 @@ export class ConstQuestions {
     }
     static readonly held3:GuessingQuestion = { //Bonusfrage5 -> 2 Videos -> Held 300
         question: "Bonusfrage von Cedricun! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/9iWaSy3Vy84?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        video: "https://www.youtube.com/embed/V5jeigmOrmo?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/GJhPIyIFpfI?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/H8C1F5gSGcs?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly held4:GuessingQuestion = { //Lehmar und seine Zinsen -> Held 400
         question: "Lehmer, der Geldverleiher, schmeißt den Leuten sein Geld hinterher. Nach seiner Meinung \n ist das allerdings nicht so. Er berechnet nämlich einen gewissen Prozentsatz. \n Wie hoch ist dieser bei pünktlicher und bei verspäteter Abgabe des Goldes?",
@@ -171,13 +171,13 @@ export class ConstQuestions {
     /* Lester */
     static readonly lester1:GuessingQuestion = { //Bonusfrage4 -> 2 Videos -> Lester 100
         question: "Bonusfrage von RPG Kurga! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/IvfQ7ER07XE?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        video: "https://www.youtube.com/embed/m4-t1-uwl-Q?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/yPKiZXLESxc?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/asVOoMeByeA?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly lester2: GeoguessrQuestion = { //GEO STEINKREIS -> Lester 200 
         question: "Wo befindet sich der Namenlose?",
@@ -286,7 +286,7 @@ export class ConstQuestions {
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/WSTiDw3fR6I?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/wLA5b6bk0wA?controls=1&vq=hd1080&autoplay=1" //Fragevideo
     }
     static readonly gorn3:GuessingQuestion = { //Stärke sortieren -> Gorn 300
         question: "Sortiere die folgenden Waffen absteigend nach der benötigten Stärke (höchster Wert zuerst). \n Schwere Erz-Schlachtklinge, Rubinklinge, Brutale Orkaxt, \n Edles Schwert, Leichte Orkaxt",
