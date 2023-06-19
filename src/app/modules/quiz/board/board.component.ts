@@ -92,7 +92,7 @@ export class BoardComponent implements OnInit {
         this.usedQuestionColors[i][j] = "";
       }
       
-      if(this.doubleThreshold < 15){
+      if(this.doubleThreshold < 10){
         this.doubleThreshold = 0;
         this.usedQuestionColors.forEach((col: string[]) =>{
           col.forEach((entry: string) => {
@@ -103,7 +103,7 @@ export class BoardComponent implements OnInit {
         })
       }
       
-      if(this.doubleThreshold == 15){
+      if(this.doubleThreshold == 10){
         this.audio!.src = 'assets/voicelines/landratten.mp3';
         this.audio?.play();
         this.doublePointsAfter15Questions = [200,400,600,800,1000];

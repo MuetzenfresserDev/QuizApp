@@ -5,11 +5,11 @@
     <div><img [src]="images[i]" width="84" height="100"></div> 
     <section *ngFor="let question of item, index as j">
 
-      <section *ngIf="doubleThreshold <= 14">
+      <section *ngIf="doubleThreshold <= 9">
         <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
       </section>
 
-      <section *ngIf="doubleThreshold > 14">
+      <section *ngIf="doubleThreshold > 9">
 
         <section *ngIf="usedQuestionColors[i][j] == 'bonus' || usedQuestionColors[i][j] == ''">
           <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
