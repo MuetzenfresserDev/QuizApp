@@ -31,4 +31,13 @@ export class DialogComponent implements OnInit {
     console.log(this.setWidth);
   }
 
+  public closeDialog(){
+
+    if(document.getElementById("buzz")!.style.display == "block"){
+      document.getElementById("buzz")!.style.display = "none";
+    }
+
+    this.dialog.closeAll();
+  }
+
 }

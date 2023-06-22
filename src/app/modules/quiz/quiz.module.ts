@@ -16,6 +16,7 @@ import { ErrorPictureComponent } from './question/errorPicture/errorPicture.comp
 import { TimerComponent } from './timer/timer.component';
 import { GeogeussrComponent } from './question/geogeussr/geogeussr.component';
 import { GuessingComponent } from './question/guessing/guessing.component';
+import { BuzzerComponent } from './question/buzzer/buzzer.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { GuessingComponent } from './question/guessing/guessing.component';
     GeogeussrComponent,
     GuessingComponent,
     QuestionComponent,
+    BuzzerComponent,
     TimerComponent
   ],
   exports: [QuizComponent]

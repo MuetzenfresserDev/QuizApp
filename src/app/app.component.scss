@@ -7,3 +7,14 @@
     background: #1aa193 !important;
     color: white !important;
   }
+
+  .buzz{
+    width: 45vw; 
+    height: 45vh; 
+    z-index: 9999; 
+    position: fixed; 
+    top: 40%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    display: none;
+  }

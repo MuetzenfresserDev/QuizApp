@@ -49,3 +49,8 @@ export interface GuessingQuestion {
     correctAnswer: string;
     bonus: boolean;
 }
+
+export interface BuzzerQuestion {
+    question: string;
+    kind: string;
+}

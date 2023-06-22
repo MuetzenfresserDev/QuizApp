@@ -1,4 +1,4 @@
-import { ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
+import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
@@ -69,6 +69,10 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: ""
+    }
+    static readonly buzzerExample: BuzzerQuestion = {
+        question: "Irgend eine Frage",
+        kind: "Buzzer-Frage"
     }
 
 
@@ -322,7 +326,7 @@ export class ConstQuestions {
     /* diego */ static readonly questions2: any[] = [this.diego1, this.diego2, this.diego3, this.diego4, this.diego5]
     /* lester */ static readonly questions3: any[] = [this.lester1, this.lester2, this.lester3, this.lester4, this.lester5]
     /* milten */ static readonly questions4: any[] = [this.milten1, this.milten2, this.milten3, this.milten4, this.milten5]
-    /* gorn */ static readonly questions5: any[] = [this.gorn1,this.gorn2, this.gorn3,this.gorn4, this.gorn5]
+    /* gorn */ static readonly questions5: any[] = [this.gorn1,this.gorn2, this.gorn3,this.gorn4, this.buzzerExample]
 
     static readonly questions = {
         questions1: this.questions1,

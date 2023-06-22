@@ -1,0 +1,72 @@
+<section
+  *ngIf="show === true"
+  class="wordbreak"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  fxLayoutGap="2vw"
+>
+  <h4>{{ data.question }}</h4>
+</section>
+<section
+  *ngIf="show === false"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  fxLayoutGap="2vw"
+>
+  <button
+    (click)="showQuestion()"
+    mat-flat-button
+    color="accent"
+    aria-label="Example icon button with a home icon"
+  >
+    Frage anzeigen
+  </button>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<section fxLayout="row" style="width: 90vw">
+  <div
+    fxFlex
+    fxLayoutAlign="center center"
+    fxLayoutGap="1vw"
+    *ngFor="let player of players; index as i"
+  >
+    <p style="font-size: large; font-weight: bold">{{ player.name }}</p>
+    <button
+      (click)="decreasePoints(i, player)"
+      mat-flat-button
+      color="primary"
+      aria-label="Example icon button with a home icon"
+    >
+      -50 Gold
+    </button>
+  </div>
+</section>

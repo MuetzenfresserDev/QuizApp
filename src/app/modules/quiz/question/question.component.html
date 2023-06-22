@@ -35,6 +35,12 @@
       </section>
     </div>
 
+    <div  fxLayout="row" fxFlex *ngIf="data.kind === 'Buzzer-Frage'">
+      <section fxFlex>
+        <app-buzzer [data]="data"></app-buzzer>
+      </section>
+    </div>
+
   </section>
 
   <br>
@@ -54,7 +60,7 @@
   <br>
 
   <!-- Zeigt Whiteboard, WhiteboardPlaceholder und Bearbeite Fläche an -->
-  <section>
+  <section *ngIf="data.kind != 'Buzzer-Frage'">
     <section fxLayout="row" fxLayoutGap="2vw">
       <section
         fxFlex="{{ setWidth }}"

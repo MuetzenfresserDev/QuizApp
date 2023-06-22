@@ -18,19 +18,23 @@ export class PlayerComponent {
   public setPlayerName(name: string){
     this.player.name = name;
     this.playerNameService.setNameAtIndex(this.index, name);
+    this.playerNameService.setPlayerAtIndex(this.index, this.player);
   }
 
   public increasePoints(ammount: number){
     this.player.points += ammount;
+    this.playerNameService.setPlayerAtIndex(this.index, this.player);
   }
 
   public decreasePoints(ammount: number){
     this.player.points -= ammount;
+    this.playerNameService.setPlayerAtIndex(this.index, this.player);
   }
 
   public resetPlayer(){
     this.player.points = 0;
     this.player.name = '';
+    this.playerNameService.setPlayerAtIndex(this.index, this.player);
   }
 
 }
