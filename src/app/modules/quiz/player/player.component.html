@@ -1,15 +1,15 @@
 <section fxLayout="row" fxLayoutAlign=" center">
-  <section fxLayout="column" fxLayoutAlign="none center">
+  <section fxLayout="column" fxLayoutAlign="none center" style="margin-top: 4vh;">
 
-    <button (click)="increasePoints(100)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+    <button (click)="increasePoints(100)" mat-mini-fab color="primary" style="transform: scale(0.85); margin-bottom: 2vh;">
       <mat-icon>add</mat-icon>
     </button>
 
-    <button (click)="decreasePoints(100)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+    <button (click)="decreasePoints(100)" mat-mini-fab color="primary" style="transform: scale(0.85);  margin-bottom: 6vh;" >
       <mat-icon>remove</mat-icon>
     </button>
 
-    <button (click)="resetPlayer()" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+    <button (click)="resetPlayer()" mat-mini-fab color="primary" style="transform: scale(0.85);">
       <mat-icon>restart_alt</mat-icon>
     </button>
 

@@ -88,6 +88,7 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
 
                   }, 2000);
 
+
                 })
                 .catch((error) => console.log(error));
               }
@@ -112,6 +113,10 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
                   ${this.blockName}.board.clear();
                   console.log('clearing')
                   }, 2000);
+
+                  setTimeout(() => {
+                    ${this.blockName}.drawRectangle(70, 70, 500, 300, '#000000', 0.5, null);
+                  }, 2500);
 
                 })
                 .catch((error) => console.log(error));
