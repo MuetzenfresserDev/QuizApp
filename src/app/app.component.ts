@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   muted:boolean = true;
 
   ngOnInit(): void {
-    sessionStorage.clear();
+    //sessionStorage.clear();
   }
 
 }

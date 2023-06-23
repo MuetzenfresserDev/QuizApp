@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Player } from 'src/app/interfaces/player';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
@@ -7,13 +7,19 @@ import { PlayerNameService } from 'src/app/services/playerName/playerName.servic
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent {
+export class PlayerComponent implements OnChanges{
 
   @Input() index: number = 0;
 
   player: Player = {name:'',points:0}
 
-  constructor(private playerNameService: PlayerNameService) { }
+  constructor(private playerNameService: PlayerNameService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(JSON.parse(sessionStorage.getItem('players')|| '[]').length != 0){
+      this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
+    }
+  }
 
   public setPlayerName(name: string){
     this.player.name = name;

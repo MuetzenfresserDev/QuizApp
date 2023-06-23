@@ -16,6 +16,12 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     
+    if(JSON.parse(sessionStorage.getItem('players')|| '[]').length != 0){
+      
+      this.setPlayerCount(JSON.parse(sessionStorage.getItem('players')|| '[]').length)
+
+    }
+
   }
 
   public setPlayerCount(input: string){

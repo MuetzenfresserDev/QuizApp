@@ -61,13 +61,20 @@ export class BoardComponent implements OnInit {
       this.questions.questions5
     ];
 
-    for (let i = 0; i < this.concatQuestions.length; i++) {
-      const row = [];
-      for (let j = 0; j < this.concatQuestions[i].length; j++) {
-        row.push(this.buttonColors[j]);
+    if(JSON.parse(sessionStorage.getItem('usedQuestionColors')|| '[]').length == 0){
+      for (let i = 0; i < this.concatQuestions.length; i++) {
+        const row = [];
+        for (let j = 0; j < this.concatQuestions[i].length; j++) {
+          row.push(this.buttonColors[j]);
+        }
+        this.usedQuestionColors.push(row);
       }
-      this.usedQuestionColors.push(row);
     }
+    else{
+      this.usedQuestionColors = JSON.parse(sessionStorage.getItem('usedQuestionColors')|| '[]');
+    }
+
+    
 
   }
 
@@ -92,6 +99,8 @@ export class BoardComponent implements OnInit {
         this.usedQuestionColors[i][j] = "";
       }
       
+      sessionStorage.setItem('usedQuestionColors', JSON.stringify(this.usedQuestionColors));
+
       if(this.doubleThreshold < 10){
         this.doubleThreshold = 0;
         this.usedQuestionColors.forEach((col: string[]) =>{

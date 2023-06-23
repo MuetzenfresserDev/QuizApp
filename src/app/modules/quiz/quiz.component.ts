@@ -15,10 +15,16 @@ export class QuizComponent {
 
   constructor(private sanitizer: DomSanitizer) {
     this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeRef);
+
+    if(JSON.parse(sessionStorage.getItem('host')|| '[]').length != 0){
+      this.hostname = JSON.parse(sessionStorage.getItem('host')|| '[]');
+    }
+
    }
 
   public setHostname(input: string){
     this.hostname = input;
+    sessionStorage.setItem('host', JSON.stringify(this.hostname));
   }
 
 }
