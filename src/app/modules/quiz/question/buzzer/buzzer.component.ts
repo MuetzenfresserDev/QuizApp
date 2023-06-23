@@ -33,7 +33,7 @@ export class BuzzerComponent implements OnInit {
 
   public decreasePoints(index: number, player: Player){
     player.points -= 50;
-    this.playerService.setPlayerAtIndex(index, player);
+    this.playerService.setPlayerAtIndexDec(index, player);
   }
 
   public showQuestion(){

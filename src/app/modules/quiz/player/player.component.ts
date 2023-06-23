@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit ,SimpleChanges } from '@angular/core';
 import { Player } from 'src/app/interfaces/player';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
@@ -7,13 +7,20 @@ import { PlayerNameService } from 'src/app/services/playerName/playerName.servic
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent implements OnChanges{
+export class PlayerComponent implements OnChanges, OnInit{
 
   @Input() index: number = 0;
 
   player: Player = {name:'',points:0}
 
   constructor(private playerNameService: PlayerNameService) {}
+
+
+  ngOnInit(): void {
+    this.playerNameService.playersSubject.subscribe((players: Player[]) => {
+      this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
+    })
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(JSON.parse(sessionStorage.getItem('players')|| '[]').length != 0){
