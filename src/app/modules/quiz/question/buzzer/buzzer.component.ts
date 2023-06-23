@@ -17,7 +17,12 @@ export class BuzzerComponent implements OnInit {
 
   ngOnInit() {
 
+    if(JSON.parse(sessionStorage.getItem('players')|| '[]').length != 0){
+      this.players = JSON.parse(sessionStorage.getItem('players')|| '[]');
+    }
+    else{
     this.players = this.playerService.players;
+    }
 
     console.log(this.players)
 
