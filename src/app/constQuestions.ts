@@ -11,7 +11,7 @@ export class ConstQuestions {
         'e561cc9f-cb97-4031-b8f8-a1b0ad875676'   //Spieler 4 Url
       ];
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&vq=hd1080&autoplay=1&mute=1'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/dRnH2cU3_m4?controls=0&vq=hd1080&autoplay=1&mute=1&playlist=dRnH2cU3_m4&loop=1'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 

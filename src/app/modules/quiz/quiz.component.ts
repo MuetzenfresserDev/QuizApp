@@ -10,7 +10,7 @@ import { ConstQuestions } from 'src/app/constQuestions';
 export class QuizComponent {
 
   hostname: string = '';
-  youtubeRef: string = "https://www.youtube.com/embed/DWzJzg7N0NA?controls=0&autoplay=1&mute=1";
+  youtubeRef: string = ConstQuestions.youtubeRef;
   youtubeLink: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
