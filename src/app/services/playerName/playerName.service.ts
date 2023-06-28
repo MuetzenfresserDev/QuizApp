@@ -24,6 +24,9 @@ public setPlayerAtIndex(index: number, player: Player){
 }
 
 public setPlayerAtIndexDec(index: number, player: Player){
+
+  this.players = JSON.parse(sessionStorage.getItem('players')|| '[]')
+
   this.players[index] = player;
   sessionStorage.setItem('players', JSON.stringify(this.players));
   this.playersSubject.next(this.players);

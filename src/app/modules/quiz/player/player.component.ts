@@ -18,13 +18,16 @@ export class PlayerComponent implements OnChanges, OnInit{
 
   ngOnInit(): void {
     this.playerNameService.playersSubject.subscribe((players: Player[]) => {
+      console.log(JSON.parse(sessionStorage.getItem('players')|| '[]'))
       this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
     })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(JSON.parse(sessionStorage.getItem('players')|| '[]').length != 0){
+      console.log(JSON.parse(sessionStorage.getItem('players')|| '[]'))
       this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
+
     }
   }
 
