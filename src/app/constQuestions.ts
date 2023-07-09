@@ -1,4 +1,4 @@
-import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
+import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, LocationQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
 
@@ -164,10 +164,10 @@ export class ConstQuestions {
         correctAnswer: "https://www.youtube.com/embed/v8QyLWdTdso?controls=1&vq=hd1080&autoplay=1",
         bonus: false
     }
-    static readonly diego5: GeoguessrQuestion = { //GEO HOSCHPAKHÖHLE -> Diego 500
+    static readonly diego5: LocationQuestion = { //GEO HOSCHPAKHÖHLE -> Diego 500
         question: "Wo befindet sich Diego?",
         searchPicture: "assets/geoguessr/searchPictures/Diego 500 - Frage.jpg",
-        kind: "Geo-Frage",
+        kind: "Location-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Diego 500 - Antwort.jpg",
         imgurLink: "https://i.imgur.com/yEO2dTJ.jpg",
         bonus: false

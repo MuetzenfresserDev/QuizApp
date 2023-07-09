@@ -1,0 +1,34 @@
+<section
+  *ngIf="show === true"
+  class="wordbreak"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="2vw"
+>
+  <div fxLayout="row" fxLayoutGap="1vw">
+    <h4>{{ data.question }} (NUMMER, beim Canvas)</h4>
+    <section fxLayoutAlign="center center">
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="clickShowCanvas()"
+      >
+        Lösung
+      </button>
+    </section>
+  </div>
+  <div fxLayout="row">
+    <img
+      [src]="data.searchPicture"
+      [width]="pictureSize.width"
+      [height]="pictureSize.height"
+    />
+  </div>
+</section>
+<section
+  *ngIf="show === true"
+  class="wordbreak"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="2vw"
+></section>

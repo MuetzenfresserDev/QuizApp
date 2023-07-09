@@ -17,6 +17,7 @@ import { TimerComponent } from './timer/timer.component';
 import { GeogeussrComponent } from './question/geogeussr/geogeussr.component';
 import { GuessingComponent } from './question/guessing/guessing.component';
 import { BuzzerComponent } from './question/buzzer/buzzer.component';
+import { LocationComponent } from './question/location/location.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { BuzzerComponent } from './question/buzzer/buzzer.component';
     GuessingComponent,
     QuestionComponent,
     BuzzerComponent,
+    LocationComponent,
     TimerComponent
   ],
   exports: [QuizComponent]

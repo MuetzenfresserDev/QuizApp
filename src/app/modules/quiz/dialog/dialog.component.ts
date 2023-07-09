@@ -36,6 +36,9 @@ export class DialogComponent implements OnInit {
     if(document.getElementById("buzz")!.style.display == "block"){
       document.getElementById("buzz")!.style.display = "none";
     }
+    else if(document.getElementById("geo")!.style.display == "block"){
+      document.getElementById("geo")!.style.display = "none";
+    }
 
     this.dialog.closeAll();
   }

@@ -50,6 +50,15 @@ export interface GuessingQuestion {
     bonus: boolean;
 }
 
+export interface LocationQuestion {
+    question: string;
+    searchPicture: string;
+    kind: string;
+    markedPicture: string;
+    imgurLink: string;
+    bonus: boolean;
+}
+
 export interface BuzzerQuestion {
     question: string;
     kind: string;
