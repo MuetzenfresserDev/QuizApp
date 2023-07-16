@@ -138,7 +138,7 @@ export class ConstQuestions {
         bonus: false
     }
     static readonly diego3:LocationQuestion = { // Diego 300
-        question: "Diego hat sich vor dir versteckt. Weißt du wo er ist?",
+        question: "Diego hat sich vor dir versteckt. Weißt du wo er ist? (4)",
         searchPicture: "assets/geoguessr/searchPictures/Diego 300 Frage.png", //Karte mit markiertem Punkt
         kind: "Location-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Diego 300 Antwort.png", //Karte mit markiertem Punkt
