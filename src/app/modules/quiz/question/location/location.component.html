@@ -6,7 +6,7 @@
   fxLayoutGap="2vw"
 >
   <div fxLayout="row" fxLayoutGap="1vw">
-    <h4>{{ data.question }} (NUMMER, beim Canvas)</h4>
+    <h4>{{ data.question }}</h4>
     <section fxLayoutAlign="center center">
       <button
         mat-flat-button
@@ -17,7 +17,7 @@
       </button>
     </section>
   </div>
-  <div fxLayout="row">
+  <div fxLayout="row" *ngIf="data.searchPicture !== ''">
     <img
       [src]="data.searchPicture"
       [width]="pictureSize.width"

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ConstQuestions } from 'src/app/constQuestions';
 import { Player } from 'src/app/interfaces/player';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
@@ -12,8 +14,11 @@ export class BuzzerComponent implements OnInit {
   @Input() data: any;
   players: Player[] = [];
   show: boolean = false;
+  videoSize = ConstQuestions.videoSize;
+  youtubeLink: SafeResourceUrl | undefined;
+  showVideo: boolean = false;
 
-  constructor(private playerService: PlayerNameService) { }
+  constructor(private playerService: PlayerNameService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
 
@@ -38,6 +43,14 @@ export class BuzzerComponent implements OnInit {
 
   public showQuestion(){
     this.show = true;
+  }
+
+  public showVideoAnswer(){
+    if(document.getElementById("buzz")!.style.display == "block"){
+      document.getElementById("buzz")!.style.display = "none";
+    }
+    this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.video);
+    this.showVideo = true;
   }
 
 }

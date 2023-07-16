@@ -2,6 +2,11 @@
   <h4>{{data.question}}</h4>
 </section>
 <section *ngIf="hideAll === false">
-  <img [src]="data.searchPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === false">
-  <img [src]="data.markedPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === true">
+  <img [src]="data.searchPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === false && data.searchPicture != ''">
+  <img [src]="data.markedPicture" [width]="pictureSize.width" [height]="pictureSize.height" *ngIf="showCorrected === true && data.markedPicture != ''">
+  <div *ngIf="data.hasOwnProperty('answer')">
+    <section *ngIf="showCorrected === true" style="text-align: center;">
+      <h4>{{data.answer}}</h4>
+    </section>
+  </div>
 </section>

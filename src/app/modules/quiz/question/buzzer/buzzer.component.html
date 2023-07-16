@@ -4,8 +4,13 @@
   fxLayout="row"
   fxLayoutAlign="center center"
   fxLayoutGap="2vw"
+  class="wordbreak"
 >
   <h4>{{ data.question }}</h4>
+  <button *ngIf="data.hasOwnProperty('video')" (click)="showVideoAnswer()" mat-flat-button
+  color="accent">
+    Lösung
+  </button>
 </section>
 <section
   *ngIf="show === false"
@@ -22,36 +27,57 @@
     Frage anzeigen
   </button>
 </section>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<section *ngIf="showVideo === false">
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+</section>
+<section
+  fxlayout="row"
+  fxLayoutAlign="center center"
+  *ngIf="showVideo === true"
+>
+  <iframe
+    [width]="videoSize.width"
+    [height]="videoSize.height"
+    [src]="youtubeLink"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    muted
+  ></iframe>
+  <br />
+  <br />
+  <br />
+  <br />
+</section>
+
 <section fxLayout="row" style="width: 90vw">
   <div
     fxFlex
