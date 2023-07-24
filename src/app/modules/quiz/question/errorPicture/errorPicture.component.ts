@@ -23,6 +23,7 @@ export class ErrorPictureComponent implements OnInit, OnChanges {
 
   pictureSize: {width: string, height: string} =  ConstQuestions.pictureSize;
   errorPictureSize: {width: string, height: string} =  ConstQuestions.errorPictureSize;
+  correctedPictureSize: {width: string, height: string} =  ConstQuestions.correctedPictureSize;
 
   constructor() { }
 

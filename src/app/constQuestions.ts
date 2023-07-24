@@ -11,12 +11,13 @@ export class ConstQuestions {
         'e561cc9f-cb97-4031-b8f8-a1b0ad875676'   //Spieler 4 Url
       ];
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/dRnH2cU3_m4?controls=0&vq=hd1080&autoplay=1&mute=1&playlist=dRnH2cU3_m4&loop=1'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/dRnH2cU3_m4?controls=0&autoplay=1&mute=1&playlist=dRnH2cU3_m4&loop=1'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 
-    static readonly pictureSize = {width: '900', height: '506'};
-    static readonly errorPictureSize = {width: '1800', height: '506'};
+    static readonly pictureSize = {width: '1100', height: '506'};
+    static readonly errorPictureSize = {width: '1500', height: '506'};
+    static readonly correctedPictureSize = {width: '900', height: '506'}
 
 
     static readonly timers = {
@@ -76,19 +77,13 @@ export class ConstQuestions {
     }
 
     /* Namenloser Held */
-    static readonly held1: GuessingQuestion = { // Held 100 fehlt noch
-        question: "Bonusfrage von XXX! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/V5jeigmOrmo?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/H8C1F5gSGcs?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+    static readonly held1: BuzzerQuestion = { // Held 100 fehlt noch
+        question: "Im Marvin Mode gibt es eine Taste auf der Tastatur, die dem Helden schaden zufügt. \n Welche Taste ist das?",
+        kind: "Buzzer-Frage"
     }
     static readonly held2:GuessingQuestion = { //Jahrkendar Portal zu Saturas -> Held 200
         question: "Unser Held möchte im Kloster Innos aufgenommen werden. Nun braucht er jedoch ein Schaf. \n „Tja…“, denkt er sich und verwandelt sich zu einem Schaf. \n Nun läuft er von Pepe aus bis zum Kloster über den normalen weg. Wie lange braucht er für diesen Weg?",
-        video: "https://www.youtube.com/embed/zw0mHjcPA0E?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/zw0mHjcPA0E?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -98,20 +93,20 @@ export class ConstQuestions {
     }
     static readonly held3:GuessingQuestion = { // Held 300
         question: "Wahr oder Falsch?",
-        video: "https://www.youtube.com/embed/3MK-vNow3dI?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/3MK-vNow3dI?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/ACSD3HHiswA?controls=1&vq=hd1080&autoplay=1"
+        videoQuestion: "https://www.youtube.com/embed/ACSD3HHiswA?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly held4:ErrorQuestion = { // Held 400 fehlt noch
-        question: "Was stimmt auf dem Bild nicht?",
-        errorPicture: "assets/errors/errorPictures/Lester500Beides.jpg",
+    static readonly held4:ErrorQuestion = { // Held 400
+        question: "Finde die Unterschiede in den Bildern",
+        errorPicture: "assets/errors/errorPictures/Held 400 Frage.jpg",
         kind: "Fehlersuche-Frage",
-        correctedPicture: "assets/errors/correctedPictures/Lester 500 - Antwort.jpg",
-        imgurLink: "https://i.imgur.com/k09JacM.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
+        correctedPicture: "assets/errors/correctedPictures/Held 400 Antwort.jpg",
+        imgurLink: "https://i.imgur.com/h6XyXRx.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
         bonus: false
     }
     static readonly held5:LocationQuestion = { // Held 500
@@ -128,13 +123,13 @@ export class ConstQuestions {
     static readonly diego1: BuzzerQuestion = { // Diego 100
         question: "Welcher Charakter meint, keine witzigen Kerle zu mögen?",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/h4l2r0GRL-8?controls=1&vq=hd1080&autoplay=1"
+        video: "https://www.youtube.com/embed/h4l2r0GRL-8?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly diego2:VoicelineQuestion = { // Diego 200
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/Diego 200 Frage.mp3",
         kind: "Voiceline-Fragen",
-        correctAnswer: "https://www.youtube.com/embed/i18dmSKmuF8?controls=1&vq=hd1080&autoplay=1",
+        correctAnswer: "https://www.youtube.com/embed/i18dmSKmuF8?controls=1&vq=hd1080&autoplay=0",
         bonus: false
     }
     static readonly diego3:LocationQuestion = { // Diego 300
@@ -147,7 +142,7 @@ export class ConstQuestions {
     }
     static readonly diego4: GuessingQuestion = { //Voiceline Gomez -> Diego 400
         question: "Diego hat unserem Helden geholfen, als Bullit ihn vermöbelt hat. \n Nach seinem Angebot geht er zurück ins Alte Lager. Er GEHT zurück. \n Wie lange braucht er für diesen sicheren Weg, bis er sich auf seine Bank setzen kann?",
-        video: "https://www.youtube.com/embed/awbe_veLCrs?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/awbe_veLCrs?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -155,21 +150,21 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    static readonly diego5: GuessingQuestion = { // Diego 500 fehlt noch
-        question: "Bonusfrage von RPG XXX! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/m4-t1-uwl-Q?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+    static readonly diego5: GuessingQuestion = { // Diego 500
+        question: "Bonusfrage von RPG Kurga! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/b1Yxi3vkx4U?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/asVOoMeByeA?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/pQjU6nBlsBo?controls=1&vq=hd1080&autoplay=0" //Fragevideo
     }
 
     /* Lester */
     static readonly lester1:GuessingQuestion = { // Lester 100
         question: "Der Schläfer verleiht dem Helden die Fähigkeit zu Cheaten. \n Dieser Cheatet sich direkt am Anfang durch den Story Helper direkt zum Anfang des 6. Kapitels. \n Welches Level erreicht er durch diesen Cheat? (Gothic 1)",
-        video: "https://www.youtube.com/embed/lsr82hFNiBI?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+        video: "https://www.youtube.com/embed/lsr82hFNiBI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -177,19 +172,19 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "" //Fragevideo
     }
-    static readonly lester2: GuessingQuestion = { // Lester 200 fehlt noch
-        question: "Bonusfrage von XXX! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/lsr82hFNiBI?controls=1&vq=hd1080&autoplay=1", //Antwortvideo
+    static readonly lester2: GuessingQuestion = { // Lester 200
+        question: "Bonusfrage von Belvaria! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/NY6v-BMOks0?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/lsr82hFNiBI?controls=1&vq=hd1080&autoplay=1" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/RVboXVJf3BY?controls=1&vq=hd1080&autoplay=0" //Fragevideo
     }
     static readonly lester3:GuessingQuestion = { // Lester 300
         question: "(1. Kapitel) Als Lester in die Stadt kam, beschloss er sich, Schmied zu werden. \n Harald kann ihm einige Waffen beibringen. \n Da dachte sich Lester, er schmiedet jede davon und verkauft jedes 1x. \n Wie viel Gold bekommt er für seine Arbeit?",
-        video: "https://www.youtube.com/embed/HZwRNTAg03I?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/HZwRNTAg03I?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "1533",
         picture: "",
@@ -199,20 +194,20 @@ export class ConstQuestions {
     }
     static readonly lester4:GuessingQuestion = { // Lester 400
         question: "Wahr oder Falsch?",
-        video: "https://www.youtube.com/embed/LKarvwiUblc?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/LKarvwiUblc?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/A5hdAzfge6I?controls=1&vq=hd1080&autoplay=1"
+        videoQuestion: "https://www.youtube.com/embed/A5hdAzfge6I?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly lester5: ErrorQuestion = { // Lester 500 fehlt noch
-        question: "Was stimmt auf dem rechten Bild nicht?",
-        errorPicture: "assets/errors/errorPictures/Lester500Beides.jpg",
+    static readonly lester5: ErrorQuestion = { // Lester 500
+        question: "Finde die Unterschiede in den Bildern",
+        errorPicture: "assets/errors/errorPictures/Lester 500 Frage.jpg",
         kind: "Fehlersuche-Frage",
-        correctedPicture: "assets/errors/correctedPictures/Lester 500 - Antwort.jpg",
-        imgurLink: "https://i.imgur.com/k09JacM.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
+        correctedPicture: "assets/errors/correctedPictures/Lester 500 Antwort.jpg",
+        imgurLink: "https://i.imgur.com/ErIcew6.jpg",   //gleiche wie errorPicture um darauf dann Fehler zu Markieren.
         bonus: false
     }
 
@@ -236,11 +231,11 @@ export class ConstQuestions {
     static readonly milten3: BuzzerQuestion = { // Milten 300
         question: "Welche heiligen Reliquien befinden sich im Kloster Innos?",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/4cFNpxSeByQ?controls=1&vq=hd1080&autoplay=1"
+        video: "https://www.youtube.com/embed/4cFNpxSeByQ?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly milten4:GuessingQuestion = { // Milten 400
         question: "Die Feuerball Rune aus Gothic 1 ist ein sehr Mächtiger Zauber des dritten Magiekreises. \n Wie viel Mana verbraucht diese Rune, wenn sie ohne Aufladung direkt abgefeuert wird?",
-        video: "https://www.youtube.com/embed/WQ5dxjXaQLw?controls=1&vq=hd1080&autoplay=1",
+        video: "https://www.youtube.com/embed/WQ5dxjXaQLw?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "Unaufgeladen verbraucht der Zauber 0 Mana.",
         picture: "",
@@ -251,7 +246,7 @@ export class ConstQuestions {
     static readonly milten5: BuzzerQuestion = { // Milten 500
         question: "Corristo möchte dich in die Reihe der Magier Aufnehmen. Doch zuvor stellt er dir eine Frage, um dich zu prüfen. \n Was ist die höchste Tugend?",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/yOoR2wraUew?controls=1&vq=hd1080&autoplay=1"
+        video: "https://www.youtube.com/embed/yOoR2wraUew?controls=1&vq=hd1080&autoplay=0"
     }
 
     /* Gorn */
@@ -275,13 +270,13 @@ export class ConstQuestions {
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/Gorn 300 Frage.mp3",
         kind: "Voiceline-Fragen",
-        correctAnswer: "https://www.youtube.com/embed/t5rSe3UPeIk?controls=1&vq=hd1080&autoplay=1",
+        correctAnswer: "https://www.youtube.com/embed/t5rSe3UPeIk?controls=1&vq=hd1080&autoplay=0",
         bonus: false
     }
     static readonly gorn4:BuzzerQuestion = { // Gorn 400
         question: "In der freien Mine lebt ein Ork, der Gorn etwas über „Gach Lug“ erzählt. \n Um was handelt es sich hierbei?",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/ST6q8Ds5iiQ?controls=1&vq=hd1080&autoplay=1"
+        video: "https://www.youtube.com/embed/ST6q8Ds5iiQ?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly gorn5: GuessingQuestion = { // Gorn 500
         question: "Was ist das für ein Trank, wie lang hält dieser und wie viel ist er Wert?",
