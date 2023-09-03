@@ -213,22 +213,22 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    static readonly lester5: GuessingQuestion = { // Lester 500 TODO!!!
-        question: "Wie heißt dieser Charakter?",
-        video: "",
+    static readonly lester5: GuessingQuestion = { // Lester 500
+        question: "Im letzten Quiz konnten wir klären, welchen Weg Pedro nahm, um das Auge Innos zu den Feinden zu bringen. \n Heute müssen wir klären, wie lange er dafür gebraucht hat! \n Gib uns die Zeit an!",
+        video: "https://www.youtube.com/embed/txrgV_mfnSs?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Lester 400 Antwort.jpg",
-        pictureQuestion: 'assets/guessing/pictures/Lester 400 Frage.jpg',
+        picture: "",
+        pictureQuestion: '',
         bonus: false,
         videoQuestion: ""
     }
 
     /* Milten */
-    static readonly milten1:BuzzerQuestion = { // Milten 100 TODO: Video!!!
+    static readonly milten1:BuzzerQuestion = { // Milten 100
         question: "Was genau höhrt man hier?",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/h4l2r0GRL-8?controls=1&vq=hd1080&autoplay=0", //TODO bzw. Kommt noch
+        video: "https://www.youtube.com/embed/iMbgh5B40Mw?controls=1&vq=hd1080&autoplay=0",
         audio: "assets/voicelines/Milten 100 Frage.mp3"
     }
     static readonly milten2:BuzzerQuestion = { // Milten 200
