@@ -7,11 +7,40 @@
   class="wordbreak"
 >
   <h4>{{ data.question }}</h4>
-  <button *ngIf="data.hasOwnProperty('video')" (click)="showVideoAnswer()" mat-flat-button
-  color="accent">
+
+  <button
+    *ngIf="data.hasOwnProperty('audio')"
+    mat-fab
+    (click)="playVoiceline()"
+  >
+    <mat-icon>play_circle_outline</mat-icon>
+  </button>
+
+  <button
+    *ngIf="data.hasOwnProperty('video')"
+    (click)="showVideoAnswer()"
+    mat-flat-button
+    color="accent"
+  >
     Lösung
   </button>
+
+  <button
+    *ngIf="data.hasOwnProperty('picture')"
+    (click)="showPictureAnswer()"
+    mat-flat-button
+    color="accent"
+  >
+    Lösung
+  </button>
+
+  <audio
+    *ngIf="data.hasOwnProperty('audio')"
+    #audioPlayer
+    [src]="data.audio"
+  ></audio>
 </section>
+
 <section
   *ngIf="show === false"
   fxLayout="row"
@@ -27,7 +56,7 @@
     Frage anzeigen
   </button>
 </section>
-<section *ngIf="showVideo === false">
+<section *ngIf="showVideo === false && showPicture === false">
   <br />
   <br />
   <br />
@@ -55,7 +84,6 @@
   <br />
   <br />
   <br />
-
 </section>
 <section
   fxlayout="row"
@@ -76,6 +104,18 @@
   <br />
   <br />
   <br />
+</section>
+
+<section
+  fxlayout="row"
+  fxLayoutAlign="center center"
+  *ngIf="showPicture === true"
+>
+  <img
+    [src]="data.picture"
+    [width]="pictureSize.width"
+    [height]="pictureSize.height"
+  />
 </section>
 
 <section fxLayout="row" style="width: 90vw">
