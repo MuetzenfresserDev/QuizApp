@@ -223,6 +223,7 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
+    
 
     /* Milten */
     static readonly milten1:BuzzerQuestion = { // Milten 100
