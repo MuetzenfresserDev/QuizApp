@@ -227,7 +227,7 @@ export class ConstQuestions {
 
     /* Milten */
     static readonly milten1:BuzzerQuestion = { // Milten 100
-        question: "Was genau höhrt man hier?",
+        question: "Was genau hört man hier?",
         kind: "Buzzer-Frage",
         video: "https://www.youtube.com/embed/iMbgh5B40Mw?controls=1&vq=hd1080&autoplay=0",
         audio: "assets/voicelines/Milten 100 Frage.mp3"
@@ -249,7 +249,7 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Fülle die Lücken",
+        question: "Fülle die Lücken (nur rot)",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "-",
