@@ -36,6 +36,8 @@ export class BoardComponent implements OnInit {
 
   boold: boolean = false;
 
+  activePlayer = parseInt(sessionStorage.getItem('activePlayer') || '1')
+
   audio: HTMLAudioElement | undefined;
 
   constructor(private dialogService: DialogService) {
@@ -44,6 +46,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.setupBoard();
+    sessionStorage.setItem('activePlayer', JSON.stringify(this.activePlayer))
   }
 
   private setupBoard() {
@@ -117,6 +120,15 @@ export class BoardComponent implements OnInit {
         this.audio?.play();
         this.doublePointsAfter15Questions = [200,400,600,800,1000];
         this.doubleThreshold += 1;
+      }
+
+      if(this.activePlayer > 0){
+        if(this.activePlayer < (JSON.parse(sessionStorage.getItem('playerCount') || '[]')).playerCount.length){
+          this.activePlayer += 1;
+        } else{
+          this.activePlayer = 1;
+        }
+        sessionStorage.setItem('activePlayer', JSON.stringify(this.activePlayer))
       }
 
     })

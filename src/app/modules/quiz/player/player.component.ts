@@ -15,12 +15,18 @@ export class PlayerComponent implements OnChanges, OnInit{
 
   constructor(private playerNameService: PlayerNameService) {}
 
+  isActive = false
 
   ngOnInit(): void {
     this.playerNameService.playersSubject.subscribe((players: Player[]) => {
       console.log(JSON.parse(sessionStorage.getItem('players')|| '[]'))
       this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
     })
+
+    setInterval(() => {
+      this.getActivePlayer(this.index); 
+      }, 250);
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,6 +34,15 @@ export class PlayerComponent implements OnChanges, OnInit{
       console.log(JSON.parse(sessionStorage.getItem('players')|| '[]'))
       this.player = JSON.parse(sessionStorage.getItem('players')|| '[]')[this.index];
 
+    }
+  }
+
+
+  public getActivePlayer(i: number){
+    if(i+1 == parseInt(sessionStorage.getItem('activePlayer') || '0')){
+      this.isActive = true
+    }else{
+      this.isActive = false
     }
   }
 
