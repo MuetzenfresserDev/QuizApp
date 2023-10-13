@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { GeoguessrQuestion } from 'src/app/interfaces/question';
 
@@ -7,7 +8,7 @@ import { GeoguessrQuestion } from 'src/app/interfaces/question';
   templateUrl: './geogeussr.component.html',
   styleUrls: ['./geogeussr.component.scss']
 })
-export class GeogeussrComponent implements OnInit {
+export class GeogeussrComponent implements OnInit, OnChanges {
 
   @Input() data: GeoguessrQuestion = {
     question: '',
@@ -18,14 +19,22 @@ export class GeogeussrComponent implements OnInit {
     bonus: false
   };
 
+  videoSize = ConstQuestions.videoSize;
+  youtubeLink: SafeResourceUrl | undefined;
   showCorrected: boolean = false;
   hideAll: boolean = false;
 
   pictureSize: {width: string, height: string} = ConstQuestions.pictureSize;
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.data.video){
+      this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.video);
+    }
   }
 
   public switchToCorrected(){

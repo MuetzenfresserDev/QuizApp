@@ -13,6 +13,7 @@ export class LocationComponent implements OnInit {
   @Input() data: any;
   players: Player[] = [];
   show: boolean = true;
+  showBackButton: boolean = false;
 
   pictureSize = ConstQuestions.pictureSize;
 
@@ -40,6 +41,14 @@ export class LocationComponent implements OnInit {
   public clickShowCanvas(){
     this.show = false;
     document.getElementById("geo")!.style.display = "block";
+    this.showBackButton = true;
+    console.log('true')
+  }
+
+  public clickShowQuestion(){
+    this.show = true;
+    document.getElementById("geo")!.style.display = "none";
+    this.showBackButton = false;
   }
 
 }

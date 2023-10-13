@@ -9,4 +9,16 @@
       <h4>{{data.answer}}</h4>
     </section>
   </div>
+  <div *ngIf=" showCorrected === true && data.video">
+    <iframe
+    [width]="videoSize.width"
+    [height]="videoSize.height"
+    [src]="youtubeLink"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    muted
+  ></iframe>
+  </div>
 </section>

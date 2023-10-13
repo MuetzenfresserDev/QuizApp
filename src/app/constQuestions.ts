@@ -22,7 +22,8 @@ export class ConstQuestions {
     static readonly geoImgurPics = {
         g1Minental: 'https://i.imgur.com/PvDcX8Z.png',
         khorinis: 'https://i.imgur.com/S2HSbb1.jpg',
-        g2Minental: 'https://i.imgur.com/yEO2dTJ.jpg'
+        g2Minental: 'https://i.imgur.com/yEO2dTJ.jpg',
+        g3: 'https://i.imgur.com/js2bFS1.jpg'
     }
 
     static readonly timers = {
@@ -83,18 +84,18 @@ export class ConstQuestions {
 
     /* Namenloser Held */
     static readonly held1: GuessingQuestion = { // Held 100
-        question: "Wahr oder Falsch?",
-        video: "https://www.youtube.com/embed/UK3vtT-KzqY?controls=1&vq=hd1080&autoplay=0",
+        question: "„Das ist ja ekelhaft!“ - So würden manche Bewohner der Insel Khorinis Fleischwanzen beschreiben. \n Aber wie viele Beine haben diese?",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Held 100 Antwort.jpg",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/Mrin7n7obsU?controls=1&vq=hd1080&autoplay=0"
+        videoQuestion: ""
     }
     static readonly held2:GuessingQuestion = { // Held 200
-        question: "Ohje… Ein Steckbrief! Und ein hohes Kopfgeld. Welche Charaktere erkennen unseren Helden wieder? ",
-        video: "https://www.youtube.com/embed/YeHeZPoS1bE?controls=1&vq=hd1080&autoplay=0",
+        question: "Der Held schlägt Valentino mit einem Schlag zu Boden, während dieser Vatras zuhört (14 Uhr). \n Wieviel Strafe muss er zahlen?",
+        video: "https://www.youtube.com/embed/5GCKAgLNVZc?si?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -103,32 +104,32 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly held3:GuessingQuestion = { // Held 300
-        question: "Noch so ein Spinner! Wer hat außer dem Helden in der Stadt auch noch von den Drachen berichtet?",
-        video: "https://www.youtube.com/embed/UNl137qDIqU?controls=1&vq=hd1080&autoplay=0",
+        question: "Zuschauer Frage",
+        video: "https://www.youtube.com/embed/nDsfgeZLNZY?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/qqxHyl5qvyo?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly held4:GuessingQuestion = { // Held 400 Raff ich ned
-        question: "Bei welchem seiner seitliche Fackelschritte fällt der Held links runter?",
-        video: "https://www.youtube.com/embed/6YsonD-oLFY?controls=1&vq=hd1080&autoplay=0",
+        question: "Wahr oder Falsch?",
+        video: "https://www.youtube.com/embed/kkIdaQ1UuPA?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Held 400 Frage.jpg',
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/MiR4zFJiHgQ?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly held5:GuessingQuestion = { // Held 500
-        question: "Wie viel Gewicht hatte das Gold, für das Bergmar Burggraf zu Westfeld die Bergfestung aufgegeben hatte?",
-        video: "",
+        question: "Der Held lässt seine Waffe fallen. In welche Richtung zeigt sie? (Uhrzeit)",
+        video: "https://www.youtube.com/embed/v7voZ6bNUl4?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Held 500 Antwort.jpg",
-        pictureQuestion: '',
+        picture: "",
+        pictureQuestion: "assets/guessing/pictures/Held 500 Frage.jpg",
         bonus: false,
         videoQuestion: ""
     }
@@ -136,153 +137,164 @@ export class ConstQuestions {
 
     /* Diego */
     static readonly diego1: GuessingQuestion = { // Diego 100
-        question: "DndR: Diego geht Klauen. Er beklaut im Taschendiebstahl … Daron, Hakon, Harad, Kardif und Albrecht. \n Wieviel Gold hat er beisammen?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Daron 80, Hakon 65, Harad 35, Kardif 85, Albrecht 160 – Summe: 425 Gold",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly diego2:BuzzerQuestion = { // Diego 200
-        question: "Warum haut Coragon Valentino um?",
-        kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/r9AQX3rBd5g?controls=1&vq=hd1080&autoplay=0"
-    }
-    static readonly diego3:GuessingQuestion = { // Diego 300
-        question: "Welche Auswahl an Namen kann bei den Dexter Banditen verfügbar sein",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Diego 300 Antwort.jpg",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly diego4: BuzzerQuestion= { // Diego 400
-        question: "Wer bin ich?",
-        kind: "Buzzer-Frage",
-        picture: "assets/buzzer/Diego 400 Antwort.jpg"
-    }
-    static readonly diego5: LocationQuestion = { // Diego 500
-        question: "Diego hat sich verlaufen. Wo befindet er sich? (1)",
-        searchPicture: "assets/geoguessr/searchPictures/GeoG 5 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/GeoG 5 Antwort.jpg",
-        imgurLink: this.geoImgurPics.khorinis, //khorinis
-        bonus: false,
-    }
-
-    /* Lester */
-    static readonly lester1:LocationQuestion = { // Lester 100
-        question: "Lester hat sich verlaufen. Wo befindet er sich? (3)",
-        searchPicture: "assets/geoguessr/searchPictures/GeoG 2 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/GeoG 2 Antwort.jpg",
-        imgurLink: this.geoImgurPics.g1Minental, //khorinis
-        bonus: false,
-    }
-    static readonly lester2: GuessingQuestion = { // Lester 200
-        question: "Wahr oder Falsch?",
-        video: "https://www.youtube.com/embed/c9ukFxymuqk?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/h1OFGLDftxM?controls=1&vq=hd1080&autoplay=0"
-    }
-    static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Bonusfrage von Snowgen! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/WNVfU5rUPC4?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Bonusfrage von Jase! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/mAPPopsAPSo?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/kxVI8uF05c4?controls=1&vq=hd1080&autoplay=0" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/FYJgkqWqr0g?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly lester4:GuessingQuestion = { // Lester 400
-        question: "Wie heißt dieser Charakter?",
+    static readonly diego2:LocationQuestion = { // Diego 200
+        question: "Diego hat sich verlaufen. Wo befindet er sich? (2)",
+        searchPicture: "assets/geoguessr/searchPictures/Diego 200 Frage.jpg",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Diego 200 Antwort.jpg",
+        imgurLink: this.geoImgurPics.g3, //khorinis
+        bonus: false,
+    }
+    static readonly diego3:GuessingQuestion = { // Diego 300
+        question: "Was sagt der erste Gardist wenn er einen Drachen erblickt?",
+        video: "https://www.youtube.com/embed/KjZq4nQsbsk?controls=1&vq=hd1080&autoplay=0",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/Fe4mOTZ8_z8?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly diego4: GeoguessrQuestion= { // Diego 400 NICHT FERTIG!
+        question: "Welcher dieser Schalter ist der richtige, um sicher in die nächste Kammer zu gelangen?",
+        searchPicture: "assets/geoguessr/searchPictures/Diego 400 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "",
+        imgurLink: this.geoImgurPics.g3, //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: 'https://www.youtube.com/embed/dy49vKjFnUM?controls=1&vq=hd1080&autoplay=0'
+    }
+    static readonly diego5: GuessingQuestion = { // Diego 500
+        question: "Ein unbekannter Jäger hinterließ eine Tagebuchseite in der Trollschlucht, in der er stolz den Plan verkündigt, einen Troll zu töten. \n Dies möchte er mit einer Monster-Schrumpfen-Spruchrolle schaffen. Doch wie viel hat er für diese Bezahlt?",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Lester 400 Antwort.jpg",
-        pictureQuestion: 'assets/guessing/pictures/Lester 400 Frage.jpg',
+        picture: "assets/guessing/pictures/Diego 500 Antwort.jpg",
+        pictureQuestion: '',
         bonus: false,
         videoQuestion: ""
     }
-    static readonly lester5: GuessingQuestion = { // Lester 500
-        question: "Im letzten Quiz konnten wir klären, welchen Weg Pedro nahm, um das Auge Innos zu den Feinden zu bringen. \n Heute müssen wir klären, wie lange er dafür gebraucht hat! \n Gib uns die Zeit an!",
+
+    /* Lester */
+    static readonly lester1:GuessingQuestion = { // Lester 100
+        question: "Lester bringt den Helden zu Cor Kalom. Wie lange dauert das?",
+        video: "https://www.youtube.com/embed/fiecWCU6dd0?controls=1&vq=hd1080&autoplay=0",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly lester2: GuessingQuestion = { // Lester 200
+        question: "Wahr oder Falsch?",
+        video: "https://www.youtube.com/embed/YApoRqx2rYQ?controls=1&vq=hd1080&autoplay=0",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/dNLwjbv8rrY?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly lester3:BuzzerQuestion = { // Lester 300
+            question: "Edgor sagt es läuft ziemlich mies. Nenne einen der 3 Gründe, warum es so mies läuft.",
+            kind: "Buzzer-Frage",
+            video: "https://www.youtube.com/embed/oYVQipRlv2Q?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly lester4:GuessingQuestion = { // Lester 400 TODO
+        question: "Bonusfrage von LordPappnase! -> 500 Gold Frage",
         video: "https://www.youtube.com/embed/txrgV_mfnSs?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/txrgV_mfnSs?controls=1&vq=hd1080&autoplay=0"
     }
-    
+    static readonly lester5: LocationQuestion = { // Lester 500
+        question: "Lester hat sich beim Verstärkung holen verlaufen. Wo befindet er sich? (3)",
+        searchPicture: "assets/geoguessr/searchPictures/Lester 500 Frage.jpg",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Lester 500 Antwort.jpg",
+        imgurLink: this.geoImgurPics.g3, //khorinis
+        bonus: false,
+    }
 
     /* Milten */
-    static readonly milten1:BuzzerQuestion = { // Milten 100
-        question: "Was genau hört man hier?",
-        kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/iMbgh5B40Mw?controls=1&vq=hd1080&autoplay=0",
-        audio: "assets/voicelines/Milten 100 Frage.mp3"
-    }
-    static readonly milten2:BuzzerQuestion = { // Milten 200
-        question: "Wer genau spricht diese Voiceline?",
-        kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/0czM5vVBA8Y?controls=1&vq=hd1080&autoplay=0",
-        audio: "assets/voicelines/Milten 200 Frage.mp3"
-    }
-    static readonly milten3: GuessingQuestion = { // Milten 300
-        question: "Babo schenkt dem Helden einen Kampfstab. Dabei erzählt er ihm auch, wie lange er schon im Kloster lebt. \n Wie lang ist es?",
-        video: "https://www.youtube.com/embed/BmE_jg7Qv18?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "4 Wochen",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Fülle die Lücken (nur rot)",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "-",
-        picture: "assets/guessing/pictures/Milten 400 Antwort.jpg",
-        pictureQuestion: 'assets/guessing/pictures/Milten 400 Frage.jpg',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Laut Pedro dürfen die Novizen der Feuermagier zwei Dinge NIEMALS tun. Welche sind das?",
-        video: "https://www.youtube.com/embed/EHf9J0YjW_U?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "-",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
-    }
-
-    /* Gorn */
-    static readonly gorn1:GuessingQuestion = { // Gorn 100
-        question: "Bonusfrage von Balnazza! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/O2sM8EEW1dE?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly milten1:GuessingQuestion= { // Milten 100
+        question: "Bonusfrage von Crazydogaming! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/8nSYNEXpXGw?si?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/snslBz1gpeI?controls=1&vq=hd1080&autoplay=0" //Fragevideo
+        videoQuestion: "https://www.youtube.com/embed/xdMw3IZsUsA?controls=1&vq=hd1080&autoplay=0" //Fragevideo
     }
-    static readonly gorn2:GuessingQuestion = { // Gorn 200
-        question: "Sekob der halte Geizhals ist schon seit Wochen überfällig mit seiner Pacht. \n Na, ein Glück kann der Held ihn davon überzeugen zu zahlen! Er legt sogar einen Bonus drauf! \n Wie hoch ist seine Pacht eigentlich, und wie hoch ist der versprochene Bonus, wenn man ihn vermöbelt?",
-        video: "https://www.youtube.com/embed/koGb7ZoBCCE?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly milten2:GuessingQuestion = { // Milten 200
+        question: "Milten kontrolliert die Innos-Schreine auf Spenden. Hilf ihm, sich die Items am Schrein von Lobarts Hof zu merken! \n Nenne 2 verschiedene!",
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "1 Wasser, 1 Apfel, 1 Gold, 2 Fischsuppen und 2 Blauflieder (eine Kerze)",
+        picture: "assets/guessing/pictures/Milten 200 Antwort.jpg",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "" //Fragevideo
+    }
+    static readonly milten3: BuzzerQuestion = { // Milten 300
+        question: "Wer genau spricht diese Voiceline?",
+        kind: "Buzzer-Frage",
+        video: "https://www.youtube.com/embed/r0uWDpwtfyQ?controls=1&vq=hd1080&autoplay=0",
+        audio: "assets/voicelines/Milten 300 Frage.mp3"
+    }
+    static readonly milten4:GuessingQuestion = { // Milten 400
+        question: "„Sie sind alle tot, alle… tot!“ Milten ist der letzte Überlebende der Feuermagier. Zur Rache setzt er Kontrolle ein! \n Wieviele Sekunden dauert es, bis dies bei Bloodwin funktioniert? (Kap. 4) G1",
+        video: "https://www.youtube.com/embed/88xCmjHZQGc?controls=1&vq=hd1080&autoplay=0",
+        kind: "Schätz-Frage",
+        correctAnswer: "-",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly milten5: GuessingQuestion = { // Milten 500
+        question: "Milten arbeitet für Xardas und muss herausfinden, um welche Zauber es sich hierbei handelt. Hilf ihm!",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "-",
+        picture: "assets/guessing/pictures/Milten 500 Antwort.jpg",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/tkVtlFsQ0HQ?controls=1&vq=hd1080&autoplay=0"
+    }
+
+    /* Gorn */
+    static readonly gorn1:BuzzerQuestion = { // Gorn 100
+        question: "Wer genau spricht diese Voiceline?",
+        kind: "Buzzer-Frage",
+        video: "https://www.youtube.com/embed/jKCohIY_gYc?controls=1&vq=hd1080&autoplay=0",
+        audio: "assets/voicelines/Gorn 100 Frage.mp3"
+    }
+    static readonly gorn2:LocationQuestion = { // Gorn 200 ->
+        question: "Gorn hat sich verlaufen. Wo befindet er sich? (1)",
+        searchPicture: "assets/geoguessr/searchPictures/Gorn 200 Frage.jpg",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Gorn 200 Antwort.jpg",
+        imgurLink: this.geoImgurPics.g3, //khorinis
+        bonus: false,
+    }
+    static readonly gorn3:GuessingQuestion = { // Gorn 300
+        question: "Der Paladin Gerold vergleicht Gorns Stärke mit einem Tier. Welches?",
+        video: "https://www.youtube.com/embed/XVkg47fA__8?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -290,7 +302,33 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "" //Fragevideo
     }
-    static readonly gorn3:GuessingQuestion = { // Gorn 300
+    static readonly gorn4:BuzzerQuestion = { // Gorn 400
+        question: "Wer bin ich? (G1/G2)",
+        kind: "Buzzer-Frage",
+        picture:"assets/buzzer/Gorn 400 Antwort.jpg",
+        audio: "assets/voicelines/Gorn 400 Frage.mp3"
+    }
+    static readonly gorn5: BuzzerQuestion = { // Gorn 500
+        question: "Was tut dieser Ork hier",
+        kind: "Buzzer-Frage",
+        pictureQuestion:"assets/buzzer/Gorn 500 Frage.jpg",
+        video: "https://www.youtube.com/embed/8-gOEDzaxws?controls=1&vq=hd1080&autoplay=0"
+    }
+
+    /* static readonly diego4: BuzzerQuestion= { // Diego 400
+        question: "Wer bin ich?",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Diego 400 Antwort.jpg"
+    } */
+
+    /* static readonly milten2:BuzzerQuestion = { // Milten 200
+        question: "Wer genau spricht diese Voiceline?",
+        kind: "Buzzer-Frage",
+        video: "https://www.youtube.com/embed/0czM5vVBA8Y?controls=1&vq=hd1080&autoplay=0",
+        audio: "assets/voicelines/Milten 200 Frage.mp3"
+    } */
+
+    /* static readonly gorn3:GuessingQuestion = { // Gorn 300
         question: "Bonusfrage von Hochkönig! -> 500 Gold Frage",
         video: "https://www.youtube.com/embed/rHq6i_3_9f4?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
@@ -299,22 +337,15 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: true,
         videoQuestion: "https://www.youtube.com/embed/LgalFvnQfiU?controls=1&vq=hd1080&autoplay=0" //Fragevideo
-    }
-    static readonly gorn4:LocationQuestion = { // Gorn 400
-        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
-        searchPicture: "assets/geoguessr/searchPictures/GeoG 4 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/GeoG 4 Antwort.jpg",
-        imgurLink: this.geoImgurPics.khorinis, //khorinis
-        bonus: false,
-    }
-    static readonly gorn5: VoicelineQuestion = { // Gorn 500
+    } */
+
+    /* static readonly gorn5: VoicelineQuestion = { // Gorn 500
         question: "Von wem stammt die Voiceline?",
         voiceLine: "assets/voicelines/Gorn 500 Frage.mp3",
         kind: "Voiceline-Fragen",
         correctAnswer: "https://www.youtube.com/embed/FoJRMyNRzRc?controls=1&vq=hd1080&autoplay=0",
         bonus: false
-    }
+    } */
 
     /* static readonly gorn2:LocationQuestion = { // Gorn 200
         question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",

@@ -105,6 +105,7 @@ export class QuestionComponent implements OnInit {
   }
 
   public clickShowAnswer(){
+    console.log('test')
     this.showAnswer = true;
     this.hideQuestion = false;
     this.showQuestionVideo = false;

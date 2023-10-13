@@ -32,7 +32,7 @@ export class GuessingComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    if(this.data.video != ''){
+    if(this.data.video != '' || this.data.videoQuestion != ''){
       this.youtubeQuestionLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.videoQuestion);
       this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.video);
     }   

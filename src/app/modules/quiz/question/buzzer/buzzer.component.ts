@@ -16,9 +16,12 @@ export class BuzzerComponent implements OnInit {
   show: boolean = false;
   videoSize = ConstQuestions.videoSize;
   pictureSize = ConstQuestions.pictureSize;
+  questionPictureSize = {width: '504', height: '284'};
   youtubeLink: SafeResourceUrl | undefined;
   showVideo: boolean = false;
   showPicture: boolean = false;
+  showPictureQuestion: boolean = false;
+  showLsgButton = false;
 
   @ViewChild('audioPlayer') audioPlayer: ElementRef | undefined;
 
@@ -58,7 +61,14 @@ export class BuzzerComponent implements OnInit {
   }
 
   public showQuestion(){
+    if(document.getElementById("buzz")!.style.display == "none"){
+      document.getElementById("buzz")!.style.display = "block";
+    }
     this.show = true;
+    this.showPictureQuestion = true;
+    this.showLsgButton = true;
+    this.showVideo = false;
+    this.showPicture = false;
   }
 
   public showVideoAnswer(){
@@ -67,6 +77,8 @@ export class BuzzerComponent implements OnInit {
     }
     this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.video);
     this.showVideo = true;
+    this.showPictureQuestion = false;
+    this.showLsgButton = false;
   }
 
   public showPictureAnswer(){
@@ -74,6 +86,8 @@ export class BuzzerComponent implements OnInit {
       document.getElementById("buzz")!.style.display = "none";
     }
     this.showPicture = true;
+    this.showPictureQuestion=false;
+    this.showLsgButton = false
   }
 
 }

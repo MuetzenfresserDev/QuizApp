@@ -38,6 +38,7 @@ export interface GeoguessrQuestion {
     imgurLink: string;
     bonus: boolean;
     answer?: string;
+    video?: string;
 }
 
 export interface GuessingQuestion {
@@ -66,4 +67,5 @@ export interface BuzzerQuestion {
     video?: string;
     audio?: string;
     picture?: string;
+    pictureQuestion?: string;
 }

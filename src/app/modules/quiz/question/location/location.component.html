@@ -9,6 +9,7 @@
     <h4>{{ data.question }}</h4>
     <section fxLayoutAlign="center center">
       <button
+        *ngIf="showBackButton === false"
         mat-flat-button
         color="accent"
         (click)="clickShowCanvas()"
@@ -25,10 +26,17 @@
     />
   </div>
 </section>
+
 <section
-  *ngIf="show === true"
+  *ngIf="showBackButton === true"
   class="wordbreak"
   fxLayout="column"
-  fxLayoutAlign="center center"
+  fxLayoutAlign="end center"
   fxLayoutGap="2vw"
-></section>
+>
+  <section>
+    <button style="margin-left:93vw;" mat-flat-button color="accent" (click)="clickShowQuestion()">
+      Zur Frage
+    </button>
+  </section>
+</section>

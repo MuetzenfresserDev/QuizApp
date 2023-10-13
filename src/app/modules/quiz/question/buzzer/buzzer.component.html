@@ -17,7 +17,7 @@
   </button>
 
   <button
-    *ngIf="data.hasOwnProperty('video')"
+    *ngIf="data.hasOwnProperty('video') && showLsgButton === true"
     (click)="showVideoAnswer()"
     mat-flat-button
     color="accent"
@@ -26,7 +26,7 @@
   </button>
 
   <button
-    *ngIf="data.hasOwnProperty('picture')"
+    *ngIf="data.hasOwnProperty('picture') && showLsgButton === true"
     (click)="showPictureAnswer()"
     mat-flat-button
     color="accent"
@@ -41,11 +41,21 @@
   ></audio>
 </section>
 
+<section *ngIf="showPictureQuestion === true && data.hasOwnProperty('pictureQuestion')">
+  <img
+    [src]="data.pictureQuestion"
+    [width]="questionPictureSize.width"
+    [height]="questionPictureSize.height"
+    style="z-index: 10000; position: absolute; top: 20%; left: 70%;"
+  />
+</section>
+
 <section
-  *ngIf="show === false"
-  fxLayout="row"
+  *ngIf="showLsgButton === false"
+  fxLayout="column"
   fxLayoutAlign="center center"
   fxLayoutGap="2vw"
+  style="margin-bottom: 10px;"
 >
   <button
     (click)="showQuestion()"
