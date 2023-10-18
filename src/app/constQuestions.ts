@@ -166,10 +166,10 @@ export class ConstQuestions {
     }
     static readonly diego4: GeoguessrQuestion= { // Diego 400 NICHT FERTIG!
         question: "Welcher dieser Schalter ist der richtige, um sicher in die nächste Kammer zu gelangen?",
-        searchPicture: "assets/geoguessr/searchPictures/Diego 400 Frage.jpg",
+        searchPicture: "assets/guessing/pictures/Diego_400_Frage_Hell_mit_markierung.jpg",
         kind: "Geo-Frage",
         markedPicture: "",
-        imgurLink: this.geoImgurPics.g3, //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        imgurLink: "https://i.imgur.com/Dd1RH1Q.jpg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
         video: 'https://www.youtube.com/embed/dy49vKjFnUM?controls=1&vq=hd1080&autoplay=0'
     }
