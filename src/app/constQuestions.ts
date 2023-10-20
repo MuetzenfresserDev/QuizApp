@@ -11,7 +11,7 @@ export class ConstQuestions {
         'e561cc9f-cb97-4031-b8f8-a1b0ad875676'   //Spieler 4 Url
       ];
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/dRnH2cU3_m4?controls=0&autoplay=1&mute=1&playlist=dRnH2cU3_m4&loop=1'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/2kL4-TdQ3dw?controls=0&autoplay=1&mute=1&playlist=2kL4-TdQ3dw&loop=1'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 
@@ -113,7 +113,7 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "https://www.youtube.com/embed/qqxHyl5qvyo?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly held4:GuessingQuestion = { // Held 400 Raff ich ned
+    static readonly held4:GuessingQuestion = { // Held 400
         question: "Wahr oder Falsch?",
         video: "https://www.youtube.com/embed/kkIdaQ1UuPA?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
@@ -164,7 +164,7 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "https://www.youtube.com/embed/Fe4mOTZ8_z8?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly diego4: GeoguessrQuestion= { // Diego 400 NICHT FERTIG!
+    static readonly diego4: GeoguessrQuestion= { // Diego 400
         question: "Welcher dieser Schalter ist der richtige, um sicher in die nächste Kammer zu gelangen?",
         searchPicture: "assets/guessing/pictures/Diego_400_Frage_Hell_mit_markierung.jpg",
         kind: "Geo-Frage",
@@ -212,13 +212,13 @@ export class ConstQuestions {
     }
     static readonly lester4:GuessingQuestion = { // Lester 400 TODO
         question: "Bonusfrage von LordPappnase! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/txrgV_mfnSs?controls=1&vq=hd1080&autoplay=0",
+        video: "https://www.youtube.com/embed/aBvRlV3BdpA?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/txrgV_mfnSs?controls=1&vq=hd1080&autoplay=0"
+        videoQuestion: "https://www.youtube.com/embed/nOFnoSIFpI0?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly lester5: LocationQuestion = { // Lester 500
         question: "Lester hat sich beim Verstärkung holen verlaufen. Wo befindet er sich? (3)",
