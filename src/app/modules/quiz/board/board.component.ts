@@ -96,6 +96,12 @@ export class BoardComponent implements OnInit {
 
     ref.afterClosed().subscribe(()=>{
 
+      let alreadyUsed = ""
+
+      if(this.usedQuestionColors[i][j] == ""){
+        alreadyUsed = "used"
+      }
+
       if(item.bonus === true){
         this.usedQuestionColors[i][j] = "bonus";
       }else{
@@ -122,14 +128,19 @@ export class BoardComponent implements OnInit {
         this.doubleThreshold += 1;
       }
 
-      if(this.activePlayer > 0){
-        if(this.activePlayer < (JSON.parse(sessionStorage.getItem('playerCount') || '[]')).playerCount.length){
-          this.activePlayer += 1;
-        } else{
-          this.activePlayer = 1;
+      if(alreadyUsed != "used"){
+
+        if(this.activePlayer > 0){
+          if(this.activePlayer < (JSON.parse(sessionStorage.getItem('playerCount') || '[]')).playerCount.length){
+            this.activePlayer += 1;
+          } else{
+            this.activePlayer = 1;
+          }
+          sessionStorage.setItem('activePlayer', JSON.stringify(this.activePlayer))
         }
-        sessionStorage.setItem('activePlayer', JSON.stringify(this.activePlayer))
+
       }
+      
 
     })
 

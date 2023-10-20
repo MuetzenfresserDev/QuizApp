@@ -22,8 +22,21 @@
   .geo{
     z-index: 9999; 
     position: fixed; 
-    top: 40%; 
-    left: 60%; 
+    top: 1%; 
+    left: 30%; 
     transform: translate(-50%, -50%);
     display: none;
+  }
+
+  #geo{
+    -moz-transform: scale(0.88, 0.88); 
+    -webkit-transform: scale(0.88, 0.88); 
+    -o-transform: scale(0.88, 0.88);
+    -ms-transform: scale(0.88, 0.988);
+    transform: scale(0.88, 0.88); 
+    -moz-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    -o-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
   }
