@@ -98,7 +98,7 @@ export class BoardComponent implements OnInit {
 
       let alreadyUsed = ""
 
-      if(this.usedQuestionColors[i][j] == ""){
+      if(this.usedQuestionColors[i][j] == "" || this.usedQuestionColors[i][j] == "bonus"){
         alreadyUsed = "used"
       }
 
