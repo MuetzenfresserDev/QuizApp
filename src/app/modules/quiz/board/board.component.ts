@@ -3,6 +3,7 @@ import { ConstQuestions } from 'src/app/constQuestions';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogData } from 'src/app/interfaces/dialogData';
+import { RequestDataService } from 'src/app/services/request/requestData.service';
 
 @Component({
   selector: 'app-board',
@@ -35,6 +36,7 @@ export class BoardComponent implements OnInit {
   doubleThreshold: number = 0;
 
   boold: boolean = false;
+
 
   activePlayer = parseInt(sessionStorage.getItem('activePlayer') || '1')
 
@@ -75,9 +77,7 @@ export class BoardComponent implements OnInit {
     }
     else{
       this.usedQuestionColors = JSON.parse(sessionStorage.getItem('usedQuestionColors')|| '[]');
-    }
-
-    
+    }   
 
   }
 
@@ -92,9 +92,23 @@ export class BoardComponent implements OnInit {
       },
     }
 
+    console.log(dialogData.data.Data)
+
+    if(dialogData.data.Data.hasOwnProperty('options')){
+
+      /* this.requestService.getData('https://api.twitch.tv/helix/users')
+      .subscribe((data: any) => {
+        console.log(data);
+      },() =>{
+        console.log('failed')
+      }) */
+
+    }
+
     let ref = this.dialogService.openDialog(dialogData);
 
     ref.afterClosed().subscribe(()=>{
+
 
       let alreadyUsed = ""
 

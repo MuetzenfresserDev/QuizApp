@@ -2,6 +2,16 @@
 
 <section fxLayout="column" fxLayoutAlign="center center" fxFill>
 
+  <button
+        mat-flat-button
+        color="accent"
+        (click)="starteFrage()"
+        *ngIf="data.hasOwnProperty('options')"
+        [disabled]="started === true"
+      >
+        Vorhersage starten
+      </button>
+
   <!-- Zeigt Fragen und Antworten der inneren Frage Komponenten an -->
   <section>
 
@@ -128,4 +138,5 @@
       ></app-timer>
     </section>
   </section>
+
 </section>

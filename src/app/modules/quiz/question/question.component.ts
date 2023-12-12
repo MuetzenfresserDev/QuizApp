@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { ErrorPictureComponent } from './errorPicture/errorPicture.component';
 import { GeogeussrComponent } from './geogeussr/geogeussr.component';
@@ -6,13 +6,14 @@ import { GuessingComponent } from './guessing/guessing.component';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VoicelineComponent } from './voiceline/voiceline.component';
+import { RequestDataService } from 'src/app/services/request/requestData.service';
 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss']
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent implements OnInit, OnDestroy {
 
   @Input() data: any;
   @Input() playerCount: any = [];
@@ -58,7 +59,15 @@ export class QuestionComponent implements OnInit {
 
   voiceVideo: SafeResourceUrl | undefined;
 
-  constructor(private playerNamesService: PlayerNameService, private sanitizer: DomSanitizer) {
+  predictionId: string = '';
+  correctId: string = '';
+  title: string = 'Was denkst du?'
+
+  started: boolean = false;
+
+  auth = ConstQuestions.twitchAuth;
+
+  constructor(private playerNamesService: PlayerNameService, private sanitizer: DomSanitizer, private requestService: RequestDataService) {
     this.audio = new Audio();
    }
 
@@ -71,6 +80,7 @@ export class QuestionComponent implements OnInit {
     this.setDimension(JSON.parse(sessionStorage.getItem('playerCount')|| '[]').fxFlex);
 
     console.log(this.data)
+
 
     if(this.data.videoQuestion != ''){
       this.youtubeQuestion = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.videoQuestion);
@@ -87,6 +97,56 @@ export class QuestionComponent implements OnInit {
  
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.endPrediction();
+  }
+
+  
+  private createPrediction(question: string, options: string[] , index: number){
+
+    console.log('Prediction Starded')
+
+    const choices = options.map(option => ({ title: option }));
+
+      let body = {
+        broadcaster_id: this.auth.channelId,
+        title: this.title,
+        outcomes: choices,
+        prediction_window: 30
+      };
+
+      this.requestService.postData(this.auth.twitchApiUrl + '/predictions', body)
+      .subscribe((data: any) => {
+        this.predictionId = data.data[0].id;
+        this.correctId = data.data[0].outcomes[index].id
+      })
+  }
+
+  private endPrediction(){
+
+    console.log('PREDICTION ENDED')
+
+    let body = {
+      broadcaster_id: this.auth.channelId,
+      id: this.predictionId,
+      status: 'RESOLVED',
+      winning_outcome_id: this.correctId
+    };
+
+    this.requestService.patchData(this.auth.twitchApiUrl + '/predictions', body)
+      .subscribe(() => {
+        
+      })
+
+  }
+
+  public starteFrage(){
+    if(this.started == false){
+      this.createPrediction(this.data.question, this.data.options, this.data.index)
+    }
+      this.started = true;
   }
 
   private setDimension(n: number){

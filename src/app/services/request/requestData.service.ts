@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ConstQuestions } from 'src/app/constQuestions';
 
 @Injectable({
   providedIn: 'root',
@@ -75,4 +77,42 @@ export class RequestDataService {
       }
     );
   }
+
+  public patchData(url: string, body: any): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Client-ID': ConstQuestions.twitchAuth.clientId, 
+      'Authorization': `Bearer ${ConstQuestions.twitchAuth.oauthToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.patch(url,body,{headers})
+
+  }
+
+  public getData(url: string): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Client-ID': ConstQuestions.twitchAuth.clientId, 
+      'Authorization': `Bearer ${ConstQuestions.twitchAuth.oauthToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    const options = { headers };
+
+    return this.http.get(url, options);
+  }
+
+  public postData(url: string, body: any): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Client-ID': ConstQuestions.twitchAuth.clientId, 
+      'Authorization': `Bearer ${ConstQuestions.twitchAuth.oauthToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(url,body,{headers});
+  }
+
+
 }

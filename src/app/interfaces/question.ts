@@ -50,6 +50,8 @@ export interface GuessingQuestion {
     kind: string;
     correctAnswer: string;
     bonus: boolean;
+    options?: string[];
+    index?: number;
 }
 
 export interface LocationQuestion {
