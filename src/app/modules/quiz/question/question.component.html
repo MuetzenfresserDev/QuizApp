@@ -6,7 +6,7 @@
         mat-flat-button
         color="accent"
         (click)="starteFrage()"
-        *ngIf="data.hasOwnProperty('options')"
+        *ngIf="data.hasOwnProperty('options') && auth.channelId !== ''"
         [disabled]="started === true"
       >
         Vorhersage starten
