@@ -3,16 +3,6 @@ import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, Loc
 
 export class ConstQuestions {
 
-    constructor(private route: ActivatedRoute){
-
-        this.route.queryParams.subscribe(params => {
-            ConstQuestions.twitchAuth.channelId = params['channelId'];
-            ConstQuestions.twitchAuth.clientId = params['clientId'];
-            ConstQuestions.twitchAuth.oauthToken = params['oauthToken']
-        })
-
-    }
-
     static readonly clientId: string = '38c4dfef2a0e8aba637ea15987ba542f';
 
     static readonly whiteboardUrls: string[] = [
@@ -24,9 +14,9 @@ export class ConstQuestions {
 
     static twitchAuth = {
         twitchApiUrl: 'https://api.twitch.tv/helix',
-        clientId: '',
-        oauthToken: '',
-        channelId: ''
+        clientId: new URL(window.location.href).searchParams.get('clientId'),
+        oauthToken: new URL(window.location.href).searchParams.get('oauthToken'),
+        channelId: new URL(window.location.href).searchParams.get('channelId')
     }
 
     static readonly youtubeRef: string = 'https://www.youtube.com/embed/2kL4-TdQ3dw?controls=0&autoplay=1&mute=1&playlist=2kL4-TdQ3dw&loop=1'; //Hintergrund Video

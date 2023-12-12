@@ -73,6 +73,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    console.log(this.auth)
+
     if(this.data.kind == "Voiceline-Fragen"){
       this.voiceVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.correctAnswer);
     }
@@ -100,7 +102,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.endPrediction();
+    if(this.auth.channelId != ''){
+      this.endPrediction();
+    }
   }
 
   
@@ -143,7 +147,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   public starteFrage(){
-    if(this.started == false){
+    if(this.started == false && this.auth.channelId != ''){
       this.createPrediction(this.data.question, this.data.options, this.data.index)
     }
       this.started = true;
