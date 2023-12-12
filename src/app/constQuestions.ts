@@ -124,8 +124,8 @@ export class ConstQuestions {
         pictureQuestion: 'assets/guessing/pictures/Held 300 Frage.jpg',
         bonus: false,
         videoQuestion: "",
-        /* options: ['Spalter','Reiser', 'Folteraxt', 'rostige Axt'],
-        index: 2  */
+        options: ['Spalter','Reiser', 'Folteraxt', 'rostige Axt'],
+        index: 2 
     }
     static readonly held4:LocationQuestion = { // Held 400 -> GEOGUESSR !1!
         question: "Der Held hat sich mal wieder verlaufen. Wo befindet er sich? (1)",
@@ -139,8 +139,8 @@ export class ConstQuestions {
         question: "Wer hat den Brief für den obersten Feuermagier geschrieben (bzw, dem Helden ausgehändigt)?",
         kind: "Buzzer-Frage",
         video: "https://www.youtube.com/embed/tlhZMkSrlMk?controls=1&vq=hd1080&autoplay=0",
-        /* options: ['Serpentes','Xardas', 'Marduk', 'Pyrokar'],
-        index: 3  */
+        options: ['Serpentes','Xardas', 'Marduk', 'Pyrokar'],
+        index: 3 
     }
 
 
@@ -154,8 +154,8 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: true,
         videoQuestion: "https://www.youtube.com/embed/izwNF3rnhFA?controls=1&vq=hd1080&autoplay=0",
-        /* options: ['Keiner','1', '2', '3'],
-        index: 1  */
+        options: ['Keiner','1', '2', '3'],
+        index: 1 
     }
     static readonly diego2:GuessingQuestion = { // Diego 200
         question: "Um in Gothic 1 Taschendiebstahl durchzuführen braucht man essentiell eine weitere Fähigkeit. \n Welche?",
@@ -166,8 +166,8 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        /* options: ['Geschick > 30','Einhandkampf Stufe 1', 'Schlösser öffnen', 'Schleichen'],
-        index: 3  */
+        options: ['Geschick > 30','Einhandkampf Stufe 1', 'Schlösser öffnen', 'Schleichen'],
+        index: 3 
     }
     static readonly diego3:LocationQuestion = { // Diego 300 -> GEOGUESSR !2!
         question: "Diego hat sich mal wieder verlaufen. Wo befindet er sich? (2)",
@@ -185,15 +185,15 @@ export class ConstQuestions {
         imgurLink: "https://i.imgur.com/UbTRoV0.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
         video: '',
-        /* options: ['Oben links','Oben rechts', 'Unten links', 'Unten rechts'],
-        index: 0  */
+        options: ['Oben links','Oben rechts', 'Unten links', 'Unten rechts'],
+        index: 0 
     }
     static readonly diego5: BuzzerQuestion = { // Diego 500
         question: "Greg, der Kapitän der Piraten schimpft in seinem Logbuch ganz stark über das Verhalten der Banditen. \n Einer der Banditen wird namentlich erwähnt. Den möchte er zu Fischfutter verarbeiten. \n Um wen geht es?",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Diego 500 Antwort.jpg",
-        /* options: ['Raven','Esteban', 'Bloodwyn', 'Juan'],
-        index: 2  */
+        options: ['Raven','Esteban', 'Bloodwyn', 'Juan'],
+        index: 2 
     }
 
     /* Lester */
@@ -203,8 +203,8 @@ export class ConstQuestions {
         kind: "Voiceline-Fragen",
         correctAnswer: "https://www.youtube.com/embed/NHujIooPL1s?controls=1&vq=hd1080&autoplay=0",
         bonus: false,
-        /* options: ['Bloodwyn','Lee', 'Saturas', 'Raven'],
-        index: 1  */
+        options: ['Bloodwyn','Lee', 'Saturas', 'Raven'],
+        index: 1 
     }
     static readonly lester2: GuessingQuestion = { // Lester 200
         question: "Welche Wirkungen haben die drei Sumpfkrautstängel der Bruderschaft?",
@@ -215,8 +215,8 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        /* options: ['+10 Erfahrung, +5 Erfahrung, +2 Mana','+50 Erfahrung, +1 Mana, +2 Mana', '+25 Erfahrung, +50 Erfahrung, +1 Mana', '+50 Erfahrung, +2 Mana, +3 Mana'],
-        index: 0  */
+        options: ['+10 Erfahrung, +5 Erfahrung, +2 Mana','+50 Erfahrung, +1 Mana, +2 Mana', '+25 Erfahrung, +50 Erfahrung, +1 Mana', '+50 Erfahrung, +2 Mana, +3 Mana'],
+        index: 0 
     }
     static readonly lester3:GuessingQuestion = { // Lester 300
         question: "Wahr oder Falsch?",
@@ -227,15 +227,15 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "https://www.youtube.com/embed/lYTZUAxvYD8?controls=1&vq=hd1080&autoplay=0",
-        /* options: ['wahr wahr wahr','falsch wahr falsch', 'wahr wahr falsch', 'falsch falsch war'],
-        index: 2  */
+        options: ['wahr wahr wahr','falsch wahr falsch', 'wahr wahr falsch', 'falsch falsch war'],
+        index: 2 
     }
     static readonly lester4:BuzzerQuestion = { // Lester 400
         question: "Wer bin ich?",
         kind: "Buzzer-Frage",
         audio: "assets/buzzer/Lester 400 Frage.mp3",
-        /* options: ['Gomez','Diego', 'Gorn', 'Sylas'],
-        index: 1  */
+        options: ['Gomez','Diego', 'Gorn', 'Sylas'],
+        index: 1 
     }
     static readonly lester5: LocationQuestion = { // Lester 500 -> Geoguessr !3!
         question: "Lester hat sich mal wieder verlaufen. Wo befindet er sich? (3)",
@@ -246,6 +246,7 @@ export class ConstQuestions {
         bonus: false,
     }
 
+
     /* Milten */
     static readonly milten1:GeoguessrQuestion= { // Milten 100
         question: "Milten schreibt Spruchrollen. Er hat jedoch vergessen, welche Farbe die Punktfarbe folgender Spruchrollen werden muss. \n Die erste hat er schon gefärbt!",
@@ -255,8 +256,8 @@ export class ConstQuestions {
         imgurLink: "https://i.imgur.com/QY7Y0UY.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
         video: '',
-        /* options: ['Rot Grün Blau','Schwarz Lila Rot', 'Rot Lila Gelb', 'Blau Grün Gelb'],
-        index: 2  */
+        options: ['Rot Grün Blau','Schwarz Lila Rot', 'Rot Lila Gelb', 'Blau Grün Gelb'],
+        index: 2 
     }
     static readonly milten2:GuessingQuestion = { // Milten 200 TODO -> Fehlt noch
         question: "Milten kontrolliert die Innos-Schreine auf Spenden. Hilf ihm, sich die Items am Schrein von Lobarts Hof zu merken! \n Nenne 2 verschiedene!",
@@ -285,8 +286,8 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        /* options: ['4:20', '3:22', '5:21', '3:48'],
-        index: 3  */
+        options: ['4:20', '3:22', '5:21', '3:48'],
+        index: 3 
     }
     static readonly milten5: GuessingQuestion = { // Milten 500
         question: "Torrez bietet einige Bücher zum verkauf an. Dies ist das erste Band einer Buchreihe.",
@@ -297,8 +298,8 @@ export class ConstQuestions {
         pictureQuestion: 'assets/guessing/pictures/Milten 500 Frage.jpg',
         bonus: false,
         videoQuestion: "",
-        /* options: ['Lehren der Götter Band 1','Astronomie Band 2', 'Chromanin (3)', 'Arkanum Golum Band 2'],
-        index: 0  */
+        options: ['Lehren der Götter Band 1','Astronomie Band 2', 'Chromanin (3)', 'Arkanum Golum Band 2'],
+        index: 0 
     }
 
     /* Gorn */
@@ -311,15 +312,15 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        /* options: ['0:39', '1:05', '0:57', '1:16'],
-        index: 0  */
+        options: ['0:39', '1:05', '0:57', '1:16'],
+        index: 0 
     }
     static readonly gorn2:BuzzerQuestion = { // Gorn 200 
         question: "Jarvice, Söldner aus dem Neuen Lager, ist der Meinung, etwas „besonderes“ zum Tausch für ihren Erzhaufen bekommen zu können. \n Was ist das?",
         kind: "Buzzer-Frage",
         video:"https://www.youtube.com/embed/wYKcJaXAuAU?controls=1&vq=hd1080&autoplay=0",
-        /* options: ['Begnadigung', 'Waffen', 'Des Königs Frau', 'Köstliches essen'],
-        index: 2  */
+        options: ['Begnadigung', 'Waffen', 'Des Königs Frau', 'Köstliches essen'],
+        index: 2 
     }
     static readonly gorn3:GuessingQuestion = { // Gorn 300 -> TODO Fehlt noch
         question: "Der Paladin Gerold vergleicht Gorns Stärke mit einem Tier. Welches?",
@@ -335,8 +336,8 @@ export class ConstQuestions {
         question: "Wer bin ich? (G1/G2)",
         kind: "Buzzer-Frage",
         audio: "assets/voicelines/Gorn 400 Frage.mp3",
-        /* options: ['Cord', 'Jakal', 'Bloodwyn', 'Lefty'],
-        index: 3  */
+        options: ['Cord', 'Jakal', 'Bloodwyn', 'Lefty'],
+        index: 3 
     }
     static readonly gorn5: GuessingQuestion = { // Gorn 500
         question: "Gorn geht auf den Markt. Er besitzt 10 Gold. \n Er verkauft seine Steitaxt und seine Kriegsarmbrust. \n Wie viele kleine Heiltränke (Essens der Heilung) kann er sich nun leisten?",
@@ -347,8 +348,8 @@ export class ConstQuestions {
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "", //Fragevideo
-        /* options: ['5', '7', '16', '19'],
-        index: 2  */
+        options: ['5', '7', '16', '19'],
+        index: 2 
     }
 
     /* static readonly diego4: BuzzerQuestion= { // Diego 400

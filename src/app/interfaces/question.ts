@@ -12,6 +12,8 @@ export interface VoicelineQuestion {
     kind: string;
     correctAnswer: string;
     bonus: boolean;
+    options?: string[];
+    index?: number;
 }
 
 export interface Answer{
@@ -28,6 +30,8 @@ export interface ErrorQuestion {
     correctedPicture: string;
     imgurLink: string;
     bonus: boolean;
+    options?: string[];
+    index?: number;
 }
 
 export interface GeoguessrQuestion {
@@ -39,6 +43,8 @@ export interface GeoguessrQuestion {
     bonus: boolean;
     answer?: string;
     video?: string;
+    options?: string[];
+    index?: number;
 }
 
 export interface GuessingQuestion {
@@ -70,4 +76,6 @@ export interface BuzzerQuestion {
     audio?: string;
     picture?: string;
     pictureQuestion?: string;
+    options?: string[];
+    index?: number;
 }
