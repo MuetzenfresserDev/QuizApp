@@ -259,15 +259,17 @@ export class ConstQuestions {
         options: ['Rot Grün Blau','Schwarz Lila Rot', 'Rot Lila Gelb', 'Blau Grün Gelb'],
         index: 2 
     }
-    static readonly milten2:GuessingQuestion = { // Milten 200 TODO -> Fehlt noch
-        question: "Milten kontrolliert die Innos-Schreine auf Spenden. Hilf ihm, sich die Items am Schrein von Lobarts Hof zu merken! \n Nenne 2 verschiedene!",
-        video: "", //Antwortvideo
+    static readonly milten2:GuessingQuestion = { // Milten 200 TODO
+        question: "Bonusfrage von Darkside! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/jmmm0RfBQhc?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
-        correctAnswer: "1 Wasser, 1 Apfel, 1 Gold, 2 Fischsuppen und 2 Blauflieder (eine Kerze)",
-        picture: "assets/guessing/pictures/Milten 200 Antwort.jpg",
+        correctAnswer: "",
+        picture: "",
         pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "" //Fragevideo
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/AGyboCA3lfU?controls=1&vq=hd1080&autoplay=0",
+        options: ['4','7', '5', '9'],
+        index: 2
     }
     static readonly milten3: LocationQuestion = { // Milten 300 -> Geoguessr !4!
         question: "Milten hat Urshak im alten Kastell gefunden! \n Weist du auch wo er in Gothic 2 zu finden ist? (4)",
@@ -322,15 +324,17 @@ export class ConstQuestions {
         options: ['Begnadigung', 'Waffen', 'Des Königs Frau', 'Köstliches essen'],
         index: 2 
     }
-    static readonly gorn3:GuessingQuestion = { // Gorn 300 -> TODO Fehlt noch
-        question: "Der Paladin Gerold vergleicht Gorns Stärke mit einem Tier. Welches?",
-        video: "https://www.youtube.com/embed/XVkg47fA__8?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly gorn3:GuessingQuestion = { // Gorn 300
+        question: "Was sind für Cor Angar die Voraussetzungen für jeden Kämpfer?",
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
-        correctAnswer: "",
+        correctAnswer: "Kampfkraft und Wendigkeit",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: "" //Fragevideo
+        videoQuestion: "",
+        options: ['Mut und Stolz', 'Ehre und Kraft', 'Flinkheit und Gerissenheit', 'Kampfkraft und Wendigkeit'],
+        index: 3 
     }
     static readonly gorn4:BuzzerQuestion = { // Gorn 400
         question: "Wer bin ich? (G1/G2)",
