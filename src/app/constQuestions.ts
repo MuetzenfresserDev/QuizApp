@@ -19,7 +19,7 @@ export class ConstQuestions {
         channelId: new URL(window.location.href).searchParams.get('channelId')
     }
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/2kL4-TdQ3dw?controls=0&autoplay=1&mute=1&playlist=2kL4-TdQ3dw&loop=1'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/opDt2chYp04?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 
@@ -92,267 +92,288 @@ export class ConstQuestions {
 
     /* Namenloser Held */
     static readonly held1: GuessingQuestion = { // Held 100
-        question: "Um welche Waffe handelt es sich hier?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Das ist ein altes Schwert!",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Held 100 Frage.jpg',
-        bonus: false,
-        videoQuestion: "",
-        options: ['Schwert','rostiges Schwert', 'altes Schwert', 'rostiger Einhänder'],
-        index: 2 
-    }
-    static readonly held2:GuessingQuestion = { // Held 200
-        question: "Welchem Lager innerhalb der Kolonie gehörte der erste Bandit an, der einen in G2 anspricht?",
-        video: "https://www.youtube.com/embed/0xrNGulX4PM?si?controls=1&vq=hd1080&autoplay=0",
+        question: "Der Held erhöht seine Lebensenergie in der Regel durch einen Levelaufstieg. \n Wie hoch ist dieser in G2 die Nacht des Raben?",
+        video: "https://www.youtube.com/embed/MkCiCvtF5No?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        options: ['Altes Lager','Neues Lager', 'Sumpf Lager', 'Quentins Banditen'],
+        options: ['8','15', '10', '12'],
+        index: 3 
+    }
+    static readonly held2:GuessingQuestion = { // Held 200
+        question: "Bonusfrage von HerrBrom! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/cghikTEn1sI?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/Souigzzxj1U?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        options: ['A','B', 'C', 'D'],
         index: 0 
     }
     static readonly held3:GuessingQuestion = { // Held 300
-        question: "Um welche Waffe handelt es sich hier?",
-        video: "",
+        question: "Wahr oder Falsch? Entscheide!",
+        video: "https://www.youtube.com/embed/vKH1VBTYWJc?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
         kind: "Schätz-Frage",
-        correctAnswer: "Das ist eine Folteraxt!",
+        correctAnswer: "",
         picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Held 300 Frage.jpg',
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: "",
-        options: ['Spalter','Reiser', 'Folteraxt', 'rostige Axt'],
+        videoQuestion: "https://www.youtube.com/embed/ioa-EwSU6iM?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        options: ['w,f,w','f,f,f', 'w,f,f', 'w,w,w'],
         index: 2 
     }
-    static readonly held4:LocationQuestion = { // Held 400 -> GEOGUESSR !1!
-        question: "Der Held hat sich mal wieder verlaufen. Wo befindet er sich? (1)",
-        searchPicture: "assets/geoguessr/searchPictures/Held 400 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Held 400 Antwort.jpg",
-        imgurLink: this.geoImgurPics.g1Minental, 
+    static readonly held4:GuessingQuestion = { // Held 400
+        question: "Wie lange braucht die Fleischwanze von dieser Position aus bis sie in Diegos Hütte ankommt? \n Schätze die Zeit!",
+        video: "https://www.youtube.com/embed/6aVgu1mu8KY?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: 'assets/guessing/pictures/Held 400 Frage.jpg',
         bonus: false,
-    }
-    static readonly held5:BuzzerQuestion = { // Held 500
-        question: "Wer hat den Brief für den obersten Feuermagier geschrieben (bzw, dem Helden ausgehändigt)?",
-        kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/tlhZMkSrlMk?controls=1&vq=hd1080&autoplay=0",
-        options: ['Serpentes','Xardas', 'Marduk', 'Pyrokar'],
+        videoQuestion: "",
+        options: ['1:42','0:59', '1:23', '1:33'],
         index: 3 
+    }
+    static readonly held5:GuessingQuestion = { // Held 500
+        question: "Der Held hat 100.000 Hp und entscheidet sich das Fliegen zu testen. Also springt er hier runter. \n Wie viel Lebensenergie wird ihm nach dem Aufprall wohl bleiben? Schätze!",
+        video: "https://www.youtube.com/embed/dPZGdy3NSsI?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: 'assets/guessing/pictures/Held 500 Frage.jpg',
+        bonus: false,
+        videoQuestion: "",
+        options: ['12567','98781', '82298', '74553'],
+        index: 2 
     }
 
 
     /* Diego */
     static readonly diego1: GuessingQuestion = { // Diego 100
-        question: "Bonusfrage von Jorgenson! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/EdvnjF_Wk18?controls=1&vq=hd1080&autoplay=0",
+        question: "Wie heißt die Quest? \n „Doch die Begegnung verlief völlig anders als erwartet. […] \n Ich bin mir nicht sicher, wie ich […] vom Verlauf dieses Gesprächs berichten soll.“ \n „Sobald ich einen anderen Weg gefunden habe […] werde ich ihm die ganze Wahrheit erzählen.“",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Diego 100 Antwort.jpg",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly diego2: GeoguessrQuestion = { // Diego 200
+        question: "Welche dieser Flaggen gehört zur Stadt Khorinis und ist unter anderem über dem Rathaus zu bewundern?",
+        searchPicture: "assets/geoguessr/searchPictures/Diego 200 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Diego 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/Y2lntyE.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Löwe','Adler','Helm','Greif','Drache','Fetzen'],
+        index: 3
+    }
+    static readonly diego3:GuessingQuestion= { // Diego 300 -> GEOGUESSR !2!
+        question: "Fülle die Lücken des Troll-Charakterbogens. Jede richtige Lücke gibt einen Punk. \n Der mit den meisten richtigen bekommt die Punkte!",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Diego 300 Antwort.jpg",
+        pictureQuestion: 'assets/guessing/pictures/Diego 300 Frage.jpg',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly diego4: GuessingQuestion= { // Diego 400
+        question: "Im Buch Rezepturen Band 2 (G1) steht etwas über den Wein des Vergessens geschrieben. \n Laut diesem Buch sind die besten Trauben für diesen Wein an einem gewissen Ort. \n Wie lautet der Name dessen? (Dieser Ort ist im Originalspiel G1 nicht zu erreichen)",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Diego 400 Antwort.jpg",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly diego5: LocationQuestion = { // Diego 500 !GEOGUESSER1!
+        question: "Diego hat sich verlaufen... Wo befindet er sich? (1)",
+        searchPicture: "assets/geoguessr/searchPictures/Diego 500 Frage.jpg",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Diego 500 Frage.jpg",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
+    }
+
+    /* Lester */
+    static readonly lester1:GuessingQuestion= { // Lester 100
+        question: "Bonusfrage von Hel's Play! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/ABrw9tRK0R8?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/izwNF3rnhFA?controls=1&vq=hd1080&autoplay=0",
-        options: ['Keiner','1', '2', '3'],
-        index: 1 
-    }
-    static readonly diego2:GuessingQuestion = { // Diego 200
-        question: "Um in Gothic 1 Taschendiebstahl durchzuführen braucht man essentiell eine weitere Fähigkeit. \n Welche?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Man benötigt das wissen über das Schleichen!",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "",
-        options: ['Geschick > 30','Einhandkampf Stufe 1', 'Schlösser öffnen', 'Schleichen'],
+        videoQuestion: "https://www.youtube.com/embed/MLHAzFkYXzo?si?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        options: ['Gestath','Drax','Aidan','Templer'],
         index: 3 
     }
-    static readonly diego3:LocationQuestion = { // Diego 300 -> GEOGUESSR !2!
-        question: "Diego hat sich mal wieder verlaufen. Wo befindet er sich? (2)",
-        searchPicture: "assets/geoguessr/searchPictures/Diego 300 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Diego 300 Antwort.jpg",
-        imgurLink: this.geoImgurPics.g1Minental, 
-        bonus: false,
-    }
-    static readonly diego4: GeoguessrQuestion= { // Diego 400
-        question: "Welche dieser Flaggen ist die Piratenflagge der Greg Piraten?",
-        searchPicture: "assets/geoguessr/searchPictures/Diego 400 Frage.png",
-        kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Diego 400 Antwort.png",
-        imgurLink: "https://i.imgur.com/UbTRoV0.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
-        bonus: false,
-        video: '',
-        options: ['Oben links','Oben rechts', 'Unten links', 'Unten rechts'],
-        index: 0 
-    }
-    static readonly diego5: BuzzerQuestion = { // Diego 500
-        question: "Greg, der Kapitän der Piraten schimpft in seinem Logbuch ganz stark über das Verhalten der Banditen. \n Einer der Banditen wird namentlich erwähnt. Den möchte er zu Fischfutter verarbeiten. \n Um wen geht es?",
-        kind: "Buzzer-Frage",
-        picture: "assets/buzzer/Diego 500 Antwort.jpg",
-        options: ['Raven','Esteban', 'Bloodwyn', 'Juan'],
-        index: 2 
-    }
-
-    /* Lester */
-    static readonly lester1:VoicelineQuestion = { // Lester 100
-        question: "Von wem stammt die Voiceline?",
-        voiceLine: "assets/voicelines/Lester 100 Frage.mp3",
-        kind: "Voiceline-Fragen",
-        correctAnswer: "https://www.youtube.com/embed/NHujIooPL1s?controls=1&vq=hd1080&autoplay=0",
-        bonus: false,
-        options: ['Bloodwyn','Lee', 'Saturas', 'Raven'],
-        index: 1 
-    }
     static readonly lester2: GuessingQuestion = { // Lester 200
-        question: "Welche Wirkungen haben die drei Sumpfkrautstängel der Bruderschaft?",
-        video: "https://www.youtube.com/embed/G5C6OsUa8pU?controls=1&vq=hd1080&autoplay=0",
+        question: "Wie heißt das Item in diesem Bild?",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
+        picture: "assets/guessing/pictures/Lester 200 Antwort.jpg",
+        pictureQuestion: 'assets/guessing/pictures/Lester 200 Frage.jpg',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Wolfsfell','Keilerfell','Schafsfell','Flohteppich'],
+        index: 2 
+    }
+    static readonly lester3:GuessingQuestion = { // Lester 300
+        question: "Wahr oder Falsch? Entscheide!",
+        video: "https://www.youtube.com/embed/fH7H2Mz9uSU?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/bbgYHcv3Mro?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        options: ['falsch,falsch,falsch','falsch,wahr,wahr', 'wahr wahr wahr', 'falsch wahr falsch'],
+        index: 1 
+    }
+    static readonly lester4: GuessingQuestion = { // Lester 400
+        question: "Lester geht mit 445 Gold in den Taschen zu Orlans Taverne. \n Er kauft sich dort 2 Schinken, 2 Leibe Brot, 3 Fackeln und ein Bier. Außerdem Mietet er ein Zimmer für eine Woche. \n Wie viel Gold bleibt ihm übrig? Oder reicht es gar nicht für all das?",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "445 Gold am Anfang, kauft 2 Schinken (50 Goldstücke), 2 Brot(20 Goldstücke), 3 Fackeln (2 Goldstücke) \n und ein Bier (20 Goldstücke) + Zimmer bei Orlan (50 Goldstücke) \n Wie viel übrig? 229 Goldstücke",
         picture: "",
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        options: ['+10 Erfahrung, +5 Erfahrung, +2 Mana','+50 Erfahrung, +1 Mana, +2 Mana', '+25 Erfahrung, +50 Erfahrung, +1 Mana', '+50 Erfahrung, +2 Mana, +3 Mana'],
-        index: 0 
-    }
-    static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Wahr oder Falsch?",
-        video: "https://www.youtube.com/embed/BJ0-RVjcM1o?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/lYTZUAxvYD8?controls=1&vq=hd1080&autoplay=0",
-        options: ['wahr wahr wahr','falsch wahr falsch', 'wahr wahr falsch', 'falsch falsch war'],
+        options: ['zu teuer','42', '229', '169'],
         index: 2 
     }
-    static readonly lester4:BuzzerQuestion = { // Lester 400
-        question: "Wer bin ich?",
-        kind: "Buzzer-Frage",
-        audio: "assets/buzzer/Lester 400 Frage.mp3",
-        options: ['Gomez','Diego', 'Gorn', 'Sylas'],
-        index: 1 
-    }
-    static readonly lester5: LocationQuestion = { // Lester 500 -> Geoguessr !3!
-        question: "Lester hat sich mal wieder verlaufen. Wo befindet er sich? (3)",
-        searchPicture: "assets/geoguessr/searchPictures/Lester 500 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Lester 500 Antwort.jpg",
-        imgurLink: this.geoImgurPics.khorinis, 
-        bonus: false,
+    static readonly lester5: VoicelineQuestion = { // Lester 500 -> Geoguessr !3!
+        question: "Von wem stammt die Voiceline?",
+        voiceLine: "assets/voicelines/Lester 500 Frage.mp3",
+        kind: "Voiceline-Fragen",
+        correctAnswer: "https://www.youtube.com/embed/i1fM50Qu0QY?controls=1&vq=hd1080&autoplay=0&vq=1080",
+        bonus: false
     }
 
 
     /* Milten */
     static readonly milten1:GeoguessrQuestion= { // Milten 100
-        question: "Milten schreibt Spruchrollen. Er hat jedoch vergessen, welche Farbe die Punktfarbe folgender Spruchrollen werden muss. \n Die erste hat er schon gefärbt!",
+        question: "Male den Spruchrollen ihre Punkte in der richtigen Farbe!",
         searchPicture: "assets/geoguessr/searchPictures/Milten 100 Frage.png",
         kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Milten 100 Antwort.png",
-        imgurLink: "https://i.imgur.com/QY7Y0UY.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        markedPicture: "assets/geoguessr/markedPictures/Milten 100 Antwort.jpg",
+        imgurLink: "https://i.imgur.com/o7hSnxu.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
         video: '',
-        options: ['Rot Grün Blau','Schwarz Lila Rot', 'Rot Lila Gelb', 'Blau Grün Gelb'],
-        index: 2 
+        options: ['Bl,Gr,Bl,Ge Li','Li,Gr,Gr,Bl Li', 'Ge,Bl,Ge,Li Bl', 'Bl,Ge,Gr,Li Gr'],
+        index: 0
     }
-    static readonly milten2:GuessingQuestion = { // Milten 200 TODO
-        question: "Bonusfrage von Darkside! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/jmmm0RfBQhc?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly milten2:GuessingQuestion = { // Milten 200
+        question: "„Die Prüfung des Feuers. […] \n In dieser Prüfung soll gleichermaßen die [LÜCKE], Stärke und das Geschick des Novizen gefordert werden.“ \n Fülle die Lücke auf!",
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/AGyboCA3lfU?controls=1&vq=hd1080&autoplay=0",
-        options: ['4','7', '5', '9'],
-        index: 2
-    }
-    static readonly milten3: LocationQuestion = { // Milten 300 -> Geoguessr !4!
-        question: "Milten hat Urshak im alten Kastell gefunden! \n Weist du auch wo er in Gothic 2 zu finden ist? (4)",
-        searchPicture: "assets/geoguessr/searchPictures/Milten 300 Frage.jpg",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Milten 300 Antwort.jpg",
-        imgurLink: this.geoImgurPics.g2Minental, 
-        bonus: false,
-    }
-    static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Nach dem Abenteuer der Fokussuche begibt sich Milten laut eigener Aussage zurück zum Alten Lager. Das ist nicht ganz wahr. \n Die Frage ist aber nicht, wohin er sich hinbegibt, sondern wie lange er für diesen Weg braucht. \n Schätzt die Zeit!",
-        video: "https://www.youtube.com/embed/W2U9fEPbO5s?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "-",
-        picture: "",
-        pictureQuestion: '',
+        picture: "assets/guessing/pictures/Milten 200 Antwort.jpg",
+        pictureQuestion: 'assets/guessing/pictures/Milten 200 Frage.jpg',
         bonus: false,
         videoQuestion: "",
-        options: ['4:20', '3:22', '5:21', '3:48'],
-        index: 3 
+        options: ['magische Kraft','Weisheit', 'Güte', 'Klugheit'],
+        index: 3
     }
-    static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Torrez bietet einige Bücher zum verkauf an. Dies ist das erste Band einer Buchreihe.",
+    static readonly milten3: GuessingQuestion = { // Milten 300
+        question: "Welcher dieser Runen gehört nicht zum 5. Kreis der Magie? \n Dämon beschwören, Eiswelle, Schwere Wunden heilen, Böses vernichten, Großer Feuersturm ",
         video: "",
         kind: "Schätz-Frage",
-        correctAnswer: "Das Buch heist Lehren der Götter Band 1",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Milten 500 Frage.jpg',
+        correctAnswer: "Böses vernichten",
+        picture: "assets/guessing/pictures/Milten 300 Antwort.jpg",
+        pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        options: ['Lehren der Götter Band 1','Astronomie Band 2', 'Chromanin (3)', 'Arkanum Golum Band 2'],
-        index: 0 
+        options: ['Dämon beschwören', 'Böses vertreiben', 'Wunden heilen', 'Eiswelle'],
+        index: 1 
+    }
+    static readonly milten4:GuessingQuestion = { // Milten 400
+        question: "Babos Freunde haben dem Guten eine spannende Zeichnung zum Abschied geschenkt. \n Wie heißen diese beiden Freunde?",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "Feht und Bonka",
+        picture: "assets/guessing/pictures/Milten 400 Antwort.jpg",
+        pictureQuestion: 'assets/guessing/pictures/Milten 400 Frage.jpg',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Bill,John', 'Johan,Fred', 'Feht,Bonka', 'Gilles,Frank'],
+        index: 2 
+    }
+    static readonly milten5: GuessingQuestion = { // Milten 500
+        question: "Was ist die heilige Aura Innos und wer/wo besitzt/liegt diese?",
+        video: "https://www.youtube.com/embed/0UGJ1HgKZ2I?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        kind: "Schätz-Frage",
+        correctAnswer: "Amulet, Pyrokar",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Ring,Ulthar','Ring,Neoras', 'Amulet,Pyrokar', 'Amulet,Parlan'],
+        index: 2
     }
 
     /* Gorn */
     static readonly gorn1:GuessingQuestion = { // Gorn 100
-        question: "Wie lange dauert es, bis Fester das Nest der Feldräuber gesäubert hat?",
-        video: "https://www.youtube.com/embed/E9Z6NyigDuA?controls=1&vq=hd1080&autoplay=0",
+        question: "Bonusfrage von MaxDeus! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/c1J8a-cVZ8g?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
         kind: "Schätz-Frage",
         correctAnswer: "-",
         picture: "",
         pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "",
-        options: ['0:39', '1:05', '0:57', '1:16'],
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/-luj4lA2eOE?controls=1&vq=hd1080&autoplay=0&vq=hd1080",
+        options: ['Pach,Urrok,Varrok', 'Dardok,Bach,Rok', 'Rok,Urrok,Varrok', 'Pok,Dok,Rok'],
         index: 0 
     }
-    static readonly gorn2:BuzzerQuestion = { // Gorn 200 
-        question: "Jarvice, Söldner aus dem Neuen Lager, ist der Meinung, etwas „besonderes“ zum Tausch für ihren Erzhaufen bekommen zu können. \n Was ist das?",
-        kind: "Buzzer-Frage",
-        video:"https://www.youtube.com/embed/wYKcJaXAuAU?controls=1&vq=hd1080&autoplay=0",
-        options: ['Begnadigung', 'Waffen', 'Des Königs Frau', 'Köstliches essen'],
-        index: 2 
-    }
-    static readonly gorn3:GuessingQuestion = { // Gorn 300
-        question: "Was sind für Cor Angar die Voraussetzungen für jeden Kämpfer?",
-        video: "", //Antwortvideo
+    static readonly gorn2:GuessingQuestion = { // Gorn 200 
+        question: "Lares und der Held gehen gemeinsam das Ornament zurückbringen. Den Weg zurück zur Stadt geht Lares allerdings allein. \n Wie lange braucht er für diesen Weg, bis er einen Fuß in die Stadt setzt?",
+        video: "https://www.youtube.com/embed/HwuVNv54V8U?controls=1&vq=hd1080&autoplay=0&vq=hd1080", //Antwortvideo
         kind: "Schätz-Frage",
-        correctAnswer: "Kampfkraft und Wendigkeit",
+        correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "",
-        options: ['Mut und Stolz', 'Ehre und Kraft', 'Flinkheit und Gerissenheit', 'Kampfkraft und Wendigkeit'],
-        index: 3 
+        options: ['13:37', '18:57', '12:57', '23:54'],
+        index: 1
     }
-    static readonly gorn4:BuzzerQuestion = { // Gorn 400
-        question: "Wer bin ich? (G1/G2)",
-        kind: "Buzzer-Frage",
-        audio: "assets/voicelines/Gorn 400 Frage.mp3",
-        options: ['Cord', 'Jakal', 'Bloodwyn', 'Lefty'],
-        index: 3 
+    static readonly gorn3:LocationQuestion = { // Gorn 300 !GEOGUESSER2!
+        question: "Gorn sucht das zweite Chromanin Buch... Wo befindet es sich? (2)",
+        searchPicture: "",
+        kind: "Location-Frage",
+        markedPicture: "",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
+    }
+    static readonly gorn4:LocationQuestion = { // Gorn 400 !GEOGUESSR3!
+        question: "Gorn hat sich verlaufen... Wo befindet er sich? (3)",
+        searchPicture: "assets/geoguessr/searchPictures/Gorn 400 Frage.jpg",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/searchPictures/Gorn 400 Antwort.jpg",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
     }
     static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Gorn geht auf den Markt. Er besitzt 10 Gold. \n Er verkauft seine Steitaxt und seine Kriegsarmbrust. \n Wie viele kleine Heiltränke (Essens der Heilung) kann er sich nun leisten?",
-        video: "", //Antwortvideo
+        question: "Jan, ein Drachenjäger, kann dem Helden eine starke Rüstung herstellen. \n Welches Material/Materialien (und wieviel davon) braucht er für diese? \n Und für wieviel Gold verkauft er die Rüstung anschließend?",
+        video: "https://www.youtube.com/embed/2XYqiP-zhoo?controls=1&vq=hd1080&autoplay=0&vq=hd1080", //Antwortvideo
         kind: "Schätz-Frage",
-        correctAnswer: "Kriegsarmbrust 225 Gold, Steitaxt 165 Gold, 10 Gold = 400 Gold. \n Essens der Heilung kostet 25 Gold pro Stück, er kauft 16 Stück",
+        correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
         videoQuestion: "", //Fragevideo
-        options: ['5', '7', '16', '19'],
+        options: ['10 Schuppen,7000', '15 Schuppen,10000', '20 Schuppen,12000', '5 Schuppen,4000'],
         index: 2 
     }
 
