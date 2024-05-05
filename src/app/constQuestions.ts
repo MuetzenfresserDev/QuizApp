@@ -19,7 +19,7 @@ export class ConstQuestions {
         channelId: new URL(window.location.href).searchParams.get('channelId')
     }
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/opDt2chYp04?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/SNuY9rbGUio?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 
@@ -41,11 +41,11 @@ export class ConstQuestions {
     };
 
     static readonly katPictures: string[] = [
-        "assets/katPictures/namelessBorder.png",
-        "assets/katPictures/diegoBorder.png",
-        "assets/katPictures/lesterBorder.png",
-        "assets/katPictures/miltenBorder.png",
-        "assets/katPictures/gornBorder.png",
+        "assets/katPictures/erkenne das Pokemon.png",
+        "assets/katPictures/Fusion.png",
+        "assets/katPictures/Geoguessr.png",
+        "assets/katPictures/Pokedex.png",
+        "assets/katPictures/Trivia.png",
     ];
 
     static readonly multiplechoiceExample:  MultiplechoiceQuestion = {
@@ -89,266 +89,291 @@ export class ConstQuestions {
         question: "Irgend eine Frage",
         kind: "Buzzer-Frage"
     }
-
-    /* Namenloser Held */
-    static readonly held1: GuessingQuestion = { // Held 100
-        question: "Xardas schickt den Helden in die Stadt. \n „Die Stadt ist groß, du kannst sie nicht verfehlen.“ \n Das stimmt. Aber welche Möglichkeiten hat der Held, die Torwache zu überzeugen, ihn durchzulassen?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Bestechung, Kräutersammler, Knecht von Lobart, Passierschein, Gilde, Rüstung",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Held 100 Frage.png',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly held2:GuessingQuestion = { // Held 200
-        question: "Der Held ist zum ersten Mal in der Stadt. \n Vatras möchte jedoch erst seine Rede beenden, bevor er mit ihm redet. Wie lange dauert diese?",
-        video: "https://www.youtube.com/embed/tD3SRzEvA84?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Held 200 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['3:59','2:28', '6:23', '4:26'],
-        index: 3 
-    }
-    static readonly held3:BuzzerQuestion = { // Held 300
-        question: "Vatras hat eine Botschaft für Meister Isgaroth, die der Held überbringen soll. \n Worum geht es in der Botschaft, sinngemäß?",
-        kind: "Buzzer-Frage",
-        pictureQuestion: "assets/buzzer/Held 300 Frage.png",
-        picture: "assets/buzzer/Held 300 Antwort.png",
-        options: ['Drachen','Expedition', 'Beliar', 'Diebesgilde'],
-        index: 2 
-    }
-    static readonly held4:GuessingQuestion = { // Held 400
-        question: "Bonusfrage von AFGuitar! => 500 Gold Frage",
-        video: "https://www.youtube.com/embed/04Bd27SKYCk?controls=1&vq=hd1080&autoplay=00",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/FpWCzlvwGNk?controls=1&vq=hd1080&autoplay=0",
-        options: ['32','17', '42', '9'],
-        index: 0 
-    }
-    static readonly held5:VoicelineQuestion = { // Held 500
-        question: "Wer sagt das Folgende?",
-        voiceLine: "assets/voicelines/Held 500 Frage.mp3",
-        kind: "Voiceline-Fragen",
-        correctAnswer: "https://www.youtube.com/embed/DLzplZoF_p4?controls=1&vq=hd1080&autoplay=0",
-        bonus: false
-    }
-
-
-    /* Diego */
-    static readonly diego1: GuessingQuestion = { // Diego 100
-        question: "Diego ist endlich wieder in der Stadt. „Ich hab da noch ein paar Rechnungen zu begleichen“, sagte er zum Helden. \n Sein erster Stop ist die Rote Laterne. \n Wie lange braucht Nadja von dieser Position aus, bis sie im oberen Zimmer ankommt?",
-        video: "https://www.youtube.com/embed/HK2f31UXgis?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Diego 100 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['0:43','1:01', '0:28', '0:39'],
-        index: 0 
-    }
-    static readonly diego2: GuessingQuestion = { // Diego 200
-        question: "Diego der Dieb hat einige Dinge aus dem Oberen Viertel mitgehen lassen. \n Ordne die Gegenstände nach ihrem Wert.",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Diego 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Diego 200 Frage.png',
-        bonus: false,
-        videoQuestion: ""
-    }
-    static readonly diego3:GuessingQuestion= { // Diego 300 -> GEOGUESSR !2!
-        question: "Wahr oder Falsch? Entscheide!",
-        video: "https://www.youtube.com/embed/dzYQrzwi7mw?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/SWn6ePWzyfY?controls=1&vq=hd1080&autoplay=0",
-        options: ['falsch,falsch,falsch','falsch,wahr,wahr', 'wahr falsch wahr', 'falsch wahr falsch'],
-        index: 2 
-    }
-    static readonly diego4: BuzzerQuestion= { // Diego 400
-        question: "Taschendiebstahl! Diego beklaut Milten in der Burg der Paladine! \n Keiner hat ihn gesehen. Was hat er bekommen?",
-        kind: "Buzzer-Frage",
-        pictureQuestion: "assets/buzzer/Diego 400 Frage.png",
-        video: "https://www.youtube.com/embed/n0x8y0-TFWU?controls=1&vq=hd1080&autoplay=0",
-        options: ['35 Gold','Elixier des Lebens', 'Elixier des Geistes', 'Feuersturm'],
-        index: 2 
-    }
-    static readonly diego5: GuessingQuestion = { // Diego 500 !GEOGUESSER1!
-        question: "Ordne die Kasten zu!",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Wer schützte einst das Volk? Kriegerkaste, letztes Wort im Rat der Fünf? Gelehrten, \n Schuld am Übel? Kriegerkaste, Direkten Befehl? Prister, \n Versorgt die Kranken? Heiler",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/DvbUFRvLRl4?controls=1&vq=hd1080&autoplay=0",
-        options: ['falsch,falsch,falsch','falsch,wahr,wahr', 'wahr falsch wahr', 'falsch wahr falsch'],
-        index: 2 
-    }
-
-    /* Lester */
-    static readonly lester1:GuessingQuestion= { // Lester 100
-        question: "Wie heißt dieses Item?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Lester 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Lester 100 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['Rubinklinge','Edles Langschwert','Buddlerzucht','Schwert'],
-        index: 1 
-    }
-    static readonly lester2: GuessingQuestion = { // Lester 200
-        question: "Lester bekommt vom Schläfer eine Vision. Er sieht folgende 4 Bilder. Was wird hier dargestellt?",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Lester 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Lester 200 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['Untote','Armee der Finsternis','Beliars Schergen','Unterwelt'],
-        index: 1 
-    }
-    static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Bonusfrage von Neocromicon! -> 500 Gold Frage",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Lester 300 Antwort.png",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/q_8YxsH6hxQ?controls=1&vq=hd1080&autoplay=0",
-        options: ['5.5%','0,1%', '0.25%', '12%'],
-        index: 2 
-    }
-    static readonly lester4: GuessingQuestion = { // Lester 400
-        question: "Lester gab dem Helden, als dieser aus dem Minental zurückkehrte, eine Teleport-Rune zu Xardas. Er selbst muss laufen. \n Sein weg führt ihn durch die Stadt. Wie lange braucht er, bis er einen Fuß in die Stadt setzt?",
-        video: "https://www.youtube.com/embed/DRUFHSbxnLI?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Lester 400 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['12:08','6:59', '9:31', '17:00'],
-        index: 0 
-    }
-    static readonly lester5: GuessingQuestion = { // Lester 500 -> Geoguessr !3!
-        question: "Wahr oder Falsch? Entscheide!",
-        video: "https://www.youtube.com/embed/Dugd5x6b_fM?controls=1&vq=hd1080&autoplay=0",
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/ahO503OnznI?controls=1&vq=hd1080&autoplay=0",
-        options: ['falsch,falsch,falsch','falsch,wahr,wahr', 'wahr falsch wahr', 'falsch wahr falsch'],
-        index: 3 
-    }
-
-
-    /* Milten */
-    static readonly milten1:GeoguessrQuestion = { // Milten 100
+    static readonly pictureInWhiteboardExample:GeoguessrQuestion = { // Milten 100
         question: "Male den Spruchrollen ihre Punkte in der richtigen Farbe!",
         searchPicture: "assets/geoguessr/searchPictures/Milten 100 Frage.png",
         kind: "Geo-Frage",
         markedPicture: "assets/geoguessr/markedPictures/Milten 100 Antwort.png",
-        imgurLink: "https://i.imgur.com/CFAL2wV.pngg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        imgurLink: "https://i.imgur.com/CFAL2wV.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
         video: '',
         options: ['Lila,Grün,Lila,Grün','Lila,Gellb,Blau,Grün', 'Lila,Rot,Gelb,Grün', 'Rot,Grün,Gelb,Grün'],
         index: 0
     }
-    static readonly milten2:BuzzerQuestion = { // Milten 200
-        question: "Jorgen wird von Milten ins Kloster aufgenommen. Er erzählt ihm von seinem großartigen Schiff. \n Wie heißt es?",
-        kind: "Buzzer-Frage",
-        pictureQuestion: "assets/buzzer/Milten 200 Frage.png",
-        video: "https://www.youtube.com/embed/Wf8XT0dTR1w?controls=1&vq=hd1080&autoplay=0"
-    }
-    static readonly milten3: LocationQuestion = { // Milten 300 GEO SPÄTER
-        question: "Milten hat sich verlaufen. Wo befindet er sich? (1)",
-        searchPicture: "assets/geoguessr/searchPictures/Milten 300 Frage.png",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Milten 300 Antwort.png",
-        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
-        bonus: false,
-    }
-    static readonly milten4:BuzzerQuestion = { // Milten 400
-        question: "",
-        kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/ONrGklo_jFY?controls=1&vq=hd1080&autoplay=0",
-        audio: "assets/voicelines/Milten 400 Frage.mp3"
-    }
-    static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Nenne so viele besessene Charaktere, wie möglich! \n (Aus dem Almanach der Besessenen)",
-        video: "",
-        kind: "Schätz-Frage",
-        correctAnswer: "Malak, Vino, Bromor, Engrom, Randolph, Sekob, Brutus, Fernando, Mario",
-        picture: "assets/guessing/pictures/Milten 500 Antwort.png",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: ""
-    }
 
-    /* Gorn */
-    static readonly gorn1:LocationQuestion = { // Gorn 100 GEO SPÄTER
-        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
-        searchPicture: "assets/geoguessr/searchPictures/Gorn 100 Frage.png",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Gorn 100 Antwort.png",
-        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+    /* Namenloser Held */
+    static readonly held1:GeoguessrQuestion = { // Held 100
+        question: "Erkenne die Pokemon am Umriss! (2 von 3)",
+        searchPicture: "assets/geoguessr/searchPictures/Erkenne das Pokemon 100 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Erkenne das Pokemon 100 Antwort.png",
+        imgurLink: "https://i.imgur.com/0Px7J2C.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
+        video: ''
     }
-    static readonly gorn2:GuessingQuestion = { // Gorn 200 
-        question: "Bonusfrage von CaptainAlex -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/B3Mw-4p4Jjk?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly held2:GeoguessrQuestion = { // Held 200
+        question: "Erkenne das Pokemon an der Pre-Release Konzeptzeichnung! ",
+        searchPicture: "assets/geoguessr/searchPictures/Erkenne das Pokemon 200 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Erkenne das Pokemon 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/PDxOKb7.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Cupidos','Tangela', 'Riffex', 'Tangolos'],
+        index: 1 
+    }
+    static readonly held3:GuessingQuestion = { // Held 300
+        question: "Bonusfrage von Frau Tina! => 500 Gold Frage",
+        video: "https://www.youtube.com/embed/xpcLGtHBhzg?controls=1&vq=hd1080&autoplay=00",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/rUc5Lkal-kE?controls=1&vq=hd1080&autoplay=0"
+        videoQuestion: "https://www.youtube.com/embed/v23_SQ9LEeU?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly gorn3:GeoguessrQuestion = { // Gorn 300 !GEOGUESSER2!
-        question: "Gorn schwingt seine Axt. Welche Stufe haben folgende Monster, die er besiegt hat? (G1)",
-        searchPicture: "assets/geoguessr/searchPictures/Gorn 300 Frage.png",
-        kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Gorn 300 Antwort.png",
-        imgurLink: "https://i.imgur.com/Tb75kGn.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+    static readonly held4:GuessingQuestion = { // Held 400
+        question: "Erkenne das Pokemon anhand der Bilder/Emojis! (2 von 3)",
+        video: "https://www.youtube.com/embed/no2peq8WwKs?controls=1&vq=hd1080&autoplay=00",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
         bonus: false,
-        video: ''
+        videoQuestion: "https://www.youtube.com/embed/383f-Irz9ro?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly gorn4:LocationQuestion = { // Gorn 400 GEO SPÄTER
-        question: "Gorn hat sich verlaufen... Wo befindet er sich? (3)",
-        searchPicture: "assets/geoguessr/searchPictures/Gorn 400 Frage.png",
+    static readonly held5:GuessingQuestion = { // Held 500
+        question: "Erkenne das Pokemon am Schrei! (2 von 3)",
+        video: "https://www.youtube.com/embed/AC5Zr7QbzEg?controls=1&vq=hd1080&autoplay=00",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/B-VqwjjFcUg?controls=1&vq=hd1080&autoplay=0"
+    }
+
+
+    /* Diego */
+    static readonly diego1: GeoguessrQuestion= { // Diego 100
+        question: "Welche Pokemon wurden hier vereinigt?",
+        searchPicture: "assets/geoguessr/searchPictures/Fusion 100 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Fusion 100 Antwort.png",
+        imgurLink: "https://i.imgur.com/NdO0Hf0.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Nockchan-Swine','Maschok-Mamutel', 'Macholo-Quickel', 'Machollo-Keifel'],
+        index: 3  
+    }
+    static readonly diego2: GeoguessrQuestion = { // Diego 200
+        question: "Welche Pokemon wurden hier vereinigt?",
+        searchPicture: "assets/geoguessr/searchPictures/Fusion 200 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Fusion 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/RLqadRz.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Glumanda-Menkey','Glumanda-Traumato', 'Glutexo-Glumanda'],
+        index: 2  
+    }
+    static readonly diego3:GeoguessrQuestion= { // Diego 300
+        question: "Welche Pokemon wurden hier vereinigt?",
+        searchPicture: "assets/geoguessr/searchPictures/Fusion 300 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Fusion 300 Antwort.png",
+        imgurLink: "https://i.imgur.com/ZCXZgb5.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Shuppet-Banette','Banette-Traumfugil', 'Banette-Ditto'],
+        index: 0  
+    }
+    static readonly diego4: GeoguessrQuestion= { // Diego 400
+        question: "Welche Pokemon wurden hier vereinigt?",
+        searchPicture: "assets/geoguessr/searchPictures/Fusion 400 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Fusion 400 Antwort.png",
+        imgurLink: "https://i.imgur.com/pXbFdOm.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Onix-Qurtel','Stahlos-Qurtel', 'Stahlos-Tornupto'],
+        index: 2  
+    }
+    static readonly diego5: GeoguessrQuestion = { // Diego 500
+        question: "Welche Pokemon wurden hier vereinigt?",
+        searchPicture: "assets/geoguessr/searchPictures/Fusion 500 Frage.jpg",
+        kind: "Geo-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Fusion 500 Antwort.png",
+        imgurLink: "https://i.imgur.com/zBlpw8d.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: '',
+        options: ['Nidoqueen.Keyogre','Nidoking-Keyogre', 'Keyogre-Nidorino'],
+        index: 1 
+    }
+
+    /* Lester */
+    static readonly lester1:LocationQuestion= { // Lester 100
+        question: "Wo ist der gesuchte Ort? (1)",
+        searchPicture: "assets/geoguessr/searchPictures/GeoGuessr 100 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/searchPictures/Gorn 400 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Gorn 200 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
-    static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Lee möchte vom Helden, dass er sich das Vertrauen des Richters besorgt. \n Dieser möchte, dass man den entlaufenden „Banditen“ Morgahard ausfindig macht. \n An welchen Orten sind seine Männer anzutreffen?",
+    static readonly lester2:LocationQuestion = { // Lester 200
+        question: "Wo ist der gesuchte Ort? (2)",
+        searchPicture: "assets/geoguessr/searchPictures/GeoGuessr 200 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Gorn 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
+    }
+    static readonly lester3:GuessingQuestion = { // Lester 300
+        question: "Bonusfrage von Strey! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/XQyjwbeF6Ac?controls=1&vq=hd1080&autoplay=0",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/lBmtyeXRBBY?controls=1&vq=hd1080&autoplay=0",
+        options: ['11','6', '7', '10'],
+        index: 3 
+    }
+    static readonly lester4: LocationQuestion = { // Lester 400
+        question: "Wo ist der gesuchte Ort? (3)",
+        searchPicture: "assets/geoguessr/searchPictures/GeoGuessr 400 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Gorn 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
+    }
+    static readonly lester5: LocationQuestion = { // Lester 500
+        question: "Wo ist der gesuchte Ort? (4)",
+        searchPicture: "assets/geoguessr/searchPictures/GeoGuessr 500 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Gorn 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
+        bonus: false,
+    }
+
+
+    /* Milten */
+    static readonly milten1:GuessingQuestion = { // Milten 100
+        question: "Ein äußerst sonderbares Pokémon, das plötzlich auf rätselhafte Weise in einem Pokéball auftaucht, \n wenn […] sich entwickelt.",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Pokecheck 100 Antwort.png",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Nincada','Damhirplex', 'Ditto', 'Ninjatom'],
+        index: 3 
+    }
+    static readonly milten2:GuessingQuestion = { // Milten 200
+        question: "Seine Erscheinung ändert sich je nach Wetter. \n Dies hat weniger mit seinem eigenen Willen zu tun als vielmehr mit einer chemischen Reaktion.",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Pokecheck 200 Antwort.png",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Formeo','Griffel', 'Glibunkel', 'Mew'],
+        index: 0 
+    }
+    static readonly milten3: GuessingQuestion = { // Milten 300
+        question: "So manches kleine Kind soll schon verschwunden sein, weil es ein […] \n festhielt, das es mit einem Ballon verwechselt hatte.",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Pokecheck 300 Antwort.png",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Nebulak','Driftlon', 'Zwirlicht', 'Kramurks'],
+        index: 1 
+    }
+    static readonly milten4:GuessingQuestion = { // Milten 400
+        question: "Dieses auch als „Geist der Wüste“ bekannte Pokémon versteckt sich in Sandstürmen, \n die es durch das Schlagen seiner Flügel erzeugt.",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Pokecheck 400 Antwort.png",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Libeldra','Vibrava', 'Tauboga', 'Staraptor'],
+        index: 0 
+    }
+    static readonly milten5: GuessingQuestion = { // Milten 500
+        question: "Dieses Pokémon liebt ein ordentliches Kräftemessen. \n Es ist stark genug, um mit der flachen Hand einen rasenden Zug aufzuhalten.",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Pokecheck 500 Antwort.png",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Meistagriff','Hariyama', 'Nockchan', 'Rabautz'],
+        index: 1 
+    }
+
+    /* Gorn */
+    static readonly gorn1:GuessingQuestion = { // Gorn 100
+        question: "Was ist nicht sehr effektiv? Nenne 3/6",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Trivia 100 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Trivia 100 Frage.png',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly gorn2:GuessingQuestion = { // Gorn 200 
+        question: "Was ist der optische Unterschied, zwischen einem männlichen und einem weiblichen Pikachu?",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Gorn 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Gorn 500 Frage.png',
+        picture: "assets/guessing/pictures/Trivia 200 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
         videoQuestion: ""
+    }
+    static readonly gorn3:GuessingQuestion = { // Gorn 300
+        question: "Was ist sehr effektiv? Nenne 3/6",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Trivia 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Trivia 300 Frage.png',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly gorn4:GuessingQuestion = { // Gorn 400
+        question: "Um welches Pokemon handelt es sich hier?",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Trivia 400 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Trivia 400 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Gengar','Karpador', 'Krippuk', 'Nebulak'],
+        index: 3 
+    }
+    static readonly gorn5: GuessingQuestion = { // Gorn 500
+        question: "Um welches Pokemon handelt es sich hier?",
+        video: "",
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Trivia 500 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Trivia 500 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        options: ['Raikou','Watty', 'Voltenso', 'Yarak'],
+        index: 2 
     }
 
     //TODO: GEO + KONTROLLE
