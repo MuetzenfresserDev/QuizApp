@@ -19,7 +19,7 @@ export class ConstQuestions {
         channelId: new URL(window.location.href).searchParams.get('channelId')
     }
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/SNuY9rbGUio?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/nPGvZ8yZlyY?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 
@@ -41,11 +41,11 @@ export class ConstQuestions {
     };
 
     static readonly katPictures: string[] = [
-        "assets/katPictures/erkenne das Pokemon.png",
-        "assets/katPictures/Fusion.png",
+        "assets/katPictures/Schule.png",
+        "assets/katPictures/FilmeSerien.png",
         "assets/katPictures/Geoguessr.png",
-        "assets/katPictures/Pokedex.png",
-        "assets/katPictures/Trivia.png",
+        "assets/katPictures/Gaming.png",
+        "assets/katPictures/Alltag.png",
     ];
 
     static readonly multiplechoiceExample:  MultiplechoiceQuestion = {
@@ -287,17 +287,17 @@ export class ConstQuestions {
         picture: "assets/buzzer/300 Games Antwort.png",
         pictureQuestion: "assets/buzzer/300 Games Frage.png"
     }
-    static readonly milten4:GuessingQuestion = { // Milten 400 FEHLT NOCH TODO
-        question: "Dieses auch als „Geist der Wüste“ bekannte Pokémon versteckt sich in Sandstürmen, \n die es durch das Schlagen seiner Flügel erzeugt.",
-        video: "",
+    static readonly milten4:GuessingQuestion = { // Milten 400
+        question: "Bonusfrage von Snowgen! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/r5OxwhCWoQs?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Pokecheck 400 Antwort.png",
+        picture: "",
         pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "",
-        options: ['Libeldra','Vibrava', 'Tauboga', 'Staraptor'],
-        index: 0 
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/EhCnCnPbfa0?controls=1&vq=hd1080&autoplay=0",
+        options: ['Barbados','Nigeria', 'Lybien', 'Nepal'],
+        index: 3
     }
     static readonly milten5: GuessingQuestion = { // Milten 500
         question: "Welches Spiel ist hier zu sehen?",
