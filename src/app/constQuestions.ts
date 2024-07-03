@@ -197,16 +197,17 @@ export class ConstQuestions {
         options: ['0','1', '2', '4'],
         index: 2
     }
-    static readonly diego4: GeoguessrQuestion= { // Diego 400 BONUS FEHLT NOCH TODO
-        question: "Welche Pokemon wurden hier vereinigt?",
-        searchPicture: "assets/geoguessr/searchPictures/Fusion 400 Frage.jpg",
-        kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Fusion 400 Antwort.png",
-        imgurLink: "https://i.imgur.com/pXbFdOm.jpeg", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
-        bonus: false,
-        video: '',
-        options: ['Onix-Qurtel','Stahlos-Qurtel', 'Stahlos-Tornupto'],
-        index: 2  
+    static readonly diego4: GuessingQuestion= { // Diego 400 
+        question: "Bonusfrage von Darkside! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/VAE8UUhEagA?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/EogoJgW88lE?controls=1&vq=hd1080&autoplay=0",
+        options: ['Mandarin','Deutsch', 'Französisch', 'Russisch'],
+        index: 0
     }
     static readonly diego5: GuessingQuestion = { // Diego 500
         question: "Der folgende Sound spielte sich im ersten Captain America Film, The first Avenger, ab, während Steve Rogers über eine \n eingestürzte Brücke sprang, während alles um ihn herum in Flammen stand. In welchem Film \n (besser noch in welcher anderen Szene) kam dieser Sound nochmal zum Einsatz?",
