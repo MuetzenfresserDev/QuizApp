@@ -238,14 +238,15 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "" //Fragevideo
     }
-    static readonly milten2:GeoguessrQuestion = { // Milten 200 TODO BONUS
-        question: "Schach: Welcher Spielzug muss vollzogen werden für einen Sieg? Zeiche!",
-        searchPicture: "assets/geoguessr/searchPictures/200 Games Frage.png",
-        kind: "Geo-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/200 Games Antwort.png",
-        imgurLink: "https://i.imgur.com/xYmxm2R.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
-        bonus: false,
-        video: ''
+    static readonly milten2:GuessingQuestion = { // Milten 200 TODO BONUS
+        question: "Bonusfrage von Vertigo! -> 500 Gold Frage",
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Kat 4 200 Antwort.png",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/iuI80mvfvJc?controls=1&vq=hd1080&autoplay=0" //Fragevideo
     }
     static readonly milten3: GuessingQuestion = { // Milten 300
         question: "Gor Na Toth ist ziemlich überrascht, dass Cor Angar mit dem Helden gesprochen hat, weil er \n selbst länger nicht mehr diese Ehre hatte. Wie lange ist es laut seiner Aussage her?",
