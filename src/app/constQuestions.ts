@@ -217,13 +217,15 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "" //Fragevideo
     }
-    static readonly lester5: LocationQuestion = { // Lester 500 TODO BONUS
-        question: "Wo ist der gesuchte Ort? (5)",
-        searchPicture: "assets/geoguessr/searchPictures/500 Frage.png",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/500 Antwort.png",
-        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
-        bonus: false,
+    static readonly lester5: GuessingQuestion = { // Lester 500 TODO BONUS
+        question: "Bonuspunkte!",
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: ""
     }
 
 
@@ -238,7 +240,7 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: "" //Fragevideo
     }
-    static readonly milten2:GuessingQuestion = { // Milten 200 TODO BONUS
+    static readonly milten2:GuessingQuestion = { // Milten 
         question: "Bonusfrage von Vertigo! -> 500 Gold Frage",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
