@@ -129,14 +129,14 @@
   />
 </section>
 
-<section fxLayout="row" style="width: 90vw">
+<section fxLayout="row" style="width: 90vw; margin-top: 25px;">
   <div
     fxFlex
     fxLayoutAlign="center center"
     fxLayoutGap="1vw"
     *ngFor="let player of players; index as i"
   >
-    <p style="font-size: large; font-weight: bold">{{ player.name }}</p>
+    <p style="font-size: medium; font-weight: bold">{{ player.name }}</p>
     <button
     style="z-index: 9999;"
       (click)="decreasePoints(i, player)"

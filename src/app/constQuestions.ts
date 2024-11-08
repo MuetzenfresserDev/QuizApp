@@ -1,4 +1,3 @@
-import { ActivatedRoute } from "@angular/router";
 import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, LocationQuestion, MultiplechoiceQuestion, VoicelineQuestion } from "./interfaces/question";
 
 export class ConstQuestions {
@@ -103,31 +102,31 @@ export class ConstQuestions {
 
     /* Namenloser Held / Schule*/
     static readonly held1:BuzzerQuestion = { // Held 100
-        question: "Wer hat das gesagt?",
-        audio: "assets/voicelines/Kat 1 100 Frage.mp3",
+        question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
-        video: "https://www.youtube.com/embed/cNEsgmwBX3k?controls=1&vq=hd1080&autoplay=0"
+        picture: "assets/buzzer/Kat 1 100 Antwort.png",
+        pictureQuestion: 'assets/buzzer/Kat 1 100 Frage.png'
     }
     static readonly held2:BuzzerQuestion = { // Held 200
-        question: "Wer gibt dem Helden die Quest mit folgenden Einträgen?",
+        question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 200 Antwort.png",
         pictureQuestion: 'assets/buzzer/Kat 1 200 Frage.png'
     }
     static readonly held3:BuzzerQuestion = { // Held 300
-        question: "Eine weniger bekannte Textzeile oder Aussage in Gothic ist folgende: \n „Piranhas are watching you“. \n Wann wird man damit als Spieler konfrontiert?",
+        question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 300 Antwort.png",
-        pictureQuestion: 'assets/buzzer/Kat 1 200 Frage.png'
+        pictureQuestion: 'assets/buzzer/Kat 1 300 Frage.png'
     }
     static readonly held4:BuzzerQuestion = { // Held 400
-        question: "Wer bin ich?",
+        question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 400 Antwort.png",
         pictureQuestion: 'assets/buzzer/Kat 1 400 Frage.png'
     }
     static readonly held5:BuzzerQuestion = { // Held 500
-        question: "Wie heißt diese Waffe? ",
+        question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 500 Antwort.png",
         pictureQuestion: 'assets/buzzer/Kat 1 500 Frage.png'
@@ -139,7 +138,7 @@ export class ConstQuestions {
         question: "Wo ist der gesuchte Ort? (1)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 2 100 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 100 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 2 100 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
@@ -147,7 +146,7 @@ export class ConstQuestions {
         question: "Wo ist der gesuchte Ort? (2)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 2 200 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 200 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 2 200 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
@@ -155,7 +154,7 @@ export class ConstQuestions {
         question: "Wo ist der gesuchte Ort? (3)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 2 300 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 300 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 2 300 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
@@ -163,7 +162,7 @@ export class ConstQuestions {
         question: "Wo ist der gesuchte Ort? (4)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 2 400 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 400 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 2 400 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
@@ -171,24 +170,26 @@ export class ConstQuestions {
         question: "Wo ist der gesuchte Ort? (5)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 2 500 Frage.png",
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 500 Antwort.webp",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 2 500 Antwort.png",
         imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
     }
 
     /* Lester */
     static readonly lester1:GuessingQuestion= { // Lester 100
-        question: "In Gothic 2 Classic sind bekanntlich alle Waffen etwas schwächer als \n in der Erweiterung Nacht des Raben. Füge folgende Waffe (Schadenstechnisch) in die richtige Position.",
+        question: "Welcher Charakter passt nicht?",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "assets/guessing/pictures/Kat 3 100 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 3 100 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "", //Fragevideo
+        options: ['Talas','Gorn', 'Lukor', 'Shrat', 'Mud'],
+        index: 0
     }
     static readonly lester2:GuessingQuestion = { // Lester 200
-        question: "In G2 Die Nacht des Raben hat Xardas auf seinem Tisch eine Steintafel liegen, die in der Geschichte  \n des Addons eine Rolle spielt. Was liegt auf diesem Tisch in der Classic Version?",
+        question: "Welche Waffe passt nicht?",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -196,108 +197,101 @@ export class ConstQuestions {
         pictureQuestion: 'assets/guessing/pictures/Kat 3 200 Frage.png',
         bonus: false,
         videoQuestion: "", //Fragevideo
-        options: ['Kleiner Heiltrank','Apfel', 'Knochen', 'Nichts'],
-        index: 3
+        options: ['Bartaxt','Stabkeule', 'Rapier', 'Streitkolben', 'P. Zweihänder'],
+        index: 2
     }
     static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Auch wenn wir im Addon von Gothic 2 die Vermissten finden sollen, so existiert einer der Vermissten auch in Classic. \n Doch wer ist es?",
+        question: "Welches Tier passt nicht?",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "assets/guessing/pictures/Kat 3 300 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 3 300 Frage.png',
         bonus: false,
-        videoQuestion: "", //Fragevideo
-        options: ['Joe','Patrick', 'Monty', 'Lucia'],
+        videoQuestion: "",
+        options: ['Minecrawler','Troll', 'Sumpfhai', 'Feuerwaran', 'Schattenläufer'],
         index: 0
     }
     static readonly lester4: GuessingQuestion = { // Lester 400
-        question: "Wer ist laut seiner Beschreibung Dexters Auftraggeber in Gothic 2 Classic?",
-        video: "https://www.youtube.com/embed/rtJtkeRxBNQ?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Welche Nahrung füllt Mana?",
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 3 400 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 3 400 Frage.png',
         bonus: false,
-        videoQuestion: "", //Fragevideo
-        options: ['Gomez','Raven', 'Gilbert', 'Suchender'],
-        index: 3
+        videoQuestion: "",
+        options: ['gebratenes Fleisch','Fischsuppe', 'Milch', 'Käse', 'gebratene Fleischwanze'],
+        index: 2
     }
     static readonly lester5: GuessingQuestion = { // Lester 500 TODO BONUS
-        question: "Bonusfrage von Graf von Gestern! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/5hxCxT9B3jI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Bonusfrage von KruXol! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/vdSBtFvMUz0?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/djn-N3_KuwA?controls=1&vq=hd1080&autoplay=0",
-        options: ['Aidan','Franco', 'Templer', 'Bandit'],
-        index: 2
+        videoQuestion: "https://www.youtube.com/embed/Piz83ifKATs?controls=1&vq=hd1080&autoplay=0"
     }
 
 
     /* Milten / Games*/
     static readonly milten1:GuessingQuestion = { // Milten 100
-        question: "Nenne den ersten Satz von Lord Andre (keine Strafe)",
-        video: "https://www.youtube.com/embed/ZyAmWZpGHpg?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 100 Frage.png',
-        bonus: false,
-        videoQuestion: "" //Fragevideo
-    }
-    static readonly milten2:GuessingQuestion = { // Milten 
-        question: "Bonusfrage von Vertigo! -> 500 Gold Frage",
+        question: "Erkenne das Gothic-Wort!",
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 200 Antwort.png",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/iuI80mvfvJc?controls=1&vq=hd1080&autoplay=0", //Fragevideo
-        options: ['Edda','Thora', 'Lucia', 'Gritta'],
-        index: 1
+        picture: "assets/guessing/pictures/Kat 4 100 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 4 100 Frage.png',
+        bonus: false,
+        videoQuestion: ""
+    }
+    static readonly milten2:GuessingQuestion = { // Milten 
+        question: "Im 2. Kapitel von Gothic 1 wartet Grim auf den Helden, um sich auf den Weg zum Konzert zu machen. \n Wie lange braucht er von seinem Standpunkt um 12 Uhr bis er anfängt zu Jubeln?",
+        video: "https://www.youtube.com/embed/63YvvRTbdvQ?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: 'assets/guessing/pictures/Kat 4 200 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        options: ['33 Sec','17 Sec', '40 Sec', '29 Sec'],
+        index: 3
     }
     static readonly milten3: GuessingQuestion = { // Milten 300
-        question: "Gor Na Toth ist ziemlich überrascht, dass Cor Angar mit dem Helden gesprochen hat, weil er \n selbst länger nicht mehr diese Ehre hatte. Wie lange ist es laut seiner Aussage her?",
-        video: "https://www.youtube.com/embed/rTvBK6u_psM?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Daron ist übergeschnappt! Er verkauft Jora einfach sein gesamtes Inventar! \n Wie viel Gold hat er dann am Ende? (Nacht des Raben)",
+        video: "https://www.youtube.com/embed/jippGmYcMzI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: 'assets/guessing/pictures/Kat 4 300 Frage.png',
         bonus: false,
-        videoQuestion: "", //Fragevideo
-        options: ['10 Tage','2 Wochen', '1 Monat', 'Halbes Jahr'],
-        index: 2
-    }
-    static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Schätzfrage: Als Novize wird der Held von Cor Kalom losgeschickt Sumpfkraut im Alten Lager zu verkaufen. \n Dort bekommt er für das Kraut eine gewisse Menge Erz. Wenn dieses verloren geht, schimpft Cor Kalom. \n Verständlich, um wie viel Erz geht es hierbei denn?",
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 400 Frage.png',
-        bonus: false,
-        videoQuestion: "", //Fragevideo
-        options: ['1000 Erzbrocken','100 Erzbrocken', '350 Erzbrocken', '500 Erzbrocken'],
+        videoQuestion: "",
+        options: ['187','333', '42', '171'],
         index: 3
     }
+    static readonly milten4:VoicelineQuestion = { // Milten 400
+        question: "Wer hat das gesagt, Rückwärts?",
+        voiceLine: "assets/voicelines/Kat 4 400 Frage.mp3",
+        kind: "Voiceline-Fragen",
+        correctAnswer: "https://www.youtube.com/embed/C0psVB_yzqg?controls=1&vq=hd1080&autoplay=0",
+        bonus: false
+    }
     static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Skip hat einen Bug in seinem Dialog. Hier sollte er was anderes sagen, doch die Vertonung spielt nicht mit. \n So wiederholt er einen Satz und sagt diesen im Laufe des Gesprächs zweimal. Welchen?",
-        video: "https://www.youtube.com/embed/J4Ux-2tM4Bc?controls=1&vq=hd1080&autoplay=0",
+        question: "Wahr oder Falsch",
+        video: "https://www.youtube.com/embed/1WzvVAl9yoo?controls=1&vq=hd1080&autoplay=0",
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 500 Frage.png',
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/UlYuqDtJAJc?controls=1&vq=hd1080&autoplay=0"
     }
 
     /* Gorn */
     static readonly gorn1:GuessingQuestion = { // Gorn 100
-        question: "ChatGPT meint, sich gut mit der Welt von Gothic auszukennen. Wir „Experten“ wissen jedoch, dass da so einiges \n an Fehlern aufkommen kann, wenn die AI mit seinem Wissen glänzen möchte. Dennoch stellt euch ChatGPT eine Quizfrage. \n Beantwortet sie bitte so, dass sie laut der AI richtig ist.",
+        question: "Rätsel",
         video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -307,50 +301,44 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly gorn2:GuessingQuestion = { // Gorn 200
-        question: "Wie lange braucht Cavalorn, um die Banditen zu erledigen? (Ab Dialog Ende bis Dialog)",
-        video: "https://www.youtube.com/embed/gysYUFixfQI?controls=1&vq=hd1080&autoplay=0",
+        question: "Rätsel",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 5 200 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly gorn3:GuessingQuestion = { // Gorn 300
-        question: "Wahr oder Falsch",
-        video: "https://www.youtube.com/embed/ebP5jnhYdZE?controls=1&vq=hd1080&autoplay=0",
+        question: "Rätsel",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
+        picture: "assets/guessing/pictures/Kat 5 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 300 Frage.png',
         bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/GYPE3CIu7mM?controls=1&vq=hd1080&autoplay=0",
-        options: ['falsch, falsch, wahr','wahr, wahr, falsch', 'wahr, wahr, wahr', 'falsch, wahr, wahr'],
-        index: 1
+        videoQuestion: ""
     }
     static readonly gorn4:GuessingQuestion = { // Gorn 400
-        question: "Was ist das Einzige, was der Eremit nach Jharkendar mitgebracht hat?",
-        video: "https://www.youtube.com/embed/bHDUM-kJ-0o?controls=1&vq=hd1080&autoplay=0",
+        question: "Rätsel",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 5 400 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 400 Frage.png',
         bonus: false,
-        videoQuestion: "",
-        options: ['Verpflegung','Waffen', 'Magie', 'Gute Laune'],
-        index: 3
+        videoQuestion: ""
     }
     static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Ivan häufiger Name, doch was hinterlässt er uns in G2?",
-        video: "https://www.youtube.com/embed/lGU-1LkGbx8?controls=1&vq=hd1080&autoplay=0",
+        question: "Rätsel",
+        video: "",
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 5 500 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 500 Frage.png',
         bonus: false,
-        videoQuestion: "",
-        options: ['Waffe','500 Gold', 'Zettel', 'Permatrank'],
-        index: 2
+        videoQuestion: ""
     }
 
     /* static readonly diego4: BuzzerQuestion= { // Diego 400
