@@ -69,6 +69,7 @@ export class BuzzerComponent implements OnInit {
     this.showLsgButton = true;
     this.showVideo = false;
     this.showPicture = false;
+    this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.videoQuestion);
   }
 
   public showVideoAnswer(){
@@ -88,6 +89,14 @@ export class BuzzerComponent implements OnInit {
     this.showPicture = true;
     this.showPictureQuestion=false;
     this.showLsgButton = false
+  }
+
+  public setVideoQuestionWidth(){
+    this.questionPictureSize.width = '804';
+  }
+
+  public setVideoQuestionHeight(){
+    this.questionPictureSize.height = '584';
   }
 
 }

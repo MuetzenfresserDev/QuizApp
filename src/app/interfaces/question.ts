@@ -73,6 +73,7 @@ export interface BuzzerQuestion {
     question: string;
     kind: string;
     video?: string;
+    videoQuestion?: string;
     audio?: string;
     picture?: string;
     pictureQuestion?: string;

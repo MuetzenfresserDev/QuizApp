@@ -105,7 +105,7 @@ export class ConstQuestions {
         question: "Erkenne das Monster!",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 100 Antwort.png",
-        pictureQuestion: 'assets/buzzer/Kat 1 100 Frage.png'
+        videoQuestion: 'https://www.youtube.com/embed/vdSBtFvMUz0?controls=1&vq=hd1080&autoplay=0'
     }
     static readonly held2:BuzzerQuestion = { // Held 200
         question: "Erkenne das Monster!",
