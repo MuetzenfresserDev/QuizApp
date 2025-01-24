@@ -5,7 +5,7 @@
   fxLayoutAlign="center center"
   fxLayoutGap="2vw"
 >
-  <div fxLayout="row" fxLayoutGap="1vw">
+  <div *ngIf="data.searchVideo === undefined || data.searchVideo === ''" fxLayout="row" fxLayoutGap="1vw">
     <h4>{{ data.question }}</h4>
     <section fxLayoutAlign="center center">
       <button
@@ -18,12 +18,49 @@
       </button>
     </section>
   </div>
+  <div *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''" fxLayout="row" fxLayoutGap="1vw">
+    <h4>{{ data.question }}</h4>
+    <section fxLayoutAlign="center center">
+      <button
+        *ngIf="showBackButton === false"
+        mat-flat-button
+        color="accent"
+        (click)="clickShowCanvas()"
+      >
+        Lösung
+      </button>
+      <button
+        *ngIf="showBackButton === false"
+        mat-flat-button
+        color="accent"
+        (click)="clickShowVideo()"
+        style="margin-left: 10px;"
+      >
+        Lösungs Video
+      </button>
+    </section>
+  </div>
+
   <div fxLayout="row" *ngIf="data.searchPicture !== ''">
     <img
       [src]="data.searchPicture"
       [width]="pictureSize.width"
       [height]="pictureSize.height"
     />
+  </div>
+  
+  <div fxLayout="row" *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''">
+    <iframe
+    style="z-index: 10000;"
+    [width]="videoSize.width"
+    [height]="videoSize.height"
+    [src]="youtubeQuestionLink"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    muted
+  ></iframe>
   </div>
 </section>
 
@@ -39,4 +76,18 @@
       Zur Frage
     </button>
   </section>
+</section>
+
+<section *ngIf="showVideo === true">
+  <iframe
+    style="z-index: 10000; position: absolute; top: 15%; left: 26%;"
+    [width]="videoSize.width"
+    [height]="videoSize.height"
+    [src]="youtubeLink"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    muted
+  ></iframe>
 </section>

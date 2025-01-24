@@ -67,6 +67,8 @@ export interface LocationQuestion {
     markedPicture: string;
     imgurLink: string;
     bonus: boolean;
+    searchVideo?: string;
+    answerVideo?: string;
 }
 
 export interface BuzzerQuestion {
