@@ -162,7 +162,9 @@ export class ConstQuestions {
         picture: "assets/guessing/pictures/Kat 2 100 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 100 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "",
+        options: ['68','-400', '333', '-1065'],
+        index: 3
     }
     static readonly diego2: LocationQuestion = { // Diego 200
         question: "Bonusfrage von P.K. Charmant! -> 500 Gold Frage",
@@ -182,7 +184,9 @@ export class ConstQuestions {
         picture: "assets/guessing/pictures/Kat 2 300 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 300 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "",
+        options: ['4000','1728', '2224', '73'],
+        index: 0
     }
     static readonly diego4: GuessingQuestion= { // Diego 400 
         question: "Wie viele Häuser gibt es in der Stadt Khorinis? \n Kaserne und Türme zählen nicht, zusammenhängende Häuser zählen als ein Haus.", //FRAGE TODO
@@ -192,7 +196,9 @@ export class ConstQuestions {
         picture: "assets/guessing/pictures/Kat 2 400 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 400 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "",
+        options: ['16','20', '31', '9'],
+        index: 1
     }
     static readonly diego5: GuessingQuestion = { // Diego 500
         question: "Wieviele Hütteneingänge gibt es im Alten Lager? Jede Tür Zählt!", //FRAGE TODO
@@ -202,7 +208,9 @@ export class ConstQuestions {
         picture: "assets/guessing/pictures/Kat 2 500 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 500 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "",
+        options: ['69','112', '77', '54'],
+        index: 2
     }
 
     /* Lester */
