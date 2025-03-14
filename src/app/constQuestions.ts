@@ -101,53 +101,50 @@ export class ConstQuestions {
     }
 
     /* Namenloser Held / Schule*/
-    static readonly held1:GuessingQuestion = { // Held 100
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", //FRAGE TODO
+    static readonly held1:GuessingQuestion = { // Held 100 TODO -> EVTL BUZZER
+        question: "Welches Monster ist hier abgebildet?", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 100 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 100 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 1 100 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 1 100 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly held2:GuessingQuestion = { // Held 200
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", //FRAGE TODO
+        question: "Wer bietet mehr? (Gardisten mit Namen in der Kolonie)", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 200 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 200 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 1 200 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 1 200 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly held3:GuessingQuestion = { // Held 300
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", //FRAGE TODO
-        video: "", //Antwortvideo
+        question: "Wahr oder Falsch?", //FRAGE TODO
+        video: "https://www.youtube.com/embed/bUOYLaBRVGI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 300 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 300 Frage+Antwort.png',
+        picture: "",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/1a6KJ-F1GD4?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly held4:GuessingQuestion = { // Held 400
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 400 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 400 Frage+Antwort.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held4:VoicelineQuestion = { // Held 400
+        question: "Wer sagt das?",
+        voiceLine: "assets/voicelines/Kat 1 400 Frage.mp3",
+        kind: "Voiceline-Fragen",
+        correctAnswer: "https://www.youtube.com/embed/vf784h3-htg?controls=1&vq=hd1080&autoplay=0",
+        bonus: false
     }
     static readonly held5:GuessingQuestion = { // Held 500
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", //FRAGE TODO
+        question: "Wie überzeugt der Held Baal Tyon von sich?", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 500 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 500 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 1 500 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 1 500 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
@@ -155,171 +152,146 @@ export class ConstQuestions {
 
     /* Diego*/ //ALLES GEOGUESSR... Zum Schluss!!!
     static readonly diego1: GuessingQuestion= { // Diego 100
-        question: "Gold-Schätzfrage: Der Held möchte eine Gesegnete Erzklinge von Hakon kaufen, die er zuvor bei einer Wette verloren hat. \n So ein Mist! Er hat kein Gold dabei und verkauft folgende Dinge: \n Mittlere Drachenjägerrüstung jeweils ein Herz eines Stein, Eis und Feuergolems. \n Wie viel Gold fehlt ihm, bzw. wie viel Gold hat er Übrig?", //FRAGE TODO
-        video: "", //Antwortvideo
+        question: "Bonusfrage von MisterIch! -> 500 Gold Frage", //FRAGE TODO
+        video: "https://www.youtube.com/embed/vzee9t2fMG4?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 2 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 2 100 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['68','-400', '333', '-1065'],
-        index: 3
-    }
-    static readonly diego2: LocationQuestion = { // Diego 200
-        question: "Bonusfrage von P.K. Charmant! -> 500 Gold Frage",
-        searchVideo: "https://www.youtube.com/embed/MqO3d9FE3a4?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
-        answerVideo: "https://www.youtube.com/embed/8QwNHewNeAs?controls=1&vq=hd1080&autoplay=0",
-        searchPicture: "",
-        kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 2 300 Antwort.png",
-        imgurLink: "https://i.imgur.com/PvDcX8Z.png",
+        picture: "",
+        pictureQuestion: '',
         bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/6dPGoXgQass?controls=1&vq=hd1080&autoplay=0"
     }
-    static readonly diego3: GuessingQuestion= { // Diego 300
-        question: "Gold-Schätzfrage: Der Held arbeitet für Bospar. Eine gute Jagd! \n Seine Ausbeute: 8 Schattenläuferfelle, 8 Wargfelle, 6 Trollfelle. \n Wieviel Gold verdient er?", //FRAGE TODO
-        video: "", //Antwortvideo
+    static readonly diego2: GuessingQuestion = { // Diego 200
+        question: "Bospar, einer der Meister in der Stadt Khorinis, gibt dem Helden seine Zustimmung eigentlich nur \n wenn der Held ihm ein halbes Dutzend Wolfsfelle bringt. \n Welche andere Möglichkeit gibt es, diesen Meister zu überzeugen?",
+        video: "https://www.youtube.com/embed/liLwIBEExlI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 2 300 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 2 300 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['4000','1728', '2224', '73'],
-        index: 0
-    }
-    static readonly diego4: GuessingQuestion= { // Diego 400 
-        question: "Wie viele Häuser gibt es in der Stadt Khorinis? \n Kaserne und Türme zählen nicht, zusammenhängende Häuser zählen als ein Haus.", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 2 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 2 400 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['16','20', '31', '9'],
-        index: 1
-    }
-    static readonly diego5: GuessingQuestion = { // Diego 500
-        question: "Wieviele Hütteneingänge gibt es im Alten Lager? Jede Tür Zählt!", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 2 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 2 500 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        options: ['69','112', '77', '54'],
-        index: 2
-    }
-
-    /* Lester */
-    static readonly lester1:GuessingQuestion= { // Lester 100
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 100 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 100 Frage+Antwort.png',
+        picture: "",
+        pictureQuestion: 'assets/guessing/pictures/Kat 2 200 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
+    static readonly diego3: GuessingQuestion= { // Diego 300
+        question: "Wahr oder Falsch?", //FRAGE TODO
+        video: "https://www.youtube.com/embed/SQB6mWq4riw?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/T1NT6MWdokw?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly diego4: GeoguessrQuestion = { // Milten 100
+        question: "Die erste Kammer im Tempel Adanos lässt sich durch das Wissen der farbigen Steintafeln öffnen. \n Wie?",
+        searchPicture: "assets/guessing/pictures/Kat 2 400 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/guessing/pictures/Kat 2 400 Antwort.png",
+        imgurLink: "https://i.imgur.com/dE321Dz.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: ''
+    }
+    static readonly diego5: VoicelineQuestion = { // Diego 500
+        question: "Wer sagt das?",
+        voiceLine: "assets/voicelines/Kat 2 500 Frage.mp3",
+        kind: "Voiceline-Fragen",
+        correctAnswer: "https://www.youtube.com/embed/BhNJfEYrr7M?controls=1&vq=hd1080&autoplay=0",
+        bonus: false
+    }
+
+    /* Lester */
+    static readonly lester1:GeoguessrQuestion= { // Lester 100
+        question: "Oh Nein, da haben die Suchenden wieder ihr Unwesen getrieben! \n Finde die Fehler! ",
+        searchPicture: "assets/guessing/pictures/Kat 3 100 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/guessing/pictures/Kat 3 100 Antwort.png",
+        imgurLink: "https://i.imgur.com/KIXX0ZD.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
+        bonus: false,
+        video: ''
+    }
     static readonly lester2:GuessingQuestion = { // Lester 200
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", //FRAGE TODO
+        question: "Welchen Manaverbrauch haben folgende Zauber in Gothic 1?", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 200 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 200 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 3 200 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 3 200 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", //FRAGE TODO
+        question: "Den Schwarzen Wolf zu töten ist ein Auftrag von Isgaroth. \n Doch wer Schickt den Novizen-Helden zu ihm?", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 300 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 300 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 3 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 3 300 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly lester4: GuessingQuestion = { // Lester 400
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", //FRAGE TODO
+        question: "Milten braucht mal wieder deine Hilfe. Welche Rune passt nicht?", //FRAGE TODO
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 400 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 400 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 3 400 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 3 400 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
-    static readonly lester5: GuessingQuestion = { // Lester 500 TODO BONUS
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 500 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 500 Frage+Antwort.png',
+    static readonly lester5: GeoguessrQuestion = { // Lester 500 TODO BONUS
+        question: "Die Spruchrollen in Gothic 1 sind alle mit farbigen Punkte versehen. \n Kannst du sie hier ergänzen?",
+        searchPicture: "assets/guessing/pictures/Kat 3 500 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/guessing/pictures/Kat 3 500 Antwort.png",
+        imgurLink: "https://i.imgur.com/UMEMLNl.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
-        videoQuestion: ""
+        video: ''
     }
-
 
     /* Milten / Games*/
-    static readonly milten1:GuessingQuestion = { // Milten 100
-        question: "Welche Items sind vorhanden? -> Handelsinventar: Canthar außerhalb der Stadt", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 100 Frage.png',
+    static readonly milten1:LocationQuestion = { // Milten 100
+        question: "Wo ist der gesuchte Ort? (1)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 100 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 100 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
-        videoQuestion: ""
     }
-    static readonly milten2:GuessingQuestion = { // Milten 
-        question: "Welche Items sind vorhanden? -> Xardas Truhe auf Sekobs Hof", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 200 Frage.png',
+    static readonly milten2:LocationQuestion = { // Milten 
+        question: "Wo ist der gesuchte Ort? (2)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 200 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 200 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
-        videoQuestion: ""
     }
-    static readonly milten3: GuessingQuestion = { // Milten 300
-        question: "Welche Items sind vorhanden? -> Drachenjäger Silvio und Bullco (Inventar)", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 300 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 300 Frage.png',
+    static readonly milten3: LocationQuestion = { // Milten 300
+        question: "Wo ist der gesuchte Ort? (3)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 300 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 300 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
-        videoQuestion: ""
     }
-    static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Welche Items sind vorhanden? -> Die Truhe des Schwarzmagiers in Irdorath", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 400 Frage.png',
+    static readonly milten4:LocationQuestion = { // Milten 400
+        question: "Wo ist der gesuchte Ort? (4)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 400 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 400 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
-        videoQuestion: ""
     }
-    static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Welche Items sind vorhanden? -> „Zeig mal dingens…“", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 500 Frage.png',
+    static readonly milten5: LocationQuestion = { // Milten 500
+        question: "Wo ist der gesuchte Ort? (5)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 500 Frage.png",
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 500 Antwort.png",
+        imgurLink: "https://i.imgur.com/PvDcX8Z.png", //g1Minental
         bonus: false,
-        videoQuestion: ""
     }
 
     /* Gorn */
-    static readonly gorn1:GuessingQuestion = { // Gorn 100
+    static readonly gorn1:GuessingQuestion = { // Gorn 100 TODO -> FEHLT NOCH!
         question: "Schatten-Zahlen! Wie heißen die Schatten des Alten Lagers? \n Nennt abwechselnd einen Namen, bis ein Fehler passiert!“", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
@@ -330,41 +302,41 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly gorn2:GuessingQuestion = { // Gorn 200
-        question: "Sound-Impression! \n Zeit zu Üben – Versucht den Sound des gesuchten Tieres nachzuahmen, um euren Teammate zu helfen, das Tier zu erraten!“", 
-        video: "", //Antwortvideo
+        question: "Gold-Schätzfrage. Der Held ist bei Harad in der Lehre. Er schmiedet und verkauft folgende Waffen: \n 1x Edles Schwert, 2x Edles Langschwert, 3x Rubinklinge und 4x El Bastardo \n Wie viel Gold zahlt Harad?", 
+        video: "https://www.youtube.com/embed/Oo2Dffa-O9E?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 200 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage+Antwort.png',
+        picture: "",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly gorn3:GuessingQuestion = { // Gorn 300
-        question: "Wer bin ich? Beantwortet Fragen eures Teammates, damit dieser auf den gesuchten Charakter kommt!“", 
+        question: "Greg-Storys! Stelle deine Fragen und errate den gesuchten Charakter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 300 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 300 Frage+Antwort.png',
+        picture: "assets/guessing/pictures/Kat 5 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 300 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
-    static readonly gorn4:GuessingQuestion = { // Gorn 400
-        question: "Emoji-Raten! Sucht euch 5 Emotes aus, um euren Teammate zu helfen, auf das gesuchte Item zu kommen!“", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 400 Frage+Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 400 Frage+Antwort.png',
+    static readonly gorn4:GeoguessrQuestion = { // Gorn 400
+        question: "Angriffslustige Tiere! Vor welcher der folgenden Tiere muss sich eine Blutfliege innerhalb der Kolonie in Acht nehmen?",
+        searchPicture: "assets/guessing/pictures/Kat 5 400 Frage.png",
+        kind: "Geo-Frage",
+        markedPicture: "assets/guessing/pictures/Kat 5 400 Antwort.png",
+        imgurLink: "https://i.imgur.com/BRDk1R0.png", //hier muss das searchPicutre dann noch hochgeladen und eingefügt werden
         bonus: false,
-        videoQuestion: ""
+        video: ''
     }
+    
     static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Scharfe-Zahlen! Nennt alle Bögen aus Gothic 1! Nennt abwechselnd einen Namen, bis ein Fehler passiert!“", 
-        video: "", //Antwortvideo
+        question: "Lauf-Zeit-Schätzfrage: Wie lange braucht Jack in seinem Gang vom Hafen in seinen Leuchtturm?", 
+        video: "https://www.youtube.com/embed/4TuGiEX5IoE?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 500 Antwort.png",
+        picture: "",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 500 Frage.png',
         bonus: false,
         videoQuestion: ""
