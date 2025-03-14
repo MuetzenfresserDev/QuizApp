@@ -101,15 +101,11 @@ export class ConstQuestions {
     }
 
     /* Namenloser Held / Schule*/
-    static readonly held1:GuessingQuestion = { // Held 100 TODO -> EVTL BUZZER
-        question: "Welches Monster ist hier abgebildet?", //FRAGE TODO
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 100 Frage.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held1:BuzzerQuestion = { // Held 100 TODO -> EVTL BUZZER
+        question: "Erkenne das Monster!",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Kat 1 100 Antwort.png",
+        pictureQuestion: 'assets/buzzer/Kat 1 100 Frage.png'
     }
     static readonly held2:GuessingQuestion = { // Held 200
         question: "Wer bietet mehr? (Gardisten mit Namen in der Kolonie)", //FRAGE TODO
@@ -291,15 +287,15 @@ export class ConstQuestions {
     }
 
     /* Gorn */
-    static readonly gorn1:GuessingQuestion = { // Gorn 100 TODO -> FEHLT NOCH!
-        question: "Schatten-Zahlen! Wie heißen die Schatten des Alten Lagers? \n Nennt abwechselnd einen Namen, bis ein Fehler passiert!“", 
-        video: "", //Antwortvideo
+    static readonly gorn1:GuessingQuestion = { // Gorn 100
+        question: "Bonusfrage von DavePferdeschwanz! -> 500 Gold Frage", 
+        video: "https://www.youtube.com/embed/q7SFjfJ7uQI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 100 Frage.png',
-        bonus: false,
-        videoQuestion: ""
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/mX5dvCnbaeY?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly gorn2:GuessingQuestion = { // Gorn 200
         question: "Gold-Schätzfrage. Der Held ist bei Harad in der Lehre. Er schmiedet und verkauft folgende Waffen: \n 1x Edles Schwert, 2x Edles Langschwert, 3x Rubinklinge und 4x El Bastardo \n Wie viel Gold zahlt Harad?", 
