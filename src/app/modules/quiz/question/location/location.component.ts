@@ -19,6 +19,7 @@ export class LocationComponent implements OnInit {
   youtubeLink: SafeResourceUrl | undefined;
   youtubeQuestionLink: SafeResourceUrl | undefined;
   videoSize: {width: string, height: string} = ConstQuestions.videoSize;
+  pictureFlag: boolean = false;
 
   pictureSize = ConstQuestions.pictureSize;
 
@@ -67,6 +68,10 @@ export class LocationComponent implements OnInit {
     document.getElementById("geo")!.style.display = "none";
     this.showBackButton = false;
     this.showVideo = false;
+  }
+
+  public changePictureFlag(){
+    this.pictureFlag = !this.pictureFlag;
   }
 
 }

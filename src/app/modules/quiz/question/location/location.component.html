@@ -5,7 +5,11 @@
   fxLayoutAlign="center center"
   fxLayoutGap="2vw"
 >
-  <div *ngIf="data.searchVideo === undefined || data.searchVideo === ''" fxLayout="row" fxLayoutGap="1vw">
+  <div
+    *ngIf="data.searchVideo === undefined || data.searchVideo === ''"
+    fxLayout="row"
+    fxLayoutGap="1vw"
+  >
     <h4>{{ data.question }}</h4>
     <section fxLayoutAlign="center center">
       <button
@@ -18,7 +22,11 @@
       </button>
     </section>
   </div>
-  <div *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''" fxLayout="row" fxLayoutGap="1vw">
+  <div
+    *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''"
+    fxLayout="row"
+    fxLayoutGap="1vw"
+  >
     <h4>{{ data.question }}</h4>
     <section fxLayoutAlign="center center">
       <button
@@ -34,7 +42,7 @@
         mat-flat-button
         color="accent"
         (click)="clickShowVideo()"
-        style="margin-left: 10px;"
+        style="margin-left: 10px"
       >
         Lösungs Video
       </button>
@@ -42,25 +50,34 @@
   </div>
 
   <div fxLayout="row" *ngIf="data.searchPicture !== ''">
-    <img
+    <section *ngIf="pictureFlag">
+      <img
       [src]="data.searchPicture"
       [width]="pictureSize.width"
       [height]="pictureSize.height"
     />
+    </section>
+    <section *ngIf="!pictureFlag">
+      <button mat-flat-button color="primary" (click)="changePictureFlag()">Bild anzeigen</button>
+    </section>
+    
   </div>
-  
-  <div fxLayout="row" *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''">
+
+  <div
+    fxLayout="row"
+    *ngIf="data.searchVideo !== undefined && data.searchVideo !== ''"
+  >
     <iframe
-    style="z-index: 10000;"
-    [width]="videoSize.width"
-    [height]="videoSize.height"
-    [src]="youtubeQuestionLink"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    muted
-  ></iframe>
+      style="z-index: 10000"
+      [width]="videoSize.width"
+      [height]="videoSize.height"
+      [src]="youtubeQuestionLink"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      muted
+    ></iframe>
   </div>
 </section>
 
@@ -72,7 +89,12 @@
   fxLayoutGap="2vw"
 >
   <section>
-    <button style="margin-left:93vw; z-index: 9999;" mat-flat-button color="accent" (click)="clickShowQuestion()">
+    <button
+      style="margin-left: 93vw; z-index: 9999"
+      mat-flat-button
+      color="accent"
+      (click)="clickShowQuestion()"
+    >
       Zur Frage
     </button>
   </section>
@@ -80,7 +102,7 @@
 
 <section *ngIf="showVideo === true">
   <iframe
-    style="z-index: 10000; position: absolute; top: 15%; left: 26%;"
+    style="z-index: 10000; position: absolute; top: 15%; left: 26%"
     [width]="videoSize.width"
     [height]="videoSize.height"
     [src]="youtubeLink"
