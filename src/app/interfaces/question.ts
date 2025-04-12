@@ -77,8 +77,10 @@ export interface BuzzerQuestion {
     video?: string;
     videoQuestion?: string;
     audio?: string;
+    audioAnswer?: string;
     picture?: string;
     pictureQuestion?: string;
     options?: string[];
     index?: number;
+    imgurLink?: string;
 }

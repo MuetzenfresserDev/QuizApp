@@ -49,6 +49,22 @@
       <section fxFlex>
         <app-buzzer [data]="data"></app-buzzer>
       </section>
+      <section *ngIf="data.imgurLink !== undefined">
+        <section
+        fxFlex="{{ setWidth }}"
+        fxLayoutAlign="center"
+        *ngFor="let p of playerCount; index as i"
+      >
+      <app-whiteboard
+            [style.display]="visibleBoard.display"
+            [url]="whiteboardUrls[i]"
+            [index]="i"
+            [blockName]="blockNames[i]"
+            [imgurLink]="data.imgurLink"
+          ></app-whiteboard>
+    </section>
+        
+      </section>
     </div>
 
     <div fxLayout="row" fxFlex *ngIf="data.kind === 'Location-Frage'">

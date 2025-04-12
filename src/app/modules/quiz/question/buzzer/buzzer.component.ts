@@ -16,6 +16,7 @@ export class BuzzerComponent implements OnInit {
   show: boolean = false;
   videoSize = ConstQuestions.videoSize;
   pictureSize = ConstQuestions.pictureSize;
+  placeholderSize = {width: '900', height: '429'}
   questionPictureSize = {width: '504', height: '284'};
   youtubeLink: SafeResourceUrl | undefined;
   showVideo: boolean = false;
@@ -61,6 +62,7 @@ export class BuzzerComponent implements OnInit {
   }
 
   public showQuestion(){
+    console.log('Test')
     if(document.getElementById("buzz")!.style.display == "none"){
       document.getElementById("buzz")!.style.display = "block";
     }
@@ -83,12 +85,13 @@ export class BuzzerComponent implements OnInit {
   }
 
   public showPictureAnswer(){
+    this.showLsgButton = false;
+
     if(document.getElementById("buzz")!.style.display == "block"){
       document.getElementById("buzz")!.style.display = "none";
     }
     this.showPicture = true;
     this.showPictureQuestion=false;
-    this.showLsgButton = false
   }
 
   public setVideoQuestionWidth(){

@@ -26,7 +26,7 @@
   </button>
 
   <button
-    *ngIf="data.hasOwnProperty('picture') && showLsgButton === true"
+    *ngIf="(data.hasOwnProperty('picture') && showLsgButton === true) || (data.hasOwnProperty('audioAnswer') && showLsgButton === true)"
     (click)="showPictureAnswer()"
     mat-flat-button
     color="accent"
@@ -35,24 +35,34 @@
   </button>
 
   <audio
-    *ngIf="data.hasOwnProperty('audio')"
+    *ngIf="data.hasOwnProperty('audio') && showLsgButton === true"
     #audioPlayer
     [src]="data.audio"
   ></audio>
+
+  <audio
+    *ngIf="data.hasOwnProperty('audioAnswer') && showLsgButton !== true"
+    #audioPlayer
+    [src]="data.audioAnswer"
+  ></audio>
 </section>
 
-<section *ngIf="showPictureQuestion === true && data.hasOwnProperty('pictureQuestion')">
+<section
+  *ngIf="showPictureQuestion === true && data.hasOwnProperty('pictureQuestion')"
+>
   <img
     [src]="data.pictureQuestion"
     [width]="questionPictureSize.width"
     [height]="questionPictureSize.height"
-    style="z-index: 10000; position: absolute; top: 20%; left: 70%;"
+    style="z-index: 10000; position: absolute; top: 20%; left: 70%"
   />
 </section>
 
-<section *ngIf="showPictureQuestion === true && data.hasOwnProperty('videoQuestion')">
+<section
+  *ngIf="showPictureQuestion === true && data.hasOwnProperty('videoQuestion')"
+>
   <iframe
-    style="z-index: 10000; position: absolute; top: 10%; left: 64%;"
+    style="z-index: 10000; position: absolute; top: 10%; left: 64%"
     [width]="'684'"
     [height]="'464'"
     [src]="youtubeLink"
@@ -69,9 +79,9 @@
   fxLayout="column"
   fxLayoutAlign="center center"
   fxLayoutGap="2vw"
-  style="margin-bottom: 10px;"
+  style="margin-bottom: 10px"
 >
-<section></section>
+  <section></section>
   <button
     (click)="showQuestion()"
     mat-flat-button
@@ -136,14 +146,20 @@
   fxLayoutAlign="center center"
   *ngIf="showPicture === true"
 >
-  <img
+  <img *ngIf="data.picture !== undefined"
     [src]="data.picture"
     [width]="pictureSize.width"
     [height]="pictureSize.height"
   />
+  <img *ngIf="data.picture === undefined"
+    [src]="data.picture"
+    [width]="placeholderSize.width"
+    [height]="placeholderSize.height"
+    style="visibility: hidden;"
+  />
 </section>
 
-<section fxLayout="row" style="width: 90vw; margin-top: 25px;">
+<section fxLayout="row" style="width: 90vw; margin-top: 25px">
   <div
     fxFlex
     fxLayoutAlign="center center"
@@ -152,7 +168,7 @@
   >
     <p style="font-size: medium; font-weight: bold">{{ player.name }}</p>
     <button
-    style="z-index: 9999;"
+      style="z-index: 9999"
       (click)="decreasePoints(i, player)"
       mat-flat-button
       color="primary"
