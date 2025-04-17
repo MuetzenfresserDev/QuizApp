@@ -28,6 +28,7 @@ export class BoardComponent implements OnInit {
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: string[] = ConstQuestions.katPictures;
+  lastQuestion: { i: number | null; j: number | null } = JSON.parse(sessionStorage.getItem('lastQuestion') || 'null') || { i: null, j: null };
 
   buttonColors: string[] = ['teal1', 'teal2', 'teal3', 'teal4', 'teal5'];
 
@@ -82,6 +83,10 @@ export class BoardComponent implements OnInit {
   }
 
   public onClickOpenDialog(item: any, i: number, j: number) {
+    sessionStorage.setItem('lastQuestion', JSON.stringify({ i, j }));
+    this.lastQuestion = { i, j }; // Setzt die zuletzt angeklickte Frage
+    console.log(this.lastQuestion);
+
     console.log(item);
 
     let dialogData: DialogData<DialogComponent> = {

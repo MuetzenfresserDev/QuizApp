@@ -29,7 +29,6 @@ export class QuizComponent {
       let counter = 0;
       for (let row of questions) {
         for (let e of row) {
-          console.log(e);
           if (e == '' || e == 'bonus') {
             counter++;
           }

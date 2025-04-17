@@ -6,17 +6,44 @@
     <section *ngFor="let question of item, index as j">
 
       <section *ngIf="doubleThreshold <= 9">
-        <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
+        <button 
+          (click)="onClickOpenDialog(question, i, j)" 
+          mat-flat-button 
+          style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" 
+          [ngClass]="{
+            clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j
+          }" 
+          [color]="usedQuestionColors[i][j]">
+          {{ points[j] }}
+        </button>
       </section>
 
       <section *ngIf="doubleThreshold > 9">
 
         <section *ngIf="usedQuestionColors[i][j] == 'bonus' || usedQuestionColors[i][j] == ''">
-          <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{points[j]}}</button>
+          <button 
+            (click)="onClickOpenDialog(question, i, j)" 
+            mat-flat-button 
+            style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" 
+            [ngClass]="{
+              clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j
+            }" 
+            [color]="usedQuestionColors[i][j]">
+            {{ points[j] }}
+          </button>
         </section>
 
         <section *ngIf="usedQuestionColors[i][j] != 'bonus' && usedQuestionColors[i][j] != ''">
-          <button (click)="onClickOpenDialog(question,i,j)" mat-flat-button style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" [color]="usedQuestionColors[i][j]">{{doublePointsAfter15Questions[j]}}</button>
+          <button 
+            (click)="onClickOpenDialog(question, i, j)" 
+            mat-flat-button 
+            style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" 
+            [ngClass]="{
+              clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j
+            }" 
+            [color]="usedQuestionColors[i][j]">
+            {{ doublePointsAfter15Questions[j] }}
+          </button>
         </section>
 
       </section>
