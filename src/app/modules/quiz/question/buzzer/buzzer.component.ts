@@ -17,7 +17,7 @@ export class BuzzerComponent implements OnInit {
   videoSize = ConstQuestions.videoSize;
   pictureSize = ConstQuestions.pictureSize;
   placeholderSize = {width: '900', height: '429'}
-  questionPictureSize = {width: '504', height: '284'};
+  questionPictureSize = {width: '704', height: '484'};
   youtubeLink: SafeResourceUrl | undefined;
   showVideo: boolean = false;
   showPicture: boolean = false;

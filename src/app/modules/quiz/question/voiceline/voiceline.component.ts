@@ -31,6 +31,7 @@ export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
   analyserNode: AnalyserNode | undefined;
   bufferLength: number | undefined;
   dataArray: any | undefined;
+  pictureSize = ConstQuestions.pictureSize;
 
   animationId: any;
 

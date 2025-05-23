@@ -14,6 +14,7 @@ export interface VoicelineQuestion {
     bonus: boolean;
     options?: string[];
     index?: number;
+    pictureAnswer?: string;
 }
 
 export interface Answer{
