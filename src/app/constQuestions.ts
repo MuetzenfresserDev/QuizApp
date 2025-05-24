@@ -163,14 +163,14 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly diego4: GuessingQuestion = { // Milten 100 TODO BONUS 
-        question: "Wahr oder Falsch!", //FEHLT NOCH! TODO
-        video: "https://www.youtube.com/embed/9CEjpAg64E8?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Bonusfrage von Snowfox! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/_NMcXH6iYFg?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/K-ZHgMNMRFo?controls=1&vq=hd1080&autoplay=0"
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/xPOHC6WvvV8?controls=1&vq=hd1080&autoplay=0" //Fragevideo
     }
     static readonly diego5: GuessingQuestion = { // Diego 500
         question: "Wie heißt die Quest?",
