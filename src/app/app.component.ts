@@ -19,10 +19,18 @@ export class AppComponent implements OnInit{
     setInterval(() => {
       this.requestService.keepAlive().subscribe({
         next: (response) => {
-          console.log('Keep alive request successful:', response);
+          console.log('Keep alive (GEOGUESS) request successful:', response);
         },
         error: (error) => {
-          console.error('Error in keep alive request:', error);
+          console.error('Keep alive (GEOGUESS)', error);
+        }
+      })
+      this.requestService.keepAlive2().subscribe({
+        next: (response) => {
+          console.log('Keep alive (BUZZER)', response);
+        },
+        error: (error) => {
+          console.error('Keep alive (BUZZER)', error);
         }
       })
     }, 600000);

@@ -119,4 +119,8 @@ export class RequestDataService {
     return this.http.get('https://geoguess.onrender.com/keepalive')
   }
 
+  public keepAlive2(): Observable<any> {
+    return this.http.get('https://buzzer-68tm.onrender.com/keepalive')
+  }
+
 }
