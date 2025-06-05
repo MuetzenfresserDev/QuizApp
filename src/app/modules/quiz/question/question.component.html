@@ -1,20 +1,18 @@
 <!-- ________________________________________________REFACTORE_______________________________________________________________ -->
 
 <section fxLayout="column" fxLayoutAlign="center center" fxFill>
-
   <button
-        mat-flat-button
-        color="accent"
-        (click)="starteFrage()"
-        *ngIf="data.hasOwnProperty('options') && auth.channelId !== ''"
-        [disabled]="started === true"
-      >
-        Vorhersage starten
-      </button>
+    mat-flat-button
+    color="accent"
+    (click)="starteFrage()"
+    *ngIf="data.hasOwnProperty('options') && auth.channelId !== ''"
+    [disabled]="started === true"
+  >
+    Vorhersage starten
+  </button>
 
   <!-- Zeigt Fragen und Antworten der inneren Frage Komponenten an -->
   <section>
-
     <div fxLayout="row" fxFlex *ngIf="data.kind === 'Multiple-Choice-Fragen'">
       <section fxFlex>
         <app-multipleChoice [data]="data"></app-multipleChoice>
@@ -39,31 +37,30 @@
       </section>
     </div>
 
-    <div  fxLayout="row" fxFlex *ngIf="data.kind === 'Schätz-Frage'">
+    <div fxLayout="row" fxFlex *ngIf="data.kind === 'Schätz-Frage'">
       <section fxFlex>
         <app-guessing [data]="data"></app-guessing>
       </section>
     </div>
 
-    <div  fxLayout="row" fxFlex *ngIf="data.kind === 'Buzzer-Frage'">
+    <div fxLayout="row" fxFlex *ngIf="data.kind === 'Buzzer-Frage'">
       <section fxFlex>
         <app-buzzer [data]="data"></app-buzzer>
       </section>
       <section *ngIf="data.imgurLink !== undefined">
         <section
-        fxFlex="{{ setWidth }}"
-        fxLayoutAlign="center"
-        *ngFor="let p of playerCount; index as i"
-      >
-      <app-whiteboard
+          fxFlex="{{ setWidth }}"
+          fxLayoutAlign="center"
+          *ngFor="let p of playerCount; index as i"
+        >
+          <app-whiteboard
             [style.display]="visibleBoard.display"
             [url]="whiteboardUrls[i]"
             [index]="i"
             [blockName]="blockNames[i]"
             [imgurLink]="data.imgurLink"
           ></app-whiteboard>
-    </section>
-        
+        </section>
       </section>
     </div>
 
@@ -72,10 +69,26 @@
         <app-location [data]="data"></app-location>
       </section>
     </div>
-
+    <div *ngIf="data.kind === 'Location-Frage'">
+      <section
+    fxFlex="{{ setWidth }}"
+    fxLayoutAlign="center"
+    *ngFor="let p of playerCount; index as i"
+    style="display: none"
+  >
+    <app-whiteboard
+      [style.display]="'None'"
+      [url]="whiteboardUrls[i]"
+      [index]="i"
+      [blockName]="blockNames[i]"
+      [imgurLink]="data.imgurLink"
+    ></app-whiteboard>
+  </section>
+    </div>
+    
   </section>
 
-  <br>
+  <br />
 
   <!-- Lösung Button -->
   <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1vw">
@@ -89,7 +102,7 @@
     </button>
   </section>
 
-  <br>
+  <br />
 
   <!-- Zeigt Whiteboard, WhiteboardPlaceholder und Bearbeite Fläche an -->
   <section *ngIf="data.kind != 'Buzzer-Frage' && data.kind != 'Location-Frage'">
@@ -109,7 +122,13 @@
           ></app-whiteboard>
         </section>
 
-        <section *ngIf="data.kind !== 'Fehlersuche-Frage' && data.kind !== 'Geo-Frage' && data.kind !== 'Schätz-Frage'">
+        <section
+          *ngIf="
+            data.kind !== 'Fehlersuche-Frage' &&
+            data.kind !== 'Geo-Frage' &&
+            data.kind !== 'Schätz-Frage'
+          "
+        >
           <mat-card>
             <mat-card-content
               fxLayout="column"
@@ -127,12 +146,10 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <br>
+          <br />
         </section>
       </section>
     </section>
-
-
 
     <section
       fxLayout="row"
@@ -154,5 +171,4 @@
       ></app-timer>
     </section>
   </section>
-
 </section>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ConstQuestions } from 'src/app/constQuestions';
 import { Player } from 'src/app/interfaces/player';
+import { LocationQuestion } from 'src/app/interfaces/question';
 import { PlayerNameService } from 'src/app/services/playerName/playerName.service';
 
 @Component({
@@ -11,7 +12,14 @@ import { PlayerNameService } from 'src/app/services/playerName/playerName.servic
 })
 export class LocationComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: LocationQuestion = {
+    question: '',
+    searchPicture: '',
+    kind: '',
+    markedPicture: '',
+    imgurLink: '',
+    bonus: false
+  };
   players: Player[] = [];
   show: boolean = true;
   showBackButton: boolean = false;
@@ -35,7 +43,7 @@ export class LocationComponent implements OnInit {
 
     if(this.data.searchVideo != undefined && this.data.searchVideo != ''){
       console.log('SAFE!')
-      this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.answerVideo);
+      this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.answerVideo!);
       this.youtubeQuestionLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.searchVideo);
     }
 
