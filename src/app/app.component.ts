@@ -16,14 +16,6 @@ export class AppComponent implements OnInit{
   }
 
   constructor(private requestService: RequestDataService) {
-    this.requestService.keepAlive().subscribe({
-      next: (response) => {
-        console.log('Keep alive request successful:', response);
-      },
-      error: (error) => {
-        console.error('Error in keep alive request:', error);
-      }
-    })
     setInterval(() => {
       this.requestService.keepAlive().subscribe({
         next: (response) => {
@@ -33,7 +25,7 @@ export class AppComponent implements OnInit{
           console.error('Error in keep alive request:', error);
         }
       })
-    }, 60000);
+    }, 600000);
   }
 
 }
