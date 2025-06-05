@@ -11,7 +11,8 @@
           mat-flat-button 
           style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" 
           [ngClass]="{
-            clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j
+            clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j,
+            usedQuestion: usedQuestionColors[i][j] === ''
           }" 
           [color]="usedQuestionColors[i][j]">
           {{ points[j] }}
@@ -26,7 +27,8 @@
             mat-flat-button 
             style="height: 8vh; width: 15vh; border: 3px solid black; font-size: x-large;" 
             [ngClass]="{
-              clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j
+              clickedQuestion: lastQuestion.i !== null && lastQuestion.j !== null && lastQuestion.i === i && lastQuestion.j === j,
+              usedQuestion: usedQuestionColors[i][j] === '' || usedQuestionColors[i][j] == 'bonus'
             }" 
             [color]="usedQuestionColors[i][j]">
             {{ points[j] }}
