@@ -18,7 +18,7 @@ export class ConstQuestions {
         channelId: new URL(window.location.href).searchParams.get('channelId')
     }
 
-    static readonly youtubeRef: string = 'https://www.youtube.com/embed/RqK8NTXzZYY?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
+    static readonly youtubeRef: string = 'https://www.youtube.com/embed/4wGesMK5C2g?controls=0&autoplay=1&mute=1&loop=1&vq=hd1080'; //Hintergrund Video
 
     static readonly videoSize = {width: '900', height: '506'};
 

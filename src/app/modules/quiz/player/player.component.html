@@ -1,50 +1,86 @@
 <section fxLayout="row" fxLayoutAlign=" center">
-  <section fxLayout="column" fxLayoutAlign="none center" style="margin-top: 4vh;">
-
-    <button (click)="increasePoints(100)" mat-mini-fab color="primary" style="transform: scale(0.85); margin-bottom: 2vh;">
+  <section
+    fxLayout="column"
+    fxLayoutAlign="none center"
+    style="margin-top: 4vh"
+  >
+    <button
+      (click)="increasePoints(100)"
+      mat-mini-fab
+      color="primary"
+      style="transform: scale(0.85); margin-bottom: 2vh"
+    >
       <mat-icon>add</mat-icon>
     </button>
 
-    <button (click)="decreasePoints(100)" mat-mini-fab color="primary" style="transform: scale(0.85);  margin-bottom: 6vh;" >
+    <button
+      (click)="decreasePoints(100)"
+      mat-mini-fab
+      color="primary"
+      style="transform: scale(0.85); margin-bottom: 6vh"
+    >
       <mat-icon>remove</mat-icon>
     </button>
 
-    <button (click)="resetPlayer()" mat-mini-fab color="primary" style="transform: scale(0.85);">
+    <button
+      (click)="resetPlayer()"
+      mat-mini-fab
+      color="primary"
+      style="transform: scale(0.85)"
+    >
       <mat-icon>restart_alt</mat-icon>
     </button>
-
   </section>
 
   <section fxLayout="column" fxLayoutAlign="none center">
-    
+    <section style="height: 7vh" *ngIf="player.name === ''">
+      <mat-form-field
+        style="transform: scale(0.6); padding: 0; margin: 0"
+        appearance="outline"
+      >
+        <mat-label style="font-size: 20px">Spielername</mat-label>
+        <input
+          type="text"
+          #input
+          matInput
+          autofocus
+          (keyup.enter)="setPlayerName(input.value)"
+        />
 
-    <section style="height: 7vh;" *ngIf="player.name === ''">
-
-      <mat-form-field style="transform: scale(0.6); padding: 0; margin: 0;" appearance="outline">
-        <mat-label style="font-size: 20px;">Spielername</mat-label>          
-            <input type="text" #input matInput autofocus (keyup.enter)="setPlayerName(input.value)">
-
-          <button
-            matSuffix
-            mat-icon-button
-            (click)="setPlayerName(input.value)">
-            <mat-icon class="material-icons-outlined">save</mat-icon>
-          </button>
-
+        <button matSuffix mat-icon-button (click)="setPlayerName(input.value)">
+          <mat-icon class="material-icons-outlined">save</mat-icon>
+        </button>
       </mat-form-field>
-
     </section>
 
-    <section *ngIf="player.name !== ''" fxLayout="row" fxLayoutGap="3vw">
-      <h3>{{ player.name }}</h3> <h3>Gold: {{ player.points }}</h3>
-    </section>
+    <section
+  *ngIf="player.name !== ''"
+  fxLayout="row"
+  fxLayoutGap="3vw"
+  fxLayoutAlign="start center"
+>
+  <h3>{{ player.name }}</h3>
+  <h3>Gold: {{ player.points }}</h3>
 
+<mat-icon
+  (click)="toggleIcon('first')"
+  [ngClass]="{ activeRed: firstIconActive, inactive: !firstIconActive }"
+>
+  block
+</mat-icon>
+
+<mat-icon
+  (click)="toggleIcon('second')"
+  [ngClass]="{ activeBlue: secondIconActive, inactive: !secondIconActive }"
+>
+  looks_two
+</mat-icon>
+</section>
 
     <div>
-      <mat-card [ngClass]="{'player': isActive}">
+      <mat-card [ngClass]="{ player: isActive }">
         <mat-card-content style="width: 20vw; height: 22vh"> </mat-card-content>
       </mat-card>
     </div>
-
   </section>
 </section>

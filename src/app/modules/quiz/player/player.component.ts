@@ -12,6 +12,8 @@ export class PlayerComponent implements OnChanges, OnInit{
   @Input() index: number = 0;
 
   player: Player = {name:'',points:0}
+  firstIconActive = true;
+  secondIconActive = true;
 
   constructor(private playerNameService: PlayerNameService) {}
 
@@ -67,5 +69,13 @@ export class PlayerComponent implements OnChanges, OnInit{
     this.player.name = '';
     this.playerNameService.setPlayerAtIndex(this.index, this.player);
   }
+
+  public toggleIcon(icon: 'first' | 'second') {
+  if (icon === 'first') {
+    this.firstIconActive = !this.firstIconActive;
+  } else {
+    this.secondIconActive = !this.secondIconActive;
+  }
+}
 
 }
