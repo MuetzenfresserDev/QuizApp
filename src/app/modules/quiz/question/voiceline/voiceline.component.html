@@ -3,7 +3,7 @@
 </section>
 <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2vw" *ngIf="hideAll">
   <button mat-fab (click)="playVoiceline()">
-    <mat-icon>play_circle_outline</mat-icon>
+    <mat-icon>{{ audioPlayer.paused ? 'play_circle_outline' : 'stop' }}</mat-icon>
   </button>
   <audio #audioPlayer [src]="data.voiceLine"></audio>
   <canvas id="waveformCanvas" width="800" height="100"></canvas>

@@ -111,7 +111,17 @@ export class VoicelineComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public playVoiceline() {
-    this.audioPlayer!.nativeElement.play();
+    const player = this.audioPlayer!.nativeElement as HTMLAudioElement;
+
+    if (!player.paused) {
+      // Läuft schon → stoppen und auf Anfang setzen
+      player.pause();
+      player.currentTime = 0;
+    } else {
+      // Starten (immer von vorne)
+      player.currentTime = 0;
+      player.play();
+    }
   }
 
   public hideAnswer() {

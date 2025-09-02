@@ -37,7 +37,7 @@
       >
         Lösung
       </button>
-      <button
+      <!-- <button
         *ngIf="showBackButton === false"
         mat-flat-button
         color="accent"
@@ -45,7 +45,7 @@
         style="margin-left: 10px"
       >
         Lösungs Video
-      </button>
+      </button> -->
     </section>
   </div>
 
@@ -59,8 +59,7 @@
     </section>
     <section *ngIf="!pictureFlag">
       <button mat-flat-button color="primary" (click)="changePictureFlag()">Bild anzeigen</button>
-    </section>
-    
+    </section>    
   </div>
 
   <div
@@ -79,6 +78,15 @@
       muted
     ></iframe>
   </div>
+
+  <div fxLayout="row" *ngIf="data.searchAudio !== undefined && data.searchAudio !== ''">
+    <button mat-fab (click)="playVoiceline()" style="margin-top: 22px; margin-right: 10px;">
+      <mat-icon>{{ audioPlayer.paused ? 'play_circle_outline' : 'stop' }}</mat-icon>
+    </button>
+    <audio #audioPlayer [src]="data.searchAudio"></audio>
+    <canvas id="waveformCanvas" width="800" height="100"></canvas>
+  </div>
+
 </section>
 
 <section

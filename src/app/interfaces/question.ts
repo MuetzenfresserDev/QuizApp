@@ -70,6 +70,7 @@ export interface LocationQuestion {
     bonus: boolean;
     searchVideo?: string;
     answerVideo?: string;
+    searchAudio?: string;
 }
 
 export interface BuzzerQuestion {

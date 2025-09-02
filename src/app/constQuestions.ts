@@ -320,25 +320,24 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    static readonly gorn2:GuessingQuestion = { // Gorn 200
-        question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage.png',
+    static readonly gorn2:LocationQuestion = { // Gorn 200 -> BEISPIEL FÜR VIDEO GEO 
+        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
+        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
-    }
-    static readonly gorn3:GuessingQuestion = { // Gorn 300
-        question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 300 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 300 Frage.png',
+        searchVideo: 'https://www.youtube.com/embed/wchXLMRH2Pw?controls=1&vq=hd1080&autoplay=0'
+    } 
+    static readonly gorn3:LocationQuestion = { // Gorn 300
+        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
+        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: '',
+        searchAudio: 'assets/voicelines/Kat 5 100 Frage.mp3'
     }
     static readonly gorn4:GuessingQuestion = { // Gorn 400
         question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
