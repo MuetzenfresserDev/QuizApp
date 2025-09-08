@@ -147,6 +147,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   public starteFrage(){
+
+    console.log('TEST')
+
     if(this.started == false && this.auth.channelId != ''){
       this.createPrediction(this.data.question, this.data.options, this.data.index)
     }

@@ -59,6 +59,9 @@ export interface GuessingQuestion {
     bonus: boolean;
     options?: string[];
     index?: number;
+    imgurLink?: string;
+    imgurLinkImposter?: string;
+    imposter?: string; //WHITEBOARD URL DES IMPOSTERS -> 1: 7f3bd35f-d647-4f10-9acd-56d34f446d82 2: 8a647b8b-27da-4001-8b1a-b06fb978ff76 3: 58bda352-1363-4b4a-8e17-2f9f8755a925 4: e561cc9f-cb97-4031-b8f8-a1b0ad875676
 }
 
 export interface LocationQuestion {

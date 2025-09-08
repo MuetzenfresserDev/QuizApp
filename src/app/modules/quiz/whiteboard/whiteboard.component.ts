@@ -14,6 +14,8 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
   @Input() blockName: string = '';
   @Input() index: number = 0;
   @Input() imgurLink = '';
+  @Input() imposter: string = '';
+  @Input() imgurLinkImposter = '';
 
   id: string = 'id';
 
@@ -51,6 +53,14 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
     console.log(this.imgurLink)
 
     setTimeout(() => {
+
+      console.log(this.imposter)
+      console.log(this.url)
+
+      if(this.url == this.imposter){
+        this.imgurLink = this.imgurLinkImposter;
+      }
+
       let script = this._renderer2.createElement('script');
 
       console.log(this.url);
@@ -111,7 +121,9 @@ export class WhiteboardComponent implements OnInit, AfterViewInit {
 
                   setTimeout(() => {
                   ${this.blockName}.board.clear();
+                  ${this.blockName}.board.clear();
                   console.log('clearing')
+                  console.log(${this.blockName})
                   }, 2000);
 
                   setTimeout(() => {

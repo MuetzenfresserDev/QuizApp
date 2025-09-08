@@ -52,14 +52,16 @@
   <div fxLayout="row" *ngIf="data.searchPicture !== ''">
     <section *ngIf="pictureFlag">
       <img
-      [src]="data.searchPicture"
-      [width]="pictureSize.width"
-      [height]="pictureSize.height"
-    />
+        [src]="data.searchPicture"
+        [width]="pictureSize.width"
+        [height]="pictureSize.height"
+      />
     </section>
     <section *ngIf="!pictureFlag">
-      <button mat-flat-button color="primary" (click)="changePictureFlag()">Bild anzeigen</button>
-    </section>    
+      <button mat-flat-button color="primary" (click)="changePictureFlag()">
+        Bild anzeigen
+      </button>
+    </section>
   </div>
 
   <div
@@ -79,14 +81,44 @@
     ></iframe>
   </div>
 
-  <div fxLayout="row" *ngIf="data.searchAudio !== undefined && data.searchAudio !== ''">
-    <button mat-fab (click)="playVoiceline()" style="margin-top: 22px; margin-right: 10px;">
-      <mat-icon>{{ audioPlayer.paused ? 'play_circle_outline' : 'stop' }}</mat-icon>
+  <div
+    fxLayout="row"
+    *ngIf="data.searchAudio !== undefined && data.searchAudio !== ''"
+  >
+    <button
+      mat-fab
+      (click)="playVoiceline()"
+      style="margin-top: 22px; margin-right: 10px"
+    >
+      <mat-icon>{{
+        audioPlayer.paused ? "play_circle_outline" : "stop"
+      }}</mat-icon>
     </button>
     <audio #audioPlayer [src]="data.searchAudio"></audio>
     <canvas id="waveformCanvas" width="800" height="100"></canvas>
   </div>
+</section>
 
+<section *ngIf="showGesuchtesBild === true">
+  <div fxLayoutGap="row">
+    <div fxLayout="column">
+      <img
+        [src]="data.markedPicture"
+        [width]="pictureSize.width"
+        [height]="pictureSize.height"
+      />
+    </div>
+    <div fxLayout="column">
+      <button
+        style="z-index: 9999"
+        mat-flat-button
+        color="accent"
+        (click)="clickShowQuestion()"
+      >
+        Zur Frage
+      </button>
+    </div>
+  </div>
 </section>
 
 <section
@@ -104,6 +136,14 @@
       (click)="clickShowQuestion()"
     >
       Zur Frage
+    </button>
+    <button *ngIf="data.markedPicture !== ''"
+      style="margin-left: 93vw; z-index: 9999; margin-top: 10px"
+      mat-flat-button
+      color="accent"
+      (click)="clickShowGesuchtesBild()"
+    >
+      Gesuchtes Bild
     </button>
   </section>
 </section>

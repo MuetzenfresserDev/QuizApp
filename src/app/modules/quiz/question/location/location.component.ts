@@ -28,6 +28,7 @@ export class LocationComponent implements OnInit, AfterViewInit {
   };
   @ViewChild('audioPlayer') audioPlayer: ElementRef | undefined;
   players: Player[] = [];
+  showGesuchtesBild:boolean = false;
   show: boolean = true;
   showBackButton: boolean = false;
   showVideo: boolean = false;
@@ -133,10 +134,19 @@ export class LocationComponent implements OnInit, AfterViewInit {
   }
 
   public showQuestion() {
+    this.showGesuchtesBild = false;
     this.show = true;
   }
 
+  public clickShowGesuchtesBild(){
+    this.showGesuchtesBild = true;
+    this.show = false;
+    this.showBackButton = false;
+    document.getElementById('geo')!.style.display = 'none';
+  }
+
   public clickShowCanvas() {
+    this.showGesuchtesBild = false;
     this.show = false;
     document.getElementById('geo')!.style.display = 'block';
     this.showBackButton = true;
@@ -144,6 +154,7 @@ export class LocationComponent implements OnInit, AfterViewInit {
   }
 
   public clickShowVideo() {
+    this.showGesuchtesBild = false;
     this.show = false;
     //document.getElementById("geo")!.style.display = "block";
     this.showBackButton = true;
@@ -152,6 +163,7 @@ export class LocationComponent implements OnInit, AfterViewInit {
   }
 
   public clickShowQuestion() {
+    this.showGesuchtesBild = false;
     this.show = true;
     document.getElementById('geo')!.style.display = 'none';
     this.showBackButton = false;

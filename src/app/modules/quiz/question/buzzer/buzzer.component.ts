@@ -46,6 +46,8 @@ export class BuzzerComponent implements OnInit {
 
   public playVoiceline() {
 
+    console.log(this.audioPlayer)
+
     if (this.audioPlayer!.nativeElement.paused){
       this.audioPlayer!.nativeElement.play();
     } else{

@@ -47,7 +47,7 @@
       <section fxFlex>
         <app-buzzer [data]="data"></app-buzzer>
       </section>
-      <section style="display: none;">
+      <section style="display: none">
         <section
           fxFlex="{{ setWidth }}"
           fxLayoutAlign="center"
@@ -71,21 +71,20 @@
     </div>
     <div *ngIf="data.kind === 'Location-Frage'">
       <section
-    fxFlex="{{ setWidth }}"
-    fxLayoutAlign="center"
-    *ngFor="let p of playerCount; index as i"
-    style="display: none"
-  >
-    <app-whiteboard
-      [style.display]="'None'"
-      [url]="whiteboardUrls[i]"
-      [index]="i"
-      [blockName]="blockNames[i]"
-      [imgurLink]="data.imgurLink"
-    ></app-whiteboard>
-  </section>
+        fxFlex="{{ setWidth }}"
+        fxLayoutAlign="center"
+        *ngFor="let p of playerCount; index as i"
+        style="display: none"
+      >
+        <app-whiteboard
+          [style.display]="'None'"
+          [url]="whiteboardUrls[i]"
+          [index]="i"
+          [blockName]="blockNames[i]"
+          [imgurLink]="data.imgurLink"
+        ></app-whiteboard>
+      </section>
     </div>
-    
   </section>
 
   <br />
@@ -119,6 +118,8 @@
             [index]="i"
             [blockName]="blockNames[i]"
             [imgurLink]="data.imgurLink"
+            [imgurLinkImposter]="data.imgurLinkImposter"
+            [imposter]="data.imposter"
           ></app-whiteboard>
         </section>
 

@@ -3,6 +3,7 @@ import { BuzzerQuestion, ErrorQuestion, GeoguessrQuestion, GuessingQuestion, Loc
 export class ConstQuestions {
 
     static readonly clientId: string = '38c4dfef2a0e8aba637ea15987ba542f';
+    static readonly imgurLinkImposter: string = "https://i.imgur.com/T6o5iN5.png"; //g1Minental
 
     static readonly whiteboardUrls: string[] = [
         '7f3bd35f-d647-4f10-9acd-56d34f446d82',  //Spieler 1 Url
@@ -101,72 +102,53 @@ export class ConstQuestions {
     }
 
     /* Namenloser Held / Schule*/
-    static readonly held1:GuessingQuestion = { // Held 100
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 Alle Fragen.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held1:BuzzerQuestion = { // Held 100
+        question: "Erkenne das Monster!",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Kat 1 100 Antwort.png",
+        videoQuestion: '',
+        pictureQuestion: 'assets/buzzer/Kat 1 100 Frage.png'
     }
-    static readonly held2:GuessingQuestion = { // Held 200
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 Alle Fragen.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held2:BuzzerQuestion = { // Held 200
+        question: "Zitat! Wer sagt das?",
+        kind: "Buzzer-Frage",
+        audio: 'assets/buzzer/Kat 1 200 Frage.mp3',
+        video: 'https://www.youtube.com/embed/5_Up1PGBuYw?controls=1&vq=hd1080&autoplay=0'
     }
-    static readonly held3:GuessingQuestion = { // Held 300
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 300 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 Alle Fragen.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held3:BuzzerQuestion = { // Held 300
+        question: "Welche ist die gesuchte Gemeinsamkeit all dieser Charaktere?",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Kat 1 300 Antwort.png",
+        videoQuestion: 'https://www.youtube.com/embed/UffpszOOOAs?controls=1&vq=hd1080&autoplay=0'
     }
-    static readonly held4:GuessingQuestion = { // Held 400
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 Alle Fragen.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held4:BuzzerQuestion = { // Held 400
+        question: "Erkenne das Monster!",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Kat 1 400 Antwort.png",
+        pictureQuestion: 'assets/buzzer/Kat 1 400 Frage.png',
     }
-    static readonly held5:GuessingQuestion = { // Held 500
-        question: "Erkläre deinem Teammate das folgende „Ding“ – ABER Vorsicht: TABU!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 1 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 1 Alle Fragen.png',
-        bonus: false,
-        videoQuestion: ""
+    static readonly held5:BuzzerQuestion = { // Held 500
+        question: "Welche ist die gesuchte Gemeinsamkeit all dieser Charaktere?",
+        kind: "Buzzer-Frage",
+        picture: "assets/buzzer/Kat 1 500 Antwort.png",
+        videoQuestion: 'https://www.youtube.com/embed/pd1u8KeNFuM?controls=1&vq=hd1080&autoplay=0'
     }
 
 
     /* Diego*/
     static readonly diego1: GuessingQuestion= { // Diego 100
-        question: "Gothic 2 Classic! Der Held bringt Bospar einen Haufen Felle (siehe Bild). \n Wie viel Lohn ist für ihn drin?", 
-        video: "https://www.youtube.com/embed/EK_CwJQS9ag?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie lang ist der Truhencode von folgender Truhen, insgesamt?", 
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 2 100 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 100 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly diego2: GuessingQuestion = { // Diego 200
-        question: "Von welcher NEUEN Bedrohung sprechen wir? \n Wie lange dauert das Add-on Intro über Raven?", 
-        video: "https://www.youtube.com/embed/Wdr6M__uoWY?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie lange dauert das Intro zu Gothic 3?", 
+        video: "https://www.youtube.com/embed/reQC4FkrmqI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -175,31 +157,31 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly diego3: GuessingQuestion= { // Diego 300
-        question: "Bevor Cavalorn für den Rest seines Lebens auf einer Bank sitzt bewegt er sich erst vom Steinkreis dorthin. \n Wie lange braucht er für diesen Weg, bis er vor der Bank stehenbleibt?", 
-        video: "https://www.youtube.com/embed/ePRa7EnB68E?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie viele Lederbeutel liegen im Minental (G2) verstreut? (Laut Mondgesenge)", 
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 2 300 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 300 Frage.png',
         bonus: false,
         videoQuestion: ""
     }
     static readonly diego4: GuessingQuestion = { // Milten 100 TODO BONUS 
-        question: "Bonusfrage von Mützenfresser! -> 500 Gold Frage",
-        video: "https://www.youtube.com/embed/vfoR4AwQ5wA?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie lange läuft Saturas zum Portal?",
+        video: "https://www.youtube.com/embed/GJ9-VBag8-c?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/W9QmT9oxty8?controls=1&vq=hd1080&autoplay=0" //Fragevideo
+        pictureQuestion: 'assets/guessing/pictures/Kat 2 400 Frage.png',
+        bonus: false,
+        videoQuestion: "" //Fragevideo
     }
     static readonly diego5: GuessingQuestion = { // Diego 500
-        question: "Der Held überschätzt sich und geht mit Lederrüstung \n und 1000 Leben zum Schwarzen Troll. HIT! \n Wie viel leben bleibt ihm nach einem Hit übrig?", 
-        video: "https://www.youtube.com/embed/wchXLMRH2Pw?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie viele Schwarze Goblins befinden sich hinter der Brücke zum Almanach, inkl. Höhle?", 
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
+        picture: "assets/guessing/pictures/Kat 2 500 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 2 500 Frage.png',
         bonus: false,
         videoQuestion: ""
@@ -207,111 +189,126 @@ export class ConstQuestions {
 
     /* Lester */
     static readonly lester1:GuessingQuestion= { // Lester 100
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", 
+        question: "Wir spielen Imposter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 100 Frage.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 Alle Fragen.png',
+        picture: "assets/guessing/pictures/Kat 3 100 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/0iL3lKnmFD0?controls=1&vq=hd1080&autoplay=0",
+        imgurLink: "https://i.imgur.com/mK0mO1r.png",
+        imposter: '7f3bd35f-d647-4f10-9acd-56d34f446d82',
+        imgurLinkImposter: this.imgurLinkImposter
     }
     static readonly lester2:GuessingQuestion = { // Lester 200
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", 
+        question: "Wir spielen Imposter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 200 Frage.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 Alle Fragen.png',
+        picture: "assets/guessing/pictures/Kat 3 200 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/0iL3lKnmFD0?controls=1&vq=hd1080&autoplay=0",
+        imgurLink: "https://i.imgur.com/73VsIDC.png",
+        imposter: '58bda352-1363-4b4a-8e17-2f9f8755a925',
+        imgurLinkImposter: this.imgurLinkImposter
     }
     static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", 
+        question: "Wir spielen Imposter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 300 Frage.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 Alle Fragen.png',
+        picture: "assets/guessing/pictures/Kat 3 300 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/0iL3lKnmFD0?controls=1&vq=hd1080&autoplay=0",
+        imgurLink: "https://i.imgur.com/9jOatKa.png",
+        imposter: '8a647b8b-27da-4001-8b1a-b06fb978ff76',
+        imgurLinkImposter: this.imgurLinkImposter
     }
     static readonly lester4: GuessingQuestion = { // Lester 400
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", 
+        question: "Wir spielen Imposter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 400 Frage.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 Alle Fragen.png',
+        picture: "assets/guessing/pictures/Kat 3 400 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/0iL3lKnmFD0?controls=1&vq=hd1080&autoplay=0",
+        imgurLink: "https://i.imgur.com/gPrjehA.png",
+        imposter: '8a647b8b-27da-4001-8b1a-b06fb978ff76',
+        imgurLinkImposter: this.imgurLinkImposter
     }
     static readonly lester5: GuessingQuestion = { // Lester 500 TODO BONUS
-        question: "Zeichne deinem Teammate folgenden Ort/Gegenstand/Charakter!", 
+        question: "Wir spielen Imposter!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 500 Frage.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 Alle Fragen.png',
+        picture: "assets/guessing/pictures/Kat 3 500 Antwort.png",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/0iL3lKnmFD0?controls=1&vq=hd1080&autoplay=0",
+        imgurLink: "https://i.imgur.com/g5PTWyw.png",
+        imposter: '7f3bd35f-d647-4f10-9acd-56d34f446d82',
+        imgurLinkImposter: this.imgurLinkImposter
     }
 
-    /* Milten / Games*/
-    static readonly milten1:GuessingQuestion = { // Milten 100
-        question: "Jedes Team abwechselnd! Zählt Namen der Templer auf, beim ersten Fehler scheidet ihr aus!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 100 Frage.png',
+    /* Milten / Games*/ //LOCATION ZUM SCHLUSS TODO
+    static readonly milten1:LocationQuestion = { // Milten 100
+        question: "Finde den gesuchten Ort! (1)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 100 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "https://i.imgur.com/nG6KsRC.jpeg", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: '',
+        searchAudio: ''
     }
-    static readonly milten2:GuessingQuestion = { // Milten 
-        question: "Sound-Impression! Zeit zu Üben – Versucht den Sound des gesuchten Tieres nachzuahmen, \n um euren Teammate zu helfen, das Tier zu erraten!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 200 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 200&500.png',
+    static readonly milten2:LocationQuestion = { // Milten 
+        question: "Mimi beschreibt euch den Ort… (2)",
+        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: '',
+        searchAudio: 'assets/geoguessr/searchPictures/Kat 4 200 Frage.mp3'
     }
-    static readonly milten3: GuessingQuestion = { // Milten 300
-        question: "Emoji-Raten! Sucht euch 5 Emotes aus, um euren Teammate zu helfen, auf das gesuchte zu kommen!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 300 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 300&400.png',
+    static readonly milten3: LocationQuestion = { // Milten 300
+        question: "Das Bild erscheint nur 2 Sekunden lang! (3)",
+        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: 'https://www.youtube.com/embed/UyhJQ-rgVMg?controls=1&vq=hd1080&autoplay=0',
+        searchAudio: ''
     }
-    static readonly milten4:GuessingQuestion = { // Milten 400
-        question: "Emoji-Raten! Sucht euch 5 Emotes aus, um euren Teammate zu helfen, auf das gesuchte zu kommen!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 300&400.png',
+    static readonly milten4:LocationQuestion = { // Milten 400
+        question: "Unscharf! (4)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 400 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 400 Antwort 2.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "https://i.imgur.com/Hd1nTVO.png", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: '',
+        searchAudio: ''
     }
-    static readonly milten5: GuessingQuestion = { // Milten 500
-        question: "Emoji-Raten! Sucht euch 5 Emotes aus, um euren Teammate zu helfen, auf das gesuchte zu kommen!", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 4 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 4 200&500.png',
+    static readonly milten5: LocationQuestion = { // Milten 500
+        question: "Unscharf! (4)",
+        searchPicture: "assets/geoguessr/searchPictures/Kat 4 500 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
+        kind: "Location-Frage",
+        markedPicture: "assets/geoguessr/markedPictures/Kat 4 500 Antowrt2.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        imgurLink: "https://i.imgur.com/cJrOkVY.png", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
-        videoQuestion: ""
+        searchVideo: '',
+        searchAudio: ''
     }
 
     /* Gorn */
     static readonly gorn1:GuessingQuestion = { // Gorn 100
-        question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
+        question: "Welche Schreibweise ist richtig? Wähle!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -320,45 +317,49 @@ export class ConstQuestions {
         bonus: false,
         videoQuestion: ""
     }
-    static readonly gorn2:LocationQuestion = { // Gorn 200 -> BEISPIEL FÜR VIDEO GEO 
-        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
-        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
-        kind: "Location-Frage",
-        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
-        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
+    static readonly gorn2:GuessingQuestion = { // Gorn 200 -> BEISPIEL FÜR VIDEO GEO 
+        question: "Wo liegt Bospars Bogen? Markiere!", 
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Kat 5 200 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage.png',
         bonus: false,
-        searchVideo: 'https://www.youtube.com/embed/wchXLMRH2Pw?controls=1&vq=hd1080&autoplay=0'
+        videoQuestion: "",
+        imgurLink:'https://i.imgur.com/kwbv5of.png'
     } 
-    static readonly gorn3:LocationQuestion = { // Gorn 300
-        question: "Gorn hat sich verlaufen. Wo befindet er sich? (2)",
-        searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
-        kind: "Location-Frage",
-        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
-        imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
+    static readonly gorn3:GuessingQuestion = { // Gorn 300
+        question: "Welche farblichen Punkte fehlen hier? Ergänze!", 
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Kat 5 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 300 Frage.png',
         bonus: false,
-        searchVideo: '',
-        searchAudio: 'assets/voicelines/Kat 5 100 Frage.mp3'
+        videoQuestion: "",
+        imgurLink:'https://i.imgur.com/BnmTecc.jpeg'
     }
     static readonly gorn4:GuessingQuestion = { // Gorn 400
-        question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
+        question: "Wo ist der Fehler?", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "assets/guessing/pictures/Kat 5 400 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 400 Frage.png',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "",
+        imgurLink:'https://i.imgur.com/iikIgwq.jpeg'
     }
     
     static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Welche Items sind in dieser Truhe drin? Welches Team hat mehr richtig?", 
-        video: "", //Antwortvideo
+        question: "Wahr oder Falsch", 
+        video: "https://www.youtube.com/embed/f5dr3H5pvyk?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 500 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 500 Frage.png',
+        picture: "",
+        pictureQuestion: '',
         bonus: false,
-        videoQuestion: ""
+        videoQuestion: "https://www.youtube.com/embed/4QeV7IuEw98?controls=1&vq=hd1080&autoplay=0"
     }
 
     /* static readonly held1:BuzzerQuestion = { // Held 100 BUZZER FRAGEW MIT VIDEOFRAGE

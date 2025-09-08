@@ -21,6 +21,7 @@ public setNameAtIndex(index: number, name: string){
 public setPlayerAtIndex(index: number, player: Player){
   this.players[index] = player;
   sessionStorage.setItem('players', JSON.stringify(this.players));
+  sessionStorage.setItem('player', JSON.stringify(player));
 }
 
 public setPlayerAtIndexDec(index: number, player: Player){
