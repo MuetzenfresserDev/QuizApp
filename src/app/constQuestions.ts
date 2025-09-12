@@ -269,7 +269,7 @@ export class ConstQuestions {
         question: "Mimi beschreibt euch den Ort… (2)",
         searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
-        markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        markedPicture: "assets/geoguessr/markedPictures/Mimi_beschreibt_gg200.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
         imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
         searchVideo: '',
