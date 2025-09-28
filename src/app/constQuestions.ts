@@ -48,6 +48,14 @@ export class ConstQuestions {
         "assets/katPictures/Kat 5.png",
     ];
 
+    static readonly katNames: string[] = [
+        "Buzzer",
+        "Schätzen",
+        "Imposter",
+        "GeoGuessr",
+        "Random"
+    ];
+
     static readonly multiplechoiceExample:  MultiplechoiceQuestion = {
         question: "test Frage",
         options: {

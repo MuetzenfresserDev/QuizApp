@@ -28,6 +28,7 @@ export class BoardComponent implements OnInit {
   points: number[] = [100, 200, 300, 400, 500];
   concatQuestions: any[] = [];
   images: string[] = ConstQuestions.katPictures;
+  katNames: string[] = ConstQuestions.katNames;
   lastQuestion: { i: number | null; j: number | null } = JSON.parse(sessionStorage.getItem('lastQuestion') || 'null') || { i: null, j: null };
 
   buttonColors: string[] = ['teal1', 'teal2', 'teal3', 'teal4', 'teal5'];

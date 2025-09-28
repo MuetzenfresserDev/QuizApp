@@ -1,8 +1,9 @@
-<section fxLayout="row" fxLayoutGap="4vw">
+<section fxLayout="row" fxLayoutGap="4vw" style="padding-top: 10px;">
   <!-- Multiple choice questions -->
   <section fxLayout="column" fxLayoutAlign=" center" fxLayoutGap="2vh" *ngFor="let item of concatQuestions, index as i">
     <!-- Hier Imagoe Gothic Charakter einbinden -->
     <div><img [src]="images[i]" width="84" height="100"></div> 
+    <div width="84" height="100" style="font-size: larger;">{{katNames[i]}}</div>
     <section *ngFor="let question of item, index as j">
 
       <section *ngIf="doubleThreshold <= 9">
