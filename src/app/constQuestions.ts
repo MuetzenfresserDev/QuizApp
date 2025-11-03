@@ -268,7 +268,7 @@ export class ConstQuestions {
         question: "Mimi beschreibt euch den Ort… (2)",
         searchPicture: "", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 4 200 Antwort.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        markedPicture: "assets/geoguessr/markedPictures/Kat_4_200_Richtiges_Bild.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
         imgurLink: "", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
         searchVideo: '',
@@ -278,7 +278,7 @@ export class ConstQuestions {
         question: "Unscharf! (3)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 300 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
-        markedPicture: "assets/geoguessr/markedPictures/Kat 4 300 Antwort.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
+        markedPicture: "assets/geoguessr/markedPictures/Kat_4_300_richtiges_Bild.png", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
         imgurLink: "https://i.imgur.com/3LkKId5.png", //-> FÜLLEN WENN IN WHITEBOARD SOLL
         bonus: false,
         searchVideo: '',
