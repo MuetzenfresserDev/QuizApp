@@ -19,7 +19,7 @@
       allowfullscreen
       muted
     ></iframe>
-    <img
+    <img *ngIf="data.pictureAnswer"
     [src]="data.pictureAnswer"
     [width]="pictureSize.width"
     [height]="pictureSize.height"
