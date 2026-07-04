@@ -251,7 +251,7 @@ export class ConstQuestions {
 
     /* Milten / Games*/ //LOCATION ZUM SCHLUSS
     static readonly milten1:LocationQuestion = { // Milten 100
-        question: "Markiere diesen Ort... (1)",
+        question: "Markiere den Ort... (1)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 100 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
@@ -261,7 +261,7 @@ export class ConstQuestions {
         searchAudio: ''
     }
     static readonly milten2:LocationQuestion = { // Milten 
-        question: "Markiere diesen Ort... (2)",
+        question: "Markiere den Ort... (2)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 200 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
@@ -271,7 +271,7 @@ export class ConstQuestions {
         searchAudio: ''
     }
     static readonly milten3: LocationQuestion = { // Milten 300
-        question: "Markiere diesen Ort... (3)",
+        question: "Markiere den Ort... (3)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 300 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
@@ -281,7 +281,7 @@ export class ConstQuestions {
         searchAudio: ''
     }
     static readonly milten4:LocationQuestion = { // Milten 400
-        question: "Markiere diesen Ort... (4)",
+        question: "Markiere den Ort... (4)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 400 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
@@ -291,7 +291,7 @@ export class ConstQuestions {
         searchAudio: ''
     }
     static readonly milten5: LocationQuestion = { // Milten 500
-        question: "Markiere diesen Ort... (5)",
+        question: "Markiere den Ort... (5)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 500 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
