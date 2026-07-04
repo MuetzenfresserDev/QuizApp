@@ -291,7 +291,7 @@ export class ConstQuestions {
         searchAudio: ''
     }
     static readonly milten5: LocationQuestion = { // Milten 500
-        question: "Markiere diesen Ort... (5)",
+        question: "Markiere diesen Ort... TEST (5)",
         searchPicture: "assets/geoguessr/searchPictures/Kat 4 500 Frage.png", //-> FÜLLEN WENN NORMALE BILDERSUCHE
         kind: "Location-Frage",
         markedPicture: "", //-> DAS HIER MUSS MAN EIG NICHT FÜLLEN
