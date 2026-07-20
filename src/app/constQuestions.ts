@@ -111,7 +111,7 @@ export class ConstQuestions {
 
     /* Namenloser Held / Schule*/
     static readonly held1:BuzzerQuestion = { // Held 100
-        question: "Welches Item liegt hier im Original?",
+        question: "Wie heißt dieser Charakter?",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 100 Antwort.png",
         videoQuestion: '',
@@ -125,14 +125,14 @@ export class ConstQuestions {
         pictureQuestion: 'assets/buzzer/Kat 1 200 Frage.png'
     }
     static readonly held3:BuzzerQuestion = { // Held 300
-        question: "Über wen Schreibt hier der Held im Glossar?",
+        question: "Glossar frage Fleischwanze",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 300 Antwort.png",
         videoQuestion: '',
         pictureQuestion: 'assets/buzzer/Kat 1 300 Frage.png'
     }
     static readonly held4:BuzzerQuestion = { // Held 400
-        question: "Um welche Quest geht es hier?",
+        question: "Glossar Frage Thorus?",
         kind: "Buzzer-Frage",
         picture: "assets/buzzer/Kat 1 400 Antwort.png",
         videoQuestion: '',
@@ -142,13 +142,13 @@ export class ConstQuestions {
         question: "Wer hat das gesagt?",
         kind: "Buzzer-Frage",
         audio: 'assets/buzzer/Kat 1 500 Frage.mp3',
-        video: 'https://www.youtube.com/embed/YWqnAtpDSCU?controls=1&vq=hd1080&autoplay=0'
+        video: 'https://www.youtube.com/embed/S5ImHIgZh5g?controls=1&vq=hd1080&autoplay=0'
     }
 
 
     /* Diego*/
     static readonly diego1: GuessingQuestion= { // Diego 100
-        question: "Wie viele Schritte (jeder Zug einzeln) braucht man MINDESTENS \n für dieses Schloss als ungelernter Dieb?", 
+        question: "Schwierigkeit Gothic: \n Wie viel Erfahrung geben diese Monster zusammen?", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -158,7 +158,7 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly diego2: GuessingQuestion = { // Diego 200
-        question: "Wie viel sind folgende Items Wert, wenn man sie das erste mal \n bei Fisk verkauft? (auf Schwierigkeit Gothic)", 
+        question: "Schwierigkeit Gothic: \n Wie viel sind folgende Items Wert, wenn man sie das erste mal bei Baal Cadar verkauft? ", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -168,8 +168,8 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly diego3: GuessingQuestion= { // Diego 300
-        question: "Wie lange braucht der Held, um diesen Weg zu rennen?", 
-        video: "https://www.youtube.com/embed/yi2QGu8pV0c?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie viel Leben bleibt dem Helden, wenn er hier runter fällt? (539)", 
+        video: "https://www.youtube.com/embed/EC-GwHbewAo?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -178,8 +178,8 @@ export class ConstQuestions {
         videoQuestion: ""
     }
     static readonly diego4: GuessingQuestion = { // Milten 100
-        question: "Wie lange dauert das NEUE Intro?",
-        video: "https://www.youtube.com/embed/6mwR7rHw8Cg?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie lange dauert die Cutszene, in der die Feuermagier sterben?",
+        video: "https://www.youtube.com/embed/9UGArg4utGE?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -188,8 +188,8 @@ export class ConstQuestions {
         videoQuestion: "" //Fragevideo
     }
     static readonly diego5: GuessingQuestion = { // Diego 500
-        question: "Wie lange braucht der Scavenger, um diese Strecke zu rennen? (Automatisches Absteigen im Sumpflager)", 
-        video: "https://www.youtube.com/embed/VslbbuipIYQ?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Wie lange braucht der Held als Wolf um diese Strecke zurückzulegen?", 
+        video: "https://www.youtube.com/embed/4Ytddc2kA_0?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
@@ -200,53 +200,57 @@ export class ConstQuestions {
 
     /* Lester */
     static readonly lester1:GuessingQuestion= { // Lester 100
-        question: "Der Reislord hat im Gegensatz zum Remake einen Namen bekommen. Welchen?", 
+        question: "Vergleich Diese Items Original und Remake!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "assets/guessing/pictures/Kat 3 100 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 3 100 Frage.png',
         bonus: false,
-        videoQuestion: ""
-    }
-    static readonly lester2:VoicelineQuestion = { // Lester 200
-        question: "Ordne die 5 Zitate dem entsprechenden Spiel zu. Original oder Remake?",
-        voiceLine: "assets/guessing/pictures/Kat 3 200 Frage.mp3",
-        kind: "Voiceline-Fragen",
-        correctAnswer: "https://www.youtube.com/embed/gW1Jaz7d6rk?controls=1&vq=hd1080&autoplay=0",
-        bonus: false
-    }
-    static readonly lester3:GuessingQuestion = { // Lester 300
-        question: "Wahr oder Falsch?", 
-        video: "https://www.youtube.com/embed/d5lpP4fPY2Y?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/UpsiT8AOly0?controls=1&vq=hd1080&autoplay=0"
-    }
-    static readonly lester4: GuessingQuestion = { // Lester 400
-        question: "Wie heißen diese NPCs aus dem Neuen Lager?", 
-        video: "", //Antwortvideo
-        kind: "Schätz-Frage",
-        correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 3 400 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 3 400 Frage.png',
-        bonus: false,
         videoQuestion: "",
-        imgurLink: "https://i.imgur.com/eany2LR.jpeg"
+        imgurLink: "https://i.imgur.com/ppPr38D.png",
     }
-    static readonly lester5: GuessingQuestion = { // Lester 500 
-        question: "Bonusfrage von Hochkönig! -> 500 Gold Frage", 
-        video: "https://www.youtube.com/embed/V55wQmu-hSo?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+    static readonly lester2:GuessingQuestion = { // Lester 200
+        question: "Bonusfrage von Arnidegger! -> 500 Gold Frage",
+        video: "https://www.youtube.com/embed/XPDepfJW974?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/KkA4uZlWwXk?controls=1&vq=hd1080&autoplay=0",
-        imgurLink: "",
+        videoQuestion: "https://www.youtube.com/embed/eiiwjHYNIME?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly lester3:GuessingQuestion = { // Lester 300
+        question: "Truhen-Vergleich! Welche der hier stehenden Aussagen in Bezug auf den \n Unterschied zwischen Remake-Truhe und Original-Truhe ist richtig?", 
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Kat 3 300 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 3 300 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        imgurLink: "https://i.imgur.com/ccYfbye.jpeg",
+    }
+    static readonly lester4: GuessingQuestion = { // Lester 400
+        question: "Wahr oder Falsch?", 
+        video: "https://www.youtube.com/embed/mKDcEsE5Uuo?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "",
+        pictureQuestion: '',
+        bonus: false,
+        videoQuestion: "https://www.youtube.com/embed/GZREEcE4Cuo?controls=1&vq=hd1080&autoplay=0"
+    }
+    static readonly lester5: GuessingQuestion = { // Lester 500 
+        question: "Ordne die Questlog Einträge dem Spiel zu! Original, oder Remake?", 
+        video: "", //Antwortvideo
+        kind: "Schätz-Frage",
+        correctAnswer: "",
+        picture: "assets/guessing/pictures/Kat 3 500 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 3 500 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        imgurLink: "https://i.imgur.com/8vWM0Ek.png",
     }
 
     /* Milten / Games*/ //LOCATION ZUM SCHLUSS
@@ -303,18 +307,17 @@ export class ConstQuestions {
 
     /* Gorn */
     static readonly gorn1:GuessingQuestion = { // Gorn 100
-        question: "Wo ist der Fehler?", 
-        video: "", //Antwortvideo
+        question: "Bonusfrage von NightyChicken! -> 500 Gold Frage", 
+        video: "https://www.youtube.com/embed/6FWKW7HBLc8?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "assets/guessing/pictures/Kat 5 100 Antwort.png",
-        pictureQuestion: 'assets/guessing/pictures/Kat 5 100 Frage.png',
-        bonus: false,
-        videoQuestion: "",
-        imgurLink:'https://i.imgur.com/R0hRKib.jpeg'
+        picture: "",
+        pictureQuestion: '',
+        bonus: true,
+        videoQuestion: "https://www.youtube.com/embed/2Hy9z45q6uY?controls=1&vq=hd1080&autoplay=0"
     }
     static readonly gorn2:GuessingQuestion = { // Gorn 200 -> BEISPIEL FÜR VIDEO GEO 
-        question: "Welches Buch lesen wir hier?", 
+        question: "Wo sind die Fehler?", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
@@ -322,40 +325,39 @@ export class ConstQuestions {
         pictureQuestion: 'assets/guessing/pictures/Kat 5 200 Frage.png',
         bonus: false,
         videoQuestion: "",
-        imgurLink:'https://i.imgur.com/dhEJy8p.png'
+        imgurLink:'https://i.imgur.com/stwEUoU.jpeg'
     } 
     static readonly gorn3:GuessingQuestion = { // Gorn 300
         question: "Wahr oder Falsch?", 
-        video: "https://www.youtube.com/embed/WQtsJYQ_YXI?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        video: "https://www.youtube.com/embed/DcZ5tZe_2DM?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "",
         pictureQuestion: '',
         bonus: false,
-        videoQuestion: "https://www.youtube.com/embed/3ruJfatUUfU?controls=1&vq=hd1080&autoplay=0",
+        videoQuestion: "https://www.youtube.com/embed/DKoMw4VLAWs?controls=1&vq=hd1080&autoplay=0",
         imgurLink:''
     }
     static readonly gorn4:GuessingQuestion = { // Gorn 400 TODO BONUS 
-        question: "Bonusfrage von JulezEntertainment -> 500 Gold Frage", 
-        video: "https://www.youtube.com/embed/4WOndhwWL-Y?controls=1&vq=hd1080&autoplay=0", //Antwortvideo
+        question: "Welche Farbe haben die Zauber?", 
+        video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
-        picture: "",
-        pictureQuestion: '',
-        bonus: true,
-        videoQuestion: "https://www.youtube.com/embed/5sp67AwnIWE?controls=1&vq=hd1080&autoplay=0",
-        imgurLink:''
+        picture: "assets/guessing/pictures/Kat 5 400 Antwort.png",
+        pictureQuestion: 'assets/guessing/pictures/Kat 5 400 Frage.png',
+        bonus: false,
+        videoQuestion: "",
+        imgurLink:'https://i.imgur.com/5iEDof1.png'
     }   
     static readonly gorn5: GuessingQuestion = { // Gorn 500
-        question: "Welche Farbe haben die Zauber?", 
+        question: "Was befindet sich in dieser Truhe? Max. 8 Items nennen!", 
         video: "", //Antwortvideo
         kind: "Schätz-Frage",
         correctAnswer: "",
         picture: "assets/guessing/pictures/Kat 5 500 Antwort.png",
         pictureQuestion: 'assets/guessing/pictures/Kat 5 500 Frage.png',
         bonus: false,
-        videoQuestion: "",
-        imgurLink:'https://i.imgur.com/Dei4nCs.png'
+        videoQuestion: ""
     }
 
     /* IMPOSTER BEISPIEL */
