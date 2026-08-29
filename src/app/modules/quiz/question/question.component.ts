@@ -102,7 +102,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.auth.channelId != ''){
+    if(this.auth.channelId && this.auth.channelId != ''){
       this.endPrediction();
     }
   }
@@ -150,9 +150,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
     console.log('TEST')
 
-    if(this.started == false && this.auth.channelId != ''){
+    /* if(this.started == false && this.auth.channelId != ''){
       this.createPrediction(this.data.question, this.data.options, this.data.index)
-    }
+    } */
       this.started = true;
   }
 
