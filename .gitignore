@@ -45,3 +45,6 @@ Thumbs.db
 **/dist
 **/.angular
 **/node_modules
+
+# Fragen-Pakete
+*.zip

@@ -1,5 +1,6 @@
 /** Gemeinsame Typen von Server und Web-Client. */
 
+
 export const MAX_PLAYERS = 4;
 export const TILE_POINTS = [100, 200, 300, 400, 500];
 /** Ab so vielen gespielten Fragen zählen alle offenen Kacheln doppelt. */

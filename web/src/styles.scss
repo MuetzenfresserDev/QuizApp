@@ -40,7 +40,9 @@ p {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -58,7 +60,9 @@ button:hover:not(:disabled) {
 }
 
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--gold-strong);
   outline-offset: 1px;
 }
@@ -83,7 +87,9 @@ button.quiet {
   background: transparent;
 }
 
-input {
+input,
+select,
+textarea {
   background: #120e09;
   border: 1px solid var(--line);
   border-radius: var(--radius);

@@ -1,11 +1,11 @@
 import { Component, OnInit, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { GameService } from '../core/game.service';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   template: `
     <main>
       <h1>Gothic Quizshow</h1>
@@ -26,6 +26,7 @@ import { GameService } from '../core/game.service';
           <button type="submit">Als Admin erstellen</button>
         </form>
       </div>
+      <a routerLink="/editor">Fragen für ein neues Quiz erstellen</a>
     </main>
   `,
   styles: `
@@ -62,6 +63,9 @@ import { GameService } from '../core/game.service';
       color: var(--muted);
       display: grid;
       gap: 0.3rem;
+    }
+    a {
+      color: var(--gold-strong);
     }
     .error {
       color: #ff9a8a;

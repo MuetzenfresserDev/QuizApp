@@ -39,14 +39,21 @@ Laufende Spiele liegen im Arbeitsspeicher. Ein Neustart des Servers beendet sie.
 
 ## Fragen ändern
 
-Die Fragen stehen in [server/src/catalog.ts](server/src/catalog.ts). Eigene Medien kommen nach `web/public/assets`.
+Der Admin erstellt das Quiz im Browser unter `/editor` und schickt die heruntergeladene Datei. Sie enthält alle Fragen, Bilder und Audios. Der Entwurf wird dabei im Browser gespeichert.
 
-- `mode`: `buzzer`, `whiteboard` oder `map`
-- `media`: was zur Frage gezeigt wird (`image`, `video`, `audio`)
-- `answer`: was die Lösung zeigt (`text`, `image`, `video`, `audio`)
-- `boardImage`: Hintergrund des Whiteboards
-- `imposter`: anderes Whiteboard-Bild für einen Spieler-Platz
-- `map.goal`: Zielpunkt in Pixeln der 850x592 großen Karte
+Einbinden:
+
+```bash
+npm run import-quiz gothic-quiz.zip
+```
+
+Das prüft das Paket und ersetzt [server/src/quiz.json](server/src/quiz.json) sowie `web/public/assets/quiz`. Ist es unvollständig, listet der Befehl die offenen Punkte auf und ändert nichts. Danach committen und deployen.
+
+Das aktuelle Quiz lässt sich als Vorlage für den Editor exportieren:
+
+```bash
+npm run export-quiz gothic-quiz.zip
+```
 
 ## Streaming
 

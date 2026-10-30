@@ -615,7 +615,7 @@ export class Game {
 
   private mapView(run: Run, role: Role, viewer: Player | null): MapView {
     const def = run.question.map!;
-    const goal = { x: def.goal.x / MAP_WIDTH, y: def.goal.y / MAP_HEIGHT };
+    const goal = { x: def.goal!.x / MAP_WIDTH, y: def.goal!.y / MAP_HEIGHT };
     return {
       image: def.image,
       submittedIds: [...run.picks.keys()],
