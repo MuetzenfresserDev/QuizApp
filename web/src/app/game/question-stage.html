@@ -1,6 +1,7 @@
 @if (run(); as run) {
   <header>
-    <span class="tag">{{ categoryName() }} · {{ run.value }} Gold</span>
+    <span class="tag">{{ categoryName() }}</span>
+    <span class="tag value">{{ run.value }} Gold</span>
     @if (run.bonus) {
       <span class="tag bonus">Bonus</span>
     }
@@ -12,10 +13,12 @@
 
   @if (!run.questionVisible) {
     <div class="center">
+      <p class="teaser">{{ run.value }}</p>
+      <p class="teaser-label">{{ categoryName() }}</p>
       @if (game.isAdmin()) {
         <button class="primary large" (click)="game.act({ type: 'showQuestion' })">Frage anzeigen</button>
       } @else {
-        <p class="muted large">{{ game.view()?.hostName }} deckt die Frage gleich auf ...</p>
+        <p class="muted">{{ game.view()?.hostName }} deckt die Frage gleich auf ...</p>
       }
     </div>
   } @else {
@@ -27,7 +30,7 @@
     }
     @if (run.options.length) {
       <ol class="options" type="A">
-        @for (option of run.options; track option) {
+        @for (option of run.options; track $index) {
           <li>{{ option }}</li>
         }
       </ol>

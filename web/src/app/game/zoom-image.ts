@@ -28,7 +28,9 @@ import { Expandable } from './expandable';
       cursor: zoom-out;
     }
     img {
+      border-radius: var(--radius);
       display: block;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
       height: 100%;
       object-fit: contain;
       width: 100%;

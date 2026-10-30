@@ -30,6 +30,8 @@
               }
             ],
             "styles": [
+              "@fontsource/cinzel/latin-700.css",
+              "@fontsource-variable/inter/wght.css",
               "src/styles.scss"
             ]
           },

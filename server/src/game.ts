@@ -107,7 +107,6 @@ export class Game {
   join(rawName: string): Player {
     const name = rawName.trim().slice(0, MAX_NAME);
     if (!name) throw new GameError('Bitte einen Namen eingeben.');
-    if (this.phase === 'finished') throw new GameError('Dieses Spiel ist bereits beendet.');
 
     const existing = this.players.find((p) => p.name.toLowerCase() === name.toLowerCase());
     if (existing) {
@@ -153,21 +152,20 @@ export class Game {
     player.sockets = Math.max(0, player.sockets - 1);
     player.connected = player.sockets > 0;
     this.touch();
+    // Wer gerade weg ist, soll den gemeinsamen Start nicht aufhalten.
+    const playback = this.run?.playback;
+    if (playback?.preparing && this.everyoneReady()) this.startPlayback(playback.id);
   }
 
   // --- Admin ----------------------------------------------------------------
 
   apply(action: AdminAction): GameEffects {
     this.touch();
-    switch (action.type) {
+    switch (action?.type) {
       case 'start':
         if (this.phase !== 'lobby') throw new GameError('Das Spiel läuft bereits.');
         if (this.players.length === 0) throw new GameError('Es ist noch kein Spieler beigetreten.');
         this.phase = 'board';
-        return {};
-      case 'finish':
-        this.run = null;
-        this.phase = 'finished';
         return {};
       case 'kick':
         return this.kick(action.playerId);
@@ -431,8 +429,12 @@ export class Game {
     const run = this.run;
     if (!run?.playback?.preparing || run.playback.id !== id) return false;
     run.readyIds.add(memberId);
-    if (this.expectedMembers().some((member) => !run.readyIds.has(member))) return false;
-    return this.startPlayback(id);
+    return this.everyoneReady() && this.startPlayback(id);
+  }
+
+  private everyoneReady(): boolean {
+    const readyIds = this.run?.readyIds;
+    return !!readyIds && readyIds.size > 0 && this.expectedMembers().every((member) => readyIds.has(member));
   }
 
   /** Startet die vorbereitete Wiedergabe; auch das Zeitlimit des Hubs landet hier. */
@@ -585,7 +587,7 @@ export class Game {
       questionVisible: run.questionVisible,
       prompt: run.questionVisible && !promptPending ? question.prompt : null,
       promptPending,
-      options: run.questionVisible ? (question.options ?? []) : [],
+      options: run.questionVisible ? (question.options ?? []).filter((option) => option.trim()) : [],
       media,
       solutionVisible: run.solutionVisible,
       answer: run.solutionVisible ? question.answer : null,

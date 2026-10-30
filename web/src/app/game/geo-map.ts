@@ -67,7 +67,8 @@ interface Marker extends Point {
     }
     .map {
       aspect-ratio: 850 / 592;
-      border-radius: 6px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       margin: 0 auto;
       overflow: hidden;
       position: relative;

@@ -6,47 +6,67 @@ import { GameService } from '../core/game.service';
   template: `
     @if (game.view(); as view) {
       <div class="cam" aria-label="Platzhalter für die Host-Kamera"></div>
-      <h3>Host: {{ view.hostName }}</h3>
-      <p class="muted">Fragen gespielt: {{ view.playedCount }}</p>
+      <p class="role">Host</p>
+      <h3>{{ view.hostName }}</h3>
+      <p class="stat"><strong>{{ view.playedCount }}</strong> {{ view.playedCount === 1 ? 'Frage' : 'Fragen' }} gespielt</p>
       @if (view.doubled) {
         <p class="double">Doppeltes Gold!</p>
-      }
-      @if (game.isAdmin() && view.phase !== 'finished' && view.phase !== 'lobby') {
-        <button class="quiet" (click)="finish()">Spiel beenden</button>
       }
     }
   `,
   styles: `
     :host {
-      text-shadow: 0 1px 3px #000;
       align-items: center;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.2rem;
       overflow: hidden;
       text-align: center;
+      text-shadow: 0 2px 6px #000;
     }
     .cam {
       aspect-ratio: 16 / 9;
-      background: rgba(0, 0, 0, 0.45);
-      border: 2px solid var(--line);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--line-strong);
       border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       flex: none;
+      margin-bottom: 0.4rem;
       width: 100%;
     }
+    .role {
+      color: var(--gold);
+      font-size: 0.75em;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
     h3 {
+      font-size: 1.3em;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+    }
+    .stat {
+      color: var(--muted);
+      font-size: 0.9em;
       margin-top: 0.3rem;
     }
+    .stat strong {
+      color: var(--text);
+    }
     .double {
-      color: var(--gold-strong);
-      font-weight: bold;
+      animation: pop-in 0.4s ease-out;
+      background: var(--gold-gradient);
+      border-radius: 999px;
+      color: #2b1d07;
+      font-size: 0.9em;
+      font-weight: 700;
+      margin-top: 0.3rem;
+      padding: 0.1em 0.8em;
+      text-shadow: none;
     }
   `,
 })
 export class HostCard {
   protected readonly game = inject(GameService);
-
-  protected finish(): void {
-    if (confirm('Spiel wirklich beenden?')) this.game.act({ type: 'finish' });
-  }
 }

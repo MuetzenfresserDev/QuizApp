@@ -1,16 +1,22 @@
 :root {
-  --bg: #14110c;
-  --panel: rgba(24, 19, 13, 0.93);
-  --line: #5b4a2c;
-  --gold: #e0b354;
-  --gold-strong: #f5cf7a;
-  --text: #f1e8d6;
-  --muted: #cdbfa4;
-  --danger: #c0412f;
-  --ok: #4e9e5c;
-  --teal: #1f6f6a;
-  --radius: 8px;
+  --bg: #0c0a08;
+  /* Flächen, durch die das Hintergrundvideo scheint. */
+  --surface: rgba(18, 14, 10, 0.72);
+  --surface-strong: rgba(14, 11, 8, 0.92);
+  --surface-raised: rgba(255, 240, 210, 0.08);
+  --line: rgba(232, 190, 110, 0.2);
+  --line-strong: rgba(232, 190, 110, 0.55);
+  --gold: #e8bd6a;
+  --gold-strong: #ffdf9e;
+  --gold-gradient: linear-gradient(180deg, #fff0c9 0%, #f0c56f 55%, #b9832e 100%);
+  --text: #f6efe2;
+  --muted: #cfc3ab;
+  --danger: #c93f2a;
+  --ok: #3f9a5a;
+  --radius: 14px;
   --player-bar: 27vh;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Inter Variable', 'Segoe UI', system-ui, sans-serif;
   color-scheme: dark;
 }
 
@@ -25,11 +31,16 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201, 120, 40, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(120, 50, 20, 0.16), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-body);
   /* Wächst mit dem Fenster, damit es auch im verkleinerten Stream lesbar bleibt. */
   font-size: clamp(14px, min(1.25vw, 2.2vh), 44px);
+  line-height: 1.35;
 }
 
 h1,
@@ -37,6 +48,13 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 button,
@@ -47,16 +65,28 @@ textarea {
 }
 
 button {
-  background: var(--teal);
+  background: var(--surface-raised);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 10px;
   color: var(--text);
   cursor: pointer;
-  padding: 0.4em 0.9em;
+  font-weight: 600;
+  padding: 0.45em 1em;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
 }
 
 button:hover:not(:disabled) {
-  filter: brightness(1.2);
+  background: rgba(255, 240, 210, 0.16);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 button:focus-visible,
@@ -64,7 +94,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--gold-strong);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
 button:disabled {
@@ -73,14 +103,25 @@ button:disabled {
 }
 
 button.primary {
-  background: var(--gold);
-  border-color: var(--gold-strong);
-  color: #241a08;
-  font-weight: bold;
+  background: var(--gold-gradient);
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(232, 189, 106, 0.3);
+  color: #2b1d07;
+  font-weight: 700;
+}
+
+button.primary:hover:not(:disabled) {
+  background: var(--gold-gradient);
+  box-shadow: 0 6px 22px rgba(232, 189, 106, 0.5);
 }
 
 button.danger {
-  background: var(--danger);
+  background: linear-gradient(180deg, #dd5a42, #a92f1d);
+  border-color: transparent;
+}
+
+button.danger:hover:not(:disabled) {
+  background: linear-gradient(180deg, #e8664d, #b83421);
 }
 
 button.quiet {
@@ -90,18 +131,27 @@ button.quiet {
 input,
 select,
 textarea {
-  background: #120e09;
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 10px;
   color: var(--text);
-  padding: 0.5em 0.7em;
+  padding: 0.55em 0.8em;
+  transition: border-color 0.15s;
   width: 100%;
 }
 
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--line-strong);
+}
+
 .panel {
-  background: var(--panel);
+  backdrop-filter: blur(12px);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .muted {
@@ -114,9 +164,11 @@ textarea {
 
 /* Bühne ohne Spielerleiste; die Kameras bleiben frei. */
 .big-stage {
+  animation: pop-in 0.2s ease-out;
   background: #0b0906;
-  border: 2px solid var(--gold);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   height: auto !important;
   inset: 1vh 1vw calc(var(--player-bar) + 2vh) 1vw;
   padding: 0.5vh 0.5vw;
@@ -135,23 +187,49 @@ textarea {
   width: 1.6em;
 }
 
+.big-toggle {
+  backdrop-filter: blur(6px);
+  background: rgba(14, 11, 8, 0.7);
+  font-size: 0.85em;
+  padding: 0.15em 0.7em;
+  position: absolute;
+  right: 0.4em;
+  top: 0.4em;
+  z-index: 2;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .spinner {
-    animation-duration: 3s;
+/* Ohne bleibenden transform: der würde .big-stage einsperren. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
 }
 
-.big-toggle {
-  font-size: 0.85em;
-  padding: 0.1em 0.6em;
-  position: absolute;
-  right: 0.3em;
-  top: 0.3em;
-  z-index: 2;
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .spinner {
+    animation-duration: 3s !important;
+    animation-iteration-count: infinite !important;
+  }
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { CategoryDef } from './catalog.js';
 import { CATALOG } from './catalog.js';
+import { youtubeId } from '@quiz/shared';
 import { Game, GameError } from './game.js';
 
 const catalog: CategoryDef[] = [
@@ -486,6 +487,16 @@ describe('Medien und Timer', () => {
     expect(game.mediaReady(a.id, id)).toBe(true);
   });
 
+  it('startet, wenn sich der letzte fehlende Spieler trennt', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    const id = game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' }).prepareId!;
+    game.mediaReady('admin', id);
+    game.mediaReady(a.id, id);
+    game.disconnect(b);
+    expect(game.run!.playback).toMatchObject({ preparing: false, playing: true });
+  });
+
   it('ignoriert Bereitschaft einer veralteten Wiedergabe', () => {
     const { game, a } = setup();
     open(game, 1);
@@ -613,6 +624,22 @@ describe('Spielablauf', () => {
     game.apply({ type: 'kick', playerId: a.id });
     expect(game.players).toEqual([b]);
     expect(game.activePlayerId).toBe(b.id);
+  });
+});
+
+describe('YouTube-Links', () => {
+  it.each([
+    'https://www.youtube.com/watch?v=abcdefghijk',
+    'https://www.youtube.com/watch?t=10&v=abcdefghijk',
+    'https://youtu.be/abcdefghijk?si=xyz',
+    'https://www.youtube.com/embed/abcdefghijk?controls=1',
+    'https://www.youtube.com/shorts/abcdefghijk',
+  ])('erkennt %s', (url) => {
+    expect(youtubeId(url)).toBe('abcdefghijk');
+  });
+
+  it('weist andere Seiten ab', () => {
+    expect(youtubeId('https://example.com/video')).toBeNull();
   });
 });
 

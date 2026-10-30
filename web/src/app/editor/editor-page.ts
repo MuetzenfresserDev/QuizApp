@@ -98,7 +98,9 @@ import { QuestionForm } from './question-form';
       margin-bottom: 0.8rem;
     }
     h1 {
-      color: var(--gold-strong);
+      background: var(--gold-gradient);
+      background-clip: text;
+      color: transparent;
       font-size: 1.8em;
     }
     .title {
@@ -118,7 +120,7 @@ import { QuestionForm } from './question-form';
       gap: 0.5rem;
     }
     .button {
-      background: var(--teal);
+      background: var(--surface-raised);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       cursor: pointer;
@@ -190,11 +192,11 @@ import { QuestionForm } from './question-form';
     }
     .tile {
       align-content: start;
-      background: #2b261d;
+      background: var(--surface-raised);
       border: 2px solid transparent;
       display: grid;
       gap: 0.15rem;
-      height: 5.2rem;
+      height: 5em;
       overflow: hidden;
       padding: 0.3rem;
     }
@@ -203,14 +205,16 @@ import { QuestionForm } from './question-form';
       -webkit-line-clamp: 2;
       color: var(--muted);
       display: -webkit-box;
-      font-size: 0.8em;
+      font-size: 0.75em;
+      font-weight: 500;
+      line-height: 1.25;
       overflow: hidden;
     }
     .tile.open {
-      background: #6b4a12;
+      background: rgba(214, 150, 40, 0.3);
     }
     .tile.done {
-      background: #2d6b3c;
+      background: rgba(68, 158, 92, 0.32);
     }
     .tile.selected {
       border-color: var(--gold-strong);

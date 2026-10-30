@@ -134,7 +134,7 @@ export interface CategoryView {
   tiles: TileView[];
 }
 
-export type Phase = 'lobby' | 'board' | 'question' | 'finished';
+export type Phase = 'lobby' | 'board' | 'question';
 export type Role = 'admin' | 'player';
 
 export interface GameView {
@@ -155,7 +155,6 @@ export interface GameView {
 
 export type AdminAction =
   | { type: 'start' }
-  | { type: 'finish' }
   | { type: 'kick'; playerId: string }
   | { type: 'setActive'; playerId: string }
   | { type: 'points'; playerId: string; delta: number }
@@ -217,6 +216,6 @@ export interface ServerToClient {
 
 /** Normalisiert alle üblichen YouTube-URLs auf die Video-ID. */
 export function youtubeId(url: string): string | null {
-  const match = url.match(/(?:embed\/|watch\?v=|youtu\.be\/)([\w-]{6,})/);
+  const match = url.match(/(?:embed\/|shorts\/|[?&]v=|youtu\.be\/)([\w-]{6,})/);
   return match?.[1] ?? null;
 }

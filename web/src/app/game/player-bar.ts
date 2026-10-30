@@ -11,7 +11,9 @@ import { GameService } from '../core/game.service';
           @if (slot) {
             <img [src]="'assets/geo/' + slot.icon" alt="" />
             <strong class="name">{{ slot.name }}</strong>
-            <span class="gold">{{ slot.points }} Gold</span>
+            @for (points of [slot.points]; track points) {
+              <span class="gold">{{ points }}</span>
+            }
             <span class="jokers">
               <button class="joker" [class.on]="slot.jokers.block" [disabled]="!game.isAdmin()" title="Block-Joker" (click)="joker(slot, 'block')">&#8856;</button>
               <button class="joker" [class.on]="slot.jokers.double" [disabled]="!game.isAdmin()" title="Doppel-Joker" (click)="joker(slot, 'double')">2&times;</button>
@@ -50,21 +52,32 @@ import { GameService } from '../core/game.service';
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .slot {
-      background: var(--panel);
-      border: 2px solid var(--line);
+      background: var(--surface);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       display: flex;
       flex-direction: column;
-      gap: 0.3vh;
+      gap: 0.4vh;
       min-height: 0;
       padding: 0.5vh 0.5vw;
+      transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
     }
     .slot.active {
+      animation: active-glow 2.4s ease-in-out infinite;
       border-color: var(--gold-strong);
-      box-shadow: 0 0 12px var(--gold);
     }
     .slot.offline {
-      opacity: 0.6;
+      opacity: 0.55;
+    }
+    @keyframes active-glow {
+      50% {
+        box-shadow:
+          0 0 22px rgba(255, 201, 110, 0.6),
+          inset 0 0 12px rgba(255, 201, 110, 0.12);
+      }
     }
     header {
       align-items: center;
@@ -73,9 +86,11 @@ import { GameService } from '../core/game.service';
       min-height: 1.8rem;
     }
     header img {
+      border: 1px solid var(--gold);
       border-radius: 50%;
-      height: 1.6rem;
-      width: 1.6rem;
+      height: 1.9rem;
+      object-fit: cover;
+      width: 1.9rem;
     }
     .name {
       min-width: 0;
@@ -87,9 +102,14 @@ import { GameService } from '../core/game.service';
       font-size: 1.15em;
     }
     .gold {
-      color: var(--gold-strong);
-      font-size: 1.2em;
-      font-weight: bold;
+      animation: pop-in 0.35s ease-out;
+      background: var(--gold-gradient);
+      background-clip: text;
+      color: transparent;
+      font-family: var(--font-display);
+      font-size: 1.45em;
+      font-weight: 700;
+      line-height: 1;
       white-space: nowrap;
     }
     .jokers {
@@ -108,8 +128,8 @@ import { GameService } from '../core/game.service';
     }
     .cam {
       align-items: center;
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: calc(var(--radius) - 4px);
       display: flex;
       flex: 1;
       justify-content: center;

@@ -129,7 +129,10 @@ function loadYoutubeApi(): Promise<void> {
     .video {
       aspect-ratio: 16 / 9;
       background: #000;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       margin: 0 auto;
+      overflow: hidden;
       position: relative;
       width: min(100cqw, 100cqh * 16 / 9);
     }
@@ -144,17 +147,19 @@ function loadYoutubeApi(): Promise<void> {
     /* Der Player bleibt dahinter in voller Größe, sonst wählt YouTube eine schlechte Qualität. */
     .cover {
       align-items: center;
-      background: #0b0906;
-      border: 1px solid var(--line);
+      background: linear-gradient(160deg, #1b150e, #0b0906);
       color: var(--gold-strong);
       display: flex;
+      font-family: var(--font-display);
       font-size: 1.4em;
       gap: 0.6rem;
       justify-content: center;
     }
     .wave {
-      background: #0b0906;
+      background: linear-gradient(160deg, #1b150e, #0b0906);
       border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
       flex: 1;
       min-height: 0;
       position: relative;

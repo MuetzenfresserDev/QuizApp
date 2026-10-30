@@ -10,6 +10,7 @@ const LIGHT_COLORS = ['#ffffff', '#e8b923'];
 const MAX_TEXT_X = 0.8;
 const MAX_TEXT_Y = 0.92;
 const FOCUS_RETRY_MS = 100;
+const MIN_POINT_DISTANCE = 0.002;
 
 @Component({
   selector: 'app-whiteboard',
@@ -87,7 +88,8 @@ const FOCUS_RETRY_MS = 100;
     .sheet {
       aspect-ratio: 16 / 9;
       background: #f4efe3;
-      border-radius: 4px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       margin: 0 auto;
       overflow: hidden;
       position: relative;
@@ -129,14 +131,22 @@ const FOCUS_RETRY_MS = 100;
       gap: 0.25rem;
       justify-content: center;
     }
+    .tools {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      margin: 0 auto;
+      padding: 0.25rem 0.5rem;
+    }
     .tools button {
-      font-size: 0.95em;
+      font-size: 0.8em;
       padding: 0.15em 0.5em;
     }
     .tools .on {
       outline: 2px solid var(--gold-strong);
     }
     .color {
+      border-radius: 50%;
       height: 1.5em;
       padding: 0;
       width: 1.5em;
@@ -276,7 +286,10 @@ export class Whiteboard {
   protected move(event: PointerEvent): void {
     if (!this.current) return;
     for (const sample of event.getCoalescedEvents?.() ?? [event]) {
-      this.current.points.push(this.toPoint(sample));
+      const point = this.toPoint(sample);
+      const last = this.current.points.at(-1)!;
+      // Dünnt dicht liegende Punkte aus, damit lange Striche im Serverlimit bleiben.
+      if (Math.hypot(point.x - last.x, point.y - last.y) >= MIN_POINT_DISTANCE) this.current.points.push(point);
     }
     this.redraw();
   }

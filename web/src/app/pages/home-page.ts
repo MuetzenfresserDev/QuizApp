@@ -8,7 +8,10 @@ import { GameService } from '../core/game.service';
   imports: [FormsModule, RouterLink],
   template: `
     <main>
-      <h1>Gothic Quizshow</h1>
+      <header>
+        <p class="eyebrow">Die Spielshow</p>
+        <h1>Gothic Quizshow</h1>
+      </header>
       @if (error() || game.notice()) {
         <p class="error" role="alert">{{ error() || game.notice() }}</p>
       }
@@ -26,7 +29,7 @@ import { GameService } from '../core/game.service';
           <button type="submit">Als Admin erstellen</button>
         </form>
       </div>
-      <a routerLink="/editor">Fragen für ein neues Quiz erstellen</a>
+      <a class="link" routerLink="/editor">Fragen für ein neues Quiz erstellen</a>
     </main>
   `,
   styles: `
@@ -39,10 +42,22 @@ import { GameService } from '../core/game.service';
       min-height: 100vh;
       padding: 16px;
     }
-    h1 {
-      color: var(--gold-strong);
-      font-size: 2.6rem;
+    header {
+      animation: rise-in 0.6s ease-out backwards;
       text-align: center;
+    }
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+    }
+    h1 {
+      background: var(--gold-gradient);
+      background-clip: text;
+      color: transparent;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.1;
     }
     .cards {
       display: flex;
@@ -52,23 +67,28 @@ import { GameService } from '../core/game.service';
       max-width: 100%;
     }
     form {
+      animation: rise-in 0.6s ease-out 0.1s backwards;
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
       max-width: 100%;
-      padding: 1.5rem;
-      width: 340px;
+      padding: 1.75rem;
+      width: 360px;
     }
     label {
       color: var(--muted);
       display: grid;
       gap: 0.3rem;
     }
-    a {
+    .link {
       color: var(--gold-strong);
     }
     .error {
-      color: #ff9a8a;
+      background: rgba(210, 69, 47, 0.2);
+      border: 1px solid var(--danger);
+      border-radius: var(--radius);
+      color: #ffc2b6;
+      padding: 0.5rem 1rem;
     }
   `,
 })

@@ -3,7 +3,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GameService } from '../core/game.service';
 import { Board } from '../game/board';
-import { Finished } from '../game/finished';
 import { HostCard } from '../game/host-card';
 import { Lobby } from '../game/lobby';
 import { PlayerBar } from '../game/player-bar';
@@ -14,10 +13,11 @@ const BACKGROUND_VIDEO =
 
 @Component({
   selector: 'app-game-page',
-  imports: [Board, Finished, HostCard, Lobby, PlayerBar, QuestionStage],
+  imports: [Board, HostCard, Lobby, PlayerBar, QuestionStage],
   template: `
     @if (game.view(); as view) {
       <iframe class="background" [src]="background" title="Hintergrundvideo" allow="autoplay" tabindex="-1"></iframe>
+      <div class="vignette"></div>
       <div class="shell">
         <app-host-card class="host" />
         <section class="stage">
@@ -30,9 +30,6 @@ const BACKGROUND_VIDEO =
             }
             @case ('question') {
               <app-question-stage />
-            }
-            @case ('finished') {
-              <app-finished />
             }
           }
         </section>
