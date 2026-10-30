@@ -1,0 +1,9 @@
+{
+  "/socket.io": {
+    "target": "http://localhost:8080",
+    "ws": true
+  },
+  "/keepalive": {
+    "target": "http://localhost:8080"
+  }
+}

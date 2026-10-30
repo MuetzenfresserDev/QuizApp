@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "quiz",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server/dist/main.js"],
+      "port": 8080
+    }
+  ]
+}

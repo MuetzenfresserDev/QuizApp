@@ -1,0 +1,129 @@
+:root {
+  --bg: #14110c;
+  --panel: rgba(24, 19, 13, 0.93);
+  --line: #5b4a2c;
+  --gold: #e0b354;
+  --gold-strong: #f5cf7a;
+  --text: #f1e8d6;
+  --muted: #cdbfa4;
+  --danger: #c0412f;
+  --ok: #4e9e5c;
+  --teal: #1f6f6a;
+  --radius: 8px;
+  --player-bar: 27vh;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  /* Wächst mit dem Fenster, damit es auch im verkleinerten Stream lesbar bleibt. */
+  font-size: clamp(14px, min(1.25vw, 2.2vh), 44px);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  background: var(--teal);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.4em 0.9em;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.2);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 1px;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+button.primary {
+  background: var(--gold);
+  border-color: var(--gold-strong);
+  color: #241a08;
+  font-weight: bold;
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.quiet {
+  background: transparent;
+}
+
+input {
+  background: #120e09;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 0.5em 0.7em;
+  width: 100%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.prewrap {
+  white-space: pre-line;
+}
+
+/* Bühne ohne Spielerleiste; die Kameras bleiben frei. */
+.big-stage {
+  background: #0b0906;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  height: auto !important;
+  inset: 1vh 1vw calc(var(--player-bar) + 2vh) 1vw;
+  padding: 0.5vh 0.5vw;
+  position: fixed !important;
+  width: auto !important;
+  z-index: 30;
+}
+
+.big-toggle {
+  font-size: 0.85em;
+  padding: 0.1em 0.6em;
+  position: absolute;
+  right: 0.3em;
+  top: 0.3em;
+  z-index: 2;
+}

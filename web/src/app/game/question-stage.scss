@@ -1,0 +1,160 @@
+:host {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  height: 100%;
+  padding: 0.8vh 0.8vw;
+}
+
+header,
+footer {
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.tag {
+  color: var(--gold-strong);
+  font-size: 1.15em;
+}
+
+.tag.bonus {
+  background: var(--danger);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 0 0.4em;
+}
+
+h2 {
+  flex: none;
+  font-size: 1.6em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.options {
+  display: grid;
+  flex: none;
+  gap: 0 2rem;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  margin: 0;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.large {
+  font-size: 1.7em;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.content > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.media {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vh;
+  height: 100%;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+}
+
+.media > * {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.answer-text {
+  flex: none;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.split {
+  display: flex;
+  gap: 1vw;
+  height: 100%;
+  min-height: 0;
+}
+
+.split > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Wie die alte Spielerseite: der Arbeitsbereich bekommt den größeren Teil. */
+.split.with-work > .work {
+  flex: 1.6 1 0;
+}
+
+.split > .working {
+  align-self: center;
+  flex: none;
+  font-size: 1.2em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.boards {
+  display: grid;
+  gap: 0.6vh 1vw;
+  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100%;
+  min-height: 0;
+}
+
+.boards.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.boards article {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.boards h3 {
+  flex: none;
+  font-size: 1.15em;
+  text-align: center;
+}
+
+.boards app-whiteboard {
+  flex: 1;
+}
+
+.hidden-board {
+  align-items: center;
+  background: rgba(128, 128, 128, 0.25);
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}

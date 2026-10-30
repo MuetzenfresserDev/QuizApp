@@ -1,31 +1,55 @@
-# Whiteboard Team API
+# Gothic Quizshow
 
-This Project uses the [WhiteboardTeamAPI](https://www.whiteboard.team/documents/api#quick-start) to create and use the whiteboards in this Quiz.
+Jeopardy-artige Spielshow für einen Admin und bis zu vier Spieler. Alles läuft in einer App: Whiteboard, Buzzer und Geo-Karte sind eingebaut und synchronisieren sich per WebSocket.
 
-# QuizApp
+## Starten
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+```bash
+npm install
+npm run dev
+```
 
-## Development server
+Das öffnet die App auf `http://localhost:4200`, der Server läuft auf Port 8080.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Für den Betrieb:
 
-## Code scaffolding
+```bash
+npm run build
+npm start
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Dann läuft alles auf einem Port, standardmäßig 8080. Mit Docker geht das über `docker compose up --build`.
 
-## Build
+| Variable | Bedeutung |
+| --- | --- |
+| `PORT` | Port des Servers |
+| `ADMIN_PASSWORD` | Passwort zum Erstellen eines Spiels. Sollte öffentlich immer gesetzt sein, sonst kann jeder ein Spiel anlegen und die Lösungen vorab ansehen. |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Aufbau
 
-## Running unit tests
+| Ordner | Inhalt |
+| --- | --- |
+| `shared/` | Typen und Konstanten für Server und Client |
+| `server/` | Express und Socket.IO. Die Regeln liegen in `game.ts`, die Fragen in `catalog.ts` |
+| `web/` | Angular-Client |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Der Server entscheidet alles und schickt jedem Teilnehmer nur, was er gerade sehen darf. Lösungen, Karten-Ziele und fremde Whiteboards verlassen den Server erst nach dem Aufdecken. Das gilt auch für den Admin, weil seine Ansicht gestreamt wird.
 
-## Running end-to-end tests
+Laufende Spiele liegen im Arbeitsspeicher. Ein Neustart des Servers beendet sie.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Fragen ändern
 
-## Further help
+Die Fragen stehen in [server/src/catalog.ts](server/src/catalog.ts). Eigene Medien kommen nach `web/public/assets`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `mode`: `buzzer`, `whiteboard` oder `map`
+- `media`: was zur Frage gezeigt wird (`image`, `video`, `audio`)
+- `answer`: was die Lösung zeigt (`text`, `image`, `video`, `audio`)
+- `boardImage`: Hintergrund des Whiteboards
+- `imposter`: anderes Whiteboard-Bild für einen Spieler-Platz
+- `map.goal`: Zielpunkt in Pixeln der 850x592 großen Karte
+
+## Streaming
+
+Host-Kamera und die vier Spieler-Kameras haben in beiden Ansichten feste Platzhalter. In OBS legst du die Kameras einfach darüber. Die Punkte-Knöpfe des Admins liegen im Kamerabild, die Zuschauer sehen sie dadurch nicht. Für stabile Positionen die Ansicht immer in derselben Fenstergröße aufnehmen.
+
+Bilder, Videos, Karte und Whiteboards lassen sich über `Groß` oder per Klick auf die ganze Bühne ziehen, `Esc` verkleinert wieder. Das gilt nur für den eigenen Bildschirm: Was der Admin vergrößert, sehen also die Stream-Zuschauer, nicht die anderen Spieler.

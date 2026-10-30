@@ -1,0 +1,134 @@
+@if (run(); as run) {
+  <header>
+    <span class="tag">{{ categoryName() }} · {{ run.value }} Gold</span>
+    @if (run.bonus) {
+      <span class="tag bonus">Bonus</span>
+    }
+    <span class="spacer"></span>
+    @if (run.questionVisible && !run.solutionVisible) {
+      <app-quiz-timer />
+    }
+  </header>
+
+  @if (!run.questionVisible) {
+    <div class="center">
+      @if (game.isAdmin()) {
+        <button class="primary large" (click)="game.act({ type: 'showQuestion' })">Frage anzeigen</button>
+      } @else {
+        <p class="muted large">{{ game.view()?.hostName }} deckt die Frage gleich auf ...</p>
+      }
+    </div>
+  } @else {
+    @if (run.prompt && !run.boardsVisible) {
+      <h2 class="prewrap">{{ run.prompt }}</h2>
+    }
+    @if (run.options.length) {
+      <ol class="options" type="A">
+        @for (option of run.options; track option) {
+          <li>{{ option }}</li>
+        }
+      </ol>
+    }
+
+    <div class="content">
+      @if (run.solutionVisible && !run.boardsVisible) {
+        <div class="media">
+          @if (run.answer?.text) {
+            <p class="answer-text prewrap">{{ run.answer?.text }}</p>
+          }
+          @if (run.answer?.image; as image) {
+            <app-zoom-image [src]="image" alt="Lösung" />
+          }
+          @if (run.answer?.video; as video) {
+            <app-media-player [src]="video" kind="video" target="answer" />
+          }
+          @if (run.answer?.audio; as audio) {
+            <app-media-player [src]="audio" kind="audio" target="answer" />
+          }
+          @if (run.mode === 'map') {
+            <app-geo-map />
+          }
+        </div>
+      } @else if (run.boardsVisible) {
+        <div class="boards" [class.single]="players().length === 1">
+          @for (player of players(); track player.id) {
+            <article>
+              <h3>{{ player.name }}</h3>
+              @if (isRevealed(player)) {
+                <app-whiteboard [playerId]="player.id" [image]="run.boardImages[player.id]" />
+              } @else {
+                <div class="hidden-board">
+                  @if (game.isAdmin()) {
+                    <button class="primary" (click)="game.act({ type: 'revealBoard', playerId: player.id })">Aufdecken</button>
+                  } @else {
+                    <span class="muted">Noch verdeckt</span>
+                  }
+                </div>
+              }
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="split" [class.with-work]="run.mode !== 'buzzer' || !game.isAdmin()">
+          @if (run.media.image || run.media.video || run.media.audio || (run.mode === 'whiteboard' && game.isAdmin())) {
+            <div class="media">
+              @if (run.media.image; as image) {
+                <app-zoom-image [src]="image" alt="Fragebild" />
+              }
+              @if (run.media.video; as video) {
+                <app-media-player [src]="video" kind="video" target="question" />
+              }
+              @if (run.media.audio; as audio) {
+                <app-media-player [src]="audio" kind="audio" target="question" />
+              }
+            </div>
+          }
+
+          @switch (run.mode) {
+            @case ('buzzer') {
+              <app-buzzer class="work" />
+            }
+            @case ('map') {
+              <app-geo-map class="work" />
+            }
+            @case ('whiteboard') {
+              @if (selfId(); as id) {
+                <app-whiteboard class="work" [playerId]="id" [image]="run.boardImages[id]" [editable]="canDraw()" />
+              } @else {
+                <ul class="working">
+                  @for (player of players(); track player.id) {
+                    <li>{{ player.name }} bearbeitet die Aufgabe</li>
+                  }
+                </ul>
+              }
+            }
+          }
+        </div>
+      }
+    </div>
+  }
+
+  @if (game.isAdmin()) {
+    <footer>
+      @if (run.questionVisible) {
+        @if (run.mode === 'whiteboard') {
+          @if (run.boardsVisible) {
+            <button (click)="game.act({ type: 'hideBoards' })">{{ run.solutionVisible ? 'Zur Lösung' : 'Zur Frage' }}</button>
+          } @else {
+            <button class="primary" (click)="game.act({ type: 'showBoards' })">Whiteboards zeigen</button>
+          }
+        }
+        @if (run.mode === 'map') {
+          <button (click)="game.act({ type: 'togglePicture' })">{{ run.pictureVisible ? 'Bild verbergen' : 'Bild anzeigen' }}</button>
+          <button [disabled]="!!run.map?.picks" (click)="game.act({ type: 'mapShowPlayers' })">Spieler anzeigen</button>
+          <button class="primary" [disabled]="!!run.map?.goal" (click)="game.act({ type: 'mapShowDistances' })">Entfernungen zeigen</button>
+        }
+        @if (run.mode !== 'map' && !run.solutionVisible) {
+          <button class="primary" (click)="game.act({ type: 'showSolution' })">Lösung</button>
+        }
+      }
+      <span class="spacer"></span>
+      <button class="danger" (click)="game.act({ type: 'closeQuestion' })">Zurück zum Board</button>
+    </footer>
+  }
+}

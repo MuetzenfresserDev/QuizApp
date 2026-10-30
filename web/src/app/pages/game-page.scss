@@ -1,0 +1,76 @@
+.background {
+  border: 0;
+  height: 56.25vw;
+  left: 50%;
+  min-height: 100vh;
+  min-width: 177.78vh;
+  opacity: 0.35;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  /* Vergrößert, damit YouTubes Titelzeile außerhalb des Bildes liegt. */
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 100vw;
+  z-index: -1;
+}
+
+/* Feste Geometrie: OBS legt die Kameras über diese Platzhalter. */
+.shell {
+  display: grid;
+  gap: 1vh 1vw;
+  grid-template-areas:
+    'host stage'
+    'players players';
+  grid-template-columns: 17vw minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) var(--player-bar);
+  height: 100vh;
+  overflow: hidden;
+  padding: 1vh 1vw;
+}
+
+.host {
+  grid-area: host;
+  min-height: 0;
+}
+
+.stage {
+  grid-area: stage;
+  min-height: 0;
+  min-width: 0;
+}
+
+.players {
+  grid-area: players;
+  min-height: 0;
+}
+
+.banner {
+  background: var(--danger);
+  left: 0;
+  padding: 0.3rem;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 20;
+}
+
+.sound {
+  bottom: calc(var(--player-bar) + 2vh);
+  left: 50%;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.toast {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 20;
+}
+
+.wait {
+  padding: 2rem;
+  text-align: center;
+}

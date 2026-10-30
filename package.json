@@ -1,0 +1,15 @@
+{
+  "name": "gothic-quizshow",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": ["server", "web"],
+  "scripts": {
+    "dev": "concurrently -n server,web -c yellow,cyan \"npm run dev -w server\" \"npm start -w web\"",
+    "build": "npm run build -w web && npm run build -w server",
+    "start": "node server/dist/main.js",
+    "test": "npm test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
