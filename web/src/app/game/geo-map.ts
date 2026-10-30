@@ -114,6 +114,12 @@ interface Marker extends Point {
         stroke-dashoffset: 0;
       }
     }
+    .marker,
+    .label {
+      transition:
+        left 0.35s ease,
+        top 0.35s ease;
+    }
     .marker {
       border: 2px solid #fff;
       border-radius: 50%;
@@ -185,7 +191,7 @@ export class GeoMap {
   protected readonly height = MAP_HEIGHT;
 
   protected readonly map = computed(() => this.game.run()?.map ?? null);
-  protected readonly canPick = computed(() => !this.game.isAdmin() && !this.map()?.picks);
+  protected readonly canPick = computed(() => !this.game.isAdmin() && !this.map()?.goal);
 
   protected readonly markers = computed<Marker[]>(() => {
     const map = this.map();

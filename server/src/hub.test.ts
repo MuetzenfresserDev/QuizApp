@@ -78,8 +78,9 @@ describe('Hub', () => {
     await act(admin, { type: 'start' });
     await act(admin, { type: 'openQuestion', category: 0, row: 0 });
     await act(admin, { type: 'showQuestion' });
+    await act(admin, { type: 'releasePrompt' });
 
-    const seen = await settled(player, (view) => view.run?.questionVisible === true);
+    const seen = await settled(player, (view) => !!view.run?.prompt);
     expect(seen.role).toBe('player');
     expect(seen.selfId).not.toBeNull();
     expect(seen.run!.prompt).toBe('Wer ist Ulmar?');

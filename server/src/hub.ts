@@ -8,6 +8,7 @@ const MAX_GAMES = 50;
 const IDLE_LIMIT_MS = 12 * 60 * 60 * 1000;
 const MEASURE_INTERVAL_MS = 10_000;
 const MAX_LATENCY_MS = 500;
+const PREPARE_LIMIT_MS = { video: 10_000, audio: 3000 };
 
 interface SocketData {
   game?: Game;
@@ -119,6 +120,11 @@ export class Hub {
       if (player) socket.data.game!.addStroke(player, stroke);
     });
 
+    socket.on('boardDraft', (stroke) => {
+      const player = this.currentPlayer(socket);
+      if (player) socket.data.game!.setDraft(player, stroke ?? null);
+    });
+
     socket.on('boardUndo', () => {
       const player = this.currentPlayer(socket);
       if (player) socket.data.game!.undoStroke(player);
@@ -127,6 +133,13 @@ export class Hub {
     socket.on('boardClear', () => {
       const player = this.currentPlayer(socket);
       if (player) socket.data.game!.clearStrokes(player);
+    });
+
+    socket.on('mediaReady', (id) => {
+      const { game } = socket.data;
+      if (!game) return;
+      game.mediaReady(this.currentPlayer(socket)?.id ?? 'admin', String(id));
+      this.broadcast(game);
     });
 
     socket.on('disconnect', () => {
@@ -150,6 +163,13 @@ export class Hub {
     this.broadcast(game);
     if (effects.boardsChanged) void this.sendBoards(game);
     if (effects.sfx) this.io.to(game.code).emit('sfx', effects.sfx);
+    const { prepareId } = effects;
+    if (prepareId) {
+      // Ein hängender Client darf die Show nicht aufhalten.
+      setTimeout(() => {
+        if (game.startPlayback(prepareId)) this.broadcast(game);
+      }, PREPARE_LIMIT_MS[game.run?.playback?.kind ?? 'video']).unref();
+    }
   }
 
   /** Jeder Socket bekommt seine eigene gefilterte Sicht auf das Spiel. */

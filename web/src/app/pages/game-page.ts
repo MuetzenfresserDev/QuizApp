@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GameService } from '../core/game.service';
@@ -42,9 +42,6 @@ const BACKGROUND_VIDEO =
       @if (!game.connected()) {
         <div class="banner" role="status">Verbindung verloren, verbinde neu ...</div>
       }
-      @if (game.soundBlocked()) {
-        <button class="primary sound" (click)="game.unlockSound()">Ton aktivieren</button>
-      }
       @if (game.notice()) {
         <button class="danger toast" (click)="game.notice.set('')">{{ game.notice() }}</button>
       }
@@ -54,25 +51,17 @@ const BACKGROUND_VIDEO =
   `,
   styleUrl: './game-page.scss',
 })
-export class GamePage {
+export class GamePage implements OnInit {
   protected readonly game = inject(GameService);
   private readonly router = inject(Router);
   private readonly sanitizer = inject(DomSanitizer);
 
-  readonly code = input.required<string>();
-
   protected readonly failed = signal(false);
   protected readonly background = this.sanitizer.bypassSecurityTrustResourceUrl(BACKGROUND_VIDEO);
 
-  constructor() {
-    effect(() => {
-      const code = this.code();
-      if (this.game.view()?.code === code) return;
-      void this.game.open(code).then((found) => {
-        if (found) return;
-        this.failed.set(true);
-        void this.router.navigate(['/'], { queryParams: { code } });
-      });
-    });
+  async ngOnInit(): Promise<void> {
+    if (this.game.view() || (await this.game.open())) return;
+    this.failed.set(true);
+    await this.router.navigate(['/']);
   }
 }

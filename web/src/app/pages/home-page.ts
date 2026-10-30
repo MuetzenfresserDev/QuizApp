@@ -94,11 +94,12 @@ export class HomePage implements OnInit {
     await this.enter(() => this.game.create(this.hostName, this.password));
   }
 
-  private async enter(work: () => Promise<string>): Promise<void> {
+  private async enter(work: () => Promise<void>): Promise<void> {
     this.error.set('');
     this.game.notice.set('');
     try {
-      await this.router.navigate(['/game', await work()]);
+      await work();
+      await this.router.navigate(['/game']);
     } catch (error) {
       this.error.set((error as Error).message);
     }

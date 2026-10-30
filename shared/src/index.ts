@@ -14,6 +14,7 @@ export const MAP_HEIGHT = 592;
 export const BOARD_COLORS = ['#111111', '#ffffff', '#d43b2f', '#2e9e4f', '#2f6fd4', '#e8b923', '#a044c9'];
 export const BOARD_WIDTHS = [0.004, 0.008, 0.016];
 export const ERASER = 'eraser';
+export const MAX_BOARD_TEXT = 200;
 
 export type QuestionMode = 'buzzer' | 'whiteboard' | 'map';
 
@@ -30,11 +31,13 @@ export interface Point {
   y: number;
 }
 
+/** Ein gezeichneter Strich oder, mit text, eine Beschriftung an points[0]. */
 export interface Stroke {
   id: string;
   color: string;
   width: number;
   points: Point[];
+  text?: string;
 }
 
 export interface PlayerView {
@@ -50,8 +53,13 @@ export type MediaTarget = 'question' | 'answer';
 export type MediaKind = 'video' | 'audio';
 
 export interface Playback {
+  id: string;
   target: MediaTarget;
   kind: MediaKind;
+  /** Alle Clients puffern stumm; gestartet wird erst, wenn alle bereit sind. */
+  preparing: boolean;
+  readyCount: number;
+  expectedCount: number;
   playing: boolean;
   positionSec: number;
   /** Serverzeit, zu der positionSec galt. */
@@ -74,7 +82,7 @@ export interface MapView {
   image: string;
   submittedIds: string[];
   myPick: Point | null;
-  /** Erst nach "Spieler anzeigen" gefüllt. */
+  /** Für den Admin live, für Spieler erst nach "Entfernungen zeigen". */
   picks: Record<string, Point> | null;
   /** Erst nach "Entfernungen zeigen" gefüllt. */
   goal: Point | null;
@@ -88,8 +96,10 @@ export interface RunView {
   mode: QuestionMode;
   bonus: boolean;
   questionVisible: boolean;
-  /** Nur gefüllt, wenn questionVisible. */
+  /** Nur gefüllt, wenn questionVisible und freigegeben. */
   prompt: string | null;
+  /** Reine Textfrage beim Buzzer, die der Admin noch freigeben muss. */
+  promptPending: boolean;
   options: string[];
   /** Nur gefüllt, wenn questionVisible; das Suchbild der Karte zusätzlich erst nach Freigabe. */
   media: MediaSet;
@@ -100,6 +110,8 @@ export interface RunView {
   timer: TimerView;
   buzzer: BuzzerView | null;
   map: MapView | null;
+  /** Es gibt ein Bild, das der Admin erst freigeben muss. */
+  hasPicture: boolean;
   pictureVisible: boolean;
   boardsVisible: boolean;
   boardsLocked: boolean;
@@ -151,6 +163,7 @@ export type AdminAction =
   | { type: 'openQuestion'; category: number; row: number }
   | { type: 'closeQuestion' }
   | { type: 'showQuestion' }
+  | { type: 'releasePrompt' }
   | { type: 'showSolution' }
   | { type: 'togglePicture' }
   | { type: 'timerStart' }
@@ -162,10 +175,10 @@ export type AdminAction =
   | { type: 'showBoards' }
   | { type: 'hideBoards' }
   | { type: 'revealBoard'; playerId: string }
-  | { type: 'mapShowPlayers' }
   | { type: 'mapShowDistances' }
   | { type: 'mediaPlay'; target: MediaTarget; kind: MediaKind; positionSec?: number }
   | { type: 'mediaPause' }
+  | { type: 'mediaEnded' }
   | { type: 'mediaSeek'; positionSec: number };
 
 export type Sfx = 'bonus' | 'buzz';
@@ -185,8 +198,11 @@ export interface ClientToServer {
   buzz(): void;
   mapPick(point: Point): void;
   boardStroke(stroke: Stroke): void;
+  /** Text, der noch getippt wird; null, wenn das Feld verworfen wurde. */
+  boardDraft(stroke: Stroke | null): void;
   boardUndo(): void;
   boardClear(): void;
+  mediaReady(id: string): void;
 }
 
 export interface ServerToClient {

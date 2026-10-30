@@ -22,6 +22,9 @@
     @if (run.prompt && !run.boardsVisible) {
       <h2 class="prewrap">{{ run.prompt }}</h2>
     }
+    @if (run.promptPending) {
+      <h2 class="muted">{{ game.isAdmin() ? 'Frage noch verdeckt' : 'Die Frage kommt gleich ...' }}</h2>
+    }
     @if (run.options.length) {
       <ol class="options" type="A">
         @for (option of run.options; track option) {
@@ -69,9 +72,12 @@
           }
         </div>
       } @else {
-        <div class="split" [class.with-work]="run.mode !== 'buzzer' || !game.isAdmin()">
-          @if (run.media.image || run.media.video || run.media.audio || (run.mode === 'whiteboard' && game.isAdmin())) {
+        <div class="split" [class.with-work]="run.mode !== 'buzzer'" [class.buzzer-layout]="run.mode === 'buzzer' && (run.hasPicture || run.media.video || run.media.audio)">
+          @if ((run.mode === 'buzzer' && run.hasPicture) || run.media.image || run.media.video || run.media.audio || (run.mode === 'whiteboard' && game.isAdmin())) {
             <div class="media">
+              @if (run.mode === 'buzzer' && run.hasPicture && !run.pictureVisible) {
+                <div class="placeholder">Bild</div>
+              }
               @if (run.media.image; as image) {
                 <app-zoom-image [src]="image" alt="Fragebild" />
               }
@@ -111,6 +117,9 @@
   @if (game.isAdmin()) {
     <footer>
       @if (run.questionVisible) {
+        @if (run.promptPending) {
+          <button class="primary" (click)="game.act({ type: 'releasePrompt' })">Frage freigeben</button>
+        }
         @if (run.mode === 'whiteboard') {
           @if (run.boardsVisible) {
             <button (click)="game.act({ type: 'hideBoards' })">{{ run.solutionVisible ? 'Zur Lösung' : 'Zur Frage' }}</button>
@@ -118,9 +127,10 @@
             <button class="primary" (click)="game.act({ type: 'showBoards' })">Whiteboards zeigen</button>
           }
         }
+        @if (run.hasPicture && !run.solutionVisible) {
+          <button [class.primary]="!run.pictureVisible" (click)="game.act({ type: 'togglePicture' })">{{ run.pictureVisible ? 'Bild verbergen' : 'Bild anzeigen' }}</button>
+        }
         @if (run.mode === 'map') {
-          <button (click)="game.act({ type: 'togglePicture' })">{{ run.pictureVisible ? 'Bild verbergen' : 'Bild anzeigen' }}</button>
-          <button [disabled]="!!run.map?.picks" (click)="game.act({ type: 'mapShowPlayers' })">Spieler anzeigen</button>
           <button class="primary" [disabled]="!!run.map?.goal" (click)="game.act({ type: 'mapShowDistances' })">Entfernungen zeigen</button>
         }
         @if (run.mode !== 'map' && !run.solutionVisible) {

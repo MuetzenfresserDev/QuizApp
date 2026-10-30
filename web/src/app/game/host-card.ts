@@ -8,7 +8,6 @@ import { GameService } from '../core/game.service';
       <div class="cam" aria-label="Platzhalter für die Host-Kamera"></div>
       <h3>Host: {{ view.hostName }}</h3>
       <p class="muted">Fragen gespielt: {{ view.playedCount }}</p>
-      <p class="muted">Spiel-Code: {{ view.code }}</p>
       @if (view.doubled) {
         <p class="double">Doppeltes Gold!</p>
       }
@@ -19,6 +18,7 @@ import { GameService } from '../core/game.service';
   `,
   styles: `
     :host {
+      text-shadow: 0 1px 3px #000;
       align-items: center;
       display: flex;
       flex-direction: column;

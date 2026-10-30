@@ -20,6 +20,7 @@ import {
   ERASER,
   MAP_HEIGHT,
   MAP_WIDTH,
+  MAX_BOARD_TEXT,
   MAX_PLAYERS,
   PLAYER_ICONS,
   TILE_POINTS,
@@ -30,6 +31,7 @@ import type { CategoryDef, QuestionDef } from './catalog.js';
 const MAX_STROKES = 2000;
 const MAX_POINTS = 5000;
 const MAX_NAME = 30;
+const ADMIN_MEMBER = 'admin';
 
 export class GameError extends Error {}
 
@@ -37,6 +39,8 @@ interface Player extends PlayerView {
   token: string;
   sockets: number;
   strokes: Stroke[];
+  /** Text, der noch getippt wird; wird beim Zeigen der Boards übernommen. */
+  draft: Stroke | null;
 }
 
 interface Run {
@@ -44,16 +48,19 @@ interface Run {
   row: number;
   value: number;
   question: QuestionDef;
+  previousTile: Game['lastTile'];
   questionVisible: boolean;
+  promptReleased: boolean;
   solutionVisible: boolean;
   pictureVisible: boolean;
   playback: Playback | null;
+  readyIds: Set<string>;
   timer: { running: boolean; remainingMs: number; endsAt: number | null };
   frozenIds: Set<string>;
+  buzzerOpened: boolean;
   buzzedId: string | null;
   pendingBuzzes: { playerId: string; time: number }[];
   picks: Map<string, Point>;
-  picksVisible: boolean;
   goalVisible: boolean;
   boardsVisible: boolean;
   boardsLocked: boolean;
@@ -69,6 +76,8 @@ export interface GameEffects {
   /** Boards müssen neu verteilt werden. */
   boardsChanged?: boolean;
   kickedToken?: string;
+  /** Eine Wiedergabe wird vorbereitet; der Hub setzt das Zeitlimit. */
+  prepareId?: string;
 }
 
 export class Game {
@@ -79,7 +88,7 @@ export class Game {
   run: Run | null = null;
   lastActivity: number;
 
-  private lastTile: { category: number; row: number } | null = null;
+  lastTile: { category: number; row: number } | null = null;
   private doubled = false;
   private readonly tiles: Tile[][];
 
@@ -106,6 +115,7 @@ export class Game {
       if (existing.connected) throw new GameError('Dieser Name ist bereits vergeben.');
       return existing;
     }
+    if (this.phase !== 'lobby') throw new GameError('Das Spiel läuft bereits.');
     if (this.players.length >= MAX_PLAYERS) throw new GameError('Das Spiel ist voll.');
 
     const usedIcons = new Set(this.players.map((p) => p.icon));
@@ -119,10 +129,10 @@ export class Game {
       jokers: { block: true, double: true },
       sockets: 0,
       strokes: [],
+      draft: null,
     };
     this.players.push(player);
     this.activePlayerId ??= player.id;
-    this.run?.frozenIds.add(player.id);
     this.touch();
     return player;
   }
@@ -179,12 +189,21 @@ export class Game {
         return this.openQuestion(action.category, action.row);
       case 'closeQuestion':
         return this.closeQuestion();
-      case 'showQuestion':
-        this.requireRun().questionVisible = true;
+      case 'showQuestion': {
+        const run = this.requireRun();
+        run.questionVisible = true;
         return {};
+      }
+      case 'releasePrompt': {
+        const run = this.requireRun();
+        run.promptReleased = true;
+        this.openBuzzer(run);
+        return {};
+      }
       case 'showSolution': {
         const run = this.requireRun();
         run.solutionVisible = true;
+        run.promptReleased = true;
         run.boardsVisible = false;
         run.playback = null;
         return {};
@@ -192,6 +211,7 @@ export class Game {
       case 'togglePicture': {
         const run = this.requireRun();
         run.pictureVisible = !run.pictureVisible;
+        if (run.pictureVisible) this.openBuzzer(run);
         return {};
       }
       case 'timerStart':
@@ -205,6 +225,7 @@ export class Game {
       }
       case 'buzzerRelease': {
         const run = this.requireRun();
+        run.buzzerOpened = true;
         run.frozenIds.clear();
         run.buzzedId = null;
         run.pendingBuzzes = [];
@@ -229,7 +250,12 @@ export class Game {
         run.boardsVisible = true;
         run.boardsLocked = true;
         run.playback = null;
-        return {};
+        // Wer vergessen hat, Enter zu drücken, verliert seine Antwort nicht.
+        for (const player of this.players) {
+          if (player.draft) player.strokes.push(player.draft);
+          player.draft = null;
+        }
+        return { boardsChanged: true };
       }
       case 'hideBoards': {
         const run = this.requireRun();
@@ -241,27 +267,24 @@ export class Game {
       case 'revealBoard':
         this.requireRun().revealedBoardIds.add(this.player(action.playerId).id);
         return { boardsChanged: true };
-      case 'mapShowPlayers':
-        this.requireRun().picksVisible = true;
+      case 'mapShowDistances':
+        this.requireRun().goalVisible = true;
         return {};
-      case 'mapShowDistances': {
-        const run = this.requireRun();
-        run.picksVisible = true;
-        run.goalVisible = true;
-        return {};
-      }
       case 'mediaPlay':
         return this.mediaPlay(action.target, action.kind, action.positionSec);
       case 'mediaPause': {
         const run = this.requireRun();
         if (run.playback) {
-          run.playback = { ...run.playback, playing: false, positionSec: this.position(run.playback), updatedAt: this.now() };
+          run.playback = { ...run.playback, preparing: false, playing: false, positionSec: this.position(run.playback), updatedAt: this.now() };
         }
         return {};
       }
+      case 'mediaEnded':
+        this.requireRun().playback = null;
+        return {};
       case 'mediaSeek': {
         const run = this.requireRun();
-        if (run.playback) {
+        if (run.playback && !run.playback.preparing) {
           run.playback = { ...run.playback, positionSec: Math.max(0, finite(action.positionSec)), updatedAt: this.now() };
         }
         return {};
@@ -292,23 +315,30 @@ export class Game {
     const question = this.catalog[category]?.questions[row];
     if (!question) throw new GameError('Diese Frage gibt es nicht.');
 
+    const previousTile = this.lastTile;
     this.lastTile = { category, row };
-    for (const player of this.players) player.strokes = [];
+    for (const player of this.players) {
+      player.strokes = [];
+      player.draft = null;
+    }
     this.run = {
       category,
       row,
       value: this.tileValue(row),
       question,
+      previousTile,
       questionVisible: false,
+      promptReleased: false,
       solutionVisible: false,
       pictureVisible: false,
       playback: null,
+      readyIds: new Set(),
       timer: freshTimer(),
       frozenIds: new Set(this.players.map((p) => p.id)),
+      buzzerOpened: false,
       buzzedId: null,
       pendingBuzzes: [],
       picks: new Map(),
-      picksVisible: false,
       goalVisible: false,
       boardsVisible: false,
       boardsLocked: false,
@@ -321,9 +351,16 @@ export class Game {
   private closeQuestion(): GameEffects {
     const run = this.run;
     if (!run) return {};
-    this.tiles[run.category]![run.row]!.used = true;
     this.run = null;
     this.phase = 'board';
+
+    // Noch nichts gesehen: Das war ein Verklicken und keine gespielte Frage.
+    if (!run.questionVisible || this.promptPending(run)) {
+      this.lastTile = run.previousTile;
+      return {};
+    }
+
+    this.tiles[run.category]![run.row]!.used = true;
     this.advanceActivePlayer();
 
     if (!this.doubled && this.playedCount() >= DOUBLE_POINTS_AFTER) {
@@ -331,6 +368,13 @@ export class Game {
       return { sfx: 'bonus' };
     }
     return {};
+  }
+
+  /** Reine Textfrage beim Buzzer, die der Admin noch nicht freigegeben hat. */
+  private promptPending(run: Run): boolean {
+    const { image, video, audio } = run.question.media ?? {};
+    const textOnly = run.question.mode === 'buzzer' && !image && !video && !audio;
+    return run.questionVisible && textOnly && !run.promptReleased;
   }
 
   private advanceActivePlayer(): void {
@@ -366,8 +410,49 @@ export class Game {
     if (target === 'question' ? !run.questionVisible : !run.solutionVisible) {
       throw new GameError('Das Medium ist noch nicht aufgedeckt.');
     }
-    run.playback = { target, kind, playing: true, positionSec: Math.max(0, finite(positionSec)), updatedAt: this.now() };
-    return {};
+    const id = randomUUID();
+    run.readyIds = new Set();
+    run.playback = {
+      id,
+      target,
+      kind,
+      preparing: true,
+      readyCount: 0,
+      expectedCount: 0,
+      playing: false,
+      positionSec: Math.max(0, finite(positionSec)),
+      updatedAt: this.now(),
+    };
+    return { prepareId: id };
+  }
+
+  /** Meldet, dass ein Client fertig gepuffert hat; true, wenn dadurch alle bereit sind. */
+  mediaReady(memberId: string, id: string): boolean {
+    const run = this.run;
+    if (!run?.playback?.preparing || run.playback.id !== id) return false;
+    run.readyIds.add(memberId);
+    if (this.expectedMembers().some((member) => !run.readyIds.has(member))) return false;
+    return this.startPlayback(id);
+  }
+
+  /** Startet die vorbereitete Wiedergabe; auch das Zeitlimit des Hubs landet hier. */
+  startPlayback(id: string): boolean {
+    const run = this.run;
+    if (!run?.playback?.preparing || run.playback.id !== id) return false;
+    run.playback = { ...run.playback, preparing: false, playing: true, updatedAt: this.now() };
+    if (run.playback.target === 'question') this.openBuzzer(run);
+    return true;
+  }
+
+  private expectedMembers(): string[] {
+    return [ADMIN_MEMBER, ...this.players.filter((p) => p.connected).map((p) => p.id)];
+  }
+
+  /** Einmalig öffnen, sobald die Spieler die Frage kennen; danach entscheidet der Admin. */
+  private openBuzzer(run: Run): void {
+    if (run.question.mode !== 'buzzer' || run.buzzerOpened) return;
+    run.buzzerOpened = true;
+    run.frozenIds.clear();
   }
 
   private position(playback: Playback): number {
@@ -399,19 +484,26 @@ export class Game {
 
   mapPick(playerId: string, point: Point): void {
     const run = this.run;
-    if (!run || run.question.mode !== 'map' || !run.questionVisible || run.picksVisible) return;
+    if (!run || run.question.mode !== 'map' || !run.questionVisible || run.goalVisible) return;
     if (!isUnit(point?.x) || !isUnit(point?.y)) return;
     run.picks.set(playerId, { x: point.x, y: point.y });
   }
 
   addStroke(player: Player, stroke: Stroke): boolean {
     if (!this.canDraw() || !validStroke(stroke) || player.strokes.length >= MAX_STROKES) return false;
-    player.strokes.push({
-      id: String(stroke.id),
-      color: stroke.color,
-      width: stroke.width,
-      points: stroke.points.map(({ x, y }) => ({ x, y })),
-    });
+    player.strokes.push(cleanStroke(stroke));
+    if (stroke.text) player.draft = null;
+    return true;
+  }
+
+  setDraft(player: Player, stroke: Stroke | null): boolean {
+    if (!this.canDraw()) return false;
+    if (stroke === null) {
+      player.draft = null;
+      return true;
+    }
+    if (!validStroke(stroke) || !stroke.text) return false;
+    player.draft = cleanStroke(stroke);
     return true;
   }
 
@@ -456,7 +548,7 @@ export class Game {
       playedCount: this.playedCount(),
       doubled: this.doubled,
       lastTile: this.lastTile,
-      run: this.run ? this.runView(this.run, viewer) : null,
+      run: this.run ? this.runView(this.run, role, viewer) : null,
     };
   }
 
@@ -471,11 +563,18 @@ export class Game {
     }));
   }
 
-  private runView(run: Run, viewer: Player | null): RunView {
+  private runView(run: Run, role: Role, viewer: Player | null): RunView {
     const { question } = run;
     const isMap = question.mode === 'map';
+    const gated = isMap || question.mode === 'buzzer';
     const media: MediaSet = run.questionVisible ? { ...question.media } : {};
-    if (isMap && !run.pictureVisible) delete media.image;
+    if (gated && !run.pictureVisible) delete media.image;
+    const promptPending = this.promptPending(run);
+    const playback = run.playback && {
+      ...run.playback,
+      readyCount: run.readyIds.size,
+      expectedCount: this.expectedMembers().length,
+    };
 
     return {
       category: run.category,
@@ -484,15 +583,17 @@ export class Game {
       mode: question.mode,
       bonus: !!question.bonus,
       questionVisible: run.questionVisible,
-      prompt: run.questionVisible ? question.prompt : null,
+      prompt: run.questionVisible && !promptPending ? question.prompt : null,
+      promptPending,
       options: run.questionVisible ? (question.options ?? []) : [],
       media,
       solutionVisible: run.solutionVisible,
       answer: run.solutionVisible ? question.answer : null,
-      playback: run.playback,
+      playback,
       timer: { ...run.timer },
       buzzer: question.mode === 'buzzer' ? { frozenIds: [...run.frozenIds], buzzedId: run.buzzedId } : null,
-      map: isMap && run.questionVisible ? this.mapView(run, viewer) : null,
+      map: isMap && run.questionVisible ? this.mapView(run, role, viewer) : null,
+      hasPicture: run.questionVisible && gated && !!question.media?.image,
       pictureVisible: run.pictureVisible,
       boardsVisible: run.boardsVisible,
       boardsLocked: run.boardsLocked,
@@ -512,14 +613,14 @@ export class Game {
     return images;
   }
 
-  private mapView(run: Run, viewer: Player | null): MapView {
+  private mapView(run: Run, role: Role, viewer: Player | null): MapView {
     const def = run.question.map!;
     const goal = { x: def.goal.x / MAP_WIDTH, y: def.goal.y / MAP_HEIGHT };
     return {
       image: def.image,
       submittedIds: [...run.picks.keys()],
       myPick: (viewer && run.picks.get(viewer.id)) ?? null,
-      picks: run.picksVisible ? Object.fromEntries(run.picks) : null,
+      picks: role === 'admin' || run.goalVisible ? Object.fromEntries(run.picks) : null,
       goal: run.goalVisible ? goal : null,
       distances: run.goalVisible
         ? Object.fromEntries([...run.picks].map(([id, pick]) => [id, pixelDistance(pick, goal)]))
@@ -573,8 +674,24 @@ function validStroke(stroke: Stroke): boolean {
     Array.isArray(stroke.points) &&
     stroke.points.length > 0 &&
     stroke.points.length <= MAX_POINTS &&
-    stroke.points.every((p) => isUnit(p?.x) && isUnit(p?.y))
+    stroke.points.every((p) => isUnit(p?.x) && isUnit(p?.y)) &&
+    validText(stroke)
   );
+}
+
+function validText({ text, points, color }: Stroke): boolean {
+  if (text === undefined) return true;
+  return typeof text === 'string' && text.length > 0 && text.length <= MAX_BOARD_TEXT && points.length === 1 && color !== ERASER;
+}
+
+function cleanStroke(stroke: Stroke): Stroke {
+  return {
+    id: String(stroke.id),
+    color: stroke.color,
+    width: stroke.width,
+    points: stroke.points.map(({ x, y }) => ({ x, y })),
+    ...(stroke.text ? { text: stroke.text } : {}),
+  };
 }
 
 function pixelDistance(a: Point, b: Point): number {

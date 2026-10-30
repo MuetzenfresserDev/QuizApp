@@ -4,9 +4,7 @@ import { GameService } from '../core/game.service';
 @Component({
   selector: 'app-buzzer',
   template: `
-    @if (buzzedName(); as name) {
-      <p class="buzzed" role="status">{{ name }} hat gebuzzert!</p>
-    }
+    <p class="buzzed" role="status">{{ buzzedName() ? buzzedName() + ' hat gebuzzert!' : ' ' }}</p>
 
     @if (game.isAdmin()) {
       <div class="admin">

@@ -119,6 +119,28 @@ input {
   z-index: 30;
 }
 
+.spinner {
+  animation: spin 0.9s linear infinite;
+  border: 0.25em solid rgba(245, 207, 122, 0.25);
+  border-radius: 50%;
+  border-top-color: var(--gold-strong);
+  display: inline-block;
+  height: 1.6em;
+  width: 1.6em;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 3s;
+  }
+}
+
 .big-toggle {
   font-size: 0.85em;
   padding: 0.1em 0.6em;

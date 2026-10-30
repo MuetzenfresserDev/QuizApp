@@ -4,7 +4,7 @@
   left: 50%;
   min-height: 100vh;
   min-width: 177.78vh;
-  opacity: 0.35;
+  opacity: 0.75;
   pointer-events: none;
   position: fixed;
   top: 50%;
@@ -52,14 +52,6 @@
   right: 0;
   text-align: center;
   top: 0;
-  z-index: 20;
-}
-
-.sound {
-  bottom: calc(var(--player-bar) + 2vh);
-  left: 50%;
-  position: fixed;
-  transform: translateX(-50%);
   z-index: 20;
 }
 

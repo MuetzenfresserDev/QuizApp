@@ -31,11 +31,11 @@ import { GameService } from '../core/game.service';
   styles: `
     :host {
       display: grid;
-      gap: 1.5vw;
+      gap: 0.9vw;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      height: 100%;
-      margin: 0 auto;
-      max-width: 70vw;
+      height: 86%;
+      margin: 2vh auto 0;
+      max-width: 50vw;
     }
     .column {
       display: flex;
@@ -45,19 +45,20 @@ import { GameService } from '../core/game.service';
     }
     .column > img {
       align-self: center;
-      height: 8vh;
+      height: 6.5vh;
       object-fit: contain;
     }
     h3 {
-      font-size: 1.1em;
+      font-size: 0.95em;
       text-align: center;
+      text-shadow: 0 1px 3px #000;
       white-space: nowrap;
     }
     .tile {
       background: var(--teal);
-      border: 3px solid #000;
+      border: 2px solid #000;
       flex: 1;
-      font-size: 2em;
+      font-size: 1.5em;
       font-weight: bold;
       min-height: 0;
       padding: 0;
@@ -65,9 +66,11 @@ import { GameService } from '../core/game.service';
     .tile:disabled {
       opacity: 1;
     }
+    /* Fast durchsichtig, damit das Hintergrundvideo durchscheint. */
     .tile.used {
-      background: #2b261d;
-      color: var(--muted);
+      background: rgba(20, 16, 10, 0.12);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: rgba(241, 232, 214, 0.4);
     }
     .tile.last {
       border-color: var(--gold-strong);

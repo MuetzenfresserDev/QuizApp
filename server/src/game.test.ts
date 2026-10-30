@@ -25,18 +25,31 @@ const catalog: CategoryDef[] = [
         map: { image: 'map.png', goal: { x: 425, y: 296 } },
       },
       { mode: 'whiteboard', prompt: 'Bonus', bonus: true, answer: {} },
+      { mode: 'buzzer', prompt: 'Bild?', media: { image: 'b.png' }, answer: {} },
+      { mode: 'buzzer', prompt: 'Audio?', media: { audio: 'a.mp3' }, answer: {} },
     ],
   },
 ];
 
-function setup(clock = { now: 1000 }) {
+function lobby(clock = { now: 1000 }) {
   const game = new Game('1234', 'Host', catalog, () => clock.now);
   const a = game.join('Anna');
   const b = game.join('Ben');
   game.connect(a);
   game.connect(b);
-  game.apply({ type: 'start' });
   return { game, a, b, clock };
+}
+
+function setup(clock = { now: 1000 }) {
+  const result = lobby(clock);
+  result.game.apply({ type: 'start' });
+  return result;
+}
+
+/** Startet ein Medium und meldet alle Teilnehmer als bereit. */
+function play(game: Game, target: 'question' | 'answer', kind: 'video' | 'audio') {
+  const id = game.apply({ type: 'mediaPlay', target, kind }).prepareId!;
+  for (const member of ['admin', ...game.players.map((p) => p.id)]) game.mediaReady(member, id);
 }
 
 const open = (game: Game, row: number) => {
@@ -46,7 +59,7 @@ const open = (game: Game, row: number) => {
 
 describe('Lobby', () => {
   it('lehnt doppelte Namen ab, solange der Spieler verbunden ist', () => {
-    const { game } = setup();
+    const { game } = lobby();
     expect(() => game.join('anna')).toThrow(GameError);
   });
 
@@ -57,16 +70,23 @@ describe('Lobby', () => {
   });
 
   it('nimmt maximal vier Spieler auf', () => {
-    const { game } = setup();
+    const { game } = lobby();
     game.join('C');
     game.join('D');
     expect(() => game.join('E')).toThrow('voll');
   });
 
   it('vergibt jedes Icon nur einmal', () => {
-    const { game } = setup();
+    const { game } = lobby();
     game.join('C');
     expect(new Set(game.players.map((p) => p.icon)).size).toBe(3);
+  });
+});
+
+describe('Beitritt im laufenden Spiel', () => {
+  it('nimmt nach dem Start niemand Neues auf', () => {
+    const { game } = setup();
+    expect(() => game.join('Fremd')).toThrow('läuft bereits');
   });
 });
 
@@ -79,6 +99,23 @@ describe('Geheimhaltung', () => {
     }
     game.apply({ type: 'showSolution' });
     expect(JSON.stringify(game.view('player', a))).toContain('GEHEIM');
+  });
+
+  it('zeigt die reine Textfrage beim Buzzer erst nach der Freigabe', () => {
+    const { game, a } = setup();
+    open(game, 0);
+    for (const view of [game.view('admin', null), game.view('player', a)]) {
+      expect(view.run).toMatchObject({ prompt: null, promptPending: true });
+    }
+    expect(JSON.stringify(game.view('player', a))).not.toContain('Buzz?');
+    game.apply({ type: 'releasePrompt' });
+    expect(game.view('player', a).run).toMatchObject({ prompt: 'Buzz?', promptPending: false });
+  });
+
+  it('zeigt Fragen mit Medien ohne zusätzliche Freigabe', () => {
+    const { game, a } = setup();
+    open(game, 4);
+    expect(game.view('player', a).run).toMatchObject({ prompt: 'Bild?', promptPending: false });
   });
 
   it('zeigt die Frage erst nach showQuestion', () => {
@@ -96,6 +133,50 @@ describe('Geheimhaltung', () => {
     expect(map.goal).toBeNull();
     expect(map.submittedIds).toEqual([a.id]);
     expect(game.view('player', a).run!.map!.myPick).toEqual({ x: 0.5, y: 0.5 });
+  });
+
+  it('zeigt nach den Entfernungen allen Spielern alle Positionen', () => {
+    const { game, a, b } = setup();
+    open(game, 2);
+    game.mapPick(a.id, { x: 0.1, y: 0.1 });
+    game.mapPick(b.id, { x: 0.9, y: 0.9 });
+    game.apply({ type: 'mapShowDistances' });
+    for (const viewer of [a, b]) {
+      const map = game.view('player', viewer).run!.map!;
+      expect(Object.keys(map.picks!)).toEqual([a.id, b.id]);
+      expect(Object.keys(map.distances!)).toEqual([a.id, b.id]);
+      expect(map.goal).not.toBeNull();
+    }
+  });
+
+  it('zeigt dem Admin jede Bewegung live, aber nie das Ziel', () => {
+    const { game, a } = setup();
+    open(game, 2);
+    game.mapPick(a.id, { x: 0.1, y: 0.1 });
+    game.mapPick(a.id, { x: 0.2, y: 0.2 });
+    const map = game.view('admin', null).run!.map!;
+    expect(map.picks).toEqual({ [a.id]: { x: 0.2, y: 0.2 } });
+    expect(map.goal).toBeNull();
+  });
+
+  it('versteckt das Bild einer Buzzer-Frage bis zur Freigabe', () => {
+    const { game, a } = setup();
+    open(game, 4);
+    expect(game.view('player', a).run!.media.image).toBeUndefined();
+    expect(game.view('admin', null).run!.media.image).toBeUndefined();
+    expect(game.view('admin', null).run!.hasPicture).toBe(true);
+    game.apply({ type: 'togglePicture' });
+    expect(game.view('player', a).run!.media.image).toBe('b.png');
+  });
+
+  it('zeigt Beschriftungen erst mit dem Aufdecken', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    game.addStroke(a, { id: 't', color: '#111111', width: 0.008, points: [{ x: 0.3, y: 0.4 }], text: 'Antwort' });
+    expect(game.visibleBoards(a)[a.id]![0]!.text).toBe('Antwort');
+    expect(game.visibleBoards(b)[a.id]).toBeUndefined();
+    game.apply({ type: 'revealBoard', playerId: a.id });
+    expect(game.visibleBoards(b)[a.id]![0]).toMatchObject({ text: 'Antwort', points: [{ x: 0.3, y: 0.4 }] });
   });
 
   it('zeigt das Suchbild der Karte erst nach Freigabe', () => {
@@ -130,9 +211,42 @@ describe('Buzzer', () => {
     game.apply({ type: 'buzzerRelease' });
   };
 
-  it('ist am Anfang für alle gesperrt', () => {
+  it('ist vor dem Zeigen der Frage gesperrt', () => {
+    const { game, a } = setup();
+    game.apply({ type: 'openQuestion', category: 0, row: 0 });
+    expect(game.buzz(a.id, 0)).toBe(false);
+  });
+
+  it('öffnet bei reinen Textfragen erst mit der Freigabe', () => {
     const { game, a } = setup();
     open(game, 0);
+    expect(game.buzz(a.id, 0)).toBe(false);
+    game.apply({ type: 'releasePrompt' });
+    expect(game.buzz(a.id, 0)).toBe(true);
+  });
+
+  it('öffnet bei Bildfragen erst mit der Bildfreigabe', () => {
+    const { game, a } = setup();
+    open(game, 4);
+    expect(game.buzz(a.id, 0)).toBe(false);
+    game.apply({ type: 'togglePicture' });
+    expect(game.buzz(a.id, 0)).toBe(true);
+  });
+
+  it('öffnet bei Audiofragen mit dem Abspielstart', () => {
+    const { game, a } = setup();
+    open(game, 5);
+    expect(game.buzz(a.id, 0)).toBe(false);
+    play(game, 'question', 'audio');
+    expect(game.buzz(a.id, 0)).toBe(true);
+  });
+
+  it('öffnet eingefrorene Spieler beim Wiederholen nicht von selbst', () => {
+    const { game, a } = setup();
+    open(game, 5);
+    play(game, 'question', 'audio');
+    game.apply({ type: 'buzzerFreezeAll' });
+    play(game, 'question', 'audio');
     expect(game.buzz(a.id, 0)).toBe(false);
   });
 
@@ -189,6 +303,7 @@ describe('Robustheit', () => {
     game.apply({ type: 'openQuestion', category: 0, row: 1 });
     game.apply({ type: 'openQuestion', category: 0, row: 2 });
     expect(game.run!.row).toBe(1);
+    game.apply({ type: 'showQuestion' });
     game.apply({ type: 'closeQuestion' });
     game.apply({ type: 'closeQuestion' });
     expect(game.activePlayerId).toBe(b.id);
@@ -249,6 +364,69 @@ describe('Whiteboard', () => {
     expect(game.addStroke(a, { ...stroke, width: 99 })).toBe(false);
   });
 
+  it('prüft Beschriftungen', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    expect(game.addStroke(a, { ...stroke, text: 'ok' })).toBe(true);
+    expect(game.addStroke(a, { ...stroke, text: '' })).toBe(false);
+    expect(game.addStroke(a, { ...stroke, text: 'x'.repeat(201) })).toBe(false);
+    expect(game.addStroke(a, { ...stroke, text: 5 as never })).toBe(false);
+    expect(game.addStroke(a, { ...stroke, text: 'ok', points: [{ x: 0, y: 0 }, { x: 1, y: 1 }] })).toBe(false);
+  });
+
+  it('übernimmt offenen Text beim Zeigen der Boards', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    game.setDraft(a, { ...stroke, id: 'draft', text: 'Vergessen' });
+    expect(game.apply({ type: 'showBoards' }).boardsChanged).toBe(true);
+    game.apply({ type: 'revealBoard', playerId: a.id });
+    expect(game.visibleBoards(b)[a.id]!.map((s) => s.text)).toEqual(['Vergessen']);
+    expect(a.draft).toBeNull();
+  });
+
+  it('übernimmt fertigen Text nicht doppelt', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    game.setDraft(a, { ...stroke, id: 'draft', text: 'Fertig' });
+    game.addStroke(a, { ...stroke, id: 'final', text: 'Fertig' });
+    game.apply({ type: 'showBoards' });
+    expect(a.strokes).toHaveLength(1);
+  });
+
+  it('verwirft abgebrochenen Text', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    game.setDraft(a, { ...stroke, id: 'draft', text: 'Weg' });
+    game.setDraft(a, null);
+    game.apply({ type: 'showBoards' });
+    expect(a.strokes).toEqual([]);
+  });
+
+  it('nimmt offenen Text nicht in die nächste Frage mit', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    game.setDraft(a, { ...stroke, id: 'draft', text: 'Alt' });
+    game.apply({ type: 'closeQuestion' });
+    open(game, 3);
+    game.apply({ type: 'showBoards' });
+    expect(a.strokes).toEqual([]);
+  });
+
+  it('weist kaputte Entwürfe ab', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    expect(game.setDraft(a, { ...stroke, text: undefined })).toBe(false);
+    expect(game.setDraft(a, 'x' as never)).toBe(false);
+  });
+
+  it('nimmt Beschriftungen mit Rückgängig wieder zurück', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    game.addStroke(a, { ...stroke, text: 'ok' });
+    game.undoStroke(a);
+    expect(a.strokes).toEqual([]);
+  });
+
   it('beginnt jede Frage mit leeren Boards', () => {
     const { game, a } = setup();
     open(game, 1);
@@ -271,7 +449,7 @@ describe('Karte', () => {
   it('nimmt nach dem Aufdecken keine Tipps mehr an', () => {
     const { game, a } = setup();
     open(game, 2);
-    game.apply({ type: 'mapShowPlayers' });
+    game.apply({ type: 'mapShowDistances' });
     game.mapPick(a.id, { x: 0.5, y: 0.5 });
     expect(game.view('player', a).run!.map!.myPick).toBeNull();
   });
@@ -281,10 +459,50 @@ describe('Medien und Timer', () => {
   it('rechnet die Position beim Pausieren fort', () => {
     const { game, clock } = setup();
     open(game, 1);
-    game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' });
+    play(game, 'question', 'video');
     clock.now += 4000;
     game.apply({ type: 'mediaPause' });
     expect(game.run!.playback).toMatchObject({ playing: false, positionSec: 4 });
+  });
+
+  it('startet erst, wenn alle Verbundenen gepuffert haben', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    const id = game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' }).prepareId!;
+    expect(game.view('player', a).run!.playback).toMatchObject({ preparing: true, playing: false, expectedCount: 3 });
+    expect(game.mediaReady('admin', id)).toBe(false);
+    expect(game.mediaReady(a.id, id)).toBe(false);
+    expect(game.view('player', a).run!.playback!.readyCount).toBe(2);
+    expect(game.mediaReady(b.id, id)).toBe(true);
+    expect(game.view('player', a).run!.playback).toMatchObject({ preparing: false, playing: true });
+  });
+
+  it('wartet nicht auf getrennte Spieler', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    game.disconnect(b);
+    const id = game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' }).prepareId!;
+    game.mediaReady('admin', id);
+    expect(game.mediaReady(a.id, id)).toBe(true);
+  });
+
+  it('ignoriert Bereitschaft einer veralteten Wiedergabe', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    const old = game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' }).prepareId!;
+    game.apply({ type: 'mediaPlay', target: 'question', kind: 'video' });
+    expect(game.mediaReady(a.id, old)).toBe(false);
+    expect(game.startPlayback(old)).toBe(false);
+  });
+
+  it('lässt ein Medium nach dem Ende erneut abspielen', () => {
+    const { game } = setup();
+    open(game, 1);
+    play(game, 'question', 'video');
+    game.apply({ type: 'mediaEnded' });
+    expect(game.run!.playback).toBeNull();
+    play(game, 'question', 'video');
+    expect(game.run!.playback).toMatchObject({ playing: true, positionSec: 0 });
   });
 
   it('verweigert Medien der Lösung vor dem Aufdecken', () => {
@@ -307,9 +525,57 @@ describe('Spielablauf', () => {
   it('wechselt den aktiven Spieler nach jeder Frage', () => {
     const { game, a, b } = setup();
     expect(game.activePlayerId).toBe(a.id);
-    open(game, 0);
+    open(game, 1);
     game.apply({ type: 'closeQuestion' });
     expect(game.activePlayerId).toBe(b.id);
+  });
+
+  it('zählt eine nur angeklickte Frage nicht als gespielt', () => {
+    const { game, a } = setup();
+    game.apply({ type: 'openQuestion', category: 0, row: 1 });
+    game.apply({ type: 'closeQuestion' });
+    const view = game.view('admin', null);
+    expect(view.phase).toBe('board');
+    expect(view.playedCount).toBe(0);
+    expect(view.categories[0]!.tiles[1]!.used).toBe(false);
+    expect(view.activePlayerId).toBe(a.id);
+  });
+
+  it('zählt eine nicht freigegebene Textfrage nicht als gespielt', () => {
+    const { game, a } = setup();
+    open(game, 0);
+    game.apply({ type: 'closeQuestion' });
+    expect(game.view('admin', null).playedCount).toBe(0);
+    expect(game.activePlayerId).toBe(a.id);
+  });
+
+  it('zählt eine freigegebene Textfrage als gespielt', () => {
+    const { game, b } = setup();
+    open(game, 0);
+    game.apply({ type: 'releasePrompt' });
+    game.apply({ type: 'closeQuestion' });
+    expect(game.view('admin', null).playedCount).toBe(1);
+    expect(game.activePlayerId).toBe(b.id);
+  });
+
+  it('stellt die Markierung der letzten Kachel wieder her', () => {
+    const { game } = setup();
+    open(game, 1);
+    game.apply({ type: 'closeQuestion' });
+    game.apply({ type: 'openQuestion', category: 0, row: 2 });
+    game.apply({ type: 'closeQuestion' });
+    expect(game.view('admin', null).lastTile).toEqual({ category: 0, row: 1 });
+  });
+
+  it('löst durch Verklicken keine Verdopplung aus', () => {
+    const game = new Game('1', 'Host', CATALOG);
+    game.join('A');
+    game.apply({ type: 'start' });
+    for (let i = 0; i < 12; i += 1) {
+      game.apply({ type: 'openQuestion', category: 0, row: 0 });
+      game.apply({ type: 'closeQuestion' });
+    }
+    expect(game.view('admin', null).doubled).toBe(false);
   });
 
   it('spielt den Bonus-Sound bei Bonusfragen', () => {
@@ -324,6 +590,8 @@ describe('Spielablauf', () => {
     let last: ReturnType<Game['apply']> = {};
     for (let i = 0; i < 10; i += 1) {
       game.apply({ type: 'openQuestion', category: Math.floor(i / 5), row: i % 5 });
+      game.apply({ type: 'showQuestion' });
+      game.apply({ type: 'releasePrompt' });
       last = game.apply({ type: 'closeQuestion' });
     }
     expect(last.sfx).toBe('bonus');

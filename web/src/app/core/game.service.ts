@@ -4,6 +4,7 @@ import { io, type Socket } from 'socket.io-client';
 import type { Ack, AdminAction, ClientToServer, GameView, Point, ServerToClient, Session, Sfx, Stroke } from '@quiz/shared';
 
 const KEEPALIVE_MS = 5 * 60 * 1000;
+const SESSION_KEY = 'quiz:session';
 const SFX_SOURCES: Record<Sfx, string> = {
   bonus: 'assets/bonus/bonus.mp3',
   buzz: 'assets/buzzer-sfx/buzz.mp3',
@@ -20,10 +21,6 @@ export class GameService {
   readonly boards = signal<Record<string, Stroke[]>>({});
   readonly connected = signal(false);
   readonly notice = signal('');
-  /** Der Browser hat Ton blockiert; ein Klick des Nutzers gibt ihn frei. */
-  readonly soundBlocked = signal(false);
-  /** Zählt hoch, wenn der Nutzer Ton freigegeben hat, damit Player es erneut versuchen. */
-  readonly soundRetry = signal(0);
 
   readonly isAdmin = computed(() => this.view()?.role === 'admin');
   readonly run = computed(() => this.view()?.run ?? null);
@@ -55,20 +52,18 @@ export class GameService {
     return Date.now() + this.clockOffset;
   }
 
-  async create(hostName: string, password: string): Promise<string> {
-    const session = await this.request<Session>((ack) => this.socket.emit('create', { hostName, password }, ack));
-    return this.enter(session);
+  async create(hostName: string, password: string): Promise<void> {
+    await this.enter(await this.request<Session>((ack) => this.socket.emit('create', { hostName, password }, ack)));
   }
 
-  async join(code: string, name: string): Promise<string> {
-    const session = await this.request<Session>((ack) => this.socket.emit('join', { code, name }, ack));
-    return this.enter(session);
+  async join(code: string, name: string): Promise<void> {
+    await this.enter(await this.request<Session>((ack) => this.socket.emit('join', { code, name }, ack)));
   }
 
-  /** Stellt die gespeicherte Sitzung eines Spiels wieder her; false, wenn es keine gültige gibt. */
-  async open(code: string): Promise<boolean> {
+  /** Stellt die gespeicherte Sitzung wieder her; false, wenn es keine gültige gibt. */
+  async open(): Promise<boolean> {
     // Der Tab zuerst: Admin und Spieler können im selben Browser getrennte Tabs nutzen.
-    const stored = sessionStorage.getItem(storageKey(code)) ?? localStorage.getItem(storageKey(code));
+    const stored = sessionStorage.getItem(SESSION_KEY) ?? localStorage.getItem(SESSION_KEY);
     if (!stored) return false;
     return this.resume(JSON.parse(stored) as Session);
   }
@@ -94,6 +89,10 @@ export class GameService {
     this.socket.emit('boardStroke', stroke);
   }
 
+  sendDraft(stroke: Stroke | null): void {
+    this.socket.emit('boardDraft', stroke);
+  }
+
   undoStroke(): void {
     const id = this.view()?.selfId;
     if (!id) return;
@@ -108,23 +107,21 @@ export class GameService {
     this.socket.emit('boardClear');
   }
 
-  playSound(src: string): void {
-    new Audio(src).play().catch(() => this.soundBlocked.set(true));
+  mediaReady(id: string): void {
+    this.socket.emit('mediaReady', id);
   }
 
-  unlockSound(): void {
-    this.soundBlocked.set(false);
-    this.soundRetry.update((value) => value + 1);
+  playSound(src: string): void {
+    new Audio(src).play().catch(() => undefined);
   }
 
   private updateBoard(id: string, change: (strokes: Stroke[]) => Stroke[]): void {
     this.boards.update((boards) => ({ ...boards, [id]: change(boards[id] ?? []) }));
   }
 
-  private async enter(session: Session): Promise<string> {
+  private async enter(session: Session): Promise<void> {
     this.store(session);
     await this.resume(session);
-    return session.code;
   }
 
   private async resume(session: Session): Promise<boolean> {
@@ -133,7 +130,7 @@ export class GameService {
       this.session = session;
       return true;
     } catch {
-      this.forget(session.code);
+      this.forget();
       this.session = null;
       return false;
     }
@@ -141,17 +138,17 @@ export class GameService {
 
   private store(session: Session): void {
     const value = JSON.stringify(session);
-    sessionStorage.setItem(storageKey(session.code), value);
-    localStorage.setItem(storageKey(session.code), value);
+    sessionStorage.setItem(SESSION_KEY, value);
+    localStorage.setItem(SESSION_KEY, value);
   }
 
-  private forget(code: string): void {
-    sessionStorage.removeItem(storageKey(code));
-    localStorage.removeItem(storageKey(code));
+  private forget(): void {
+    sessionStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(SESSION_KEY);
   }
 
   private leave(reason: string): void {
-    if (this.session) this.forget(this.session.code);
+    this.forget();
     this.session = null;
     this.view.set(null);
     this.boards.set({});
@@ -166,6 +163,3 @@ export class GameService {
   }
 }
 
-function storageKey(code: string): string {
-  return `quiz:session:${code}`;
-}
