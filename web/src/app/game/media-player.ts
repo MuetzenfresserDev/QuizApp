@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, computed, effect, inject, input, signal, viewChild } from '@angular/core';
 import { type MediaKind, type MediaTarget, type Playback, youtubeId } from '@quiz/shared';
 import { GameService } from '../core/game.service';
+import { YT_BUFFERING, YT_ENDED, YT_PLAYING, type YtPlayer, loadYoutubeApi } from '../core/youtube';
 import { Expandable } from './expandable';
 
 /** Abweichung, ab der ein Client auf die Admin-Position nachspringt. */
@@ -12,43 +13,6 @@ const BUFFER_SEC = 8;
 const PREPARE_LIMIT_MS = 7000;
 const END_MARGIN_SEC = 0.3;
 const WAVE_AMPLITUDE = 3;
-const YT_ENDED = 0;
-const YT_PLAYING = 1;
-const YT_BUFFERING = 3;
-
-interface YtPlayer {
-  playVideo(): void;
-  pauseVideo(): void;
-  stopVideo(): void;
-  seekTo(seconds: number, allowSeekAhead: boolean): void;
-  mute(): void;
-  unMute(): void;
-  isMuted(): boolean;
-  getCurrentTime(): number;
-  getDuration(): number;
-  getPlayerState(): number;
-  getVideoLoadedFraction(): number;
-  destroy(): void;
-}
-
-declare global {
-  interface Window {
-    YT?: { Player: new (element: HTMLElement, options: object) => YtPlayer };
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
-
-let youtubeApi: Promise<void> | null = null;
-
-function loadYoutubeApi(): Promise<void> {
-  youtubeApi ??= new Promise((resolve) => {
-    window.onYouTubeIframeAPIReady = resolve;
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    document.head.append(script);
-  });
-  return youtubeApi;
-}
 
 /**
  * Spielt ein Medium synchron bei allen Teilnehmern ab. Niemand bedient den Player direkt:

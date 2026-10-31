@@ -1,22 +1,19 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GameService } from '../core/game.service';
+import { BackgroundVideo } from '../game/background-video';
 import { Board } from '../game/board';
 import { HostCard } from '../game/host-card';
 import { Lobby } from '../game/lobby';
 import { PlayerBar } from '../game/player-bar';
 import { QuestionStage } from '../game/question-stage';
 
-const BACKGROUND_VIDEO =
-  'https://www.youtube.com/embed/mT7NNpyci1Q?controls=0&autoplay=1&mute=1&loop=1&playlist=mT7NNpyci1Q&vq=hd1080';
-
 @Component({
   selector: 'app-game-page',
-  imports: [Board, HostCard, Lobby, PlayerBar, QuestionStage],
+  imports: [BackgroundVideo, Board, HostCard, Lobby, PlayerBar, QuestionStage],
   template: `
     @if (game.view(); as view) {
-      <iframe class="background" [src]="background" title="Hintergrundvideo" allow="autoplay" tabindex="-1"></iframe>
+      <app-background-video />
       <div class="vignette"></div>
       <div class="shell">
         <app-host-card class="host" />
@@ -51,10 +48,8 @@ const BACKGROUND_VIDEO =
 export class GamePage implements OnInit {
   protected readonly game = inject(GameService);
   private readonly router = inject(Router);
-  private readonly sanitizer = inject(DomSanitizer);
 
   protected readonly failed = signal(false);
-  protected readonly background = this.sanitizer.bypassSecurityTrustResourceUrl(BACKGROUND_VIDEO);
 
   async ngOnInit(): Promise<void> {
     if (this.game.view() || (await this.game.open())) return;

@@ -33,8 +33,8 @@ import { GameService } from '../core/game.service';
       display: grid;
       gap: 0.9vw;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      height: 86%;
-      margin: 2vh auto 0;
+      height: 96%;
+      margin: 1vh auto 0;
       max-width: 50vw;
     }
     .column {
@@ -46,7 +46,7 @@ import { GameService } from '../core/game.service';
     .column > img {
       align-self: center;
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
-      height: 6.5vh;
+      height: 9.25vh;
       object-fit: contain;
     }
     h3 {
