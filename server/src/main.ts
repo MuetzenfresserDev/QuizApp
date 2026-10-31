@@ -23,4 +23,4 @@ if (existsSync(webRoot)) {
   app.use((_req, res) => res.sendFile(join(webRoot, 'index.html')));
 }
 
-http.listen(port, () => console.log(`Quizshow läuft auf Port ${port}`));
+http.listen(port, () => console.log(`Gothic Quiz läuft auf Port ${port}`));

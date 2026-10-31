@@ -84,6 +84,10 @@ const MODES: { mode: QuestionMode; label: string; hint: string }[] = [
         <details>
           <summary>Weitere Optionen</summary>
           <app-media-field label="Bild im Whiteboard (darauf können die Spieler malen)" [value]="question.boardImage" (changed)="setBoardImage($event)" />
+          <label class="check">
+            <input type="checkbox" [checked]="!!question.boardNotes" (change)="setBoardNotes($any($event.target).checked)" />
+            Platz zum Schreiben lassen (das Bild steht links, rechts bleibt eine freie Spalte)
+          </label>
           <label class="field">
             Antwortmöglichkeiten (eine pro Zeile)
             <textarea rows="4" [value]="options()" (input)="setOptions(value($event))"></textarea>
@@ -279,6 +283,13 @@ export class QuestionForm {
     this.store.updateQuestion((question) => {
       if (ref) question.boardImage = ref;
       else delete question.boardImage;
+    });
+  }
+
+  protected setBoardNotes(active: boolean): void {
+    this.store.updateQuestion((question) => {
+      if (active) question.boardNotes = true;
+      else delete question.boardNotes;
     });
   }
 

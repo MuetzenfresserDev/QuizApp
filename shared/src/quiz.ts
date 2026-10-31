@@ -15,6 +15,8 @@ export interface QuestionDef {
   media?: MediaSet;
   answer: MediaSet;
   boardImage?: string;
+  /** Das Whiteboard-Bild lässt rechts Platz zum Schreiben. */
+  boardNotes?: boolean;
   imposter?: { slot: number; boardImage: string };
   map?: { image: string; goal: Point | null };
 }

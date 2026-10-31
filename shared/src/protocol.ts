@@ -119,6 +119,8 @@ export interface RunView {
   revealedBoardIds: string[];
   /** Hintergrund pro Spieler: eigener sofort, fremde erst nach Aufdecken. */
   boardImages: Record<string, string>;
+  /** Whiteboard-Bilder lassen rechts eine freie Schreibspalte. */
+  boardNotes: boolean;
 }
 
 export interface TileView {

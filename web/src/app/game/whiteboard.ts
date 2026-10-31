@@ -17,7 +17,7 @@ const MIN_POINT_DISTANCE = 0.002;
   hostDirectives: [Expandable],
   template: `
     <div class="area">
-      <div class="sheet">
+      <div class="sheet" [class.notes]="notes() && image()">
         @if (image()) {
           <img [src]="image()" alt="" referrerpolicy="no-referrer" />
         }
@@ -105,6 +105,12 @@ const MIN_POINT_DISTANCE = 0.002;
     img {
       object-fit: contain;
     }
+    /* Die Zeichenfläche bleibt ganz, nur das Bild rückt zur Seite. */
+    .sheet.notes img {
+      border-right: 2px dashed rgba(43, 33, 21, 0.35);
+      object-position: left top;
+      width: 75%;
+    }
     canvas.editable {
       cursor: crosshair;
       touch-action: none;
@@ -172,6 +178,7 @@ export class Whiteboard {
   readonly playerId = input.required<string>();
   readonly image = input<string | undefined>();
   readonly editable = input(false);
+  readonly notes = input(false);
 
   protected readonly colors = BOARD_COLORS;
   protected readonly widths = BOARD_WIDTHS;

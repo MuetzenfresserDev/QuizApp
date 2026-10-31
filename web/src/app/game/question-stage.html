@@ -61,7 +61,7 @@
             <article>
               <h3>{{ player.name }}</h3>
               @if (isRevealed(player)) {
-                <app-whiteboard [playerId]="player.id" [image]="run.boardImages[player.id]" />
+                <app-whiteboard [playerId]="player.id" [image]="run.boardImages[player.id]" [notes]="run.boardNotes" />
               } @else {
                 <div class="hidden-board">
                   @if (game.isAdmin()) {
@@ -102,7 +102,7 @@
             }
             @case ('whiteboard') {
               @if (selfId(); as id) {
-                <app-whiteboard class="work" [playerId]="id" [image]="run.boardImages[id]" [editable]="canDraw()" />
+                <app-whiteboard class="work" [playerId]="id" [image]="run.boardImages[id]" [notes]="run.boardNotes" [editable]="canDraw()" />
               } @else {
                 <ul class="working">
                   @for (player of players(); track player.id) {

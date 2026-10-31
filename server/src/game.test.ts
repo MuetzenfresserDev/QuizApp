@@ -365,6 +365,14 @@ describe('Whiteboard', () => {
     expect(game.addStroke(a, { ...stroke, width: 99 })).toBe(false);
   });
 
+  it('reicht die Schreibspalte an die Clients weiter', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    expect(game.view('player', a).run!.boardNotes).toBe(false);
+    game.run!.question = { ...game.run!.question, boardNotes: true };
+    expect(game.view('player', a).run!.boardNotes).toBe(true);
+  });
+
   it('prüft Beschriftungen', () => {
     const { game, a } = setup();
     open(game, 1);

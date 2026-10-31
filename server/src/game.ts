@@ -601,6 +601,7 @@ export class Game {
       boardsLocked: run.boardsLocked,
       revealedBoardIds: [...run.revealedBoardIds],
       boardImages: run.questionVisible ? this.boardImages(run, viewer) : {},
+      boardNotes: !!question.boardNotes,
     };
   }
 

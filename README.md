@@ -1,4 +1,4 @@
-# Gothic Quizshow
+# Gothic Quiz
 
 Jeopardy-artige Spielshow für einen Admin und bis zu vier Spieler. Alles läuft in einer App: Whiteboard, Buzzer und Geo-Karte sind eingebaut und synchronisieren sich per WebSocket.
 

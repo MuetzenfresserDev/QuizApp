@@ -13,15 +13,15 @@ import { GameService } from '../core/game.service';
             <button
               class="tile"
               [class.used]="tile.used"
+              [class.bonus]="tile.bonus"
               [class.last]="view.lastTile?.category === c && view.lastTile?.row === r"
               [disabled]="!game.isAdmin()"
               (click)="game.act({ type: 'openQuestion', category: c, row: r })"
             >
               @if (tile.bonus) {
-                <img src="assets/bonus/joker.png" alt="Bonus" />
-              } @else {
-                {{ tile.value }}
+                <small>Bonusfrage</small>
               }
+              {{ tile.value }}
             </button>
           }
         </div>
@@ -93,9 +93,20 @@ import { GameService } from '../core/game.service';
     .tile.last {
       border-color: var(--gold-strong);
     }
-    .tile img {
-      height: 80%;
-      max-height: 6vh;
+    .tile.bonus {
+      align-items: center;
+      color: var(--gold-strong);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.1;
+      text-shadow: 0 2px 6px #000;
+    }
+    .tile small {
+      font-family: var(--font-body);
+      font-size: 0.42em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
     }
   `,
 })

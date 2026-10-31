@@ -106,6 +106,12 @@ describe('Fragen-Paket', () => {
     );
   });
 
+  it('behält die Schreibspalte beim Einbinden', () => {
+    const quiz = completeQuiz();
+    quiz.categories[0]!.questions[0] = { mode: 'whiteboard', prompt: 'Mal!', answer: { text: 'A' }, boardImage: 'media/cat.png', boardNotes: true };
+    expect(importPackage(pack(quiz), paths).categories[0]!.questions[0]).toMatchObject({ boardNotes: true, boardImage: 'assets/quiz/cat.png' });
+  });
+
   it('kommt mit dem echten Quiz zurecht', () => {
     expect(CATALOG.flatMap((category) => category.questions)).toHaveLength(25);
   });

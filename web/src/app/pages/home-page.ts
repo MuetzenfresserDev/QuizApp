@@ -9,7 +9,6 @@ import { GameService } from '../core/game.service';
   template: `
     <main>
       <header>
-        <p class="eyebrow"></p>
         <h1>Gothic Quiz</h1>
       </header>
       @if (error() || game.notice()) {
@@ -26,7 +25,7 @@ import { GameService } from '../core/game.service';
           <h2>Spiel erstellen</h2>
           <label>Dein Name <input name="host" [(ngModel)]="hostName" maxlength="30" required /></label>
           <label>Admin-Passwort <input name="password" type="password" [(ngModel)]="password" /></label>
-          <button type="submit">Als Admin erstellen</button>
+          <button class="primary" type="submit">Spiel erstellen</button>
         </form>
       </div>
       <a class="link" routerLink="/editor">Fragen für ein neues Quiz erstellen</a>
@@ -45,12 +44,6 @@ import { GameService } from '../core/game.service';
     header {
       animation: rise-in 0.6s ease-out backwards;
       text-align: center;
-    }
-    .eyebrow {
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
     }
     h1 {
       background: var(--gold-gradient);
@@ -73,7 +66,14 @@ import { GameService } from '../core/game.service';
       gap: 0.9rem;
       max-width: 100%;
       padding: 1.75rem;
-      width: 360px;
+      width: 22em;
+    }
+    h2 {
+      font-size: 1.35em;
+      white-space: nowrap;
+    }
+    form button {
+      margin-top: auto;
     }
     label {
       color: var(--muted);
