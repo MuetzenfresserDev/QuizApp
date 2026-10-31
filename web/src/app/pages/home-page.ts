@@ -9,8 +9,8 @@ import { GameService } from '../core/game.service';
   template: `
     <main>
       <header>
-        <p class="eyebrow">Die Spielshow</p>
-        <h1>Gothic Quizshow</h1>
+        <p class="eyebrow"></p>
+        <h1>Gothic Quiz</h1>
       </header>
       @if (error() || game.notice()) {
         <p class="error" role="alert">{{ error() || game.notice() }}</p>
