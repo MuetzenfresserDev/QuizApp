@@ -7,10 +7,11 @@ import { HostCard } from '../game/host-card';
 import { Lobby } from '../game/lobby';
 import { PlayerBar } from '../game/player-bar';
 import { QuestionStage } from '../game/question-stage';
+import { Scavenger } from '../game/scavenger';
 
 @Component({
   selector: 'app-game-page',
-  imports: [BackgroundVideo, Board, HostCard, Lobby, PlayerBar, QuestionStage],
+  imports: [BackgroundVideo, Board, HostCard, Lobby, PlayerBar, QuestionStage, Scavenger],
   template: `
     @if (game.view(); as view) {
       <app-background-video />
@@ -32,6 +33,7 @@ import { QuestionStage } from '../game/question-stage';
         </section>
         <app-player-bar class="players" />
       </div>
+      <app-scavenger />
 
       @if (!game.connected()) {
         <div class="banner" role="status">Verbindung verloren, verbinde neu ...</div>

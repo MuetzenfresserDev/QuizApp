@@ -21,6 +21,8 @@ export class GameService {
   readonly boards = signal<Record<string, Stroke[]>>({});
   readonly connected = signal(false);
   readonly notice = signal('');
+  /** Zählt hoch, wenn der Scavenger bei diesem Client durchs Bild soll. */
+  readonly scavengerPass = signal(0);
 
   readonly isAdmin = computed(() => this.view()?.role === 'admin');
   readonly run = computed(() => this.view()?.run ?? null);
@@ -39,7 +41,12 @@ export class GameService {
       this.view.set(view);
     });
     this.socket.on('boards', (boards) => this.boards.set(boards));
-    this.socket.on('sfx', (name) => this.playSound(SFX_SOURCES[name]));
+    this.socket.on('sfx', (name) => {
+      this.playSound(SFX_SOURCES[name]);
+      if (name === 'buzz' && (this.isAdmin() || this.run()?.buzzer?.buzzedId === this.view()?.selfId)) {
+        this.scavengerPass.update((pass) => pass + 1);
+      }
+    });
     this.socket.on('measure', (ack) => ack());
     this.socket.on('closed', (reason) => this.leave(reason));
 
