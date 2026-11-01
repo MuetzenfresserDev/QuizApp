@@ -129,6 +129,29 @@ describe('Hub', () => {
     expect(view.run!.buzzer!.buzzedId).toBe(view.players[0]!.id);
   });
 
+  it('zeigt dem Admin Whiteboard-Änderungen live, anderen Spielern nicht', async () => {
+    const { admin, player, created } = await lobby();
+    const other = await client();
+    await resume(other, await session(other, 'join', { code: created.code, name: 'Bert' } as never));
+    let leaked = false;
+    other.on('board', () => (leaked = true));
+    await act(admin, { type: 'start' });
+    await act(admin, { type: 'openQuestion', category: 1, row: 0 });
+    await act(admin, { type: 'showQuestion' });
+
+    const update = () => new Promise<[string, unknown[]]>((done) => admin.once('board', (id, strokes) => done([id, strokes])));
+    const drawn = update();
+    player.emit('boardStroke', { id: '1', color: '#111111', width: 0.008, points: [{ x: 0.1, y: 0.1 }] });
+    const [id, strokes] = await drawn;
+    expect(id).toBe(admin.view!.players[0]!.id);
+    expect(strokes).toHaveLength(1);
+
+    const undone = update();
+    player.emit('boardUndo');
+    expect((await undone)[1]).toEqual([]);
+    expect(leaked).toBe(false);
+  });
+
   it('informiert entfernte Spieler und ignoriert sie danach', async () => {
     const { admin, player } = await lobby();
     const id = (await settled(admin, (view) => view.players.length === 1)).players[0]!.id;

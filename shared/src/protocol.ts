@@ -116,8 +116,7 @@ export interface RunView {
   pictureVisible: boolean;
   boardsVisible: boolean;
   boardsLocked: boolean;
-  revealedBoardIds: string[];
-  /** Hintergrund pro Spieler: eigener sofort, fremde erst nach Aufdecken. */
+  /** Hintergrund pro Spieler: eigener sofort, der Admin alle, fremde nach dem Zeigen der Boards. */
   boardImages: Record<string, string>;
   /** Whiteboard-Bilder lassen rechts eine freie Schreibspalte. */
   boardNotes: boolean;
@@ -176,7 +175,6 @@ export type AdminAction =
   | { type: 'buzzerFreezeBuzzed' }
   | { type: 'showBoards' }
   | { type: 'hideBoards' }
-  | { type: 'revealBoard'; playerId: string }
   | { type: 'mapShowDistances' }
   | { type: 'mediaPlay'; target: MediaTarget; kind: MediaKind; positionSec?: number }
   | { type: 'mediaPause' }
@@ -212,6 +210,8 @@ export interface ServerToClient {
   sfx(name: Sfx): void;
   /** Vollständige Strokes der Boards, die dieser Client sehen darf. */
   boards(boards: Record<string, Stroke[]>): void;
+  /** Live-Stand eines einzelnen Boards, nur für den Admin. */
+  board(playerId: string, strokes: Stroke[]): void;
   measure(ack: () => void): void;
   closed(reason: string): void;
 }

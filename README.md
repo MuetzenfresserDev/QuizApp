@@ -33,7 +33,7 @@ Dann läuft alles auf einem Port, standardmäßig 8080. Mit Docker geht das übe
 | `server/` | Express und Socket.IO. Die Regeln liegen in `game.ts`, die Fragen in `catalog.ts` |
 | `web/` | Angular-Client |
 
-Der Server entscheidet alles und schickt jedem Teilnehmer nur, was er gerade sehen darf. Lösungen, Karten-Ziele und fremde Whiteboards verlassen den Server erst nach dem Aufdecken. Das gilt auch für den Admin, weil seine Ansicht gestreamt wird.
+Der Server entscheidet alles und schickt jedem Teilnehmer nur, was er gerade sehen darf. Lösungen und Karten-Ziele verlassen den Server erst nach dem Aufdecken. Das gilt auch für den Admin, weil seine Ansicht gestreamt wird. Ausnahme sind die Whiteboards: Der Admin sieht alle live, die Spieler sehen fremde Boards erst, wenn er sie für alle zeigt.
 
 Laufende Spiele liegen im Arbeitsspeicher. Ein Neustart des Servers beendet sie.
 

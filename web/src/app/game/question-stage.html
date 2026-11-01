@@ -1,4 +1,15 @@
 @if (run(); as run) {
+  <ng-template #allBoards>
+    <div class="boards" [class.single]="players().length === 1">
+      @for (player of players(); track player.id) {
+        <article>
+          <h3>{{ player.name }}</h3>
+          <app-whiteboard [playerId]="player.id" [image]="run.boardImages[player.id]" [notes]="run.boardNotes" />
+        </article>
+      }
+    </div>
+  </ng-template>
+
   <header>
     <span class="tag">{{ categoryName() }}</span>
     <span class="tag value">{{ run.value }} Gold</span>
@@ -56,27 +67,10 @@
           }
         </div>
       } @else if (run.boardsVisible) {
-        <div class="boards" [class.single]="players().length === 1">
-          @for (player of players(); track player.id) {
-            <article>
-              <h3>{{ player.name }}</h3>
-              @if (isRevealed(player)) {
-                <app-whiteboard [playerId]="player.id" [image]="run.boardImages[player.id]" [notes]="run.boardNotes" />
-              } @else {
-                <div class="hidden-board">
-                  @if (game.isAdmin()) {
-                    <button class="primary" (click)="game.act({ type: 'revealBoard', playerId: player.id })">Aufdecken</button>
-                  } @else {
-                    <span class="muted">Noch verdeckt</span>
-                  }
-                </div>
-              }
-            </article>
-          }
-        </div>
+        <ng-container [ngTemplateOutlet]="allBoards" />
       } @else {
-        <div class="split" [class.with-work]="run.mode !== 'buzzer'" [class.buzzer-layout]="run.mode === 'buzzer' && (run.hasPicture || run.media.video || run.media.audio)">
-          @if ((run.mode === 'buzzer' && run.hasPicture) || run.media.image || run.media.video || run.media.audio || (run.mode === 'whiteboard' && game.isAdmin())) {
+        <div class="split" [class.with-work]="run.mode !== 'buzzer'" [class.live-boards]="run.mode === 'whiteboard' && game.isAdmin()" [class.buzzer-layout]="run.mode === 'buzzer' && (run.hasPicture || run.media.video || run.media.audio)">
+          @if ((run.mode === 'buzzer' && run.hasPicture) || run.media.image || run.media.video || run.media.audio) {
             <div class="media">
               @if (run.mode === 'buzzer' && run.hasPicture && !run.pictureVisible) {
                 <div class="placeholder">Bild</div>
@@ -104,11 +98,9 @@
               @if (selfId(); as id) {
                 <app-whiteboard class="work" [playerId]="id" [image]="run.boardImages[id]" [notes]="run.boardNotes" [editable]="canDraw()" />
               } @else {
-                <ul class="working">
-                  @for (player of players(); track player.id) {
-                    <li>{{ player.name }} bearbeitet die Aufgabe</li>
-                  }
-                </ul>
+                <div class="work">
+                  <ng-container [ngTemplateOutlet]="allBoards" />
+                </div>
               }
             }
           }
@@ -127,7 +119,7 @@
           @if (run.boardsVisible) {
             <button (click)="game.act({ type: 'hideBoards' })">{{ run.solutionVisible ? 'Zur Lösung' : 'Zur Frage' }}</button>
           } @else {
-            <button class="primary" (click)="game.act({ type: 'showBoards' })">Whiteboards zeigen</button>
+            <button class="primary" (click)="game.act({ type: 'showBoards' })">Whiteboards für alle zeigen</button>
           }
         }
         @if (run.hasPicture && !run.solutionVisible) {

@@ -35,7 +35,7 @@ const ADMIN_MEMBER = 'admin';
 
 export class GameError extends Error {}
 
-interface Player extends PlayerView {
+export interface Player extends PlayerView {
   token: string;
   sockets: number;
   strokes: Stroke[];
@@ -64,7 +64,6 @@ interface Run {
   goalVisible: boolean;
   boardsVisible: boolean;
   boardsLocked: boolean;
-  revealedBoardIds: Set<string>;
 }
 
 interface Tile {
@@ -258,13 +257,8 @@ export class Game {
       case 'hideBoards': {
         const run = this.requireRun();
         run.boardsVisible = false;
-        // Solange nichts aufgedeckt ist, war es nur ein Blick: Die Spieler zeichnen weiter.
-        run.boardsLocked = run.revealedBoardIds.size > 0;
         return {};
       }
-      case 'revealBoard':
-        this.requireRun().revealedBoardIds.add(this.player(action.playerId).id);
-        return { boardsChanged: true };
       case 'mapShowDistances':
         this.requireRun().goalVisible = true;
         return {};
@@ -299,7 +293,6 @@ export class Game {
     if (this.run) {
       this.run.frozenIds.delete(playerId);
       this.run.picks.delete(playerId);
-      this.run.revealedBoardIds.delete(playerId);
       this.run.pendingBuzzes = this.run.pendingBuzzes.filter((buzz) => buzz.playerId !== playerId);
       if (this.run.buzzedId === playerId) this.run.buzzedId = null;
     }
@@ -340,7 +333,6 @@ export class Game {
       goalVisible: false,
       boardsVisible: false,
       boardsLocked: false,
-      revealedBoardIds: new Set(),
     };
     this.phase = 'question';
     return { boardsChanged: true, sfx: question.bonus ? 'bonus' : undefined };
@@ -527,13 +519,23 @@ export class Game {
 
   // --- Ansichten ------------------------------------------------------------
 
-  /** Boards, die dieser Teilnehmer sehen darf: das eigene und alle aufgedeckten. */
-  visibleBoards(viewer: Player | null): Record<string, Stroke[]> {
+  /** Boards, die dieser Teilnehmer sehen darf: der Admin alle live, Spieler das eigene und nach dem Zeigen alle. */
+  visibleBoards(role: Role, viewer: Player | null): Record<string, Stroke[]> {
     const boards: Record<string, Stroke[]> = {};
     for (const player of this.players) {
-      if (player === viewer || this.run?.revealedBoardIds.has(player.id)) boards[player.id] = player.strokes;
+      if (role === 'admin') boards[player.id] = this.liveBoard(player);
+      else if (this.seesBoard(player, viewer)) boards[player.id] = player.strokes;
     }
     return boards;
+  }
+
+  /** Stand für den Admin, samt Text, der gerade noch getippt wird. */
+  liveBoard(player: Player): Stroke[] {
+    return player.draft ? [...player.strokes, player.draft] : player.strokes;
+  }
+
+  private seesBoard(player: Player, viewer: Player | null): boolean {
+    return player === viewer || !!this.run?.boardsLocked;
   }
 
   view(role: Role, viewer: Player | null): GameView {
@@ -599,16 +601,15 @@ export class Game {
       pictureVisible: run.pictureVisible,
       boardsVisible: run.boardsVisible,
       boardsLocked: run.boardsLocked,
-      revealedBoardIds: [...run.revealedBoardIds],
-      boardImages: run.questionVisible ? this.boardImages(run, viewer) : {},
+      boardImages: run.questionVisible ? this.boardImages(run, role, viewer) : {},
       boardNotes: !!question.boardNotes,
     };
   }
 
-  private boardImages(run: Run, viewer: Player | null): Record<string, string> {
+  private boardImages(run: Run, role: Role, viewer: Player | null): Record<string, string> {
     const images: Record<string, string> = {};
     this.players.forEach((player, slot) => {
-      if (player !== viewer && !run.revealedBoardIds.has(player.id)) return;
+      if (role !== 'admin' && !this.seesBoard(player, viewer)) return;
       const { boardImage, imposter } = run.question;
       const image = imposter?.slot === slot ? imposter.boardImage : boardImage;
       if (image) images[player.id] = image;

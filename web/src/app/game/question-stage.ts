@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { type PlayerView } from '@quiz/shared';
 import { GameService } from '../core/game.service';
@@ -8,10 +9,10 @@ import { QuizTimer } from './quiz-timer';
 import { Whiteboard } from './whiteboard';
 import { ZoomImage } from './zoom-image';
 
-/** Eine offene Frage. Die Admin-Ansicht wird gestreamt und zeigt deshalb nur Aufgedecktes. */
+/** Eine offene Frage. Die Admin-Ansicht wird gestreamt und zeigt außer den Whiteboards nur Aufgedecktes. */
 @Component({
   selector: 'app-question-stage',
-  imports: [Buzzer, GeoMap, MediaPlayer, QuizTimer, Whiteboard, ZoomImage],
+  imports: [Buzzer, GeoMap, MediaPlayer, NgTemplateOutlet, QuizTimer, Whiteboard, ZoomImage],
   templateUrl: './question-stage.html',
   styleUrl: './question-stage.scss',
 })
@@ -27,8 +28,4 @@ export class QuestionStage {
     const run = this.run();
     return !!run && run.mode === 'whiteboard' && run.questionVisible && !run.boardsLocked && !!this.selfId();
   });
-
-  protected isRevealed(player: PlayerView): boolean {
-    return this.run()?.revealedBoardIds.includes(player.id) ?? false;
-  }
 }

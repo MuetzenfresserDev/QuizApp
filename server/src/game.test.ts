@@ -170,14 +170,14 @@ describe('Geheimhaltung', () => {
     expect(game.view('player', a).run!.media.image).toBe('b.png');
   });
 
-  it('zeigt Beschriftungen erst mit dem Aufdecken', () => {
+  it('zeigt Beschriftungen erst mit dem Zeigen der Boards', () => {
     const { game, a, b } = setup();
     open(game, 1);
     game.addStroke(a, { id: 't', color: '#111111', width: 0.008, points: [{ x: 0.3, y: 0.4 }], text: 'Antwort' });
-    expect(game.visibleBoards(a)[a.id]![0]!.text).toBe('Antwort');
-    expect(game.visibleBoards(b)[a.id]).toBeUndefined();
-    game.apply({ type: 'revealBoard', playerId: a.id });
-    expect(game.visibleBoards(b)[a.id]![0]).toMatchObject({ text: 'Antwort', points: [{ x: 0.3, y: 0.4 }] });
+    expect(game.visibleBoards('player', a)[a.id]![0]!.text).toBe('Antwort');
+    expect(game.visibleBoards('player', b)[a.id]).toBeUndefined();
+    game.apply({ type: 'showBoards' });
+    expect(game.visibleBoards('player', b)[a.id]![0]).toMatchObject({ text: 'Antwort', points: [{ x: 0.3, y: 0.4 }] });
   });
 
   it('zeigt das Suchbild der Karte erst nach Freigabe', () => {
@@ -188,21 +188,23 @@ describe('Geheimhaltung', () => {
     expect(game.view('player', a).run!.media.image).toBe('such.png');
   });
 
-  it('gibt fremde Whiteboards erst nach dem Aufdecken frei', () => {
+  it('gibt fremde Whiteboards dem Admin live und Spielern erst nach dem Zeigen frei', () => {
     const { game, a, b } = setup();
     open(game, 1);
     game.addStroke(a, { id: '1', color: '#111111', width: 0.008, points: [{ x: 0, y: 0 }] });
-    expect(game.visibleBoards(b)[a.id]).toBeUndefined();
-    expect(game.visibleBoards(null)[a.id]).toBeUndefined();
-    game.apply({ type: 'revealBoard', playerId: a.id });
-    expect(game.visibleBoards(b)[a.id]).toHaveLength(1);
+    expect(game.visibleBoards('player', b)[a.id]).toBeUndefined();
+    expect(game.visibleBoards('player', null)[a.id]).toBeUndefined();
+    expect(game.visibleBoards('admin', null)[a.id]).toHaveLength(1);
+    game.apply({ type: 'showBoards' });
+    expect(game.visibleBoards('player', b)[a.id]).toHaveLength(1);
   });
 
-  it('gibt dem Imposter sein eigenes Board-Bild und verrät es nicht vorab', () => {
+  it('gibt dem Imposter sein eigenes Board-Bild und verrät es Spielern nicht vorab', () => {
     const { game, a, b } = setup();
     open(game, 1);
     expect(game.view('player', a).run!.boardImages).toEqual({ [a.id]: 'normal.png' });
     expect(game.view('player', b).run!.boardImages).toEqual({ [b.id]: 'imposter.png' });
+    expect(game.view('admin', null).run!.boardImages).toEqual({ [a.id]: 'normal.png', [b.id]: 'imposter.png' });
   });
 });
 
@@ -321,21 +323,21 @@ describe('Robustheit', () => {
 describe('Whiteboard', () => {
   const stroke = { id: '1', color: '#111111', width: 0.008, points: [{ x: 0.1, y: 0.1 }] };
 
-  it('lässt nach einem Blick ohne Aufdecken weiterzeichnen', () => {
+  it('bleibt nach dem Zeigen gesperrt', () => {
     const { game, a } = setup();
     open(game, 1);
     game.apply({ type: 'showBoards' });
-    game.apply({ type: 'hideBoards' });
-    expect(game.addStroke(a, stroke)).toBe(true);
-  });
-
-  it('bleibt nach dem ersten Aufdecken gesperrt', () => {
-    const { game, a } = setup();
-    open(game, 1);
-    game.apply({ type: 'showBoards' });
-    game.apply({ type: 'revealBoard', playerId: a.id });
     game.apply({ type: 'hideBoards' });
     expect(game.addStroke(a, stroke)).toBe(false);
+  });
+
+  it('zeigt dem Admin auch Text, der noch getippt wird', () => {
+    const { game, a, b } = setup();
+    open(game, 1);
+    game.setDraft(a, { ...stroke, id: 'draft', text: 'Tippe' });
+    expect(game.visibleBoards('admin', null)[a.id]!.map((s) => s.text)).toEqual(['Tippe']);
+    expect(game.visibleBoards('player', a)[a.id]).toEqual([]);
+    expect(game.visibleBoards('player', b)[a.id]).toBeUndefined();
   });
 
   it('bringt nach der Lösung die Boards zurück', () => {
@@ -388,8 +390,7 @@ describe('Whiteboard', () => {
     open(game, 1);
     game.setDraft(a, { ...stroke, id: 'draft', text: 'Vergessen' });
     expect(game.apply({ type: 'showBoards' }).boardsChanged).toBe(true);
-    game.apply({ type: 'revealBoard', playerId: a.id });
-    expect(game.visibleBoards(b)[a.id]!.map((s) => s.text)).toEqual(['Vergessen']);
+    expect(game.visibleBoards('player', b)[a.id]!.map((s) => s.text)).toEqual(['Vergessen']);
     expect(a.draft).toBeNull();
   });
 

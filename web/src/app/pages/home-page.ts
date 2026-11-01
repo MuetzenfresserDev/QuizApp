@@ -7,6 +7,7 @@ import { GameService } from '../core/game.service';
   selector: 'app-home-page',
   imports: [FormsModule, RouterLink],
   template: `
+    <img class="backdrop" src="assets/mask.webp" alt="" />
     <main>
       <header>
         <h1>Gothic Quiz</h1>
@@ -32,6 +33,18 @@ import { GameService } from '../core/game.service';
     </main>
   `,
   styles: `
+    .backdrop {
+      filter: grayscale(1) brightness(1.6);
+      left: 50%;
+      mask-image: linear-gradient(to bottom, #000 5%, rgba(0, 0, 0, 0.45) 32%, transparent 62%);
+      opacity: 0.18;
+      pointer-events: none;
+      position: fixed;
+      top: -5vh;
+      transform: translateX(-50%);
+      width: min(94vw, 130vh);
+      z-index: -1;
+    }
     main {
       align-items: center;
       display: flex;

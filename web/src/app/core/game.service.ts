@@ -41,6 +41,7 @@ export class GameService {
       this.view.set(view);
     });
     this.socket.on('boards', (boards) => this.boards.set(boards));
+    this.socket.on('board', (id, strokes) => this.updateBoard(id, () => strokes));
     this.socket.on('sfx', (name) => {
       this.playSound(SFX_SOURCES[name]);
       if (name === 'buzz' && (this.isAdmin() || this.run()?.buzzer?.buzzedId === this.view()?.selfId)) {

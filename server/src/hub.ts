@@ -2,7 +2,7 @@ import { randomInt, timingSafeEqual } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
 import type { Ack, ClientToServer, GameView, Role, ServerToClient } from '@quiz/shared';
 import { CATALOG, type CategoryDef } from './catalog.js';
-import { Game, GameError, type GameEffects } from './game.js';
+import { Game, GameError, type GameEffects, type Player } from './game.js';
 
 const MAX_GAMES = 50;
 const IDLE_LIMIT_MS = 12 * 60 * 60 * 1000;
@@ -83,7 +83,7 @@ export class Hub {
         if (member.player) game.connect(member.player);
         socket.join(game.code);
 
-        socket.emit('boards', game.visibleBoards(member.player));
+        socket.emit('boards', game.visibleBoards(member.role, member.player));
         this.broadcast(game);
         this.measureLatency(socket);
         return {};
@@ -116,23 +116,19 @@ export class Hub {
     });
 
     socket.on('boardStroke', (stroke) => {
-      const player = this.currentPlayer(socket);
-      if (player) socket.data.game!.addStroke(player, stroke);
+      this.changeBoard(socket, (game, player) => game.addStroke(player, stroke));
     });
 
     socket.on('boardDraft', (stroke) => {
-      const player = this.currentPlayer(socket);
-      if (player) socket.data.game!.setDraft(player, stroke ?? null);
+      this.changeBoard(socket, (game, player) => game.setDraft(player, stroke ?? null));
     });
 
     socket.on('boardUndo', () => {
-      const player = this.currentPlayer(socket);
-      if (player) socket.data.game!.undoStroke(player);
+      this.changeBoard(socket, (game, player) => game.undoStroke(player));
     });
 
     socket.on('boardClear', () => {
-      const player = this.currentPlayer(socket);
-      if (player) socket.data.game!.clearStrokes(player);
+      this.changeBoard(socket, (game, player) => game.clearStrokes(player));
     });
 
     socket.on('mediaReady', (id) => {
@@ -146,6 +142,16 @@ export class Hub {
       clearInterval(measurer);
       this.detach(socket);
     });
+  }
+
+  /** Der Admin sieht jede Änderung sofort, darum geht nur das geänderte Board raus. */
+  private changeBoard(socket: QuizSocket, change: (game: Game, player: Player) => boolean): void {
+    const player = this.currentPlayer(socket);
+    const game = socket.data.game;
+    if (!player || !game || !change(game, player)) return;
+    for (const other of this.io.sockets.sockets.values()) {
+      if (other.data.game === game && other.data.role === 'admin') other.emit('board', player.id, game.liveBoard(player));
+    }
   }
 
   private detach(socket: QuizSocket): void {
@@ -188,7 +194,7 @@ export class Hub {
   private async sendBoards(game: Game): Promise<void> {
     for (const socket of this.io.sockets.sockets.values()) {
       if (socket.data.game !== game) continue;
-      socket.emit('boards', game.visibleBoards(this.currentPlayer(socket)));
+      socket.emit('boards', game.visibleBoards(socket.data.role ?? 'player', this.currentPlayer(socket)));
     }
   }
 
