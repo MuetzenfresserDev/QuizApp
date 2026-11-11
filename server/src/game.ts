@@ -570,9 +570,9 @@ export class Game {
   private runView(run: Run, role: Role, viewer: Player | null): RunView {
     const { question } = run;
     const isMap = question.mode === 'map';
-    const gated = isMap || question.mode === 'buzzer';
     const media: MediaSet = run.questionVisible ? { ...question.media } : {};
-    if (gated && !run.pictureVisible) delete media.image;
+    // Das Fragebild zeigt der Admin bei allen Fragearten selbst.
+    if (!run.pictureVisible) delete media.image;
     const promptPending = this.promptPending(run);
     const playback = run.playback && {
       ...run.playback,
@@ -597,7 +597,7 @@ export class Game {
       timer: { ...run.timer },
       buzzer: question.mode === 'buzzer' ? { frozenIds: [...run.frozenIds], buzzedId: run.buzzedId } : null,
       map: isMap && run.questionVisible ? this.mapView(run, role, viewer) : null,
-      hasPicture: run.questionVisible && gated && !!question.media?.image,
+      hasPicture: run.questionVisible && !!question.media?.image,
       pictureVisible: run.pictureVisible,
       boardsVisible: run.boardsVisible,
       boardsLocked: run.boardsLocked,

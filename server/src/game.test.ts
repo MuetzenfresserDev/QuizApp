@@ -180,6 +180,18 @@ describe('Geheimhaltung', () => {
     expect(game.visibleBoards('player', b)[a.id]![0]).toMatchObject({ text: 'Antwort', points: [{ x: 0.3, y: 0.4 }] });
   });
 
+  it('zeigt das Bild einer Whiteboard-Frage erst nach Freigabe', () => {
+    const { game, a } = setup();
+    open(game, 1);
+    game.run!.question = { ...game.run!.question, media: { image: 'schaetz.png' } };
+    expect(game.view('player', a).run!.media.image).toBeUndefined();
+    expect(game.view('admin', null).run!.media.image).toBeUndefined();
+    expect(game.view('admin', null).run!.hasPicture).toBe(true);
+    game.apply({ type: 'togglePicture' });
+    expect(game.view('player', a).run!.media.image).toBe('schaetz.png');
+    expect(game.addStroke(a, { id: '1', color: '#111111', width: 0.008, points: [{ x: 0, y: 0 }] })).toBe(true);
+  });
+
   it('zeigt das Suchbild der Karte erst nach Freigabe', () => {
     const { game, a } = setup();
     open(game, 2);
@@ -197,6 +209,17 @@ describe('Geheimhaltung', () => {
     expect(game.visibleBoards('admin', null)[a.id]).toHaveLength(1);
     game.apply({ type: 'showBoards' });
     expect(game.visibleBoards('player', b)[a.id]).toHaveLength(1);
+  });
+
+  it('spielt bei der Karte Audio ab, ohne das Suchbild zu verraten', () => {
+    const { game, a } = setup();
+    open(game, 2);
+    game.run!.question = { ...game.run!.question, media: { image: 'such.png', audio: 'ort.mp3' } };
+    expect(game.view('player', a).run!.media).toEqual({ audio: 'ort.mp3' });
+    play(game, 'question', 'audio');
+    expect(game.run!.playback?.playing).toBe(true);
+    game.mapPick(a.id, { x: 0.5, y: 0.5 });
+    expect(game.view('player', a).run!.map!.myPick).toEqual({ x: 0.5, y: 0.5 });
   });
 
   it('gibt dem Imposter sein eigenes Board-Bild und verrät es Spielern nicht vorab', () => {

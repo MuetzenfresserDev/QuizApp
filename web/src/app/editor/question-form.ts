@@ -52,8 +52,13 @@ const MODES: { mode: QuestionMode; label: string; hint: string }[] = [
           @if (badLink(question.media?.video)) {
             <p class="problem">Das ist kein YouTube-Link.</p>
           }
-          <app-media-field label="Audio (zum Beispiel eine Voiceline)" kind="audio" [value]="question.media?.audio" (changed)="setMedia('media', 'audio', $event)" />
         }
+        <app-media-field
+          [label]="question.mode === 'map' ? 'Audio, das den Ort beschreibt' : 'Audio (zum Beispiel eine Voiceline)'"
+          kind="audio"
+          [value]="question.media?.audio"
+          (changed)="setMedia('media', 'audio', $event)"
+        />
       </section>
 
       @if (question.mode === 'map') {

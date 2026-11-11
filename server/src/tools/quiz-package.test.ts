@@ -112,6 +112,27 @@ describe('Fragen-Paket', () => {
     expect(importPackage(pack(quiz), paths).categories[0]!.questions[0]).toMatchObject({ boardNotes: true, boardImage: 'assets/quiz/cat.png' });
   });
 
+  it('nimmt das Audio einer Kartenfrage mit, auch beim erneuten Export', () => {
+    const quiz = completeQuiz();
+    quiz.categories[0]!.questions[0] = {
+      mode: 'map',
+      prompt: 'Wo ist das?',
+      media: { audio: 'media/ort.mp3' },
+      answer: {},
+      map: { image: 'assets/geo/minentalSmall.jpg', goal: { x: 100, y: 200 } },
+    };
+    writeFileSync(join(paths.publicDir, 'assets/geo/minentalSmall.jpg'), '');
+    const audio = new Uint8Array([7, 8, 9]);
+    const imported = importPackage(pack(quiz, { 'media/cat.png': new Uint8Array([1]), 'media/ort.mp3': audio }), paths);
+    expect(imported.categories[0]!.questions[0]!.media).toEqual({ audio: 'assets/quiz/ort.mp3' });
+    expect(readFileSync(join(paths.publicDir, 'assets/quiz/ort.mp3'))).toEqual(Buffer.from(audio));
+
+    // Der Export nummeriert die Dateien neu, der Inhalt muss gleich bleiben.
+    const ref = importPackage(exportPackage(paths), paths).categories[0]!.questions[0]!.media!.audio!;
+    expect(ref).toMatch(/^assets\/quiz\/.+\.mp3$/);
+    expect(readFileSync(join(paths.publicDir, ref))).toEqual(Buffer.from(audio));
+  });
+
   it('kommt mit dem echten Quiz zurecht', () => {
     expect(CATALOG.flatMap((category) => category.questions)).toHaveLength(25);
   });
