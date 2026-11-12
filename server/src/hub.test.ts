@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import { io as connect, type Socket } from 'socket.io-client';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { AdminAction, ClientToServer, GameView, ServerToClient, Session } from '@quiz/shared';
+import { CATALOG } from './catalog.js';
 import { Hub, type QuizServer } from './hub.js';
 
 type Client = Socket<ServerToClient, ClientToServer> & { view?: GameView };
@@ -83,7 +84,7 @@ describe('Hub', () => {
     const seen = await settled(player, (view) => !!view.run?.prompt);
     expect(seen.role).toBe('player');
     expect(seen.selfId).not.toBeNull();
-    expect(seen.run!.prompt).toBe('Wer ist Ulmar?');
+    expect(seen.run!.prompt).toBe(CATALOG[0]!.questions[0]!.prompt);
     expect(seen.run!.answer).toBeNull();
     expect((await settled(admin, (view) => view.run?.questionVisible === true)).role).toBe('admin');
   });

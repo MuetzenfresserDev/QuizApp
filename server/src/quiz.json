@@ -1,175 +1,181 @@
 {
-  "title": "Gothic Quiz",
+  "title": "Gothic 1-2-3-R Quiz",
   "categories": [
     {
-      "name": "Buzzer",
-      "image": "assets/katPictures/Kat 1.png",
+      "name": "Gothic 1",
+      "image": "assets/quiz/mw8bhehn923hj0.png",
       "questions": [
         {
           "mode": "buzzer",
-          "prompt": "Wer ist Ulmar?",
-          "answer": {
-            "image": "assets/quiz/file-1.png"
+          "prompt": "Erkenne das Monster",
+          "media": {
+            "image": "assets/quiz/mw8bjq7bekbjkn.png"
           },
-          "media": {}
+          "answer": {
+            "image": "assets/quiz/mw8bjx5k2w2kzb.png",
+            "text": "Ork Schamane"
+          },
+          "bonus": true
         },
         {
           "mode": "buzzer",
-          "prompt": "Wie heißt dieses Item?",
+          "prompt": "Wie heißt diese Waffe?",
           "media": {
-            "image": "assets/quiz/file-2.png"
+            "image": "assets/quiz/mw8bktvfdv6vss.png"
           },
           "answer": {
-            "image": "assets/quiz/file-3.png"
+            "image": "assets/quiz/mw8bl15k0un8oi.png",
+            "text": "Söldnerklinge"
           }
         },
         {
           "mode": "buzzer",
-          "prompt": "Wer hat das Gesagt?",
+          "prompt": "Wie heißt der NPC?",
           "media": {
-            "audio": "assets/quiz/file-4.mp3"
+            "image": "assets/quiz/mw8bldvezgi0a8.png"
           },
           "answer": {
-            "video": "https://www.youtube.com/embed/52FJSZRHzDM?controls=1&vq=hd1080&autoplay=0"
+            "text": "Orry",
+            "image": "assets/quiz/mw8bljpdk55qzp.png"
           }
         },
         {
           "mode": "buzzer",
-          "prompt": "Über welchen Ort geht es hier?",
+          "prompt": "Wie viel Erfahrung gibt Aidan beim Umschlagen?",
           "media": {
-            "image": "assets/quiz/file-5.png"
+            "image": "assets/quiz/mw8blx0bi7fx3r.png"
           },
           "answer": {
-            "image": "assets/quiz/file-6.png"
+            "text": "150",
+            "image": "assets/quiz/mw8bmb1yx02ii5.png"
           }
         },
         {
           "mode": "buzzer",
-          "prompt": "Über Welchen NPC schreibt der Held hier?",
+          "prompt": "Wie viele Betten stehen im Häuschen der Bauern?",
           "media": {
-            "image": "assets/quiz/file-7.png"
+            "image": "assets/quiz/mw8bmmudjicj9d.png"
           },
           "answer": {
-            "image": "assets/quiz/file-8.png"
+            "image": "assets/quiz/mw8bmtiqcdm94u.png",
+            "text": "11"
           }
         }
       ]
     },
     {
-      "name": "Schätzfragen",
-      "image": "assets/katPictures/Kat 2.png",
+      "name": "Remake",
+      "image": "assets/quiz/mw8bhgwoxu2fj5.png",
       "questions": [
         {
           "mode": "whiteboard",
-          "prompt": "Wie viel sind die Items im Verkauf an Sharky wert?\n(erstes mal Verkaufen) (Novize Schwierigkeit)",
+          "prompt": "Identifiziere diese Person!",
           "media": {
-            "image": "assets/quiz/file-9.png"
+            "image": "assets/quiz/mw8bn8pp5e6zj8.png"
           },
           "answer": {
-            "image": "assets/quiz/file-10.png"
+            "image": "assets/quiz/mw8bnc2cqojd8l.png",
+            "text": "Gor Hanis"
           }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Bonusfrage von RPGKurga! -> 500 Gold Frage",
-          "bonus": true,
+          "prompt": "Der neue Marvin Mode im Remake gibt dir die Möglichkeit zu fliegen. Wie lange dauert der Flug von hier in Xardas Turm hinein?",
           "media": {
-            "video": "https://www.youtube.com/embed/G8M36jXrA_4?controls=1&vq=hd1080&autoplay=0"
+            "image": "assets/quiz/mw8bno537mmzw1.png"
           },
           "answer": {
-            "video": "https://www.youtube.com/embed/EcbdKhbwQo4?controls=1&vq=hd1080&autoplay=0"
+            "video": "https://youtu.be/nErKC_MIilg"
           }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Wie lange dauert der Weg mit Mordrag zum Neuen Lager?\nAlle Gegner leben noch (Schwierigkeit Novize)",
+          "prompt": "Welcher Name ist Falsch zugeordnet?",
           "media": {
-            "image": "assets/quiz/file-11.png"
+            "image": "assets/quiz/mw8bpzrjkqtc09.png"
           },
           "answer": {
-            "video": "https://www.youtube.com/embed/C5O-YRe9VnQ?controls=1&vq=hd1080&autoplay=0"
+            "image": "assets/quiz/mw8bq52w0ram78.png"
+          },
+          "boardImage": "assets/quiz/mwcjla2b1pji6m.png"
+        },
+        {
+          "mode": "whiteboard",
+          "prompt": "Schätzfrage: wie lange dauert die Uriziel-Erzhaufen-Sequenz?",
+          "media": {
+            "image": "assets/quiz/mw8bqgj2n5jgbj.png"
+          },
+          "answer": {
+            "video": "https://youtu.be/eEovPUeh5FM"
           }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Wie lange dauern die Credits?",
+          "prompt": "Was bedeutet sinngemäß folgendes auf Deutsch?",
           "media": {
-            "image": "assets/quiz/file-12.png"
+            "image": "assets/quiz/mw8bqvdm4vuu8a.png"
           },
           "answer": {
-            "video": "https://www.youtube.com/embed/xxrr0BcMHd0?controls=1&vq=hd1080&autoplay=0"
-          }
-        },
-        {
-          "mode": "whiteboard",
-          "prompt": "Wie lange fliegen wir von dieser Position gerade durch zum anderen Rand der Barriere?",
-          "media": {
-            "image": "assets/quiz/file-13.png"
-          },
-          "answer": {
-            "video": "https://www.youtube.com/embed/ske_EqN0QkE?controls=1&vq=hd1080&autoplay=0"
+            "image": "assets/quiz/mw8bqzlm6nb3uc.png"
           }
         }
       ]
     },
     {
-      "name": "Unterschiede!",
-      "image": "assets/katPictures/Kat 3.png",
+      "name": "Gothic 3",
+      "image": "assets/quiz/mw8bhkjlhpf4v5.png",
       "questions": [
         {
           "mode": "whiteboard",
-          "prompt": "Welcher dieser Orte zeigt das Remakebild?",
+          "prompt": "Ordne folgende Namen der Zugehörigkeit zu!",
           "media": {
-            "image": "assets/quiz/file-14.png"
+            "image": "assets/quiz/mw8brmnbx2quir.png"
           },
           "answer": {
-            "image": "assets/quiz/file-15.png"
+            "image": "assets/quiz/mw8brpfaew8rby.png"
           },
-          "boardImage": "https://i.imgur.com/9FehfVH.jpeg"
+          "boardImage": "assets/quiz/mwcjlsozjliqwq.png"
         },
         {
           "mode": "whiteboard",
-          "prompt": "Welcher dieser Orte zeigt das Originalbild?",
+          "prompt": "Finde den Fehler (3)",
           "media": {
-            "image": "assets/quiz/file-16.png"
+            "image": "assets/quiz/mw8bry03ddscyw.png"
           },
           "answer": {
-            "image": "assets/quiz/file-17.png"
+            "image": "assets/quiz/mw8bs841i4t9bs.png"
           },
-          "boardImage": "https://i.imgur.com/OEm9Tiw.jpeg"
+          "boardImage": "assets/quiz/mwcjlyevmrsvgo.png"
         },
         {
           "mode": "whiteboard",
-          "prompt": "Verbinde diese Items mit dem richtigen Bild!",
+          "prompt": "Wahr oder Falsch? (3)",
           "media": {
-            "image": "assets/quiz/file-18.png"
+            "video": "https://youtu.be/8APEU8qPwO4"
           },
           "answer": {
-            "image": "assets/quiz/file-19.png"
-          },
-          "boardImage": "https://i.imgur.com/KwiT9yK.png"
-        },
-        {
-          "mode": "whiteboard",
-          "prompt": "Bonusfrage von Jorgenson -> 500 Gold Frage",
-          "bonus": true,
-          "media": {
-            "video": "https://www.youtube.com/embed/ITxSKZ90Vb4?controls=1&vq=hd1080&autoplay=0"
-          },
-          "answer": {
-            "video": "https://www.youtube.com/embed/kh4KrT0o0cI?controls=1&vq=hd1080&autoplay=0"
+            "video": "https://youtu.be/bI1WK90Blu0"
           }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Verbinde diese Orte mit der Location auf der Map!",
+          "prompt": "Welche Talente fehlen hier?",
           "media": {
-            "image": "assets/quiz/file-20.png"
+            "image": "assets/quiz/mw8bsxfrhyn5tw.png"
           },
           "answer": {
-            "image": "assets/quiz/file-21.png"
+            "image": "assets/quiz/mw8bt14zj3465x.png"
+          }
+        },
+        {
+          "mode": "whiteboard",
+          "prompt": "Schätzen: Wie viel GB ist Gothic 3 groß? (Steam version)",
+          "media": {
+            "image": "assets/quiz/mw8btog232n1kd.png"
           },
-          "boardImage": "https://i.imgur.com/pkkEkDb.jpeg"
+          "answer": {
+            "image": "assets/quiz/mw8btv4tcz9opi.png"
+          }
         }
       ]
     },
@@ -179,138 +185,137 @@
       "questions": [
         {
           "mode": "map",
-          "prompt": "Markiere den Ort... (1)",
+          "prompt": "Bonusfrage von Arnideggah!",
           "media": {
-            "image": "assets/quiz/file-22.png"
+            "image": "assets/quiz/mw8buftwunwavy.png"
           },
           "answer": {},
           "map": {
             "image": "assets/geo/karte_der_Kolonie_remake.png",
             "goal": {
-              "x": 299,
-              "y": 424
+              "x": 517,
+              "y": 473
             }
-          }
+          },
+          "bonus": true
         },
         {
           "mode": "map",
-          "prompt": "Markiere den Ort... (2)",
+          "prompt": "Wo befinden wir uns auf dieser Karte?",
           "media": {
-            "image": "assets/quiz/file-23.png"
+            "image": "assets/quiz/mw8bwpoixc8bx6.png"
           },
           "answer": {},
           "map": {
-            "image": "assets/geo/karte_der_Kolonie_remake.png",
-            "goal": {
-              "x": 182,
-              "y": 196
-            }
-          }
-        },
-        {
-          "mode": "map",
-          "prompt": "Markiere den Ort... (3)",
-          "media": {
-            "image": "assets/quiz/file-24.png"
-          },
-          "answer": {},
-          "map": {
-            "image": "assets/geo/karte_der_Kolonie_remake.png",
-            "goal": {
-              "x": 427,
-              "y": 144
-            }
-          }
-        },
-        {
-          "mode": "map",
-          "prompt": "Markiere den Ort... (4)",
-          "media": {
-            "image": "assets/quiz/file-25.png"
-          },
-          "answer": {},
-          "map": {
-            "image": "assets/geo/karte_der_Kolonie_remake.png",
-            "goal": {
-              "x": 223,
-              "y": 214
-            }
-          }
-        },
-        {
-          "mode": "map",
-          "prompt": "Markiere den Ort... (5)",
-          "media": {
-            "image": "assets/quiz/file-26.png"
-          },
-          "answer": {},
-          "map": {
-            "image": "assets/geo/karte_der_Kolonie_remake.png",
+            "image": "assets/geo/khorinis_city.jpg",
             "goal": {
               "x": 308,
-              "y": 276
+              "y": 238
+            }
+          }
+        },
+        {
+          "mode": "map",
+          "prompt": "Mimi beschreibt den Ort: Wo befinden wir uns?",
+          "media": {
+            "audio": "assets/quiz/mwcbrfld6apjj4.wav"
+          },
+          "answer": {},
+          "map": {
+            "image": "assets/geo/g3Full.jpg",
+            "goal": {
+              "x": 445,
+              "y": 280
+            }
+          },
+          "bonus": true
+        },
+        {
+          "mode": "map",
+          "prompt": "Ganz schön verzerrt ... Wo befinden wir uns?",
+          "media": {
+            "image": "assets/quiz/mw8bzou3ep30p7.png"
+          },
+          "answer": {},
+          "map": {
+            "image": "assets/geo/g1MinentalSmall.png",
+            "goal": {
+              "x": 444,
+              "y": 298
+            }
+          }
+        },
+        {
+          "mode": "map",
+          "prompt": "Ich erkenne da GAR NICHTS! Wo sind wir?",
+          "media": {
+            "image": "assets/quiz/mw8c0v4rxsor4c.png"
+          },
+          "answer": {},
+          "map": {
+            "image": "assets/geo/khorinisSmall.jpg",
+            "goal": {
+              "x": 316,
+              "y": 406
             }
           }
         }
       ]
     },
     {
-      "name": "Random",
-      "image": "assets/katPictures/Kat 5.png",
+      "name": "Gothic 2",
+      "image": "assets/quiz/mw8bhng3ak6o4d.png",
       "questions": [
         {
           "mode": "whiteboard",
-          "prompt": "Erkenne die Fehler!",
+          "prompt": "Wer bietet mehr Milizsoldaten mit Namen?",
           "media": {
-            "image": "assets/quiz/file-27.png"
+            "image": "assets/quiz/mw8c24xiwvho9r.png"
           },
           "answer": {
-            "image": "assets/quiz/file-28.png"
-          },
-          "boardImage": "https://i.imgur.com/4bG3xsB.jpeg"
-        },
-        {
-          "mode": "whiteboard",
-          "prompt": "Welche Waffe ist Stärker?",
-          "media": {
-            "image": "assets/quiz/file-29.png"
-          },
-          "answer": {
-            "image": "assets/quiz/file-30.png"
-          },
-          "boardImage": "https://i.imgur.com/tDpruSl.png"
-        },
-        {
-          "mode": "whiteboard",
-          "prompt": "Wahr oder Falsch?",
-          "media": {
-            "video": "https://www.youtube.com/embed/YfDo1nSzplg?controls=1&vq=hd1080&autoplay=0"
-          },
-          "answer": {
-            "video": "https://www.youtube.com/embed/oiW0r6JCFK4?controls=1&vq=hd1080&autoplay=0"
+            "image": "assets/quiz/mw8c295bqt17td.png"
           }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Welche Farben haben diese Zauber?",
+          "prompt": "Wie viel Erfahrung bringt diese Situation in den Kapiteln 1, 2, 3 und 4?",
           "media": {
-            "image": "assets/quiz/file-31.png"
+            "image": "assets/quiz/mw8c2xqtoz0iqj.png"
           },
           "answer": {
-            "image": "assets/quiz/file-32.png"
-          },
-          "boardImage": "https://i.imgur.com/dozOUCZ.png"
+            "image": "assets/quiz/mw8c31g1yiv47d.png"
+          }
         },
         {
           "mode": "whiteboard",
-          "prompt": "Wie heißt dieses Buch?",
+          "prompt": "Schätzfrage: Wie viele einzelne Cutszenes gibt es in Gothic 2? Gesamtheit der einzelnen Video-Daten.",
           "media": {
-            "image": "assets/quiz/file-33.png"
+            "image": "assets/quiz/mw8c3ym4dliy23.png"
           },
           "answer": {
-            "image": "assets/quiz/file-34.png"
+            "image": "assets/quiz/mw8c426bsru83c.png"
+          }
+        },
+        {
+          "mode": "whiteboard",
+          "prompt": "Zeichne Xardas Weg von seinem Turm zum Sonnenkreis.",
+          "media": {
+            "image": "assets/quiz/mw8c4h4uxm0r7b.png"
           },
-          "boardImage": "https://i.imgur.com/9oyMBJs.png"
+          "answer": {
+            "image": "assets/quiz/mw8c4nci9mefpx.png"
+          },
+          "boardImage": "assets/quiz/mwcjnegr94b9yi.png"
+        },
+        {
+          "mode": "whiteboard",
+          "prompt": "Merke dir alle Felder! Einige werden abgefragt ...",
+          "media": {
+            "image": "assets/quiz/mw8c5ewfwp6t01.png"
+          },
+          "answer": {
+            "image": "assets/quiz/mw8c5nukiq40s1.png"
+          }
         }
       ]
     }

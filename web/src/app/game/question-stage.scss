@@ -190,11 +190,6 @@ h2.muted {
   flex: 1.6 1 0;
 }
 
-/* Der Admin verfolgt bis zu vier Boards, das Fragebild rückt dafür klein zur Seite. */
-.split.live-boards > .work {
-  flex: 3 1 0;
-}
-
 .boards {
   display: grid;
   gap: 0.6vh 1vw;

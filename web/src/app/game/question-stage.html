@@ -69,7 +69,7 @@
       } @else if (run.boardsVisible) {
         <ng-container [ngTemplateOutlet]="allBoards" />
       } @else {
-        <div class="split" [class.with-work]="run.mode !== 'buzzer'" [class.live-boards]="run.mode === 'whiteboard' && game.isAdmin()" [class.buzzer-layout]="run.mode === 'buzzer' && (run.hasPicture || run.media.video || run.media.audio)">
+        <div class="split" [class.with-work]="run.mode !== 'buzzer'" [class.buzzer-layout]="run.mode === 'buzzer' && (run.hasPicture || run.media.video || run.media.audio)">
           @if ((run.mode === 'buzzer' && run.hasPicture) || run.media.image || run.media.video || run.media.audio) {
             <div class="media">
               @if (run.mode === 'buzzer' && run.hasPicture && !run.pictureVisible) {
