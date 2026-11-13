@@ -14,8 +14,7 @@
           "answer": {
             "image": "assets/quiz/mw8bjx5k2w2kzb.png",
             "text": "Ork Schamane"
-          },
-          "bonus": true
+          }
         },
         {
           "mode": "buzzer",
@@ -41,7 +40,7 @@
         },
         {
           "mode": "buzzer",
-          "prompt": "Wie viel Erfahrung gibt Aidan beim Umschlagen?",
+          "prompt": "Wie viel Erfahrung gibt dieser Charakter beim Umschlagen?",
           "media": {
             "image": "assets/quiz/mw8blx0bi7fx3r.png"
           },
@@ -52,7 +51,7 @@
         },
         {
           "mode": "buzzer",
-          "prompt": "Wie viele Betten stehen im Häuschen der Bauern?",
+          "prompt": "Wie viele Betten befinden sich HIER drin?",
           "media": {
             "image": "assets/quiz/mw8bmmudjicj9d.png"
           },
@@ -155,7 +154,8 @@
           },
           "answer": {
             "video": "https://youtu.be/bI1WK90Blu0"
-          }
+          },
+          "boardImage": "assets/quiz/mwf7lqv48otd8u.png"
         },
         {
           "mode": "whiteboard",
@@ -284,7 +284,8 @@
           },
           "answer": {
             "image": "assets/quiz/mw8c31g1yiv47d.png"
-          }
+          },
+          "boardImage": "assets/quiz/mwf7np76a2bjw3.png"
         },
         {
           "mode": "whiteboard",
@@ -315,7 +316,8 @@
           },
           "answer": {
             "image": "assets/quiz/mw8c5nukiq40s1.png"
-          }
+          },
+          "boardImage": "assets/quiz/mwf7oebu097dpo.png"
         }
       ]
     }
