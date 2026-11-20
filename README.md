@@ -57,6 +57,6 @@ npm run export-quiz gothic-quiz.zip
 
 ## Streaming
 
-Host-Kamera und die vier Spieler-Kameras haben in beiden Ansichten feste Platzhalter. In OBS legst du die Kameras einfach darüber. Die Punkte-Knöpfe des Admins liegen im Kamerabild, die Zuschauer sehen sie dadurch nicht. Für stabile Positionen die Ansicht immer in derselben Fenstergröße aufnehmen.
+Host-Kamera und Spieler-Kameras haben in beiden Ansichten feste Platzhalter, einen pro beigetretenem Spieler (höchstens vier). In OBS legst du die Kameras darüber, sobald alle beigetreten sind. Die Punkte-Knöpfe des Admins liegen im Kamerabild, die Zuschauer sehen sie dadurch nicht. Für stabile Positionen die Ansicht immer in derselben Fenstergröße aufnehmen.
 
 Bilder, Videos, Karte und Whiteboards lassen sich über `Groß` oder per Klick auf die ganze Bühne ziehen, `Esc` verkleinert wieder. Das gilt nur für den eigenen Bildschirm: Was der Admin vergrößert, sehen also die Stream-Zuschauer, nicht die anderen Spieler.

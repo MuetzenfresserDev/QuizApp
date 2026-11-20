@@ -1,32 +1,29 @@
 import { Component, computed, inject } from '@angular/core';
-import { MAX_PLAYERS, type PlayerView } from '@quiz/shared';
+import { type PlayerView } from '@quiz/shared';
 import { GameService } from '../core/game.service';
 
 @Component({
   selector: 'app-player-bar',
+  host: { '[style.--count]': 'players().length || 1' },
   template: `
-    @for (slot of slots(); track $index) {
-      <article class="slot" [class.active]="slot && slot.id === game.view()?.activePlayerId" [class.offline]="slot && !slot.connected">
+    @for (slot of players(); track slot.id) {
+      <article class="slot" [class.active]="slot.id === game.view()?.activePlayerId" [class.offline]="!slot.connected">
         <header>
-          @if (slot) {
-            <img [src]="'assets/geo/' + slot.icon" alt="" />
-            <strong class="name">{{ slot.name }}</strong>
-            @for (points of [slot.points]; track points) {
-              <span class="gold">{{ points }}</span>
-            }
-            <span class="jokers">
-              <button class="joker" [class.on]="slot.jokers.block" [disabled]="!game.isAdmin()" title="Block-Joker" (click)="joker(slot, 'block')">&#8856;</button>
-              <button class="joker" [class.on]="slot.jokers.double" [disabled]="!game.isAdmin()" title="Doppel-Joker" (click)="joker(slot, 'double')">2&times;</button>
-            </span>
-          } @else {
-            <span class="muted">Freier Platz</span>
+          <img [src]="'assets/geo/' + slot.icon" alt="" />
+          <strong class="name">{{ slot.name }}</strong>
+          @for (points of [slot.points]; track points) {
+            <span class="gold">{{ points }}</span>
           }
+          <span class="jokers">
+            <button class="joker" [class.on]="slot.jokers.block" [disabled]="!game.isAdmin()" title="Block-Joker" (click)="joker(slot, 'block')">&#8856;</button>
+            <button class="joker" [class.on]="slot.jokers.double" [disabled]="!game.isAdmin()" title="Doppel-Joker" (click)="joker(slot, 'double')">2&times;</button>
+          </span>
         </header>
         <div class="cam" [attr.aria-label]="'Platzhalter für Kamera ' + ($index + 1)">
-          @if (slot && !slot.connected) {
+          @if (!slot.connected) {
             <span class="muted">Getrennt</span>
           }
-          @if (slot && game.isAdmin()) {
+          @if (game.isAdmin()) {
             <footer>
             <button (click)="points(slot, -100)">-100</button>
             <button (click)="points(slot, -50)">-50</button>
@@ -49,7 +46,11 @@ import { GameService } from '../core/game.service';
     :host {
       display: grid;
       gap: 1vw;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-columns: minmax(0, 1fr);
+      grid-auto-flow: column;
+      justify-self: center;
+      /* Ein Feld ist nie breiter als bei drei Spielern, weniger Spieler stehen mittig. */
+      width: min(100%, calc(var(--count) * (100% - 2vw) / 3 + (var(--count) - 1) * 1vw));
     }
     .slot {
       background: var(--surface);
@@ -156,11 +157,8 @@ import { GameService } from '../core/game.service';
 export class PlayerBar {
   protected readonly game = inject(GameService);
 
-  /** Immer vier Plätze, damit die Kamera-Positionen in OBS stabil bleiben. */
-  protected readonly slots = computed<(PlayerView | null)[]>(() => {
-    const players = this.game.view()?.players ?? [];
-    return Array.from({ length: MAX_PLAYERS }, (_, index) => players[index] ?? null);
-  });
+  /** Nur beigetretene Spieler, die Felder teilen sich die Breite. Die Kameras in OBS erst nach dem Beitritt aller ausrichten. */
+  protected readonly players = computed<PlayerView[]>(() => this.game.view()?.players ?? []);
 
   protected points(player: PlayerView, delta: number): void {
     this.game.act({ type: 'points', playerId: player.id, delta });

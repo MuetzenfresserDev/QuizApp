@@ -1,6 +1,6 @@
 @if (run(); as run) {
   <ng-template #allBoards>
-    <div class="boards" [class.single]="players().length === 1">
+    <div class="boards" [class.single]="players().length === 1" [class.three]="players().length === 3">
       @for (player of players(); track player.id) {
         <article>
           <h3>{{ player.name }}</h3>

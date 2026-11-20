@@ -203,6 +203,11 @@ h2.muted {
   grid-template-columns: minmax(0, 1fr);
 }
 
+/* Bei drei Spielern steht das dritte Board mittig unter den anderen beiden. */
+.boards.three article:last-child {
+  grid-column: 1 / -1;
+}
+
 .boards article {
   display: flex;
   flex-direction: column;

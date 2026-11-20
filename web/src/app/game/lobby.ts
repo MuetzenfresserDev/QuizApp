@@ -17,10 +17,8 @@ import { GameService } from '../core/game.service';
               {{ player.name }}
             </li>
           }
-          @for (slot of freeSlots(); track $index) {
-            <li class="free">Frei</li>
-          }
         </ul>
+        <p class="muted">{{ view.players.length }} von {{ maxPlayers }} Spielern{{ view.players.length === maxPlayers ? ', das Spiel ist voll' : '' }}</p>
 
         @if (game.isAdmin()) {
           <div class="actions">
@@ -67,9 +65,10 @@ import { GameService } from '../core/game.service';
       margin-right: -0.15em;
     }
     .roster {
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
-      grid-template-columns: repeat(4, minmax(7rem, 1fr));
+      justify-content: center;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -84,16 +83,9 @@ import { GameService } from '../core/game.service';
       font-weight: 600;
       gap: 0.4rem;
       min-height: 2.6em;
+      min-width: 7rem;
       overflow-wrap: anywhere;
       padding: 0.3em 0.6em;
-    }
-    li.free {
-      background: transparent;
-      border-color: var(--line);
-      border-style: dashed;
-      color: var(--muted);
-      font-weight: 400;
-      justify-content: center;
     }
     li img {
       border-radius: 50%;
@@ -112,9 +104,7 @@ export class Lobby {
   protected readonly game = inject(GameService);
   protected readonly copied = signal(false);
 
-  protected freeSlots(): unknown[] {
-    return Array.from({ length: MAX_PLAYERS - (this.game.view()?.players.length ?? 0) });
-  }
+  protected readonly maxPlayers = MAX_PLAYERS;
 
   protected async copy(code: string): Promise<void> {
     await navigator.clipboard.writeText(`${location.origin}/?code=${code}`);
